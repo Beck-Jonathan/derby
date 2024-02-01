@@ -13,19 +13,20 @@ public class ErrorHandler extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.getRequestDispatcher("WEB-INF/Shared/error.jsp").forward(req, resp);
-    String errorCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) + "";
-    String exceptionType = req.getAttribute(RequestDispatcher.ERROR_EXCEPTION_TYPE) + "";
-    String errorMsg = req.getAttribute(RequestDispatcher.ERROR_MESSAGE) + "";
+    if (!req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE).toString().equals("404")) {
+      String errorCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) + "";
+      String exceptionType = req.getAttribute(RequestDispatcher.ERROR_EXCEPTION_TYPE) + "";
+      String errorMsg = req.getAttribute(RequestDispatcher.ERROR_MESSAGE) + "";
 
-    String result = "Error code: " + errorCode;
-    if(!exceptionType.equals("")) {
-      result += "\nException: " + exceptionType;
+      String result = "Error code: " + errorCode;
+      if (!exceptionType.equals("")) {
+        result += "\nException: " + exceptionType;
+      }
+      result += "\nMessage: " + errorMsg;
+      System.err.println(result);
+
+      EmailService.sendemail("JJBeck7@gmail.com", "Error!", result);
     }
-    result += "\nMessage: " + errorMsg;
-    System.err.println(result);
-
-    EmailService.sendemail("JJBeck7@gmail.com","Error!",result);
-
 
     req.setAttribute("pageTitle", "Error");
 
