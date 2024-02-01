@@ -31,10 +31,15 @@ public class email extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    req.setAttribute("Progress",0);
     String to=req.getParameter("email");
     String Subject=req.getParameter("subject");
     String message=req.getParameter("message");
     EmailService.sendemail(to,Subject,message);
+    req.setAttribute("Status","Sent");
+    req.setAttribute("Progress",1);
+
+    req.getRequestDispatcher("WEB-INF/demos/email.jsp").forward(req, resp);
 
   }
 
