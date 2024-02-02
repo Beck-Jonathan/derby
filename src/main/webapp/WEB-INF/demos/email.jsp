@@ -17,10 +17,16 @@
 
 </head>
 <body  onload="">>
+<h1> Send an email</h1>
+<c:choose>
+<c:when test="${not empty Status and Status eq true}"><p>Email sent</p></c:when>
+<c:when test="${not empty Status and Status eq false}"><p>Email not sent</p></c:when>
+<c:otherwise><p>Use this form to send an email</p></c:otherwise>
+</c:choose>
 <form action="email" method="post">
     <!-- Email Address -->
     <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
+    <input type="text" id="email" name="email" required>
     <br>
 
     <!-- Subject -->
@@ -36,11 +42,8 @@
     <!-- Submit Button -->
     <input type="submit" value="Submit" onclick="showBar2()">
 
-    <h5>${Status}</h5>
-    <h5>Progress is ${Progress}</h5>
-    <c:if test="($sessionScope.Progress==1)">
-        <a href="#" onload="finishBar2()">Email Sent!</a>
-    </c:if>
+
+
 </form>
 
 <%@include file="../Shared/bottom.jsp"%>
