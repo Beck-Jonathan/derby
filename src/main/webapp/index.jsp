@@ -18,7 +18,7 @@
             <h3>Personal Projects</h3>
             <div class="list-group">
                 <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
-                <a href="#" class="list-group-item list-group-item-action">Second link item</a>
+                <a href="apply" class="list-group-item list-group-item-action">Personal Project</a>
                 <a href="#" class="list-group-item list-group-item-action">Third link item</a>
                 <a href="#" class="list-group-item list-group-item-action">Fourth link item</a>
             </div>
@@ -27,8 +27,8 @@
             <h3>Class Demos</h3>
             <div class="list-group">
                 <a href="artist-json" class="list-group-item list-group-item-action">Artist Json</a>
-                <a href="#" class="list-group-item list-group-item-action">Second link item</a>
-                <a href="#" class="list-group-item list-group-item-action">Third link item</a>
+                <a href="all-users" class="list-group-item list-group-item-action">allUsers</a>
+                <a href="${appURL}/learnx" class="list-group-item list-group-item-action">LearnX CMS</a>
                 <a href="#" class="list-group-item list-group-item-action">Fourth link item</a>
             </div>
         </div>

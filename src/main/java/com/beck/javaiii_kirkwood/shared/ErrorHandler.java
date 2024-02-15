@@ -1,4 +1,6 @@
 package com.beck.javaiii_kirkwood.shared;
+import io.github.cdimascio.dotenv.Dotenv;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,18 +19,21 @@ public class ErrorHandler extends HttpServlet {
       String errorCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE) + "";
       String exceptionType = req.getAttribute(RequestDispatcher.ERROR_EXCEPTION_TYPE) + "";
       String errorMsg = req.getAttribute(RequestDispatcher.ERROR_MESSAGE) + "";
+      String servlet = req.getAttribute(RequestDispatcher.ERROR_SERVLET_NAME) + "";
 
       String result = "Error code: " + errorCode;
-      if (!exceptionType.equals("")) {
-        result += "\nException: " + exceptionType;
+      if (!exceptionType.isEmpty()) {
+        result += "\n<br>Exception: " + exceptionType;
       }
-      result += "\nMessage: " + errorMsg;
+      result += "\n<br>Message: " + errorMsg;
+      result += "\n<br>Servlet: " + servlet;
+
       System.err.println(result);
 
-      EmailService.sendemail("JJBeck7@gmail.com", "Error!", result);
+      EmailService.sendemail(Dotenv.load().get("ADMIN_EMAIL"), "Error!", result);
+
+      req.setAttribute("pageTitle", "Error");
+
     }
-
-    req.setAttribute("pageTitle", "Error");
-
   }
 }
