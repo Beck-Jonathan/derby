@@ -1,7 +1,10 @@
 package com.beck.javaiii_kirkwood.learnx.Models;
 
+import com.beck.javaiii_kirkwood.shared.MyValidators;
+
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.regex.Matcher;
 
 public class User {
   int ID;
@@ -9,7 +12,7 @@ public class User {
   String last_name;
   String email;
   String phone;
-  byte[] password;
+  char[] password;
   String status;
   String privileges;
   Instant created_at;
@@ -17,7 +20,7 @@ public class User {
   Instant updated_at;
   String language;
 
-  public User(int ID, String first_name, String last_name, String email, String phone, byte[] password, String status, String privileges, Instant created_at, Instant last_logged_in, Instant updated_at, String language) {
+  public User(int ID, String first_name, String last_name, String email, String phone, char[] password, String status, String privileges, Instant created_at, Instant last_logged_in, Instant updated_at, String language) {
     this.ID = ID;
     this.first_name = first_name;
     this.last_name = last_name;
@@ -30,6 +33,9 @@ public class User {
     this.last_logged_in = last_logged_in;
     this.updated_at = updated_at;
     this.language = language;
+  }
+
+  public User() {
   }
 
   public int getID() {
@@ -61,8 +67,15 @@ public class User {
   }
 
   public void setEmail(String email) {
-    this.email = email;
-  }
+
+      Matcher matcher = MyValidators.emailPattern.matcher(email);
+          if (!matcher.matches()){
+            throw new IllegalArgumentException("Invalid email");
+          }
+          this.email=email;
+
+    }
+
 
   public String getPhone() {
     return phone;
@@ -72,11 +85,17 @@ public class User {
     this.phone = phone;
   }
 
-  public byte[] getPassword() {
+  public char[] getPassword() {
     return password;
   }
 
-  public void setPassword(byte[] password) {
+  public void setPassword(char[] password) {
+
+    String passwordStr = String.valueOf(password);
+    Matcher matcher = MyValidators.passwordPattern.matcher(passwordStr);
+    if(!matcher.matches()) {
+      throw new IllegalArgumentException("Password must be 8 characters, with 3 of 4 (lowercase, uppercase, number, symbol)");
+    }
     this.password = password;
   }
 

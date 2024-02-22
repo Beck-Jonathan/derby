@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.learnx.data;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -35,18 +36,18 @@ public class UserDAO {
           if (resultSet.next()) {
 
             int ID = resultSet.getInt("id");
-            String first_name= resultSet.getString("first_name");
-            String last_name= resultSet.getString("last_name");
-            String email= resultSet.getString("email");
-            String phone= resultSet.getString("phone");
-            byte[] password= resultSet.getBytes("password");
-            String status= resultSet.getString("status");
-            String privileges= resultSet.getString("privileges");
-            Instant created_at= resultSet.getTimestamp("created_at").toInstant();
-            Instant last_logged_in= resultSet.getTimestamp("last_logged_in").toInstant();
-            Instant updated_at= resultSet.getTimestamp("updated_at").toInstant();
-            String language= resultSet.getString("language");
-            result = new User(ID,first_name,last_name,email,phone,password,status,privileges,created_at,last_logged_in,updated_at,language);
+            String first_name = resultSet.getString("first_name");
+            String last_name = resultSet.getString("last_name");
+            String email = resultSet.getString("email");
+            String phone = resultSet.getString("phone");
+            char[] password = resultSet.getString("password").toCharArray();
+            String status = resultSet.getString("status");
+            String privileges = resultSet.getString("privileges");
+            Instant created_at = resultSet.getTimestamp("created_at").toInstant();
+            Instant last_logged_in = resultSet.getTimestamp("last_logged_in").toInstant();
+            Instant updated_at = resultSet.getTimestamp("updated_at").toInstant();
+            String language = resultSet.getString("language");
+            result = new User(ID, first_name, last_name, email, phone, password, status, privileges, created_at, last_logged_in, updated_at, language);
           }
         }
       }
@@ -61,34 +62,55 @@ public class UserDAO {
     try (Connection connection = Database.getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_get_all_users()}")) {
 
-
         try (ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {
 
             int ID = resultSet.getInt("id");
-            String first_name= resultSet.getString("first_name");
-            if(resultSet.wasNull()){first_name="";}
-            String last_name= resultSet.getString("last_name");
-            if(resultSet.wasNull()){last_name="";}
-            String email= resultSet.getString("email");
-            if(resultSet.wasNull()){email="";}
-            String phone= resultSet.getString("phone");
-            if(resultSet.wasNull()){phone="";}
-            byte[] password= resultSet.getBytes("password");
+            String first_name = resultSet.getString("first_name");
+            if (resultSet.wasNull()) {
+              first_name = "";
+            }
+            String last_name = resultSet.getString("last_name");
+            if (resultSet.wasNull()) {
+              last_name = "";
+            }
+            String email = resultSet.getString("email");
+            if (resultSet.wasNull()) {
+              email = "";
+            }
+            String phone = resultSet.getString("phone");
+            if (resultSet.wasNull()) {
+              phone = "";
+            }
+            char[] password = resultSet.getString("password").toCharArray();
             //if(resultSet.wasNull()){password="";}
-            String status= resultSet.getString("status");
-            if(resultSet.wasNull()){status="";}
-            String privileges= resultSet.getString("privileges");
-            if(resultSet.wasNull()){privileges="";}
-            Instant created_at= resultSet.getTimestamp("created_at").toInstant();
-            if(resultSet.wasNull()){created_at=new Date().toInstant();}
-            Instant last_logged_in= resultSet.getTimestamp("last_logged_in").toInstant();
-            if(resultSet.wasNull()){last_logged_in=new Date().toInstant();;}
-            Instant updated_at= resultSet.getTimestamp("updated_at").toInstant();
-            if(resultSet.wasNull()){updated_at=new Date().toInstant();;}
-            String language= resultSet.getString("language");
-            if(resultSet.wasNull()){language="";}
-            User result = new User(ID,first_name,last_name,email,phone,password,status,privileges,created_at,last_logged_in,updated_at,language);
+            String status = resultSet.getString("status");
+            if (resultSet.wasNull()) {
+              status = "";
+            }
+            String privileges = resultSet.getString("privileges");
+            if (resultSet.wasNull()) {
+              privileges = "";
+            }
+            Instant created_at = resultSet.getTimestamp("created_at").toInstant();
+            if (resultSet.wasNull()) {
+              created_at = new Date().toInstant();
+            }
+            Instant last_logged_in = resultSet.getTimestamp("last_logged_in").toInstant();
+            if (resultSet.wasNull()) {
+              last_logged_in = new Date().toInstant();
+              ;
+            }
+            Instant updated_at = resultSet.getTimestamp("updated_at").toInstant();
+            if (resultSet.wasNull()) {
+              updated_at = new Date().toInstant();
+              ;
+            }
+            String language = resultSet.getString("language");
+            if (resultSet.wasNull()) {
+              language = "";
+            }
+            User result = new User(ID, first_name, last_name, email, phone, password, status, privileges, created_at, last_logged_in, updated_at, language);
             results.add(result);
           }
         }
@@ -98,4 +120,37 @@ public class UserDAO {
     }
     return results;
   }
+
+  public static List<String> addUSer(User user) {
+    List<String> results = new ArrayList<>();
+    try (Connection connection = Database.getConnection();
+         CallableStatement statement = connection.prepareCall("{CALL sp_add_user(?, ?)}")
+    ) {
+      statement.setString(1, user.getEmail());
+      String hashPassword = BCrypt.hashpw(String.valueOf(user.getPassword()), BCrypt.gensalt(12));
+      statement.setString(2, hashPassword);
+      int rowsAffected = statement.executeUpdate();
+      if (rowsAffected == 1) {
+        try (CallableStatement statement2 = connection.prepareCall("{CALL sp_get_2fa_code(?)}")
+        ) {
+          statement2.setString(1, user.getEmail());
+          try (ResultSet resultSet = statement2.executeQuery()) {
+            if (resultSet.next()) {
+              String code = resultSet.getString("code");
+              String created_at = resultSet.getTimestamp("created_at").toString();
+              results.add(code);
+              results.add(created_at);
+            }
+          }
+        }
+      }
+    } catch (SQLException e) {
+      System.out.println("Likely bad SQL query");
+      System.out.println(e.getMessage());
+    }
+    return results;
+  }
 }
+
+
+

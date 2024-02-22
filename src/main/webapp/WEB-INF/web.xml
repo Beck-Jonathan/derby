@@ -20,6 +20,11 @@
         <param-value>http://localhost:8080/JavaIII_Kirkwood_war_exploded</param-value>
     </context-param>
     <context-param>
+        <param-name>Foot</param-name>
+        <param-value>TwoFeet</param-value>
+    </context-param>
+
+    <context-param>
         <param-name>appURLCloud</param-name>
         <param-value>https://javaiii-kirkwood.azurewebsites.net</param-value>
     </context-param>

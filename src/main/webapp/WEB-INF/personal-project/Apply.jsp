@@ -2,8 +2,8 @@
 
 
 <div class ="row">
-    <div class = "col-sm-2" class="d-xxl-block"  id="blankleft" ></div>
-    <div class = "col-sm-2 pe-0"  class=".d-xxl-block"  id="left"><img src="images/left.png" /></div>
+    <div class = "col-sm-2 d-xxl-block"  id="blankleft" ></div>
+    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" /></div>
     <div class = "col-lg-4 pe-0 ps-0" id="mainForm">
         <div id="tabs">
             <!--  labels for tabs  -->
@@ -127,7 +127,7 @@
                                 <div class ="col-sm-8" id="p2r1c2"><input id="PreviousTeam1" input type="text" class="errorInput1" /> </div>
                             </div>
                             <div> <!-- end row 1-->
-                                <div class ="row" id ="p3r4">
+                                <div class ="row" id ="p3r3">
                                     <div class ="col-sm-2" id="p2r2c1">City </div>
                                     <div class ="col-sm-3" id="p2r2c2"><input id="city" input type="text" class="errorInput1" /> </div>
                                     <div class ="col-sm-2" id="p2r2c3">State </div>
@@ -138,27 +138,22 @@
 
 
 
-                                <div class ="row" id ="p3r3">
+                                <div class ="row" id ="p3r4">
                                     <div class ="col-sm-2" id="p2r3c1">Position </div>
                                     <div class ="col-sm-3" id="p2r3c2"><select id="Position" input type="text" class="errorInput1" ></select> </div>
                                     <div class ="col-sm-2" id="p2r3c3">Jersey Number </div>
                                     <div class ="col-sm-3" id="p2r3c4"><select id="JerseyNumber" input type="text"  class="errorInput1" ></select> </div>
                                 </div><!-- end row 3-->
-                                <div class ="row" id ="p3r4">
+                                <div class ="row" id ="p3r5">
                                     <div class ="col-sm-2" id="p2r4c1"> Start Date</div>
                                     <div class ="col-sm-3"  id="p2r4c2"> <input id="date0" input type="text" class="errorInput1 date" /></div>
                                     <div class ="col-sm-2" id="p2r4c3"> End Date</div>
                                     <div class ="col-sm-3"  id="p2r4c4"> <input id="date1" input type="text" class="errorInput1 date" /></div>
                                 </div> <!-- end row 4-->
-                                <div class ="row" id ="p3r4">
-                                    <div class ="col-sm-2" id="p2r5c1"> <p> </p> </div>
-                                    <div class ="col-sm-3" id="p2r5c2">  </div>
-                                    <div class ="col-sm-2" id="p2r5c3">  </div>
-                                    <div class ="col-sm-3" id="p2r5c4">  </div>
-
-                                </div> <!-- nd row 4-->
+                                <!-- nd row 4-->
 
                             </div> <!-- end first historical team-->
+                        </div>
                     </fieldset>
                     <button type="button" class="text-left" value="AddTeam" id="AddTeam" >	</button>
                     <button type="button" value="RemoveTeam" id="RemoveTeam" ></button>
@@ -172,7 +167,7 @@
                 <form id="testForm2">
                     <Div class="row">
                         <p>The Cedar Rapids Roller Girls have gear if you would like to borrow some.
-                            Please seelect any gear you would like to borrow, and the size you are requesting.
+                            Please select any gear you would like to borrow, and the size you are requesting.
                         </p>
                     </Div>
                     <div class="row" id="p2r1">
@@ -253,7 +248,7 @@
 
                 <form id="testForm3">
 
-                    <div class="row" id="p3r1">
+                    <div class="row" id="p4r1">
 
                         <div  id="p4r1c2"><p>The Cedar Rapids Roller Girls hold two practices per week. <br/>
                             On Sundays we practice at 7:00 PM at the Vinton Skate & Activity Center in Vinton, Iowa. <br/>
@@ -264,7 +259,7 @@
 
 
                     </div>
-                    <div class="row" id="p3r2">
+                    <div class="row" id="p4r2">
                         <div class="col-sm-3" id="p4r2c1"><p></p></div>
                         <div class="col-sm-6" id="p4r2c2"><input id="PracticeDate" input type="text" class="errorInput2" /></div>
 
@@ -272,7 +267,7 @@
 
                     </div>
 
-                    <div class="row" id="p3r3">
+                    <div class="row" id="p4r3">
                         <div class="col-sm-3" id="p4r3c1"></div>
                         <div class="col-sm-6" id="p4r3c2">Please pick a Sunday or Wednesday</div>
 
@@ -290,7 +285,7 @@
                             <a href="https://www.openstreetmap.org/?mlat=42.15506&amp;mlon=-92.02724#map=17/42.15506/-92.02724&amp;layers=H" target=”_blank” >View Larger Map</a></small></div>
                         <div class="col-sm-7">
                             <div class="row"><h2>Vinton Skate & Activity Center</h2></div>
-                            <div class="row" id="address" ><p><strong>1703 C Ave,<br/>
+                            <div class="row" id="Vaddress" ><p><strong>1703 C Ave,<br/>
                                 Vinton, IA 52349</strong></p></div>
                             <div class="row "><p>The Vinton Parks & Recreation Department offers a vast selection of recreational and enrichment activities for residents of
                                 all ages and abilities. The department also operates many facilities and amenities including the Recreation Center,
@@ -309,7 +304,7 @@
                             <small><a href="https://www.openstreetmap.org/#map=17/42.05730/-91.70596&amp;layers=H" target=”_blank” >View Larger Map</a></small></div>
                         <div class="col-sm-7">
                             <div class="row"><h2>GameOn Sports CR</h2></div>
-                            <div class="row" id="address" ><p><strong>4655 Tower Terrace Rd,<br/>
+                            <div class="row" id="Gaddress" ><p><strong>4655 Tower Terrace Rd,<br/>
                                 Cedar Rapids, IA, 52411</strong></p></div>
                             <div class="row "><p>The vision at GameOn Sports is to establish a
 
