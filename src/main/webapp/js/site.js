@@ -64,7 +64,7 @@ $(document).ready(function(){
 	//hide this unless they select yes
 	$(".derby_name").hide();
 	
-	$("input[type='text']").value="";
+	//$("input[type='text']").value="";
 	let submitbutton = document.getElementById("tab0submit");
 	
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 	//grab all text elements and clear them
 for (var i=0; i < elements.length; i++) {
   if (elements[i].type == "text") {
-    elements[i].value = "";
+   // elements[i].value = "";
   }
 }
 

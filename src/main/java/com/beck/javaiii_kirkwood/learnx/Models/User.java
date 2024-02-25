@@ -90,11 +90,13 @@ public class User {
   }
 
   public void setPassword(char[] password) {
+    if (password!=null) {
 
-    String passwordStr = String.valueOf(password);
-    Matcher matcher = MyValidators.passwordPattern.matcher(passwordStr);
-    if(!matcher.matches()) {
-      throw new IllegalArgumentException("Password must be 8 characters, with 3 of 4 (lowercase, uppercase, number, symbol)");
+      String passwordStr = String.valueOf(password);
+      Matcher matcher = MyValidators.passwordPattern.matcher(passwordStr);
+      if (!matcher.matches()) {
+        throw new IllegalArgumentException("Password must be 8 characters, with 3 of 4 (lowercase, uppercase, number, symbol)");
+      }
     }
     this.password = password;
   }

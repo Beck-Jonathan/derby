@@ -1,14 +1,15 @@
 package com.beck.javaiii_kirkwood.learnx.controllers;
 
-
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.UserDAO;
 import com.beck.javaiii_kirkwood.shared.EmailService;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,19 +34,22 @@ public class SignupServlet extends HttpServlet {
     if(terms == null) {
       terms = new String[]{"0"};
     }
+    if(password1 == null) {
+      password1 = "";
+    }
 
     Map<String, String> results = new HashMap<>();
     results.put("email", email);
     results.put("password1", password1);
     results.put("password2", password2);
     results.put("terms", terms[0]);
+
     User user = new User();
     try {
       user.setEmail(email);
     } catch(IllegalArgumentException e) {
       results.put("emailError", e.getMessage());
     }
-
     User userFromDatabase = null;
     try {
       userFromDatabase = UserDAO.getUserByPrimaryKey(email);
@@ -74,22 +78,25 @@ public class SignupServlet extends HttpServlet {
         && !results.containsKey("password2Error") && !results.containsKey("termsOfServiceError")
     ) {
       List<String> twoFactorInfo = UserDAO.addUSer(user);
-      if (!twoFactorInfo.isEmpty()) {
+      if(!twoFactorInfo.isEmpty()) {
         // Send user an email
-        String subject = "LearnX auth code";
-        String twoFactorCode = twoFactorInfo.get(0);
-        String message = "<h2> Welcome to LearnX </h2>";
-        message = message + "Your code is" + twoFactorCode;
+        String subject = "LearnX New User Confirmation";
+        String code = twoFactorInfo.get(0);
+        String message = "<h2>Welcome to LearnX</h2>";
+        message += "<p>Please enter code <b>" + code + "</b> to activate your account.</p>";
         EmailService.sendemail(email, subject, message);
-
+        // To do: Display error if the email could not be sent
+        HttpSession session = req.getSession();
+        session.invalidate();
+        session = req.getSession();
+        session.setAttribute("code", twoFactorInfo.get(0));
+        session.setAttribute("email",email);
+        resp.sendRedirect("confirm");
+        return;
       }
       // To do: Display error saying "Could not add user" if twoFactorInfo is empty
 
-
-      //todo, display error saying unable to add user
     }
-
-
 
     req.setAttribute("results", results);
     req.setAttribute("pageTitle", "Sign up for an account");

@@ -8,6 +8,17 @@
             <button class="btn btn-primary btn-lg" type="button">Example button</button>
         </div>
     </div>
+    <div>
+<c:choose>
+    <c:when test="${not empty flashMessageSuccess}">
+        <div class="alert alert-success mb-2" role="alert">
+        ${flashMessageSuccess}
+        </div>
+        <c:remove var="flashMessageSuccess" scope="session" />
+    </c:when>
+</c:choose>
+
+    </div>
 
     <div id="carouselExampleCaptions" class="carousel slide mb-4">
         <div class="carousel-indicators">

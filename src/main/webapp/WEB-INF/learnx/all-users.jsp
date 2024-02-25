@@ -38,6 +38,7 @@
                                     <td>${user.created_at}</td>
                                     <td>${user.last_logged_in}</td>
                                     <td>${user.updated_at}</td>
+
                                     <td>${user.language}</td>
                                     <td>${user.language}</td>
 

@@ -15,12 +15,12 @@
     <h5>${appURL}</h5>
     <div class="row justify-content-center" style="text-align: center;">
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
-            <h3>Personal Projects</h3>
+            <h3>Java III Personal Projects</h3>
             <div class="list-group">
                 <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
                 <a href="apply" class="list-group-item list-group-item-action">Personal Project</a>
-                <a href="#" class="list-group-item list-group-item-action">Third link item</a>
-                <a href="#" class="list-group-item list-group-item-action">Fourth link item</a>
+                <a href="addFacility" class="list-group-item list-group-item-action">Add Facilty Test Code</a>
+                <a href="all-Facilitys" class="list-group-item list-group-item-action">View All facilities Test Code</a>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-5">
@@ -30,6 +30,16 @@
                 <a href="all-users" class="list-group-item list-group-item-action">allUsers</a>
                 <a href="${appURL}/learnx" class="list-group-item list-group-item-action">LearnX CMS</a>
                 <a href="#" class="list-group-item list-group-item-action">Fourth link item</a>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-lg-5">
+            <h3>Personal Projects</h3>
+            <div class="list-group">
+                <a href="apply" class="list-group-item list-group-item-action">Client Side Scripting Final Project (JavaScript, html, css)</a>
+                <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="list-group-item list-group-item-action">.Net II Final Project (.Net, C#)</a>
+                <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables" class="list-group-item list-group-item-action">Honors Project (C#)</a>
+
+                <a href="https://play.unity.com/mg/other/build1-sg" class="list-group-item list-group-item-action">2d Game Dev Final Project (unity, c#)</a>
             </div>
         </div>
     </div>

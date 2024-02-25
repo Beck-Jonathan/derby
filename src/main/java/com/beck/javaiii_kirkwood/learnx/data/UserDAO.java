@@ -3,10 +3,7 @@ package com.beck.javaiii_kirkwood.learnx.data;
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -119,6 +116,26 @@ public class UserDAO {
       System.out.println(e.getSQLState());
     }
     return results;
+  }
+  public static void update(User user) {
+    try(Connection connection = Database.getConnection();
+        CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
+    ) {
+      statement.setInt(1, user.getID());
+      statement.setString(2, user.getFirst_name());
+      statement.setString(3, user.getLast_name());
+      statement.setString(4, user.getEmail());
+      statement.setString(5, user.getPhone());
+      statement.setString(6, user.getLanguage());
+      statement.setString(7, user.getStatus());
+      statement.setString(8, user.getPrivileges());
+      statement.setTimestamp(9, Timestamp.from(user.getLast_logged_in()));
+      statement.executeUpdate();
+      // To do: Return the rows affected and display an error if the user not updated.
+    } catch (SQLException e) {
+      System.out.println("Likely bad SQL query");
+      System.out.println(e.getMessage());
+    }
   }
 
   public static List<String> addUSer(User user) {

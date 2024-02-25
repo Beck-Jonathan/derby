@@ -46,3 +46,7 @@
 
 
 </header>
+<div class ="row">
+    <div class = "col-sm-2 d-xxl-block"  id="blankleft" ></div>
+    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" /></div>
+    <div class = "col-lg-4 pe-0 ps-0" id="mainForm">

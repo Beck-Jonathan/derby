@@ -1,10 +1,7 @@
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 
 
-<div class ="row">
-    <div class = "col-sm-2 d-xxl-block"  id="blankleft" ></div>
-    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" /></div>
-    <div class = "col-lg-4 pe-0 ps-0" id="mainForm">
+
         <div id="tabs">
             <!--  labels for tabs  -->
             <ul>
@@ -349,17 +346,7 @@
             <p>By submitting this form, you are stating you are ready for fast paced action and skates thundering on the track </p>
         </div>
     </div> <!-- end form-->
+</div>
 
-    <div class = "col-sm-2 ps-0" class=".d-none .d-xxl-block" id="right">><img src="images/right.png" /></div>
-    <div class = "col-sm-2" class=".d-none .d-xxl-block" id="blankright"></div>
-</div> <!-- end row-->
-
-
-
-
-
-
-
-</body>
 
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
