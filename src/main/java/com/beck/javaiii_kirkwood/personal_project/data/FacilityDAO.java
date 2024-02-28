@@ -36,7 +36,6 @@ public class FacilityDAO {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
         try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Facility( ?, ?, ?, ?, ?)}")){
-
           statement.setString(1,_facility.getName());
           statement.setString(2,_facility.getAddresss());
           statement.setString(3,_facility.getCity());
@@ -53,7 +52,6 @@ public class FacilityDAO {
     }
     return numRowsAffected;
   }
-
   public static Facility getFacilityByPrimaryKey(Facility _facility) throws SQLException{
     Facility result = null;
     try(Connection connection = getConnection()) {
@@ -75,14 +73,12 @@ public class FacilityDAO {
     }
     return result;
   }
-
   public static List<Facility> getAllFacility() {
     List<Facility> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Facility()}")) {try(ResultSet resultSet = statement.executeQuery()) {
-          while (resultSet.next()) {
-            Integer Facility_ID = resultSet.getInt("Facility_ID");
+          while (resultSet.next()) {Integer Facility_ID = resultSet.getInt("Facility_ID");
             String Name = resultSet.getString("Name");
             String Addresss = resultSet.getString("Addresss");
             String City = resultSet.getString("City");
@@ -98,6 +94,5 @@ public class FacilityDAO {
       throw new RuntimeException("Could not retrieve Facilitys. Try again later");
     }
     return result;}
-
 
 }

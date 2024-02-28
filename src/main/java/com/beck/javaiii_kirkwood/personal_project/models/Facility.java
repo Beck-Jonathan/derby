@@ -36,13 +36,15 @@ public class Facility {
     this.State = State;
     this.Zip = Zip;
   }
-
   public Integer getFacility_ID() {
-    return Facility_ID;}
+    return Facility_ID;
+  }
   public void setFacility_ID(Integer Facility_ID) {
-    this.Facility_ID = Facility_ID;}
+    this.Facility_ID = Facility_ID;
+  }
   public String getName() {
-    return Name;}
+    return Name;
+  }
   public void setName(String Name) {
     if(Name.length()<4){
       throw new IllegalArgumentException("Name is too short.");
@@ -50,9 +52,11 @@ public class Facility {
     if(Name.length()>100){
       throw new IllegalArgumentException("Name is too long.");
     }
-    this.Name = Name;}
+    this.Name = Name;
+  }
   public String getAddresss() {
-    return Addresss;}
+    return Addresss;
+  }
   public void setAddresss(String Addresss) {
     if(Addresss.length()<4){
       throw new IllegalArgumentException("Addresss is too short.");
@@ -60,9 +64,11 @@ public class Facility {
     if(Addresss.length()>100){
       throw new IllegalArgumentException("Addresss is too long.");
     }
-    this.Addresss = Addresss;}
+    this.Addresss = Addresss;
+  }
   public String getCity() {
-    return City;}
+    return City;
+  }
   public void setCity(String City) {
     if(City.length()<4){
       throw new IllegalArgumentException("City is too short.");
@@ -70,9 +76,11 @@ public class Facility {
     if(City.length()>100){
       throw new IllegalArgumentException("City is too long.");
     }
-    this.City = City;}
+    this.City = City;
+  }
   public String getState() {
-    return State;}
+    return State;
+  }
   public void setState(String State) {
     if(State.length()<4){
       throw new IllegalArgumentException("State is too short.");
@@ -80,9 +88,11 @@ public class Facility {
     if(State.length()>100){
       throw new IllegalArgumentException("State is too long.");
     }
-    this.State = State;}
+    this.State = State;
+  }
   public String getZip() {
-    return Zip;}
+    return Zip;
+  }
   public void setZip(String Zip) {
     if(Zip.length()<4){
       throw new IllegalArgumentException("Zip is too short.");
@@ -90,6 +100,7 @@ public class Facility {
     if(Zip.length()>5){
       throw new IllegalArgumentException("Zip is too long.");
     }
-    this.Zip = Zip;}
+    this.Zip = Zip;
+  }
 
 }

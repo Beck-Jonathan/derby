@@ -35,6 +35,7 @@
         <div class="col-xs-12 col-sm-6 col-lg-5">
             <h3>Personal Projects</h3>
             <div class="list-group">
+                <a href="./Resume/resume_beck.pdf" class="list-group-item list-group-item-action">Resume</a>
                 <a href="apply" class="list-group-item list-group-item-action">Client Side Scripting Final Project (JavaScript, html, css)</a>
                 <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="list-group-item list-group-item-action">.Net II Final Project (.Net, C#)</a>
                 <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables" class="list-group-item list-group-item-action">Honors Project (C#)</a>

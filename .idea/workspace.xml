@@ -12,31 +12,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Terms and Conditions">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/ConfirmServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/dummyservlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddFacilityServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AllFacilitysServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/dummyservlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/FacilityDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Facility.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/2fa-confirm.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddFacility.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/all-Facilitys.jsp" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="sTarted Work on Final. Created servlet, controller and DAO method for add facility. Crated servlet, controller and DAO for view all facility.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddEventServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/EventDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/LeagueDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/TeamDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/TwoFADAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/TypeDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/UserDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/User_Event_LineDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/User_Team_LineDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/League.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Team.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/TwoFA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Type.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/User_Event_Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/User_Team_Line.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/Resume/resume_beck.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddEvent.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/SignupServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/SignupServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/UserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-users.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Apply.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Apply.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/FacilityDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/FacilityDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Facility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/models/Facility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/site.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,49 +89,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.EmailService.executor": "Run",
-    "Application.UserDAO.executor": "Run",
-    "JavaIII_Kirkwood.wasFacetEverAdded": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/jjbec/IdeaProjects/JavaIII_Kirkwood/src/main/webapp/js",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.EmailService.executor&quot;: &quot;Run&quot;,
+    &quot;Application.UserDAO.executor&quot;: &quot;Run&quot;,
+    &quot;JavaIII_Kirkwood.wasFacetEverAdded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jjbec/IdeaProjects/JavaIII_Kirkwood/src/main/webapp/Resume&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "azure",
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;azure&quot;,
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\Resume" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\js" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\personal-project\js\images" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\personal-project\css" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\images\learnx" />
-      <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\personal-project\js" />
@@ -334,7 +335,10 @@
       <workItem from="1708644319431" duration="1522000" />
       <workItem from="1708651516732" duration="7515000" />
       <workItem from="1708714977256" duration="15680000" />
-      <workItem from="1708824222154" duration="7410000" />
+      <workItem from="1708824222154" duration="12405000" />
+      <workItem from="1708906605265" duration="7641000" />
+      <workItem from="1709072926752" duration="598000" />
+      <workItem from="1709147804687" duration="5450000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -392,7 +396,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708632218265</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="sTarted Work on Final. Created servlet, controller and DAO method for add facility. Crated servlet, controller and DAO for view all facility.">
+      <option name="closed" value="true" />
+      <created>1708886429519</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708886429519</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +419,8 @@
     <MESSAGE value="Starting work on webpage project" />
     <MESSAGE value="updates to header" />
     <MESSAGE value="Terms and Conditions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Terms and Conditions" />
+    <MESSAGE value="sTarted Work on Final. Created servlet, controller and DAO method for add facility. Crated servlet, controller and DAO for view all facility." />
+    <option name="LAST_COMMIT_MESSAGE" value="sTarted Work on Final. Created servlet, controller and DAO method for add facility. Crated servlet, controller and DAO for view all facility." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
