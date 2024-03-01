@@ -15,8 +15,17 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            <a href="${appURL}/login" class="btn btn-outline-orange me-2">Login</a>
-            <a href="${appURL}/signup" class="btn btn-orange">Sign-up</a>
+            <c:choose>
+                <c:when test="${empty activeUser}">
+                    <a href="${appURL}/login" class="btn btn-outline-orange me-2">Login</a>
+                    <a href="${appURL}/signup" class="btn btn-orange">Sign-up</a>
+                </c:when>
+                <c:otherwise>
+                    <a href="${appURL}/logout" class="btn btn-outline-dark me-2">Logout</a>
+                    <a href="${appURL}/EditProfile" class="btn btn-dark">Edit Profile</a>
+                </c:otherwise>
+            </c:choose>
+
         </div>
     </header>
 </div>

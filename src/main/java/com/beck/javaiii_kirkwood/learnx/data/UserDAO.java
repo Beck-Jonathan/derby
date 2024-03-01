@@ -1,6 +1,8 @@
 package com.beck.javaiii_kirkwood.learnx.data;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
+import com.beck.javaiii_kirkwood.shared.EmailService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.*;
@@ -8,12 +10,14 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
+import static com.beck.javaiii_kirkwood.learnx.data.Database.getConnection;
 import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 public class UserDAO {
   public static void main(String[] args) throws SQLException {
-    Database.getConnection();
+    getConnection();
     try {
       System.out.println(getUserByPrimaryKey("fizzle@aol.com"));
     } catch (SQLException e) {
@@ -25,7 +29,7 @@ public class UserDAO {
 
   public static User getUserByPrimaryKey(String __email) throws SQLException {
     User result = null;
-    try (Connection connection = Database.getConnection()) {
+    try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_get_user(?)}")) {
         statement.setString(1, __email);
 
@@ -56,7 +60,7 @@ public class UserDAO {
 
   public static List<User> getAllUsers() throws SQLException {
     List<User> results = new ArrayList<>();
-    try (Connection connection = Database.getConnection()) {
+    try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_get_all_users()}")) {
 
         try (ResultSet resultSet = statement.executeQuery()) {
@@ -118,7 +122,7 @@ public class UserDAO {
     return results;
   }
   public static void update(User user) {
-    try(Connection connection = Database.getConnection();
+    try(Connection connection = getConnection();
         CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
     ) {
       statement.setInt(1, user.getID());
@@ -140,7 +144,7 @@ public class UserDAO {
 
   public static List<String> addUSer(User user) {
     List<String> results = new ArrayList<>();
-    try (Connection connection = Database.getConnection();
+    try (Connection connection = getConnection();
          CallableStatement statement = connection.prepareCall("{CALL sp_add_user(?, ?)}")
     ) {
       statement.setString(1, user.getEmail());
@@ -166,6 +170,25 @@ public class UserDAO {
       System.out.println(e.getMessage());
     }
     return results;
+  }
+  public static boolean passwordReset(String email, HttpServletRequest req) throws SQLException {
+    User userFromDatabase = getUserByPrimaryKey(email);
+    if(userFromDatabase != null) {
+      try(Connection connection = getConnection()) {
+        String uuid = String.valueOf(UUID.randomUUID());
+        // To do: check database if uuid already exists
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_add_password_reset(?, ?)}")) {
+          statement.setString(1, email);
+          statement.setString(2, uuid);
+          statement.executeUpdate();
+        }
+        return EmailService.sendPasswordResetEmail(email, uuid, req);
+      } catch (SQLException e) {
+        System.out.println("Likely bad SQL query");
+        System.out.println(e.getMessage());
+      }
+    }
+    return false;
   }
 }
 

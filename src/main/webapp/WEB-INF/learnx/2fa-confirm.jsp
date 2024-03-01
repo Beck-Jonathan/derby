@@ -17,6 +17,9 @@
                     <c:if test="${not empty results.codeError}">
                         <p class="alert alert-danger my-2">${results.codeError}</p>
                     </c:if>
+                    <c:if test="${not empty codeResent}">
+                        <p class="alert alert-success my-2">${codeResent}</p>
+                    </c:if>
                     <div class="align-items-center mt-0">
                         <div class="d-grid">
                             <button class="btn btn-orange mb-0" type="submit">Confirm</button>

@@ -15,4 +15,9 @@ public class dummyservlet extends HttpServlet {
     req.setAttribute("pageTitle", "Privacy Policy");
     req.getRequestDispatcher("WEB-INF/learnx/privacy-policy.jsp").forward(req, resp);
   }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    super.doPost(req, resp);
+  }
 }

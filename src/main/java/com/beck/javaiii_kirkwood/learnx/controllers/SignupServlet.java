@@ -80,11 +80,10 @@ public class SignupServlet extends HttpServlet {
       List<String> twoFactorInfo = UserDAO.addUSer(user);
       if(!twoFactorInfo.isEmpty()) {
         // Send user an email
-        String subject = "LearnX New User Confirmation";
+
         String code = twoFactorInfo.get(0);
-        String message = "<h2>Welcome to LearnX</h2>";
-        message += "<p>Please enter code <b>" + code + "</b> to activate your account.</p>";
-        EmailService.sendemail(email, subject, message);
+
+        boolean sent = EmailService.send2faCode(code,email);
         // To do: Display error if the email could not be sent
         HttpSession session = req.getSession();
         session.invalidate();
