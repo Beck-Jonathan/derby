@@ -1,6 +1,6 @@
 <%@include file="WEB-INF/Shared/top.jsp"%>
 
-    <title>Java 3 Web Applications</title>
+    <title>Java 3 Web Applications - Beck</title>
     <link href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" rel="stylesheet"/>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
@@ -11,14 +11,14 @@
 </head>
 <body>
 <div class="container py-4 text-center">
-    <h1 class="my-4">Java 3 Web Applications</h1>
-    <h5>${appURL}</h5>
+    <h1 class="my-4">Java 3 Web Applications - Beck</h1>
+
     <div class="row justify-content-center" style="text-align: center;">
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
             <h3>Java III Personal Projects</h3>
             <div class="list-group">
                 <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
-                <a href="apply" class="list-group-item list-group-item-action">Personal Project</a>
+                <a href="home" class="list-group-item list-group-item-action">Java Personal Project</a>
                 <a href="addFacility" class="list-group-item list-group-item-action">Add Facilty Test Code</a>
                 <a href="all-Facilitys" class="list-group-item list-group-item-action">View All facilities Test Code</a>
             </div>
@@ -41,6 +41,7 @@
                 <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables" class="list-group-item list-group-item-action">Honors Project (C#)</a>
 
                 <a href="https://play.unity.com/mg/other/build1-sg" class="list-group-item list-group-item-action">2d Game Dev Final Project (unity, c#)</a>
+                <a href="./Resume/May_Smartutor_Econ.pdf" class="list-group-item list-group-item-action">Smartutor Example (Pearson)</a>
             </div>
         </div>
     </div>

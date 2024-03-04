@@ -1,23 +1,42 @@
-package com.beck.javaiii_kirkwood.personal_project.models;
+package com.beck.javaiii_kirkwood.personal_project.models;/// <summary>
+///AUTHOR: Jonathan Beck
+///<br />
+///CREATED: 3/3/2024
+///< br />
+///An example class to show how code is expected to be written and documented.
+///This is where a description of what your file is supposed to contain goes.
+///e.g., "Class with helper methods for input validation.",
+///Class that defines User Objects.
+///</summary>
+///< remarks>
+///UPDATER: updater_name
+///< br />
+/// UPDATED: yyyy-MM-dd
+/// < br />
+/// Update comments go here, include method or methods were changed or added
+/// A new remark should be added for each update.
+///</remarks>
 
 public class User {
   private Integer User_ID;
   private String User_Name;
   private String User_PW;
-  private String Status;
+  private Integer Status_ID;
   private String Email;
-  private String privileges;
+  private Integer Language_ID;
+  private Integer Privilege_ID;
 
   public User(){}
 
-  public User(Integer User_ID, String User_Name, String User_PW, String Status, String Email, String privileges) {
+  public User(Integer User_ID, String User_Name, String User_PW, Integer Status_ID, String Email, Integer Language_ID, Integer Privilege_ID) {
 
     this.User_ID = User_ID;
     this.User_Name = User_Name;
     this.User_PW = User_PW;
-    this.Status = Status;
+    this.Status_ID = Status_ID;
     this.Email = Email;
-    this.privileges = privileges;
+    this.Language_ID = Language_ID;
+    this.Privilege_ID = Privilege_ID;
   }
   public Integer getUser_ID() {
     return User_ID;
@@ -49,17 +68,11 @@ public class User {
     }
     this.User_PW = User_PW;
   }
-  public String getStatus() {
-    return Status;
+  public Integer getStatus_ID() {
+    return Status_ID;
   }
-  public void setStatus(String Status) {
-    if(Status.length()<4){
-      throw new IllegalArgumentException("Status is too short.");
-    }
-    if(Status.length()>100){
-      throw new IllegalArgumentException("Status is too long.");
-    }
-    this.Status = Status;
+  public void setStatus_ID(Integer Status_ID) {
+    this.Status_ID = Status_ID;
   }
   public String getEmail() {
     return Email;
@@ -73,17 +86,18 @@ public class User {
     }
     this.Email = Email;
   }
-  public String getprivileges() {
-    return privileges;
+  public Integer getLanguage_ID() {
+    return Language_ID;
   }
-  public void setprivileges(String privileges) {
-    if(privileges.length()<4){
-      throw new IllegalArgumentException("privileges is too short.");
-    }
-    if(privileges.length()>100){
-      throw new IllegalArgumentException("privileges is too long.");
-    }
-    this.privileges = privileges;
+  public void setLanguage_ID(Integer Language_ID) {
+    this.Language_ID = Language_ID;
+  }
+  public Integer getPrivilege_ID() {
+    return Privilege_ID;
+  }
+  public void setPrivilege_ID(Integer Privilege_ID) {
+    this.Privilege_ID = Privilege_ID;
   }
 
 }
+

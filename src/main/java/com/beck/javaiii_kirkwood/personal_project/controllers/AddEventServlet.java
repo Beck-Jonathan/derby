@@ -2,8 +2,10 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.EventDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.FacilityDAO;
+import com.beck.javaiii_kirkwood.personal_project.data.TypeDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
 import com.beck.javaiii_kirkwood.personal_project.models.Facility;
+import com.beck.javaiii_kirkwood.personal_project.models.Type;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -23,16 +25,21 @@ import java.util.Map;
 @WebServlet("/addEvent")
 public class AddEventServlet extends HttpServlet{
 static List<Facility> allfacilitys = FacilityDAO.getAllFacility();
+static List<Type> alltypes = TypeDAO.getAllType();
 
 @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
   req.setAttribute("pageTitle", "Add Event");
   allfacilitys = FacilityDAO.getAllFacility();
+  alltypes = TypeDAO.getAllType();
   req.setAttribute("facilitys", allfacilitys);
+  req.setAttribute("types", alltypes);
   req.getRequestDispatcher("WEB-INF/personal-project/AddEvent.jsp").forward(req, resp);
 }
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    req.setAttribute("facilitys", allfacilitys);
+    req.setAttribute("types", alltypes);
     String _Facility_ID = req.getParameter("inputeventFacility_ID");
     String _Date = req.getParameter("inputeventDate");
     String _Type = req.getParameter("inputeventType");

@@ -1,5 +1,5 @@
 <div class = "col-sm-2 ps-0" class=".d-none .d-xxl-block" id="right">><img src="images/right.png" /></div>
-<div class = "col-sm-2" class=".d-none .d-xxl-block" id="blankright"></div>
+<div class = "col-sm-1" class=".d-none .d-xxl-block" id="blankright"></div>
 </div> <!-- end row-->
 
 
