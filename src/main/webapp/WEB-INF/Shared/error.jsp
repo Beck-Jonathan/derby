@@ -10,7 +10,7 @@
             <p class="mb-4">Either something went wrong or this page doesn't exist anymore.</p>
 
             <a href="index.jsp" class="btn btn-outline-primary">Home page</a>
-            <a href="#" class="btn btn-outline-primary">xyze</a>
+
         </div>
     </div>
 </div>

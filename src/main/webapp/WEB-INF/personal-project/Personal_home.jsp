@@ -18,7 +18,7 @@
     <tr><td>  Add User  </td><td>  <a href="addUser">View</a>  </td></tr>
     <tr><td>  View all User  </td><td>  <a href="all-skaters">View</a>  </td></tr>
     <tr><td>  Add League  </td><td>  <a href="addLeague">View</a>   </td></tr>
-    <tr><td>  View All League  </td><td>   <a href="all-League">View</a>  </td></tr>
+    <tr><td>  View All League  </td><td>   <a href="all-Leagues">View</a>  </td></tr>
     <tr><td>  Add Team  </td><td>  <a href="addTeam">View</a>   </td></tr>
     <tr><td>  View All Teams  </td><td>   <a href="all-Teams">View</a>  </td></tr>
     <tr><td>  Add Priv  </td><td>  <a href="addPrivilege">View</a> </td></tr>
