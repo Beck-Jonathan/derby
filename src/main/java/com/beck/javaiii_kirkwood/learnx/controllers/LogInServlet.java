@@ -67,7 +67,7 @@ public class LogInServlet extends HttpServlet {
 
           }
           session.setAttribute("activeUser",userFromDatabase);
-          session.setAttribute("flashMessageSuccess","OH shit, hide the drugs!");
+          session.setAttribute("flashMessageSuccess","Logged in!");
           resp.sendRedirect("learnx");
 
           return;
