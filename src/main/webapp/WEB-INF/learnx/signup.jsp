@@ -54,6 +54,18 @@
                                         </c:if>
                                     </div>
                                 </div>
+
+                                <!-- DOB -->
+                                <div class="mb-4">
+                                    <label for="inputDOB" class="form-label">Email address *</label>
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-light rounded-start border-0 text-secondary px-3"><i class="fa fa-calendar"></i></span>
+                                        <input type="text" class="<c:if test="${not empty results.DOBError}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="MM-DD-YYYY" id="inputDOB" name="inputDOB" value="${results.DOB}">
+                                        <c:if test="${not empty results.DOBError}">
+                                            <div class="invalid-feedback">${results.DOBError}</div>
+                                        </c:if>
+                                    </div>
+                                </div>
                                 <!-- Button -->
                                 <div class="align-items-center mt-0">
                                     <div class="d-grid">

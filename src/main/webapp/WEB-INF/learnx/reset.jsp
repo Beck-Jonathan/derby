@@ -7,7 +7,7 @@
           <div class="row my-5">
             <div class="col-sm-10 col-xl-8 m-auto">
               <h2>Nice to see you!</h2>
-              <p class="lead mb-4">Please log in to your account.</p>
+              <p class="lead mb-4">Please share your email so we can reset your password.</p>
               <c:if test="${not empty results.loginFail}">
                 <p class="alert alert-danger my-2">${results.loginFail}</p>
               </c:if>

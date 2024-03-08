@@ -11,8 +11,8 @@ Created By Jonathan Beck3/3/2024
             <label for="inputeventFacility_ID" class="form-label">Facility_ID</label>
             <div class="input-group input-group-lg">
                 <select  class="<c:if test="${not empty results.eventFacility_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Facility_ID" id="inputeventFacility_ID" name="inputeventFacility_ID" value="${results.Facility_ID}">
-                    <c:forEach items="${Facilitys}" var="Facility">
-                    <option value="${Facility.facility_ID}">${Facility.name}   </option>
+                    <c:forEach items="${facilitys}" var="facility">
+                    <option value="${facility.facility_ID}">${facility.name}   </option>
                     </c:forEach>
                 </select>
                     <c:if test="${not empty results.eventFacility_IDerror}">

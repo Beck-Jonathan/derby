@@ -4,6 +4,8 @@ import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.UserDAO;
 import com.beck.javaiii_kirkwood.shared.EmailService;
 
+import com.beck.javaiii_kirkwood.shared.Helpers;
+import com.beck.javaiii_kirkwood.shared.MyValidators;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +18,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 @WebServlet("/signup")
 public class SignupServlet extends HttpServlet {
@@ -31,6 +34,9 @@ public class SignupServlet extends HttpServlet {
     String password1 = req.getParameter("inputPassword1");
     String password2 = req.getParameter("inputPassword2");
     String[] terms = req.getParameterValues("checkbox-1");
+    String dob = req.getParameter("inputDOB");
+
+
     if(terms == null) {
       terms = new String[]{"0"};
     }
@@ -43,8 +49,17 @@ public class SignupServlet extends HttpServlet {
     results.put("password1", password1);
     results.put("password2", password2);
     results.put("terms", terms[0]);
+    results.put("DOB",dob);
+    Matcher matcher = MyValidators.DOBPattern.matcher(dob);
+    if (!matcher.matches()) {
+      results.put("DOBError","Invalid date of birth, please use MM-DD-YYYY");
+    }
+    if (matcher.matches()&&Helpers.ageInYears(dob)<13){
+      results.put("DOBError","You nust be over 13");
+    }
 
     User user = new User();
+
     try {
       user.setEmail(email);
     } catch(IllegalArgumentException e) {
@@ -76,7 +91,8 @@ public class SignupServlet extends HttpServlet {
 
     if (!results.containsKey("emailError") && !results.containsKey("password1Error")
         && !results.containsKey("password2Error") && !results.containsKey("termsOfServiceError")
-    ) {
+    &&!results.containsKey("DOBError"))
+     {
       List<String> twoFactorInfo = UserDAO.addUSer(user);
       if(!twoFactorInfo.isEmpty()) {
         // Send user an email

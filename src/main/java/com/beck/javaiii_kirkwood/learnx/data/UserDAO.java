@@ -121,9 +121,10 @@ public class UserDAO {
     }
     return results;
   }
+
   public static void update(User user) {
-    try(Connection connection = getConnection();
-        CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
+    try (Connection connection = getConnection();
+         CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
     ) {
       statement.setInt(1, user.getID());
       statement.setString(2, user.getFirst_name());
@@ -171,13 +172,14 @@ public class UserDAO {
     }
     return results;
   }
+
   public static boolean passwordReset(String email, HttpServletRequest req) throws SQLException {
     User userFromDatabase = getUserByPrimaryKey(email);
-    if(userFromDatabase != null) {
-      try(Connection connection = getConnection()) {
+    if (userFromDatabase != null) {
+      try (Connection connection = getConnection()) {
         String uuid = String.valueOf(UUID.randomUUID());
         // To do: check database if uuid already exists
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_add_password_reset(?, ?)}")) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_add_password_reset(?, ?)}")) {
           statement.setString(1, email);
           statement.setString(2, uuid);
           statement.executeUpdate();
@@ -190,7 +192,94 @@ public class UserDAO {
     }
     return false;
   }
+
+  public static String validToken(String Token) throws SQLException {
+    String result = "";
+    if (true) {
+      try (Connection connection = getConnection()) {
+        String token = Token;
+        // To do: check database if uuid already exists
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_get_password_reset( ?)}")) {
+          statement.setString(1, token);
+
+          try (ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+
+              int ID = resultSet.getInt("id");
+              result = resultSet.getString("email");
+              if (resultSet.wasNull()) {
+                result = "";
+              }
+              Instant created_at = resultSet.getTimestamp("created_at").toInstant();
+              if (resultSet.wasNull()) {
+
+              }
+            }
+
+          } catch (SQLException e) {
+            System.out.println("Likely bad SQL query");
+            System.out.println(e.getMessage());
+          }
+        }
+      }
+
+    }
+    return result;
+
+  }
+
+  public static boolean resetPassword(String email, String password) {
+    boolean result = false;
+    int updates = 0;
+    try (Connection connection = getConnection()) {
+
+      // To do: check database if uuid already exists
+      try (CallableStatement statement = connection.prepareCall("{CALL sp_update_user_password(?, ?)}")) {
+        statement.setString(1, email);
+        String hashPassword = BCrypt.hashpw(String.valueOf(password), BCrypt.gensalt(12));
+        statement.setString(2, hashPassword);
+
+        updates = statement.executeUpdate();
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Likely bad SQL query");
+      System.out.println(e.getMessage());
+    }
+    if (updates == 1) {
+      result = true;
+      UserDAO.DeletePasswordReset(email);
+
+    }
+    return result;
+
+  }
+
+  public static boolean DeletePasswordReset(String email) {
+    boolean result = false;
+    int updates = 0;
+    try (Connection connection = getConnection()) {
+
+      // To do: check database if uuid already exists
+      try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_password_reset(?)}")) {
+        statement.setString(1, email);
+
+        updates = statement.executeUpdate();
+      }
+
+    } catch (SQLException e) {
+      System.out.println("Likely bad SQL query");
+      System.out.println(e.getMessage());
+    }
+    if (updates == 1) {
+      result = true;
+
+    }
+    return result;
+  }
 }
+
+
 
 
 
