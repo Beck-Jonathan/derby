@@ -23,10 +23,12 @@
     <tr><td>  View All Teams  </td><td>   <a href="all-Teams">View</a>  </td></tr>
     <tr><td>  Add Priv  </td><td>  <a href="addPrivilege">View</a> </td></tr>
     <tr><td>  View All Priv  </td><td>  <a href="all-Privileges">View</a> </td></tr>
+    <tr><td>  Join Us  </td><td>  <a href="joinus">View</a> </td></tr>
+    <tr><td>  Sign in  </td><td>  <a href="signin">View</a> </td></tr>
     </tbody>
 </table>
 </div>
-</div>
+
 
 
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>

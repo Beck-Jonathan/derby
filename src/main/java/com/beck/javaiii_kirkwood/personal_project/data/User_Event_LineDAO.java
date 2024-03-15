@@ -69,6 +69,63 @@ public class User_Event_LineDAO {
       throw new RuntimeException("Could not retrieve User_Event_Lines. Try again later");
     }
     return result;}
+  public static List<User_Event_Line> getActiveUser_Event_Line() {
+    List<User_Event_Line> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_User_Event_Line()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer User_ID = resultSet.getInt("User_ID");
+            Integer Event_ID = resultSet.getInt("Event_ID");
+            LocalDate Date_assgined = resultSet.getDate("Date_assgined").toLocalDate();
+            boolean is_active = resultSet.getBoolean("is_active");
+            User_Event_Line _user_event_line = new User_Event_Line( User_ID, Event_ID, Date_assgined, is_active);
+            result.add(_user_event_line);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve User_Event_Lines. Try again later");
+    }
+    return result;}
+
+  public static int update(User_Event_Line oldUser_Event_Line, User_Event_Line newUser_Event_Line) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_User_Event_Line(? ,? ,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldUser_Event_Line.getUser_ID());
+          statement.setInt(2,oldUser_Event_Line.getEvent_ID());
+          statement.setDate(3, Date.valueOf(oldUser_Event_Line.getDate_assgined()));
+          statement.setDate(4, Date.valueOf(newUser_Event_Line.getDate_assgined()));
+          statement.setBoolean(5,oldUser_Event_Line.getis_active());
+          statement.setBoolean(6,newUser_Event_Line.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update User_Event_Line . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteUser_Event_Line(int user_event_lineID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_User_Event_Line( ?)}")){
+          statement.setInt(1,user_event_lineID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete User_Event_Line. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete User_Event_Line. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
 

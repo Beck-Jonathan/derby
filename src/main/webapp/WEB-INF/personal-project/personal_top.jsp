@@ -33,7 +33,7 @@
 
         </div>
         <div class="col-sm-2" class=".d-sm-none .d-xxl-block" id="Headerr1c5" >
-            <button type="button" value="ManageDB" id="SignIn" ></button>
+        <%@include file="/WEB-INF/personal-project/Login.jsp"%>
 
         </div>
 
@@ -47,6 +47,7 @@
 
 </header>
 <div class ="row">
-    <div class = "col-sm-1 d-xxl-block"  id="blankleft" ></div>
+
     <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" /></div>
-    <div class = "col-lg-4 pe-0 ps-0" id="mainForm">
+    <div class = "col-lg-8 pe-0 ps-0" id="mainForm">
+        <input type="hidden" id="currentpage" name="currentpage" value=${requestScope['javax.servlet.forward.request_uri']}/>

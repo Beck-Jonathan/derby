@@ -22,13 +22,15 @@ package com.beck.javaiii_kirkwood.personal_project.models;
 public class Status {
   private Integer Status_ID;
   private String Name;
+  private boolean is_active;
 
   public Status(){}
 
-  public Status(Integer Status_ID, String Name) {
+  public Status(Integer Status_ID, String Name, boolean is_active) {
 
     this.Status_ID = Status_ID;
     this.Name = Name;
+    this.is_active = is_active;
   }
   public Integer getStatus_ID() {
     return Status_ID;
@@ -47,6 +49,12 @@ public class Status {
       throw new IllegalArgumentException("Name is too long.");
     }
     this.Name = Name;
+  }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
   }
 
 }

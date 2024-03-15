@@ -47,7 +47,8 @@ public class TeamDAO  {
             String Team_City = resultSet.getString("Team_City");
             String Team_State = resultSet.getString("Team_State");
             String Logo = resultSet.getString("Logo");
-            result = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo);}
+            boolean is_active = resultSet.getBoolean("is_active");
+            result = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);}
         }
       }
     } catch (SQLException e) {
@@ -67,7 +68,31 @@ public class TeamDAO  {
             String Team_City = resultSet.getString("Team_City");
             String Team_State = resultSet.getString("Team_State");
             String Logo = resultSet.getString("Logo");
-            Team _team = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo);
+            boolean is_active = resultSet.getBoolean("is_active");
+            Team _team = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);
+            result.add(_team);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Teams. Try again later");
+    }
+    return result;}
+  public static List<Team> getActiveTeam() {
+    List<Team> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer Team_ID = resultSet.getInt("Team_ID");
+            Integer League_ID = resultSet.getInt("League_ID");
+            String Team_Name = resultSet.getString("Team_Name");
+            String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
+            String Team_City = resultSet.getString("Team_City");
+            String Team_State = resultSet.getString("Team_State");
+            String Logo = resultSet.getString("Logo");
+            boolean is_active = resultSet.getBoolean("is_active");
+            Team _team = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);
             result.add(_team);
           }
         }
@@ -78,4 +103,52 @@ public class TeamDAO  {
     }
     return result;}
 
+  public static int update(Team oldTeam, Team newTeam) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Team(? ,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldTeam.getTeam_ID());
+          statement.setInt(2,oldTeam.getLeague_ID());
+          statement.setInt(3,newTeam.getLeague_ID());
+          statement.setString(4,oldTeam.getTeam_Name());
+          statement.setString(5,newTeam.getTeam_Name());
+          statement.setString(6,oldTeam.getTeam_Primary_Color());
+          statement.setString(7,newTeam.getTeam_Primary_Color());
+          statement.setString(8,oldTeam.getTeam_City());
+          statement.setString(9,newTeam.getTeam_City());
+          statement.setString(10,oldTeam.getTeam_State());
+          statement.setString(11,newTeam.getTeam_State());
+          statement.setString(12,oldTeam.getLogo());
+          statement.setString(13,newTeam.getLogo());
+          statement.setBoolean(14,oldTeam.getis_active());
+          statement.setBoolean(15,newTeam.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Team . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteTeam(int teamID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Team( ?)}")){
+          statement.setInt(1,teamID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete Team. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete Team. Try again later");
+    }
+    return rowsAffected;
+  }
+
 }
+

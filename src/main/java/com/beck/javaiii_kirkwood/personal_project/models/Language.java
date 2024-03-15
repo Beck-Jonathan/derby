@@ -22,13 +22,15 @@ package com.beck.javaiii_kirkwood.personal_project.models;
 public class Language {
   private Integer Language_ID;
   private String Name;
+  private boolean is_active;
 
   public Language(){}
 
-  public Language(Integer Language_ID, String Name) {
+  public Language(Integer Language_ID, String Name, boolean is_active) {
 
     this.Language_ID = Language_ID;
     this.Name = Name;
+    this.is_active = is_active;
   }
   public Integer getLanguage_ID() {
     return Language_ID;
@@ -47,6 +49,12 @@ public class Language {
       throw new IllegalArgumentException("Name is too long.");
     }
     this.Name = Name;
+  }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
   }
 
 }

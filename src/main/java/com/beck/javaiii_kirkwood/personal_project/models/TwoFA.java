@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.personal_project.models;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class TwoFA {
   private Integer TwoFA_ID;
@@ -16,6 +17,13 @@ public class TwoFA {
     this.User_ID = User_ID;
     this.TwoFA_Code = TwoFA_Code;
     this.DateSent = DateSent;
+  }
+  public TwoFA( Integer User_ID ) {
+
+    this.TwoFA_ID = 0;
+    this.User_ID = User_ID;
+    this.TwoFA_Code = "";
+    this.DateSent = LocalDate.from(LocalDateTime.now());
   }
   public Integer getTwoFA_ID() {
     return TwoFA_ID;

@@ -59,5 +59,5 @@
     </div>
   </form>
 </div>
-</div>
+
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>

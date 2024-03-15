@@ -29,6 +29,7 @@ public class User_Team_LineDAO {
     }
     return numRowsAffected;
   }
+
   public static User_Team_Line getUser_Team_LineByPrimaryKey(User_Team_Line _user_team_line) throws SQLException{
     User_Team_Line result = null;
     try(Connection connection = getConnection()) {
@@ -67,8 +68,64 @@ public class User_Team_LineDAO {
     } catch (SQLException e) {
       throw new RuntimeException("Could not retrieve User_Team_Lines. Try again later");
     }
+    return result;}
+  public static List<User_Team_Line> getActiveUser_Team_Line() {
+    List<User_Team_Line> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_User_Team_Line()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer User_ID = resultSet.getInt("User_ID");
+            Integer Team_ID = resultSet.getInt("Team_ID");
+            LocalDate Date_assgined = resultSet.getDate("Date_assgined").toLocalDate();
+            boolean is_active = resultSet.getBoolean("is_active");
+            User_Team_Line _user_team_line = new User_Team_Line( User_ID, Team_ID, Date_assgined, is_active);
+            result.add(_user_team_line);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve User_Team_Lines. Try again later");
+    }
+    return result;}
+
+  public static int update(User_Team_Line oldUser_Team_Line, User_Team_Line newUser_Team_Line) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_User_Team_Line(? ,? ,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldUser_Team_Line.getUser_ID());
+          statement.setInt(2,oldUser_Team_Line.getTeam_ID());
+          statement.setDate(3, Date.valueOf(oldUser_Team_Line.getDate_assgined()));
+          statement.setDate(4, Date.valueOf(newUser_Team_Line.getDate_assgined()));
+          statement.setBoolean(5,oldUser_Team_Line.getis_active());
+          statement.setBoolean(6,newUser_Team_Line.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update User_Team_Line . Try again later");
+        }
+      }
+    }
     return result;
+  }
+  public static int deleteUser_Team_Line(int user_team_lineID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_User_Team_Line( ?)}")){
+          statement.setInt(1,user_team_lineID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete User_Team_Line. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete User_Team_Line. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
 
-}

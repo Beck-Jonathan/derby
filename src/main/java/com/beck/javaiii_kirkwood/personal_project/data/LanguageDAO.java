@@ -44,6 +44,7 @@ public class LanguageDAO {
     }
     return numRowsAffected;
   }
+
   public static Language getLanguageByPrimaryKey(Language _language) throws SQLException{
     Language result = null;
     try(Connection connection = getConnection()) {
@@ -53,7 +54,8 @@ public class LanguageDAO {
         try (ResultSet resultSet = statement.executeQuery()){
           if(resultSet.next()){Integer Language_ID = resultSet.getInt("Language_ID");
             String Name = resultSet.getString("Name");
-            result = new Language( Language_ID, Name);}
+            boolean is_active = resultSet.getBoolean("is_active");
+            result = new Language( Language_ID, Name, is_active);}
         }
       }
     } catch (SQLException e) {
@@ -68,7 +70,8 @@ public class LanguageDAO {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Language()}")) {try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer Language_ID = resultSet.getInt("Language_ID");
             String Name = resultSet.getString("Name");
-            Language _language = new Language( Language_ID, Name);
+            boolean is_active = resultSet.getBoolean("is_active");
+            Language _language = new Language( Language_ID, Name, is_active);
             result.add(_language);
           }
         }
@@ -78,6 +81,61 @@ public class LanguageDAO {
       throw new RuntimeException("Could not retrieve Languages. Try again later");
     }
     return result;}
+  public static List<Language> getActiveLanguage() {
+    List<Language> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Language()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer Language_ID = resultSet.getInt("Language_ID");
+            String Name = resultSet.getString("Name");
+            boolean is_active = resultSet.getBoolean("is_active");
+            Language _language = new Language( Language_ID, Name, is_active);
+            result.add(_language);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Languages. Try again later");
+    }
+    return result;}
+
+  public static int update(Language oldLanguage, Language newLanguage) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Language(? ,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldLanguage.getLanguage_ID());
+          statement.setString(2,oldLanguage.getName());
+          statement.setString(3,newLanguage.getName());
+          statement.setBoolean(4,oldLanguage.getis_active());
+          statement.setBoolean(5,newLanguage.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Language . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteLanguage(int languageID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Language( ?)}")){
+          statement.setInt(1,languageID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete Language. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete Language. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
 

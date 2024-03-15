@@ -17,10 +17,14 @@ package com.beck.javaiii_kirkwood.personal_project.models;/// <summary>
 /// A new remark should be added for each update.
 ///</remarks>
 
+import com.beck.javaiii_kirkwood.shared.MyValidators;
+
+import java.util.regex.Matcher;
+
 public class User {
   private Integer User_ID;
   private String User_Name;
-  private String User_PW;
+  char[] User_PW;
   private Integer Status_ID;
   private String Email;
   private Integer Language_ID;
@@ -28,7 +32,7 @@ public class User {
 
   public User(){}
 
-  public User(Integer User_ID, String User_Name, String User_PW, Integer Status_ID, String Email, Integer Language_ID, Integer Privilege_ID) {
+  public User(Integer User_ID, String User_Name, char[] User_PW, Integer Status_ID, String Email, Integer Language_ID, Integer Privilege_ID) {
 
     this.User_ID = User_ID;
     this.User_Name = User_Name;
@@ -56,15 +60,17 @@ public class User {
     }
     this.User_Name = User_Name;
   }
-  public String getUser_PW() {
+  public char[] getUser_PW() {
     return User_PW;
   }
-  public void setUser_PW(String User_PW) {
-    if(User_PW.length()<4){
-      throw new IllegalArgumentException("User_PW is too short.");
-    }
-    if(User_PW.length()>100){
-      throw new IllegalArgumentException("User_PW is too long.");
+  public void setUser_PW(char[] User_PW) {
+    if (User_PW!=null) {
+
+      String passwordStr = String.valueOf(User_PW);
+      Matcher matcher = MyValidators.passwordPattern.matcher(passwordStr);
+      if (!matcher.matches()) {
+        throw new IllegalArgumentException("Password must be 8 characters, with 3 of 4 (lowercase, uppercase, number, symbol)");
+      }
     }
     this.User_PW = User_PW;
   }

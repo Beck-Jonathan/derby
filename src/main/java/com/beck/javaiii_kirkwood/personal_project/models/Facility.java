@@ -24,10 +24,11 @@ public class Facility {
   private String City;
   private String State;
   private String Zip;
+  private boolean is_active;
 
   public Facility(){}
 
-  public Facility(Integer Facility_ID, String Name, String Addresss, String City, String State, String Zip) {
+  public Facility(Integer Facility_ID, String Name, String Addresss, String City, String State, String Zip, boolean is_active) {
 
     this.Facility_ID = Facility_ID;
     this.Name = Name;
@@ -35,6 +36,7 @@ public class Facility {
     this.City = City;
     this.State = State;
     this.Zip = Zip;
+    this.is_active = is_active;
   }
   public Integer getFacility_ID() {
     return Facility_ID;
@@ -102,5 +104,12 @@ public class Facility {
     }
     this.Zip = Zip;
   }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
+  }
 
 }
+

@@ -12,10 +12,10 @@ public class TwoFADAO {
   public static int add(TwoFA _twofa) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_TwoFA( ?, ?, ?)}")){
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_TwoFA( ?,  ?)}")){
           statement.setInt(1,_twofa.getUser_ID());
-          statement.setString(2,_twofa.getTwoFA_Code());
-          statement.setDate(3, Date.valueOf(_twofa.getDateSent()));
+
+          statement.setDate(2, Date.valueOf(_twofa.getDateSent()));
           numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not add TwoFA. Try again later");
@@ -45,6 +45,33 @@ public class TwoFADAO {
       throw new RuntimeException(e);
     }
     return result;
+  }
+
+  public static String getTwoFAById(int id){
+
+    String TwoFACode = "";
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_TWOFA_by_ID(?)}")) {
+        statement.setInt(1,id);
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          if(resultSet.next()){
+            TwoFACode=resultSet.getString(1);
+          }
+        }
+        catch (SQLException ex ){
+
+          throw new RuntimeException(ex);}
+      }
+
+
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return TwoFACode;
+
+
+
   }
   public static List<TwoFA> getAllTwoFA() {
     List<TwoFA> result = new ArrayList<>();

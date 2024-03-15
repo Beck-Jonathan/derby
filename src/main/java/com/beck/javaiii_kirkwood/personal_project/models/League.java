@@ -4,14 +4,16 @@ public class League {
   private Integer League_ID;
   private String League_Name;
   private String League_Level;
+  private boolean is_active;
 
   public League(){}
 
-  public League(Integer League_ID, String League_Name, String League_Level) {
+  public League(Integer League_ID, String League_Name, String League_Level, boolean is_active) {
 
     this.League_ID = League_ID;
     this.League_Name = League_Name;
     this.League_Level = League_Level;
+    this.is_active = is_active;
   }
   public Integer getLeague_ID() {
     return League_ID;
@@ -43,5 +45,12 @@ public class League {
     }
     this.League_Level = League_Level;
   }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
+  }
 
 }
+

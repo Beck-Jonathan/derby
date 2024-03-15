@@ -33,7 +33,7 @@ public class TypeDAO {
     }
     return numRowsAffected;
   }
-    public static Type getTypeByPrimaryKey(Type _type) throws SQLException{
+  public static Type getTypeByPrimaryKey(Type _type) throws SQLException{
     Type result = null;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Type(?)}")) {
@@ -42,7 +42,8 @@ public class TypeDAO {
         try (ResultSet resultSet = statement.executeQuery()){
           if(resultSet.next()){Integer Type_ID = resultSet.getInt("Type_ID");
             String Name = resultSet.getString("Name");
-            result = new Type( Type_ID, Name);}
+            boolean is_active = resultSet.getBoolean("is_active");
+            result = new Type( Type_ID, Name, is_active);}
         }
       }
     } catch (SQLException e) {
@@ -57,7 +58,8 @@ public class TypeDAO {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Type()}")) {try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer Type_ID = resultSet.getInt("Type_ID");
             String Name = resultSet.getString("Name");
-            Type _type = new Type( Type_ID, Name);
+            boolean is_active = resultSet.getBoolean("is_active");
+            Type _type = new Type( Type_ID, Name, is_active);
             result.add(_type);
           }
         }
@@ -67,6 +69,61 @@ public class TypeDAO {
       throw new RuntimeException("Could not retrieve Types. Try again later");
     }
     return result;}
+  public static List<Type> getActiveType() {
+    List<Type> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Type()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer Type_ID = resultSet.getInt("Type_ID");
+            String Name = resultSet.getString("Name");
+            boolean is_active = resultSet.getBoolean("is_active");
+            Type _type = new Type( Type_ID, Name, is_active);
+            result.add(_type);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Types. Try again later");
+    }
+    return result;}
+
+  public static int update(Type oldType, Type newType) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Type(? ,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldType.getType_ID());
+          statement.setString(2,oldType.getName());
+          statement.setString(3,newType.getName());
+          statement.setBoolean(4,oldType.getis_active());
+          statement.setBoolean(5,newType.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Type . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteType(int typeID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Type( ?)}")){
+          statement.setInt(1,typeID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete Type. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete Type. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
 

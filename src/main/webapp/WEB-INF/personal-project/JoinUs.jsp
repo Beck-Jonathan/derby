@@ -1,11 +1,11 @@
 /******************
-Create the JSP  For adding to The  User table
-Created By Jonathan Beck3/3/2024
+Create the JSP for signing up for the league.
+Created By Jonathan Beck3/10/2024
 
 ***************/
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addUser" id = "addUser" >"
+    <form method="post" action="${appURL}/joinus" id = "JoinUs" >"
         <!-- User_Name -->
         <div class ="row" id = "row0">
             <label for="inputuserUser_Name" class="form-label">User_Name</label>
@@ -26,23 +26,20 @@ Created By Jonathan Beck3/3/2024
                 </c:if>
             </div>
         </div>
-        <!-- Status_ID -->
+        <!-- User_PW2 -->
         <div class ="row" id = "row2">
-            <label for="inputuserStatus_ID" class="form-label">Status_ID</label>
+            <label for="inputuserUser_PW2" class="form-label">User_PW</label>
             <div class="input-group input-group-lg">
-                <select  class="<c:if test="${not empty results.userStatus_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Status_ID" id="inputuserStatus_ID" name="inputuserStatus_ID" value="${results.Status_ID}">
-                    <c:forEach items="${statuss}" var="status">
-                    <option value="${status.status_ID}">${status.name}   </option>
-                    </c:forEach>
-
-                    <c:if test="${not empty results.userStatus_IDerror}">
-                    <div class="invalid-feedback">${results.userStatus_IDerror}</div>
-                    </c:if>
-                </select>
+                <input type="text" class="<c:if test="${not empty results.userUser_PW2error}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW2" id="inputuserUser_PW2" name="inputuserUser_PW2" value="${results.User_PW2}">
+                <c:if test="${not empty results.userUser_PWerror}">
+                    <div class="invalid-feedback">${results.userUser_PWerror}</div>
+                </c:if>
             </div>
         </div>
+
+
         <!-- Email -->
-        <div class ="row" id = "row3">
+        <div class ="row" id = "row4">
             <label for="inputuserEmail" class="form-label">Email</label>
             <div class="input-group input-group-lg">
                 <input type="text" class="<c:if test="${not empty results.userEmailerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Email" id="inputuserEmail" name="inputuserEmail" value="${results.Email}">
@@ -52,7 +49,7 @@ Created By Jonathan Beck3/3/2024
             </div>
         </div>
         <!-- Language_ID -->
-        <div class ="row" id = "row4">
+        <div class ="row" id = "row5">
             <label for="inputuserLanguage_ID" class="form-label">Language_ID</label>
             <div class="input-group input-group-lg">
                 <select  class="<c:if test="${not empty results.userLanguage_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Language_ID" id="inputuserLanguage_ID" name="inputuserLanguage_ID" value="${results.Language_ID}">
@@ -61,25 +58,12 @@ Created By Jonathan Beck3/3/2024
                         <option value="${language.language_ID}">${language.name}   </option>
                     </c:forEach>
                     <c:if test="${not empty results.userLanguage_IDerror}">
-                    <div class="invalid-feedback">${results.userLanguage_IDerror}</div>
+                        <div class="invalid-feedback">${results.userLanguage_IDerror}</div>
                     </c:if>
                 </select>
             </div>
         </div>
-        <!-- Privilege_ID -->
-        <div class ="row" id = "row5">
-            <label for="inputuserPrivilege_ID" class="form-label">Privilege_ID</label>
-            <div class="input-group input-group-lg">
-                <select  class="<c:if test="${not empty results.userPrivilege_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Privilege_ID" id="inputuserPrivilege_ID" name="inputuserPrivilege_ID">
-                    <c:forEach items="${privileges}" var="privilege">
-                    <option value="${privilege.privilege_ID}">${privilege.name}   </option>
-                    </c:forEach>
-                    <c:if test="${not empty results.userPrivilege_IDerror}">
-                    <div class="invalid-feedback">${results.userPrivilege_IDerror}</div>
-                    </c:if>
-                </select>
-            </div>
-        </div>
+
         <div class="align-items-center mt-0">
             <div class="d-grid"><button class="btn btn-orange mb-0" type="submit">Sign Up</button></div>
             <c:if test="${not empty results.dbStatus}"
@@ -88,6 +72,6 @@ Created By Jonathan Beck3/3/2024
         </div>
     </form>
 </div>
-
+</div>
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
 

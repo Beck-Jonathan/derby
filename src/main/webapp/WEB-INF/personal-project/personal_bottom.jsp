@@ -1,6 +1,8 @@
-<div class = "col-sm-2 ps-0" class=".d-none .d-xxl-block" id="right">><img src="images/right.png" /></div>
-<div class = "col-sm-1" class=".d-none .d-xxl-block" id="blankright"></div>
 </div> <!-- end row-->
+<div class = "col-sm-2 ps-0" class=".d-none .d-xxl-block" id="right"><img src="images/right.png" /></div>
+
+</div> <!-- end row-->
+
 
 
 

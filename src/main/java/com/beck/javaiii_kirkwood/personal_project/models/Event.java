@@ -7,15 +7,17 @@ public class Event {
   private Integer Facility_ID;
   private LocalDate Date;
   private Integer Type_ID;
+  private boolean is_active;
 
   public Event(){}
 
-  public Event(Integer Event_ID, Integer Facility_ID, LocalDate Date, Integer Type_ID) {
+  public Event(Integer Event_ID, Integer Facility_ID, LocalDate Date, Integer Type_ID, boolean is_active) {
 
     this.Event_ID = Event_ID;
     this.Facility_ID = Facility_ID;
     this.Date = Date;
     this.Type_ID = Type_ID;
+    this.is_active = is_active;
   }
   public Integer getEvent_ID() {
     return Event_ID;
@@ -41,5 +43,12 @@ public class Event {
   public void setType_ID(Integer Type_ID) {
     this.Type_ID = Type_ID;
   }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
+  }
 
 }
+

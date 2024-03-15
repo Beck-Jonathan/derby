@@ -25,13 +25,13 @@ Created By Jonathan Beck3/3/2024
                     <tbody>
                     <c:forEach items="${Users}" var="user">
                         <tr>
-                            <td>${user.user_id}</td>
-                            <td>${user.user_name}</td>
-                            <td>${user.user_pw}</td>
-                            <td>${user.status_id}</td>
+                            <td>${user.user_ID}</td>
+                            <td>${user.user_Name}</td>
+                            <td>${user.user_PW}</td>
+                            <td>${user.status_ID}</td>
                             <td>${user.email}</td>
-                            <td>${user.language_id}</td>
-                            <td>${user.privilege_id}</td>
+                            <td>${user.language_ID}</td>
+                            <td>${user.privilege_ID}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

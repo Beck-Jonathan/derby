@@ -5,7 +5,7 @@
             <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
                 <h2>${pageTitle}</h2>
                 <p>Please enter the code that was sent to your email.</p>
-                <p>Your code is: ${sessionScope.code}</p>
+
                 <form action="${appURL}/confirm" method="post">
                     <div class="mb-4">
                         <label for="inputCode" class="form-label">Code</label>

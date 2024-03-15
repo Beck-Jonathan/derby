@@ -22,13 +22,15 @@ package com.beck.javaiii_kirkwood.personal_project.models;
 public class Privilege {
   private Integer Privilege_ID;
   private String Name;
+  private boolean is_active;
 
   public Privilege(){}
 
-  public Privilege(Integer Privilege_ID, String Name) {
+  public Privilege(Integer Privilege_ID, String Name, boolean is_active) {
 
     this.Privilege_ID = Privilege_ID;
     this.Name = Name;
+    this.is_active = is_active;
   }
   public Integer getPrivilege_ID() {
     return Privilege_ID;
@@ -48,6 +50,11 @@ public class Privilege {
     }
     this.Name = Name;
   }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
+  }
 
 }
-

@@ -65,7 +65,8 @@ public class FacilityDAO {
             String City = resultSet.getString("City");
             String State = resultSet.getString("State");
             String Zip = resultSet.getString("Zip");
-            result = new Facility( Facility_ID, Name, Addresss, City, State, Zip);}
+            boolean is_active = resultSet.getBoolean("is_active");
+            result = new Facility( Facility_ID, Name, Addresss, City, State, Zip, is_active);}
         }
       }
     } catch (SQLException e) {
@@ -84,7 +85,8 @@ public class FacilityDAO {
             String City = resultSet.getString("City");
             String State = resultSet.getString("State");
             String Zip = resultSet.getString("Zip");
-            Facility _facility = new Facility( Facility_ID, Name, Addresss, City, State, Zip);
+            boolean is_active = resultSet.getBoolean("is_active");
+            Facility _facility = new Facility( Facility_ID, Name, Addresss, City, State, Zip, is_active);
             result.add(_facility);
           }
         }
@@ -94,5 +96,72 @@ public class FacilityDAO {
       throw new RuntimeException("Could not retrieve Facilitys. Try again later");
     }
     return result;}
+  public static List<Facility> getActiveFacility() {
+    List<Facility> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Facility()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer Facility_ID = resultSet.getInt("Facility_ID");
+            String Name = resultSet.getString("Name");
+            String Addresss = resultSet.getString("Addresss");
+            String City = resultSet.getString("City");
+            String State = resultSet.getString("State");
+            String Zip = resultSet.getString("Zip");
+            boolean is_active = resultSet.getBoolean("is_active");
+            Facility _facility = new Facility( Facility_ID, Name, Addresss, City, State, Zip, is_active);
+            result.add(_facility);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Facilitys. Try again later");
+    }
+    return result;}
+
+  public static int update(Facility oldFacility, Facility newFacility) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Facility(? ,?,?,?,?,?,?,?,?,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldFacility.getFacility_ID());
+          statement.setString(2,oldFacility.getName());
+          statement.setString(3,newFacility.getName());
+          statement.setString(4,oldFacility.getAddresss());
+          statement.setString(5,newFacility.getAddresss());
+          statement.setString(6,oldFacility.getCity());
+          statement.setString(7,newFacility.getCity());
+          statement.setString(8,oldFacility.getState());
+          statement.setString(9,newFacility.getState());
+          statement.setString(10,oldFacility.getZip());
+          statement.setString(11,newFacility.getZip());
+          statement.setBoolean(12,oldFacility.getis_active());
+          statement.setBoolean(13,newFacility.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Facility . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteFacility(int facilityID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Facility( ?)}")){
+          statement.setInt(1,facilityID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete Facility. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete Priv. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }

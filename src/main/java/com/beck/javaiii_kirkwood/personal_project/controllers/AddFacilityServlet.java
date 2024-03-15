@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -18,6 +19,8 @@ import static java.lang.Integer.parseInt;
 public class AddFacilityServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Privacy Policy");
     req.getRequestDispatcher("WEB-INF/personal-project/AddFacility.jsp").forward(req, resp);
   }

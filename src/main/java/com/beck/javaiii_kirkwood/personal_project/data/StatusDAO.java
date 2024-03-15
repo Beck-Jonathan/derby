@@ -44,6 +44,7 @@ public class StatusDAO {
     }
     return numRowsAffected;
   }
+
   public static Status getStatusByPrimaryKey(Status _status) throws SQLException{
     Status result = null;
     try(Connection connection = getConnection()) {
@@ -53,7 +54,8 @@ public class StatusDAO {
         try (ResultSet resultSet = statement.executeQuery()){
           if(resultSet.next()){Integer Status_ID = resultSet.getInt("Status_ID");
             String Name = resultSet.getString("Name");
-            result = new Status( Status_ID, Name);}
+            boolean is_active = resultSet.getBoolean("is_active");
+            result = new Status( Status_ID, Name, is_active);}
         }
       }
     } catch (SQLException e) {
@@ -68,7 +70,8 @@ public class StatusDAO {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Status()}")) {try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer Status_ID = resultSet.getInt("Status_ID");
             String Name = resultSet.getString("Name");
-            Status _status = new Status( Status_ID, Name);
+            boolean is_active = resultSet.getBoolean("is_active");
+            Status _status = new Status( Status_ID, Name, is_active);
             result.add(_status);
           }
         }
@@ -78,6 +81,61 @@ public class StatusDAO {
       throw new RuntimeException("Could not retrieve Statuss. Try again later");
     }
     return result;}
+  public static List<Status> getActiveStatus() {
+    List<Status> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Status()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {Integer Status_ID = resultSet.getInt("Status_ID");
+            String Name = resultSet.getString("Name");
+            boolean is_active = resultSet.getBoolean("is_active");
+            Status _status = new Status( Status_ID, Name, is_active);
+            result.add(_status);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Statuss. Try again later");
+    }
+    return result;}
+
+  public static int update(Status oldStatus, Status newStatus) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Status(? ,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldStatus.getStatus_ID());
+          statement.setString(2,oldStatus.getName());
+          statement.setString(3,newStatus.getName());
+          statement.setBoolean(4,oldStatus.getis_active());
+          statement.setBoolean(5,newStatus.getis_active());
+          statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Status . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static int deleteStatus(int statusID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Status( ?)}")){
+          statement.setInt(1,statusID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete Status. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete Status. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
 

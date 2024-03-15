@@ -8,10 +8,11 @@ public class Team {
   private String Team_City;
   private String Team_State;
   private String Logo;
+  private boolean is_active;
 
   public Team(){}
 
-  public Team(Integer Team_ID, Integer League_ID, String Team_Name, String Team_Primary_Color, String Team_City, String Team_State, String Logo) {
+  public Team(Integer Team_ID, Integer League_ID, String Team_Name, String Team_Primary_Color, String Team_City, String Team_State, String Logo, boolean is_active) {
 
     this.Team_ID = Team_ID;
     this.League_ID = League_ID;
@@ -20,6 +21,7 @@ public class Team {
     this.Team_City = Team_City;
     this.Team_State = Team_State;
     this.Logo = Logo;
+    this.is_active = is_active;
   }
   public Integer getTeam_ID() {
     return Team_ID;
@@ -93,5 +95,12 @@ public class Team {
     }
     this.Logo = Logo;
   }
+  public boolean getis_active() {
+    return is_active;
+  }
+  public void setis_active(boolean is_active) {
+    this.is_active = is_active;
+  }
 
 }
+

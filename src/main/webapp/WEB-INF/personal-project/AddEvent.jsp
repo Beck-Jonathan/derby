@@ -53,6 +53,6 @@ Created By Jonathan Beck3/3/2024
         </div>
     </form>
 </div>
-</div>
+
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
 
