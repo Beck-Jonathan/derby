@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 public class DeletePrivilegeServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Privacy Policy");
     Integer PrivilegeID = Integer.valueOf(req.getParameter("privilegeid"));
     int result = PrivilegeDAO.deletePrivilege(PrivilegeID);

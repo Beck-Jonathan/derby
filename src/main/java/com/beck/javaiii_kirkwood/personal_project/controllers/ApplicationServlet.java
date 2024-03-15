@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import com.beck.javaiii_kirkwood.learnx.Models.User;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ import java.util.List;
 public class ApplicationServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
     List<User> users = null;
     //try {
     //  users = UserDAO.getAllUsers();

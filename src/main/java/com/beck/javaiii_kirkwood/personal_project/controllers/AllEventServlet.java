@@ -12,11 +12,14 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/all-Events")
 public class AllEventServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
     List<Event> events = null;
 
     events = EventDAO.getAllEvent();
