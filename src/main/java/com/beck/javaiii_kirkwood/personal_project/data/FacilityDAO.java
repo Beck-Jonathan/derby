@@ -1,21 +1,7 @@
-package com.beck.javaiii_kirkwood.personal_project.data;
-
-import com.beck.javaiii_kirkwood.personal_project.models.Facility;
-
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.sql.*;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
-
-/// <summary>
+package com.beck.javaiii_kirkwood.personal_project.data;/// <summary>
 ///AUTHOR: Jonathan Beck
 ///<br />
-///CREATED: 23/2/2024
+///CREATED: 18/3/2024
 ///< br />
 ///An example class to show how code is expected to be written and documented.
 ///This is where a description of what your file is supposed to contain goes.
@@ -30,6 +16,14 @@ import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnec
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.personal_project.models.Facility;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
 public class FacilityDAO {
 
   public static int add(Facility _facility) {
@@ -159,9 +153,27 @@ public class FacilityDAO {
         }
       }
     } catch (SQLException e) {
-      throw new RuntimeException("Could not Delete Priv. Try again later");
+      throw new RuntimeException("Could not Delete Facility. Try again later");
+    }
+    return rowsAffected;
+  }
+  public static int undeleteFacility(int facilityID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_unDelete_Facility( ?)}")){
+          statement.setInt(1,facilityID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Restore Facility. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Restore Facility. Try again later");
     }
     return rowsAffected;
   }
 
 }
+

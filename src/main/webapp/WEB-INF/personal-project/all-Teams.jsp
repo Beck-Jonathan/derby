@@ -1,14 +1,14 @@
-/******************
+<%--************
 Create the JSP  For Viewing All of The  Team table
-Created By Jonathan Beck3/3/2024
-
-***************/
+ Created By Jonathan Beck3/18/2024
+**********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
     <div class="row">
         <div class="col-12">
             <h1>All Roller Teams</h1>
-            <p>There ${Teams.size() eq 1 ? "is" : "are"}&nbsp;${Teams.size()} Teams{Teams.size() ne 1 ? "s" : ""}</p>
+            <p>There ${Teams.size() eq 1 ? "is" : "are"}&nbsp;${Teams.size()} Team${Teams.size() ne 1 ? "s" : ""}</p>
+            Add Team   <a href="addTeam">Add</a>
             <c:if test="${Teams.size() > 0}">
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
@@ -20,6 +20,9 @@ Created By Jonathan Beck3/3/2024
                         <th scope="col">Team_City</th>
                         <th scope="col">Team_State</th>
                         <th scope="col">Logo</th>
+                        <th scope="col">is_active</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -32,6 +35,12 @@ Created By Jonathan Beck3/3/2024
                             <td>${team.team_City}</td>
                             <td>${team.team_State}</td>
                             <td>${team.logo}</td>
+                            <td><input type="checkbox" disabled <c:if test="${team.is_active}">checked</c:if>></td>
+                            <td><a href = "editteam?teamid=${team.team_ID}" > Edit </a></td>
+                            <td><a href = "deleteteam?teamid=${team.team_ID}&mode=<c:choose><c:when test="${team.is_active}">0</c:when>
+						<c:otherwise>1</c:otherwise>
+						</c:choose>">
+                                <c:if test="${!team.is_active}">un</c:if>Delete </a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

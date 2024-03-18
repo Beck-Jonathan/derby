@@ -345,8 +345,8 @@
             <h3>Are you ready?</h3>
             <p>By submitting this form, you are stating you are ready for fast paced action and skates thundering on the track </p>
         </div>
-    </div> <!-- end form-->
-</div>
+    <!-- end form-->
+
 
 
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>

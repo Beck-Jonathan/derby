@@ -3,7 +3,7 @@ package com.beck.javaiii_kirkwood.personal_project.data;
 /// <summary>
 ///AUTHOR: Jonathan Beck
 ///<br />
-///CREATED: 3/3/2024
+///CREATED: 18/3/2024
 ///< br />
 ///An example class to show how code is expected to be written and documented.
 ///This is where a description of what your file is supposed to contain goes.
@@ -44,7 +44,6 @@ public class StatusDAO {
     }
     return numRowsAffected;
   }
-
   public static Status getStatusByPrimaryKey(Status _status) throws SQLException{
     Status result = null;
     try(Connection connection = getConnection()) {
@@ -136,6 +135,24 @@ public class StatusDAO {
     }
     return rowsAffected;
   }
+  public static int undeleteStatus(int statusID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_unDelete_Status( ?)}")){
+          statement.setInt(1,statusID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Restore Status. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Restore Status. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
+
 

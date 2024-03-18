@@ -1,8 +1,7 @@
-/******************
+<%--************
 Create the JSP  For adding to The  Team table
-Created By Jonathan Beck3/3/2024
-
-***************/
+ Created By Jonathan Beck3/18/2024
+**********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
     <form method="post" action="${appURL}/addTeam" id = "addTeam" >"
@@ -12,12 +11,12 @@ Created By Jonathan Beck3/3/2024
             <div class="input-group input-group-lg">
                 <select  class="<c:if test="${not empty results.teamLeague_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="League_ID" id="inputteamLeague_ID" name="inputteamLeague_ID" value="${results.League_ID}">
                     <c:forEach items="${Leagues}" var="League">
-                    <option value="${League.league_ID}">${League.league_Name}   </option>
+                        <option value="${League.league_ID}">${League.name}   </option>
                     </c:forEach>
                 </select>
-                    <c:if test="${not empty results.teamLeague_IDerror}">
+                <c:if test="${not empty results.teamLeague_IDerror}">
                     <div class="invalid-feedback">${results.teamLeague_IDerror}</div>
-                    </c:if>
+                </c:if>
             </div>
         </div>
         <!-- Team_Name -->
@@ -78,6 +77,5 @@ Created By Jonathan Beck3/3/2024
         </div>
     </form>
 </div>
-
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
 

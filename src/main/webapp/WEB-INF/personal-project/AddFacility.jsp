@@ -1,3 +1,7 @@
+<%--************
+Create the JSP  For adding to The  Facility table
+ Created By Jonathan Beck3/18/2024
+**********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
   <form method="post" action="${appURL}/addFacility" id = "addFacility" >"
@@ -59,5 +63,5 @@
     </div>
   </form>
 </div>
-
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
+

@@ -1,25 +1,20 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 
-/******************
- Create the Servlet  For adding to The  Status table
- Created By Jonathan Beck3/3/2024
-
- ***************/
-
 import com.beck.javaiii_kirkwood.personal_project.data.StatusDAO;
-
 import com.beck.javaiii_kirkwood.personal_project.models.Status;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+/******************
+ Create the Servlet  For adding to The  Status table
+ Created By Jonathan Beck3/18/2024
+ ***************/
 
 @WebServlet("/addStatus")
 public class AddStatusServlet extends HttpServlet{
@@ -35,8 +30,10 @@ public class AddStatusServlet extends HttpServlet{
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String _Name = req.getParameter("inputstatusName");
+    String _is_active = req.getParameter("inputstatusis_active");
     Map<String, String> results = new HashMap<>();
     results.put("Name",_Name);
+    results.put("is_active",_is_active);
     Status status = new Status();
     int errors =0;
     try {
@@ -53,6 +50,8 @@ public class AddStatusServlet extends HttpServlet{
       }
       if (result>0){
         results.put("dbStatus","Status Added");
+        resp.sendRedirect("all-Statuss");
+        return;
       } else {
         results.put("dbStatus","Status Not Added");
 
@@ -64,5 +63,6 @@ public class AddStatusServlet extends HttpServlet{
 
   }
 }
+
 
 

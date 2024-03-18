@@ -1,9 +1,14 @@
+<%--************
+Create the JSP  For Viewing All of The  Facility table
+ Created By Jonathan Beck3/18/2024
+**********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
   <div class="row">
     <div class="col-12">
       <h1>All Roller Facilitys</h1>
-      <p>There ${Facilitys.size() eq 1 ? "is" : "are"}&nbsp;${Facilitys.size()} Facilitys${Facilitys.size() ne 1 ? "s" : ""}</p>
+      <p>There ${Facilitys.size() eq 1 ? "is" : "are"}&nbsp;${Facilitys.size()} Facility${Facilitys.size() ne 1 ? "s" : ""}</p>
+      Add Facility   <a href="addFacility">Add</a>
       <c:if test="${Facilitys.size() > 0}">
         <div class="table-responsive"><table class="table table-bordered">
           <thead>
@@ -14,6 +19,9 @@
             <th scope="col">City</th>
             <th scope="col">State</th>
             <th scope="col">Zip</th>
+            <th scope="col">is_active</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
           </tr>
           </thead>
           <tbody>
@@ -25,6 +33,12 @@
               <td>${facility.city}</td>
               <td>${facility.state}</td>
               <td>${facility.zip}</td>
+              <td><input type="checkbox" disabled <c:if test="${facility.is_active}">checked</c:if>></td>
+              <td><a href = "editfacility?facilityid=${facility.facility_ID}" > Edit </a></td>
+              <td><a href = "deletefacility?facilityid=${facility.facility_ID}&mode=<c:choose><c:when test="${facility.is_active}">0</c:when>
+						<c:otherwise>1</c:otherwise>
+						</c:choose>">
+                <c:if test="${!facility.is_active}">un</c:if>Delete </a></td>
             </tr>
           </c:forEach>
           </tbody>
@@ -36,3 +50,4 @@
 </div>
 </main>
 <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>
+

@@ -1,12 +1,28 @@
 package com.beck.javaiii_kirkwood.personal_project.data;
-
+/// <summary>
+///AUTHOR: Jonathan Beck
+///<br />
+///CREATED: 18/3/2024
+///< br />
+///An example class to show how code is expected to be written and documented.
+///This is where a description of what your file is supposed to contain goes.
+///e.g., "Class with helper methods for input validation.",
+///Class that defines User_Team_LineDAO Objects.
+///</summary>
+///< remarks>
+///UPDATER: updater_name
+///< br />
+/// UPDATED: yyyy-MM-dd
+/// < br />
+/// Update comments go here, include method or methods were changed or added
+/// A new remark should be added for each update.
+///</remarks>
 import com.beck.javaiii_kirkwood.personal_project.models.User_Team_Line;
 
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
 public class User_Team_LineDAO {
 
@@ -29,7 +45,6 @@ public class User_Team_LineDAO {
     }
     return numRowsAffected;
   }
-
   public static User_Team_Line getUser_Team_LineByPrimaryKey(User_Team_Line _user_team_line) throws SQLException{
     User_Team_Line result = null;
     try(Connection connection = getConnection()) {
@@ -123,6 +138,23 @@ public class User_Team_LineDAO {
       }
     } catch (SQLException e) {
       throw new RuntimeException("Could not Delete User_Team_Line. Try again later");
+    }
+    return rowsAffected;
+  }
+  public static int undeleteUser_Team_Line(int user_team_lineID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_unDelete_User_Team_Line( ?)}")){
+          statement.setInt(1,user_team_lineID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Restore User_Team_Line. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Restore User_Team_Line. Try again later");
     }
     return rowsAffected;
   }

@@ -1,31 +1,27 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 
-import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
-import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import com.beck.javaiii_kirkwood.personal_project.data.LeagueDAO;
+import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.League;
+import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 /******************
  Create the Servlet  For adding to The  Team table
- Created By Jonathan Beck3/3/2024
-
+ Created By Jonathan Beck3/18/2024
  ***************/
 
 @WebServlet("/addTeam")
 public class AddTeamServlet extends HttpServlet{
-  static List<League> allLeagues = LeagueDAO.getAllLeague();
+  static List<League> allLeagues = LeagueDAO.getActiveLeague();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,6 +35,7 @@ public class AddTeamServlet extends HttpServlet{
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    allLeagues = LeagueDAO.getAllLeague();
     req.setAttribute("Leagues", allLeagues);
     String _League_ID = req.getParameter("inputteamLeague_ID");
     String _Team_Name = req.getParameter("inputteamTeam_Name");
@@ -46,6 +43,7 @@ public class AddTeamServlet extends HttpServlet{
     String _Team_City = req.getParameter("inputteamTeam_City");
     String _Team_State = req.getParameter("inputteamTeam_State");
     String _Logo = req.getParameter("inputteamLogo");
+    String _is_active = req.getParameter("inputteamis_active");
     Map<String, String> results = new HashMap<>();
     results.put("League_ID",_League_ID);
     results.put("Team_Name",_Team_Name);
@@ -53,6 +51,7 @@ public class AddTeamServlet extends HttpServlet{
     results.put("Team_City",_Team_City);
     results.put("Team_State",_Team_State);
     results.put("Logo",_Logo);
+    results.put("is_active",_is_active);
     Team team = new Team();
     int errors =0;
     try {
@@ -94,6 +93,8 @@ public class AddTeamServlet extends HttpServlet{
       }
       if (result>0){
         results.put("dbStatus","Team Added");
+        resp.sendRedirect("all-Teams");
+        return;
       } else {
         results.put("dbStatus","Team Not Added");
 
@@ -105,6 +106,4 @@ public class AddTeamServlet extends HttpServlet{
 
   }
 }
-
-
 

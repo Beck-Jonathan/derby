@@ -23,69 +23,84 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/******************
+ Create the Servlet  For adding to The  Event table
+ Created By Jonathan Beck3/18/2024
+ ***************/
+
 @WebServlet("/addEvent")
 public class AddEventServlet extends HttpServlet{
-static List<Facility> allfacilitys = FacilityDAO.getAllFacility();
-static List<Type> alltypes = TypeDAO.getAllType();
+  static List<Facility> allFacilitys = FacilityDAO.getActiveFacility();
+  static List<Type> allTypes = TypeDAO.getActiveType();
 
-@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-  HttpSession session = req.getSession();
-  session.setAttribute("currentPage",req.getRequestURL());
-  req.setAttribute("pageTitle", "Add Event");
-  allfacilitys = FacilityDAO.getAllFacility();
-  alltypes = TypeDAO.getAllType();
-  req.setAttribute("facilitys", allfacilitys);
-  req.setAttribute("types", alltypes);
-  req.getRequestDispatcher("WEB-INF/personal-project/AddEvent.jsp").forward(req, resp);
-}
+  @Override
+  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
+    req.setAttribute("pageTitle", "Add Event");
+    allFacilitys = FacilityDAO.getAllFacility();
+    req.setAttribute("Facilitys", allFacilitys);
+    allTypes = TypeDAO.getAllType();
+    req.setAttribute("Types", allTypes);
+    req.getRequestDispatcher("WEB-INF/personal-project/AddEvent.jsp").forward(req, resp);
+  }
+
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    req.setAttribute("facilitys", allfacilitys);
-    req.setAttribute("types", alltypes);
+    allFacilitys = FacilityDAO.getAllFacility();
+    req.setAttribute("Facilitys", allFacilitys);
+    allTypes = TypeDAO.getAllType();
+    req.setAttribute("Types", allTypes);
     String _Facility_ID = req.getParameter("inputeventFacility_ID");
     String _Date = req.getParameter("inputeventDate");
-    String _Type = req.getParameter("inputeventType");
+    String _Type_ID = req.getParameter("inputeventType_ID");
+    String _is_active = req.getParameter("inputeventis_active");
     Map<String, String> results = new HashMap<>();
-    results.put("Facility_ID", _Facility_ID);
-    results.put("Date", _Date);
-    results.put("Type", _Type);
+    results.put("Facility_ID",_Facility_ID);
+    results.put("Date",_Date);
+    results.put("Type_ID",_Type_ID);
+    results.put("is_active",_is_active);
     Event event = new Event();
-    int errors = 0;
+    int errors =0;
     try {
       event.setFacility_ID(Integer.valueOf(_Facility_ID));
-    } catch (IllegalArgumentException e) {
-      results.put("eventFacility_IDerror", e.getMessage());
+    } catch(IllegalArgumentException e) {results.put("eventFacility_IDerror", e.getMessage());
       errors++;
     }
     try {
       event.setDate(LocalDate.parse(_Date));
-    } catch (IllegalArgumentException e) {
-      results.put("eventDateerror", e.getMessage());
+    } catch(IllegalArgumentException e) {results.put("eventDateerror", e.getMessage());
       errors++;
     }
     try {
-      event.setType_ID(Integer.valueOf(_Type));
-    } catch (IllegalArgumentException e) {
-      results.put("eventTypeerror", e.getMessage());
+      event.setType_ID(Integer.valueOf(_Type_ID));
+    } catch(IllegalArgumentException e) {results.put("eventType_IDerror", e.getMessage());
       errors++;
     }
-    int result = 0;
-    if (errors == 0) {
-      try {
-        result = EventDAO.add(event);
-      } catch (Exception ex) {
-        results.put("dbStatus", "Database Error");
+    int result=0;
+    if (errors==0){
+      try{
+        result=EventDAO.add(event);
+      }catch(Exception ex){
+        results.put("dbStatus","Database Error");
       }
-      if (result > 0) {
-        results.put("dbStatus", "Event Added");
+      if (result>0){
+        results.put("dbStatus","Event Added");
+        resp.sendRedirect("all-Events");
+        return;
       } else {
-        results.put("dbStatus", "Event Not Added");
+        results.put("dbStatus","Event Not Added");
 
       }
     }
     req.setAttribute("results", results);
     req.setAttribute("pageTitle", "Create a Event ");
     req.getRequestDispatcher("WEB-INF/personal-project/AddEvent.jsp").forward(req, resp);
+
   }
 }
+
+
+
+
+

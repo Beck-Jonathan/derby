@@ -8,20 +8,22 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.lang.Integer.parseInt;
+/******************
+ Create the Servlet  For adding to The  Facility table
+ Created By Jonathan Beck3/18/2024
+ ***************/
 
 @WebServlet("/addFacility")
-public class AddFacilityServlet extends HttpServlet {
+public class AddFacilityServlet extends HttpServlet{
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Privacy Policy");
+    req.setAttribute("pageTitle", "Add Facility");
     req.getRequestDispatcher("WEB-INF/personal-project/AddFacility.jsp").forward(req, resp);
   }
 
@@ -32,12 +34,14 @@ public class AddFacilityServlet extends HttpServlet {
     String _City = req.getParameter("inputfacilityCity");
     String _State = req.getParameter("inputfacilityState");
     String _Zip = req.getParameter("inputfacilityZip");
+    String _is_active = req.getParameter("inputfacilityis_active");
     Map<String, String> results = new HashMap<>();
     results.put("Name",_Name);
     results.put("Addresss",_Addresss);
     results.put("City",_City);
     results.put("State",_State);
     results.put("Zip",_Zip);
+    results.put("is_active",_is_active);
     Facility facility = new Facility();
     int errors =0;
     try {
@@ -74,8 +78,11 @@ public class AddFacilityServlet extends HttpServlet {
       }
       if (result>0){
         results.put("dbStatus","Facility Added");
+        resp.sendRedirect("all-Facilitys");
+        return;
       } else {
         results.put("dbStatus","Facility Not Added");
+
       }
     }
     req.setAttribute("results", results);
@@ -83,5 +90,5 @@ public class AddFacilityServlet extends HttpServlet {
     req.getRequestDispatcher("WEB-INF/personal-project/AddFacility.jsp").forward(req, resp);
 
   }
-    }
+}
 

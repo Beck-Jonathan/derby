@@ -14,18 +14,22 @@ import java.util.List;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpSession;
 
+/******************
+ Create the Servlet  For Viewing all of the  Event table
+ Created By Jonathan Beck3/18/2024
+ ***************/
 @WebServlet("/all-Events")
 public class AllEventServlet extends HttpServlet {
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    HttpSession session = req.getSession();
-    session.setAttribute("currentPage",req.getRequestURL());
-    List<Event> events = null;
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  HttpSession session = req.getSession();
+  session.setAttribute("currentPage",req.getRequestURL());
+  List<Event> Events = null;
 
-    events = EventDAO.getAllEvent();
+    Events =EventDAO.getAllEvent();
 
-    req.setAttribute("Events", events);
-    req.setAttribute("pageTitle", "All Events");
-    req.getRequestDispatcher("WEB-INF/personal-project/all-Events.jsp").forward(req, resp);
+  req.setAttribute("Events", Events);
+  req.setAttribute("pageTitle", "All Events");
+  req.getRequestDispatcher("WEB-INF/personal-project/all-Events.jsp").forward(req,resp);
   }
 }

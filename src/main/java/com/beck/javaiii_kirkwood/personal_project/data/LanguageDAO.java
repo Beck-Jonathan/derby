@@ -1,9 +1,8 @@
 package com.beck.javaiii_kirkwood.personal_project.data;
-
 /// <summary>
 ///AUTHOR: Jonathan Beck
 ///<br />
-///CREATED: 3/3/2024
+///CREATED: 18/3/2024
 ///< br />
 ///An example class to show how code is expected to be written and documented.
 ///This is where a description of what your file is supposed to contain goes.
@@ -44,7 +43,6 @@ public class LanguageDAO {
     }
     return numRowsAffected;
   }
-
   public static Language getLanguageByPrimaryKey(Language _language) throws SQLException{
     Language result = null;
     try(Connection connection = getConnection()) {
@@ -136,7 +134,23 @@ public class LanguageDAO {
     }
     return rowsAffected;
   }
+  public static int undeleteLanguage(int languageID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_unDelete_Language( ?)}")){
+          statement.setInt(1,languageID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Restore Language. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Restore Language. Try again later");
+    }
+    return rowsAffected;
+  }
 
 }
-
 

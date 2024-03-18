@@ -1,11 +1,11 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 /******************
- Create the Servlet  For Viewing all of the  Team table
+ Create the Servlet  For Viewing all of the  User_Event_Line table
  Created By Jonathan Beck3/18/2024
  ***************/
-import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
-import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.data.User_Event_LineDAO;
+import com.beck.javaiii_kirkwood.personal_project.models.User_Event_Line;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,18 +16,19 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@WebServlet("/all-Teams")
-public class AllTeamServlet extends HttpServlet {
+@WebServlet("/all-User_Event_Lines")
+public class AllUser_Event_LinesServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
     session.setAttribute("currentPage", req.getRequestURL());
-    List<Team> teams = null;
+    List<User_Event_Line> user_event_lines = null;
 
-    teams = TeamDAO.getAllTeam();
+    user_event_lines = User_Event_LineDAO.getAllUser_Event_Line();
 
-    req.setAttribute("Teams", teams);
-    req.setAttribute("pageTitle", "All Teams");
-    req.getRequestDispatcher("WEB-INF/personal-project/all-Teams.jsp").forward(req, resp);
+    req.setAttribute("User_Event_Lines", user_event_lines);
+    req.setAttribute("pageTitle", "All User_Event_Lines");
+    req.getRequestDispatcher("WEB-INF/personal-project/all-UserEventLine.jsp").forward(req, resp);
+
   }
 }

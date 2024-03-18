@@ -8,7 +8,7 @@ Created By Jonathan Beck3/3/2024
     <div class="row">
         <div class="col-12">
             <h1>All Roller Users</h1>
-            <p>There ${Users.size() eq 1 ? "is" : "are"}&nbsp;${Users.size()} Users{Users.size() ne 1 ? "s" : ""}</p>
+            <p>There ${Users.size() eq 1 ? "is" : "are"}&nbsp;${Users.size()} User${Users.size() ne 1 ? "s" : ""}</p>
             <c:if test="${Users.size() > 0}">
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
