@@ -29,12 +29,14 @@ public class AllUsersServlet extends HttpServlet {
     }
     else{
       session.setAttribute("flashMessageSuccess","Not Logged in!");
-      resp.sendRedirect("login");
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+
       return;
     }
     if (!user.getPrivileges().equals("admin")) {
       session.setAttribute("flashMessageSuccess","Not an admin");
-      resp.sendRedirect("login");
+      resp.sendError(HttpServletResponse.SC_HTTP_VERSION_NOT_SUPPORTED);
+
 
       return;
     }

@@ -12,8 +12,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Refactored all JSP and servlets related to view all and add">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/all-TwoFA.jsp" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="View current 2fa">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteEventServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteFacilityServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLanguageServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLeagueServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteStatusServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteTeamServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteTypeServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteUser_Event_LineServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteUser_Team_LineServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/editprofile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/AllUsersServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/AllUsersServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeletePrivilegeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeletePrivilegeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/UserSignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/UserSignUpServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/PrivilegeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/PrivilegeDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top-nav.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top-nav.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +43,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -331,7 +350,11 @@
       <workItem from="1709854715775" duration="9735000" />
       <workItem from="1710093486940" duration="21620000" />
       <workItem from="1710355583399" duration="21776000" />
-      <workItem from="1710708112497" duration="13880000" />
+      <workItem from="1710708112497" duration="14783000" />
+      <workItem from="1710877056839" duration="3845000" />
+      <workItem from="1710881990560" duration="601000" />
+      <workItem from="1710969149700" duration="36000" />
+      <workItem from="1711061328602" duration="4011000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -477,7 +500,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710794939152</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="View current 2fa">
+      <option name="closed" value="true" />
+      <created>1710795609849</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1710795609849</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -508,7 +539,8 @@
     <MESSAGE value="Midterm Exam" />
     <MESSAGE value="Various updates" />
     <MESSAGE value="Refactored all JSP and servlets related to view all and add" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored all JSP and servlets related to view all and add" />
+    <MESSAGE value="View current 2fa" />
+    <option name="LAST_COMMIT_MESSAGE" value="View current 2fa" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,9 +576,9 @@
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeletePrivilegeServlet.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="47" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteTypeServlet.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

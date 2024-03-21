@@ -33,7 +33,7 @@ public class UserSignUpServlet extends HttpServlet{
     req.setAttribute("pageTitle", "Join Us!");
 
 
-    alllanguages = LanguageDAO.getAllLanguage();
+    alllanguages = LanguageDAO.getActiveLanguage();
     req.setAttribute("languages", alllanguages);
 
     req.getRequestDispatcher("WEB-INF/personal-project/JoinUs.jsp").forward(req, resp);  }

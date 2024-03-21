@@ -16,38 +16,38 @@
 
 <header id="rollerHeader" onload="formatHeader">
     <div class="row ">
-        <div class="col-sm-1" class=".d-sm-none .d-xxl-block" id="topleftblack" ></div>
-        <div class="col-sm-1" class=".d-sm-none .d-xxl-block" id="Headerr1c1" >
+        <div class="col-sm-1 .d-sm-none .d-xxl-block" id="topleftblack" ></div>
+        <div class="col-sm-1 .d-sm-none .d-xxl-block" id="Headerr1c1" >
 
 
         </div>
-        <div class="col-sm-2" class=".d-sm-none .d-xxl-block" id="Headerr1c2" >
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c2" >
             <button type="button" value="Home" id="Home" ></button>
         </div>
-        <div class="col-sm-2" class=".d-sm-none .d-xxl-block" id="Headerr1c3" >
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c3" >
             <button type="button" value="SignUp" id="SignUp" ></button>
 
         </div>
-        <div class="col-sm-2" class=".d-sm-none .d-xxl-block" id="Headerr1c4" >
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c4" >
             <button type="button" value="ManageDB" id="ManageDB" ></button>
 
         </div>
-        <div class="col-sm-2" class=".d-sm-none .d-xxl-block" id="Headerr1c5" >
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c5" >
         <%@include file="/WEB-INF/personal-project/Login.jsp"%>
 
         </div>
 
-        <div class="col-sm-2" class=".d-none.d-xxl-block" id="toprightblack"></div>
+        <div class="col-sm-2 .d-none.d-xxl-block" id="toprightblack"></div>
 
     </div>
     <div class="row">
-        <h1>&nbsp</h1>
+        <h1></h1>
     </div>
 
 
 </header>
 <div class ="row">
 
-    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" /></div>
+    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" alt="Left Image"></div>
     <div class = "col-lg-8 pe-0 ps-0" id="mainForm">
         <input type="hidden" id="currentpage" name="currentpage" value=${requestScope['javax.servlet.forward.request_uri']}/>

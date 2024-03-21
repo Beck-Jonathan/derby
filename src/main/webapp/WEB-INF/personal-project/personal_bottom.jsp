@@ -1,5 +1,5 @@
 </div> <!-- end row-->
-<div class = "col-sm-2 ps-0" class=".d-none .d-xxl-block" id="right"><img src="images/right.png" /></div>
+<div class = "col-sm-2 ps-0 .d-none .d-xxl-block" id="right"><img src="images/right.png" alt="Right Hand Border" ></div>
 
 </div> <!-- end row-->
 
@@ -14,10 +14,10 @@
 
 <footer>
     <div class="row">
-        <div class="col-sm-2" class=".d-none .d-xxl-block" id="bottomleftblack" ></div>
+        <div class="col-sm-2 .d-none .d-xxl-block" id="bottomleftblack" ></div>
 
         <div class="col-xxl-8" id="footerimage"><img src="images/footer.png" alt="footer_image" ></div>
-        <div class="col-sm-2" class=".d-none .d-xxl-block" id="bottomrightblack"></div>
+        <div class="col-sm-2. d-none .d-xxl-block" id="bottomrightblack"></div>
 
     </div>
 

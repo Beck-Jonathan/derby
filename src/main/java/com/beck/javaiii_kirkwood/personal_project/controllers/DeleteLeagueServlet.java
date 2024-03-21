@@ -1,33 +1,35 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 
-import com.beck.javaiii_kirkwood.personal_project.data.PrivilegeDAO;
-import com.beck.javaiii_kirkwood.personal_project.models.Privilege;
+/******************
+ Create the Servlet For Deleteing from the League table
+ Created By Jonathan Beck3/19/2024
+ ***************/
+
+import com.beck.javaiii_kirkwood.personal_project.data.LeagueDAO;
+import com.beck.javaiii_kirkwood.personal_project.models.League;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-@WebServlet("/deleteprivilege")
-public class DeletePrivilegeServlet extends HttpServlet {
+@WebServlet("/deleteleague")public class DeleteLeagueServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Map<String, String> results = new HashMap<>();
     HttpSession session = req.getSession();
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Privacy Policy");
-    int PrivilegeID = Integer.valueOf(req.getParameter("privilegeid"));
+    req.setAttribute("pageTitle", "Delete League");
+    int LeagueID = Integer.valueOf(req.getParameter("leagueid"));
     int mode = Integer.valueOf(req.getParameter("mode"));
     int result = 0;
     if (mode==0){
       try{
-        result = PrivilegeDAO.deletePrivilege(PrivilegeID);
+        result = LeagueDAO.deleteLeague(LeagueID);
       }
       catch(Exception ex){
         results.put("dbStatus",ex.getMessage());
@@ -35,20 +37,18 @@ public class DeletePrivilegeServlet extends HttpServlet {
     }
     else {
       try{
-        result = PrivilegeDAO.undeletePrivilege(PrivilegeID);
+        result = LeagueDAO.undeleteLeague(LeagueID);
       }
       catch(Exception ex){
         results.put("dbStatus",ex.getMessage());
       }
-
     }
-
-    List<Privilege> privileges = null;
-    privileges = PrivilegeDAO.getAllPrivilege();
+    List<League> leagues = null;
+    leagues = LeagueDAO.getAllLeague();
     req.setAttribute("results",results);
-    req.setAttribute("Privileges", privileges);
-    req.setAttribute("pageTitle", "All Privileges");
-
-    req.getRequestDispatcher("WEB-INF/personal-project/all-Privileges.jsp").forward(req, resp);
+    req.setAttribute("Leagues", leagues);
+    req.setAttribute("pageTitle", "All League");
+    req.getRequestDispatcher("WEB-INF/personal-project/all-League.jsp").forward(req, resp);
   }
 }
+

@@ -143,7 +143,7 @@ public class PrivilegeDAO {
           statement.setInt(1,privilegeID);
           rowsAffected = statement.executeUpdate();
           if (rowsAffected == 0) {
-            throw new RuntimeException("Could not Restore Privilege. Try again later");
+            //throw new RuntimeException("Could not Restore Privilege. Try again later");
           }
         }
       }
