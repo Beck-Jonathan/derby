@@ -10,7 +10,7 @@
 
 
 
-</body>
+
 
 <footer>
     <div class="row">
@@ -23,6 +23,7 @@
 
 
 </footer>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> >
 <script src="js/jquery.validate.js"></script>
 
@@ -32,6 +33,7 @@
 
  <script src="js/site.js"></script>
  <script src="js/header1.js"></script>
+</body>
 
 
 

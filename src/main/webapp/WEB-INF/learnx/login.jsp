@@ -15,6 +15,9 @@
 
                             <!-- Form START -->
                             <form method="post" action="${appURL}/login">
+                                    <c:if test="${not empty redirect }">
+                                <input type="hidden" name="redirect" value="${redirect}">
+                                    </c:if>
                                 <!-- Email -->
                                 <div class="mb-4">
                                     <c:if test="${not empty results.loginFail}">

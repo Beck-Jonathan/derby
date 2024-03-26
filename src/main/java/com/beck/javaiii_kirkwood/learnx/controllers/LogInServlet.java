@@ -21,7 +21,13 @@ public class LogInServlet extends HttpServlet {
   static final int SECONDSINTHIRTYDAYS = 30*24*60*60;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    req.setAttribute("pageTitle", "Privacy Policy");
+    req.setAttribute("pageTitle", "Log in");
+    String redirect = req.getParameter("redirect");
+
+
+    if(redirect != null) {
+      req.setAttribute("redirect", redirect);
+    }
     req.getRequestDispatcher("WEB-INF/learnx/login.jsp").forward(req, resp);
   }
 

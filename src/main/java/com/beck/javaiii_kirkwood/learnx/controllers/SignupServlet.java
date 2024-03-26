@@ -24,8 +24,12 @@ import java.util.regex.Matcher;
 public class SignupServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    req.setAttribute("pageTitle", "Sign up for an account");
-    req.getRequestDispatcher("WEB-INF/learnx/signup.jsp").forward(req, resp);
+    String redirect = req.getParameter("redirect");
+    if(redirect != null) {
+      req.setAttribute("redirect", redirect);
+    }
+    req.setAttribute("pageTitle", "Log in to your account");
+    req.getRequestDispatcher("WEB-INF/learnx/login.jsp").forward(req, resp);
   }
 
   @Override

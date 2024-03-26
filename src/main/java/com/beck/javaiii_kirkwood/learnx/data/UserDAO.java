@@ -122,7 +122,8 @@ public class UserDAO {
     return results;
   }
 
-  public static void update(User user) {
+  public static int update(User user) {
+    int result=0;
     try (Connection connection = getConnection();
          CallableStatement statement = connection.prepareCall("{CALL sp_update_user(?,?,?,?,?,?,?,?,?)}")
     ) {
@@ -135,12 +136,13 @@ public class UserDAO {
       statement.setString(7, user.getStatus());
       statement.setString(8, user.getPrivileges());
       statement.setTimestamp(9, Timestamp.from(user.getLast_logged_in()));
-      statement.executeUpdate();
+      result=statement.executeUpdate();
       // To do: Return the rows affected and display an error if the user not updated.
     } catch (SQLException e) {
       System.out.println("Likely bad SQL query");
       System.out.println(e.getMessage());
     }
+    return result;
   }
 
   public static List<String> addUSer(User user) {
