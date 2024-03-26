@@ -33,15 +33,21 @@ public class PostFixServlet extends HttpServlet {
     List<String> parsed = parse((test));
     String response="Your post fix result </br>";
 
-
-    while(parsed.size()>1){
-      response=response+parsed.toString();
-      response=response+"<br/>";
-      parsed = calculateandshrink(parsed);
-      response=response+"Becomes<br/>" + parsed.toString();
-      response=response+"<br/>";
-      response=response+"<br/>";
-    }
+try {
+  while (parsed.size() > 1) {
+    response = response + parsed.toString();
+    response = response + "<br/>";
+    parsed = calculateandshrink(parsed);
+    response = response + "Becomes<br/>" + parsed.toString();
+    response = response + "<br/>";
+    response = response + "<br/>";
+  }
+}
+catch (Exception ex){
+  response = "Error, please make sure values and operands are separated by spaces. <br/>" +
+      "the equation starts with two numbers, and the equation has one more value than operations. <br/>" +
+      "Currently only + - * and / are supported";
+}
       results.put("response",response);
       req.setAttribute("results",results);
 
@@ -72,6 +78,9 @@ public class PostFixServlet extends HttpServlet {
     public static List<String> calculateandshrink (List<String> values){
 
       for (int i=0; i<values.size();i++) {
+        if (values.size()%2==0 || values.size()<1){
+          throw new IllegalArgumentException();
+        }
         if (values.get(i).equals("/")
             || values.get(i).equals("+")
             || values.get(i).equals("-")
