@@ -33,6 +33,10 @@ public class LogInServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String redirect = req.getParameter("redirect");
+    if (redirect==null){
+      redirect="learnx";
+    }
     String email = req.getParameter("inputEmail1");
     String password = req.getParameter("inputPassword1");
     String[] rememberMe = req.getParameterValues("checkbox-1");
@@ -74,7 +78,7 @@ public class LogInServlet extends HttpServlet {
           }
           session.setAttribute("activeUser",userFromDatabase);
           session.setAttribute("flashMessageSuccess","Logged in!");
-          resp.sendRedirect("learnx");
+          resp.sendRedirect(redirect);
 
           return;
 
