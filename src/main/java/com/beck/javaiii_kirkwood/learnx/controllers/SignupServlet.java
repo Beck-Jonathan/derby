@@ -25,11 +25,9 @@ public class SignupServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String redirect = req.getParameter("redirect");
-    if(redirect != null) {
-      req.setAttribute("redirect", redirect);
-    }
+
     req.setAttribute("pageTitle", "Log in to your account");
-    req.getRequestDispatcher("WEB-INF/learnx/login.jsp").forward(req, resp);
+    req.getRequestDispatcher("WEB-INF/learnx/signup.jsp").forward(req, resp);
   }
 
   @Override

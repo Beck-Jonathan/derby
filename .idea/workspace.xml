@@ -13,9 +13,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Fixed errors noted by professor via slack.">
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Fixed redirect on login.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/ErrorTestServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/LogInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/LogInServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/SignupServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/SignupServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/ErrorHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/ErrorHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +29,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -69,39 +72,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.EmailService.executor&quot;: &quot;Run&quot;,
-    &quot;Application.UserDAO.executor&quot;: &quot;Run&quot;,
-    &quot;JavaIII_Kirkwood.wasFacetEverAdded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Tomcat Server.Tomcat 10.1.11.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jjbec/IdeaProjects/JavaIII_Kirkwood/src/main/webapp/Resume&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.EmailService.executor": "Run",
+    "Application.UserDAO.executor": "Run",
+    "Azure Web App.Azure Web App: JavaIII_Kirkwood:JavaIII-Kirkwood.executor": "Run",
+    "JavaIII_Kirkwood.wasFacetEverAdded": "true",
+    "Maven.JavaIII_Kirkwood [package].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/jjbec/IdeaProjects/JavaIII_Kirkwood/src/main/webapp/Resume",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;azure&quot;,
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "azure",
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -121,7 +126,7 @@
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\images\learnx" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.11">
+  <component name="RunManager" selected="Azure Web App.Azure Web App: JavaIII_Kirkwood:JavaIII-Kirkwood">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -254,6 +259,141 @@
         </option>
       </method>
     </configuration>
+    <configuration name="Azure Web App: JavaIII_Kirkwood:JavaIII-Kirkwood" type="com.microsoft.intellij.run.configuration.WebAppConfigurationType" factoryName="Azure Web App">
+      <option name="appServicePlanName" value="" />
+      <option name="appServicePlanResourceGroupName" value="" />
+      <option name="appSettingsKey" value="b75d9940-8010-4ea5-aceb-416e8df57c21" />
+      <option name="appSettingsToRemove" />
+      <option name="applicationLogLevel" value="Error" />
+      <option name="artifactIdentifier" value="$PROJECT_DIR$/target/JavaIII_Kirkwood-1.0-SNAPSHOT.war" />
+      <option name="azureArtifactType" value="Artifact" />
+      <option name="config">
+        <AppServiceConfig>
+          <option name="appName" value="JavaIII-Kirkwood" />
+          <option name="appSettingsToRemove">
+            <set />
+          </option>
+          <option name="diagnosticConfig" />
+          <option name="pricingTier">
+            <PricingTier>
+              <option name="size" value="B1" />
+              <option name="tier" value="Basic" />
+            </PricingTier>
+          </option>
+          <option name="region">
+            <Region>
+              <option name="abbreviation" value="EUS" />
+              <option name="label" value="East US" />
+              <option name="name" value="eastus" />
+            </Region>
+          </option>
+          <option name="resourceGroup" value="JavaIII-Kirkwood_group" />
+          <option name="runtime">
+            <RuntimeConfig>
+              <option name="image" />
+              <option name="javaVersion" value="Java 17" />
+              <option name="os" value="Linux" />
+              <option name="registryUrl" />
+              <option name="startUpCommand" />
+              <option name="username" />
+              <option name="webContainer" value="Tomcat 10.0" />
+            </RuntimeConfig>
+          </option>
+          <option name="servicePlanName" value="ASP-javawebapp-8fd5" />
+          <option name="servicePlanResourceGroup" value="java-web-app" />
+          <option name="slotConfig" />
+          <option name="subscriptionId" value="3ccf1b08-1216-4e6d-a8e5-e34304c7c1a8" />
+        </AppServiceConfig>
+      </option>
+      <option name="creatingAppServicePlan" value="false" />
+      <option name="creatingNew" value="false" />
+      <option name="creatingResGrp" value="false" />
+      <option name="deployToRoot" value="true" />
+      <option name="deployToSlot" value="false" />
+      <option name="enableApplicationLog" value="false" />
+      <option name="enableDetailedErrorMessage" value="false" />
+      <option name="enableFailedRequestTracing" value="false" />
+      <option name="enableWebServerLogging" value="false" />
+      <option name="newSlotConfigurationSource" />
+      <option name="newSlotName" />
+      <option name="openBrowserAfterDeployment" value="true" />
+      <option name="operatingSystem" />
+      <option name="packaging" value="war" />
+      <option name="pricing" value="" />
+      <option name="projectBase" value="" />
+      <option name="projectType" value="" />
+      <option name="region" value="" />
+      <option name="resourceGroup" value="" />
+      <option name="slotName" />
+      <option name="slotPanelVisible" value="false" />
+      <option name="subscriptionId" value="" />
+      <option name="targetName" value="" />
+      <option name="targetPath" value="" />
+      <option name="webAppContainer" />
+      <option name="webAppId" value="" />
+      <option name="webAppJavaVersion" />
+      <option name="webAppName" value="" />
+      <option name="webServerLogQuota" value="35" />
+      <option name="webServerRetentionPeriod" />
+      <method v="2">
+        <option name="Maven.BeforeRunTask" enabled="true" file="$PROJECT_DIR$/../JavaIII_Kirkwood\pom.xml" goal="package" />
+      </method>
+    </configuration>
+    <configuration default="true" type="com.microsoft.intellij.run.configuration.WebAppConfigurationType" factoryName="Azure Web App">
+      <option name="appServicePlanName" value="" />
+      <option name="appServicePlanResourceGroupName" value="" />
+      <option name="appSettingsKey" value="c10aa1cd-65c9-4827-aebf-3900906a684f" />
+      <option name="appSettingsToRemove" />
+      <option name="applicationLogLevel" value="Error" />
+      <option name="artifactIdentifier" />
+      <option name="azureArtifactType" />
+      <option name="config">
+        <AppServiceConfig>
+          <option name="appName" />
+          <option name="appSettingsToRemove" />
+          <option name="diagnosticConfig" />
+          <option name="pricingTier" />
+          <option name="region" />
+          <option name="resourceGroup" />
+          <option name="runtime" />
+          <option name="servicePlanName" />
+          <option name="servicePlanResourceGroup" />
+          <option name="slotConfig" />
+          <option name="subscriptionId" />
+        </AppServiceConfig>
+      </option>
+      <option name="creatingAppServicePlan" value="false" />
+      <option name="creatingNew" value="false" />
+      <option name="creatingResGrp" value="false" />
+      <option name="deployToRoot" value="true" />
+      <option name="deployToSlot" value="false" />
+      <option name="enableApplicationLog" value="false" />
+      <option name="enableDetailedErrorMessage" value="false" />
+      <option name="enableFailedRequestTracing" value="false" />
+      <option name="enableWebServerLogging" value="false" />
+      <option name="newSlotConfigurationSource" />
+      <option name="newSlotName" />
+      <option name="openBrowserAfterDeployment" value="true" />
+      <option name="operatingSystem" />
+      <option name="packaging" />
+      <option name="pricing" value="" />
+      <option name="projectBase" value="" />
+      <option name="projectType" value="" />
+      <option name="region" value="" />
+      <option name="resourceGroup" value="" />
+      <option name="slotName" />
+      <option name="slotPanelVisible" value="false" />
+      <option name="subscriptionId" value="" />
+      <option name="targetName" value="" />
+      <option name="targetPath" value="" />
+      <option name="webAppContainer" />
+      <option name="webAppId" value="" />
+      <option name="webAppJavaVersion" />
+      <option name="webAppName" value="" />
+      <option name="webServerLogQuota" value="35" />
+      <option name="webServerRetentionPeriod" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Node.js.header1.js" />
@@ -347,7 +487,7 @@
       <workItem from="1711482093469" duration="630000" />
       <workItem from="1711482896681" duration="3346000" />
       <workItem from="1711645169937" duration="2465000" />
-      <workItem from="1711665515933" duration="1189000" />
+      <workItem from="1711665515933" duration="2481000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -533,7 +673,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711665571474</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixed redirect on login.">
+      <option name="closed" value="true" />
+      <created>1711667434906</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1711667434906</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -568,7 +716,8 @@
     <MESSAGE value="Errors fixed from html validator" />
     <MESSAGE value="created error handling" />
     <MESSAGE value="Fixed errors noted by professor via slack." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed errors noted by professor via slack." />
+    <MESSAGE value="Fixed redirect on login." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed redirect on login." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
