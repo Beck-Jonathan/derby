@@ -1,8 +1,8 @@
-/******************
+<%--
 Create the JSP for signing up for the league.
 Created By Jonathan Beck3/10/2024
 
-***************/
+--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
     <form method="post" action="${appURL}/joinus" id = "JoinUs" >"
@@ -10,9 +10,9 @@ Created By Jonathan Beck3/10/2024
         <div class ="row" id = "row0">
             <label for="inputuserUser_Name" class="form-label">User_Name</label>
             <div class="input-group input-group-lg">
-                <input type="text" class="<c:if test="${not empty results.userUser_Nameerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_Name" id="inputuserUser_Name" name="inputuserUser_Name" value="${results.User_Name}">
-                <c:if test="${not empty results.userUser_Nameerror}">
-                    <div class="invalid-feedback">${results.userUser_Nameerror}</div>
+                <input type="text" class="<c:if test="${not empty results.userUser_Nameerror3}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_Name" id="inputuserUser_Name" name="inputuserUser_Name" value="${results.User_Name3}">
+                <c:if test="${not empty results.userUser_Nameerror3}">
+                    <div class="invalid-feedback">${results.userUser_Nameerror3}</div>
                 </c:if>
             </div>
         </div>
@@ -20,9 +20,9 @@ Created By Jonathan Beck3/10/2024
         <div class ="row" id = "row1">
             <label for="inputuserUser_PW" class="form-label">User_PW</label>
             <div class="input-group input-group-lg">
-                <input type="text" class="<c:if test="${not empty results.userUser_PWerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW" id="inputuserUser_PW" name="inputuserUser_PW" value="${results.User_PW}">
-                <c:if test="${not empty results.userUser_PWerror}">
-                    <div class="invalid-feedback">${results.userUser_PWerror}</div>
+                <input type="password" class="<c:if test="${not empty results.userUser_PWerror3}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW" id="inputuserUser_PW" name="inputuserUser_PW" value="${results.User_PW3}">
+                <c:if test="${not empty results.userUser_PWerror3}">
+                    <div class="invalid-feedback">${results.userUser_PWerror3}</div>
                 </c:if>
             </div>
         </div>
@@ -30,9 +30,9 @@ Created By Jonathan Beck3/10/2024
         <div class ="row" id = "row2">
             <label for="inputuserUser_PW2" class="form-label">User_PW</label>
             <div class="input-group input-group-lg">
-                <input type="text" class="<c:if test="${not empty results.userUser_PW2error}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW2" id="inputuserUser_PW2" name="inputuserUser_PW2" value="${results.User_PW2}">
-                <c:if test="${not empty results.userUser_PWerror}">
-                    <div class="invalid-feedback">${results.userUser_PWerror}</div>
+                <input type="password" class="<c:if test="${not empty results.userUser_PW2error}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW2" id="inputuserUser_PW2" name="inputuserUser_PW2" value="${results.User_PW2}">
+                <c:if test="${not empty results.userUser_PW2error}">
+                    <div class="invalid-feedback">${results.userUser_PW2error}</div>
                 </c:if>
             </div>
         </div>

@@ -3,6 +3,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 import com.beck.javaiii_kirkwood.personal_project.data.TwoFADAO;
 import com.beck.javaiii_kirkwood.personal_project.data.UserDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.TwoFA;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -50,7 +51,10 @@ public class TwoFaServlet extends HttpServlet {
           }
           else{
             results.put("dbStatus","user activated!");
-            resp.sendRedirect("signin");
+            User user = new User();
+            user.setUser_ID(userID);
+            session.setAttribute("User",UserDAO.getUserByPrimaryKey(user));
+            resp.sendRedirect("home");
             return;
           }
         }

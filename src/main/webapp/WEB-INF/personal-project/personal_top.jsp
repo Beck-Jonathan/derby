@@ -26,12 +26,15 @@
 
         </div>
         <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c2" >
-            <button type="button" value="Home" id="Home" ></button>
+            <a href="home"> <button type="button" value="Home" id="Home" ></button> </a>
         </div>
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c3" >
-            <button type="button" value="SignUp" id="SignUp" ></button>
 
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c3" >
+            <c:if test="${empty User}">
+            <a href="joinus">   <button type="button" value="SignUp" id="SignUp" ></button></a>
+            </c:if>
         </div>
+
         <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c4" >
             <button type="button" value="ManageDB" id="ManageDB" ></button>
 

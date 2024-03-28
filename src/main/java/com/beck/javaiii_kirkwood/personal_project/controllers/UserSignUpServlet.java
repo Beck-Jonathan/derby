@@ -58,8 +58,8 @@ public class UserSignUpServlet extends HttpServlet{
     String _Language_ID = req.getParameter("inputuserLanguage_ID");
 
     Map<String, String> results = new HashMap<>();
-    results.put("User_Name",_User_Name);
-    results.put("User_PW",_User_PW);
+    results.put("User_Name3",_User_Name);
+    results.put("User_PW3",_User_PW);
     results.put("User_PW2",_User_PW2);
 
     results.put("Email",_Email);
@@ -69,16 +69,16 @@ public class UserSignUpServlet extends HttpServlet{
     int errors =0;
     try {
       user.setUser_Name(_User_Name);
-    } catch(IllegalArgumentException e) {results.put("userUser_Nameerror", e.getMessage());
+    } catch(IllegalArgumentException e) {results.put("userUser_Nameerror3", e.getMessage());
       errors++;
     }
     try {
       user.setUser_PW(_User_PWChar);
-    } catch(IllegalArgumentException e) {results.put("userUser_PWerror", e.getMessage());
+    } catch(IllegalArgumentException e) {results.put("userUser_PWerror3", e.getMessage());
       errors++;
     }
     if (!_User_PW.equals(_User_PW2)){
-      results.put("userUser_PWerror", "Passwords do not match");
+      results.put("userUser_PW1error", "Passwords do not match");
       errors++;
     }
     try {
