@@ -6,6 +6,8 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.regex.Matcher;
 
+import static java.util.Collections.replaceAll;
+
 public class User {
   int ID;
   String first_name;
@@ -51,6 +53,8 @@ public class User {
   }
 
   public void setFirst_name(String first_name) {
+
+    first_name=first_name.replaceAll("[^A-Za-z0-9@ - ]","");
     this.first_name = first_name;
   }
 
@@ -146,7 +150,16 @@ public class User {
   }
 
   public void setLanguage(String language) {
-    this.language = language;
+    language=language.replaceAll("[^A-Za-z0-9@ - ]","");
+    Matcher matcher = MyValidators.languagePattern.matcher(language);
+    if (!matcher.matches()){
+      throw new IllegalArgumentException("Invalid Language");
+    }
+    this.language=language;
+
+
+
+
   }
 
   @Override

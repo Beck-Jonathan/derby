@@ -279,6 +279,21 @@ public class UserDAO {
     }
     return result;
   }
+
+  public static int delete(User user) {
+    int rowsAffected = 0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_user(?)}")) {
+          statement.setInt(1, user.getID());
+           rowsAffected = statement.executeUpdate();
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return rowsAffected;
+  }
 }
 
 
