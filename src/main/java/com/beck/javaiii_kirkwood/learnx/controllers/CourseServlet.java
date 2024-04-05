@@ -15,15 +15,15 @@ import java.util.List;
 @WebServlet("/courses")
 public class CourseServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    String categoryTry = req.getParameter("Category");
-    String skillTtry = req.getParameter("Skill");
+    String [] categoryTry = req.getParameterValues("category");
+    String skillTry = req.getParameter("skill-level");
     int limitTry = 0;
     int offsetTry= 0;
     try{
       limitTry = Integer.parseInt(req.getParameter("limit"));
     }
     catch (Exception e){
-      limitTry = 10;
+      limitTry = 25;
     }
     try{
       offsetTry = Integer.parseInt(req.getParameter("offset"));
@@ -34,7 +34,13 @@ public class CourseServlet extends HttpServlet {
 
 
     String categoryFilter = "";
-    String skillFilter = "";
+    if (categoryTry!=null && categoryTry.length>0){
+      categoryFilter=String.join(",",categoryTry);
+    }
+    String skillFilter="";
+    if (skillTry!=null) {
+      skillFilter = skillTry;
+    }
     // To do: For pagination
     int limit = limitTry;
     int offset = offsetTry;
@@ -43,6 +49,8 @@ public class CourseServlet extends HttpServlet {
     req.setAttribute("courses", courses);
     req.setAttribute("categories", categories);
     req.setAttribute("pageTitle", "Courses");
+    req.setAttribute("categoryFilter",categoryFilter);
+    req.setAttribute("skillFilter",skillFilter);
     req.getRequestDispatcher("WEB-INF/learnx/all-courses.jsp").forward(req, resp);
   }
 }

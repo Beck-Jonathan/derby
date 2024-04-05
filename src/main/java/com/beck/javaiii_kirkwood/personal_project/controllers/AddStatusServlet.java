@@ -50,7 +50,7 @@ public class AddStatusServlet extends HttpServlet{
       }
       if (result>0){
         results.put("dbStatus","Status Added");
-        resp.sendRedirect("all-Statuss");
+        resp.sendRedirect("all-Status");
         return;
       } else {
         results.put("dbStatus","Status Not Added");

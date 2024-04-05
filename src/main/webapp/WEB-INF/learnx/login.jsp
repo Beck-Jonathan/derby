@@ -65,6 +65,9 @@
                             <div class="mt-4 text-center">
                                 <span>Don't have an account? <a href="${appURL}/signup">Sign up here</a></span>
                             </div>
+                            <div class="mt-4 text-center">
+                                <span>Forgot Your password? <a href="${appURL}/resetpassword">Reset Password</a></span>
+                            </div>
 
 
                         </div>

@@ -17,7 +17,8 @@ public class LogoutServlet extends HttpServlet {
     HttpSession session = req.getSession();
     session.removeAttribute("activeUser");
     session.setAttribute("flashMessageSuccess","Logged out! C-A-L, C-U L8R");
-    req.getRequestDispatcher("WEB-INF/learnx/home.jsp").forward(req, resp);
+    resp.sendRedirect("learnx");
+    return;
   }
 
 
