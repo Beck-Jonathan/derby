@@ -52,6 +52,7 @@ public class User {
     return User_Name;
   }
   public void setUser_Name(String User_Name) {
+    User_Name = User_Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(User_Name.length()<4){
       throw new IllegalArgumentException("User_Name is too short.");
     }
@@ -84,6 +85,10 @@ public class User {
     return Email;
   }
   public void setEmail(String Email) {
+    Matcher matcher = MyValidators.emailPattern.matcher(Email);
+    if (!matcher.matches()){
+      throw new IllegalArgumentException("Invalid Email");
+    }
     if(Email.length()<4){
       throw new IllegalArgumentException("Email is too short.");
     }

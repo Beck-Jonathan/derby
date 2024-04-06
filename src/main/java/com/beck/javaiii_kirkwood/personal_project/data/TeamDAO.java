@@ -19,25 +19,30 @@ package com.beck.javaiii_kirkwood.personal_project.data;
 /// A new remark should be added for each update.
 ///</remarks>
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalDate;
 import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
 public class TeamDAO {
 
   public static int add(Team _team) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Team( ?, ?, ?, ?, ?, ?)}")){
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Team( ?, ?, ?, ?, ?, ?, ?, ?)}")){
           statement.setInt(1,_team.getLeague_ID());
-          statement.setString(2,_team.getTeam_Name());
+          statement.setString(2,_team.getName());
           statement.setString(3,_team.getTeam_Primary_Color());
-          statement.setString(4,_team.getTeam_City());
-          statement.setString(5,_team.getTeam_State());
-          statement.setString(6,_team.getLogo());
+          statement.setString(4,_team.getTeam_Secondary_Color());
+          statement.setString(5,_team.getTeam_Tertiary_Color());
+          statement.setString(6,_team.getTeam_City());
+          statement.setString(7,_team.getTeam_State());
+          statement.setString(8,_team.getLogo());
           numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not add Team. Try again later");
@@ -49,8 +54,8 @@ public class TeamDAO {
     }
     return numRowsAffected;
   }
-  public static Team getTeamByPrimaryKey(Team _team) throws SQLException{
-    Team result = null;
+  public static TeamVM getTeamByPrimaryKey(Team _team) throws SQLException{
+    TeamVM result = null;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Team(?)}")) {
         statement.setString(1, _team.getTeam_ID().toString());
@@ -58,13 +63,18 @@ public class TeamDAO {
         try (ResultSet resultSet = statement.executeQuery()){
           if(resultSet.next()){Integer Team_ID = resultSet.getInt("Team_ID");
             Integer League_ID = resultSet.getInt("League_ID");
-            String Team_Name = resultSet.getString("Team_Name");
+            String Name = resultSet.getString("Name");
             String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
+            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
+            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
             String Team_City = resultSet.getString("Team_City");
             String Team_State = resultSet.getString("Team_State");
             String Logo = resultSet.getString("Logo");
+            String League_name = resultSet.getString("League_Name");
+            String Description = resultSet.getString("Description");
             boolean is_active = resultSet.getBoolean("is_active");
-            result = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);}
+            result = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
+                League_name,Description);}
         }
       }
     } catch (SQLException e) {
@@ -72,20 +82,25 @@ public class TeamDAO {
     }
     return result;
   }
-  public static List<Team> getAllTeam() {
-    List<Team> result = new ArrayList<>();
+  public static List<TeamVM> getAllTeam() {
+    List<TeamVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer Team_ID = resultSet.getInt("Team_ID");
             Integer League_ID = resultSet.getInt("League_ID");
-            String Team_Name = resultSet.getString("Team_Name");
+            String Name = resultSet.getString("Name");
             String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
+            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
+            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
             String Team_City = resultSet.getString("Team_City");
             String Team_State = resultSet.getString("Team_State");
             String Logo = resultSet.getString("Logo");
+            String League_name = resultSet.getString("League_Name");
+            String Description = resultSet.getString("Description");
             boolean is_active = resultSet.getBoolean("is_active");
-            Team _team = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);
+            TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
+                League_name,Description);
             result.add(_team);
           }
         }
@@ -95,20 +110,25 @@ public class TeamDAO {
       throw new RuntimeException("Could not retrieve Teams. Try again later");
     }
     return result;}
-  public static List<Team> getActiveTeam() {
-    List<Team> result = new ArrayList<>();
+  public static List<TeamVM> getActiveTeam() {
+    List<TeamVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer Team_ID = resultSet.getInt("Team_ID");
             Integer League_ID = resultSet.getInt("League_ID");
-            String Team_Name = resultSet.getString("Team_Name");
+            String Name = resultSet.getString("Name");
             String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
+            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
+            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
             String Team_City = resultSet.getString("Team_City");
             String Team_State = resultSet.getString("Team_State");
             String Logo = resultSet.getString("Logo");
+            String League_name = resultSet.getString("League_Name");
+            String Description = resultSet.getString("Description");
             boolean is_active = resultSet.getBoolean("is_active");
-            Team _team = new Team( Team_ID, League_ID, Team_Name, Team_Primary_Color, Team_City, Team_State, Logo, is_active);
+            TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
+                League_name,Description);
             result.add(_team);
           }
         }
@@ -123,23 +143,27 @@ public class TeamDAO {
     int result = 0;
     try (Connection connection = getConnection()) {
       if (connection !=null){
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Team(? ,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"))
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Team(? ,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}"))
         {
           statement.setInt(1,oldTeam.getTeam_ID());
           statement.setInt(2,oldTeam.getLeague_ID());
           statement.setInt(3,newTeam.getLeague_ID());
-          statement.setString(4,oldTeam.getTeam_Name());
-          statement.setString(5,newTeam.getTeam_Name());
+          statement.setString(4,oldTeam.getName());
+          statement.setString(5,newTeam.getName());
           statement.setString(6,oldTeam.getTeam_Primary_Color());
           statement.setString(7,newTeam.getTeam_Primary_Color());
-          statement.setString(8,oldTeam.getTeam_City());
-          statement.setString(9,newTeam.getTeam_City());
-          statement.setString(10,oldTeam.getTeam_State());
-          statement.setString(11,newTeam.getTeam_State());
-          statement.setString(12,oldTeam.getLogo());
-          statement.setString(13,newTeam.getLogo());
-          statement.setBoolean(14,oldTeam.getis_active());
-          statement.setBoolean(15,newTeam.getis_active());
+          statement.setString(8,oldTeam.getTeam_Secondary_Color());
+          statement.setString(9,newTeam.getTeam_Secondary_Color());
+          statement.setString(10,oldTeam.getTeam_Tertiary_Color());
+          statement.setString(11,newTeam.getTeam_Tertiary_Color());
+          statement.setString(12,oldTeam.getTeam_City());
+          statement.setString(13,newTeam.getTeam_City());
+          statement.setString(14,oldTeam.getTeam_State());
+          statement.setString(15,newTeam.getTeam_State());
+          statement.setString(16,oldTeam.getLogo());
+          statement.setString(17,newTeam.getLogo());
+          statement.setBoolean(18,oldTeam.getis_active());
+          statement.setBoolean(19,newTeam.getis_active());
           statement.executeUpdate();
         } catch (SQLException e) {
           throw new RuntimeException("Could not update Team . Try again later");
@@ -184,4 +208,3 @@ public class TeamDAO {
   }
 
 }
-

@@ -6,6 +6,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
  ***************/
 import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,15 +20,16 @@ import java.util.Map;
 @WebServlet("/all-Teams")
 public class AllTeamServlet extends HttpServlet {
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    HttpSession session = req.getSession();
-    session.setAttribute("currentPage", req.getRequestURL());
-    List<Team> teams = null;
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  HttpSession session = req.getSession();
+  session.setAttribute("currentPage",req.getRequestURL());
+  List<TeamVM> teams = null;
 
-    teams = TeamDAO.getAllTeam();
+  teams =TeamDAO.getAllTeam();
 
-    req.setAttribute("Teams", teams);
-    req.setAttribute("pageTitle", "All Teams");
-    req.getRequestDispatcher("WEB-INF/personal-project/all-Teams.jsp").forward(req, resp);
-  }
+  req.setAttribute("Teams", teams);
+  req.setAttribute("pageTitle", "All Teams");
+  req.getRequestDispatcher("WEB-INF/personal-project/all-Teams.jsp").forward(req,resp);
+
+}
 }

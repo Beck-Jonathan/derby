@@ -29,6 +29,13 @@
         <param-value>http://localhost:8080/JavaIII_Kirkwood_war_exploded</param-value>
     </context-param>
     <context-param>
+        <description>Location to store uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>
+            c:\apache-tomcat-5.5.29\webapps\data\
+        </param-value>
+    </context-param>
+    <context-param>
         <param-name>Foot</param-name>
         <param-value>TwoFeet</param-value>
     </context-param>

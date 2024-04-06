@@ -25,12 +25,12 @@ public class Type {
   public void setName(String Name) {
     Name = Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(Name.length()<4){
-      throw new IllegalArgumentException("Name is too short.");}
+      throw new IllegalArgumentException("Name is too short.");
+    }
     if(Name.length()>100){
       throw new IllegalArgumentException("Name is too long.");
     }
     this.Name = Name;
-
   }
   public boolean getis_active() {
     return is_active;
@@ -40,3 +40,4 @@ public class Type {
   }
 
 }
+

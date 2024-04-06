@@ -41,7 +41,8 @@ public class TwoFA {
     return TwoFA_Code;
   }
   public void setTwoFA_Code(String TwoFA_Code) {
-    if(TwoFA_Code.length()<4){
+    TwoFA_Code = TwoFA_Code.replaceAll("[^A-Za-z0-9 - ]","");
+    if(TwoFA_Code.length()<6){
       throw new IllegalArgumentException("TwoFA_Code is too short.");
     }
     if(TwoFA_Code.length()>6){

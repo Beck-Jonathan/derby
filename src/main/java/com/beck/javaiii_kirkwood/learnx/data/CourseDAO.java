@@ -66,5 +66,20 @@ public class CourseDAO extends Database {
     }
     return categories;
   }
+  public static int enroll(int userId, int courseId) {
+    int result=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_add_enrollment(?, ?)}")) {
+          statement.setInt(1, userId);
+          statement.setInt(2, courseId);
+          result=statement.executeUpdate();
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
 
 }

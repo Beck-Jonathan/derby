@@ -1,5 +1,11 @@
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class="table-responsive"><table class="table table-bordered">
+
+
+
+
+
+    <h4>Admin Section, ignore for now</h4>
     <thead>
     <tr>
         <th scope="col">Table</th>

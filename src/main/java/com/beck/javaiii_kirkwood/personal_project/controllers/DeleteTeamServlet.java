@@ -7,6 +7,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -43,7 +44,7 @@ import java.util.Map;
         results.put("dbStatus",ex.getMessage());
       }
     }
-    List<Team> teams = null;
+    List<TeamVM> teams = null;
     teams = TeamDAO.getAllTeam();
     req.setAttribute("results",results);
     req.setAttribute("Teams", teams);

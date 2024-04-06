@@ -19,6 +19,7 @@ package com.beck.javaiii_kirkwood.personal_project.models;
 /// A new remark should be added for each update.
 ///</remarks>
 
+
 public class Language {
   private Integer Language_ID;
   private String Name;
@@ -42,6 +43,7 @@ public class Language {
     return Name;
   }
   public void setName(String Name) {
+    Name = Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(Name.length()<4){
       throw new IllegalArgumentException("Name is too short.");
     }

@@ -48,6 +48,7 @@ public class Facility {
     return Name;
   }
   public void setName(String Name) {
+    Name = Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(Name.length()<4){
       throw new IllegalArgumentException("Name is too short.");
     }
@@ -60,6 +61,7 @@ public class Facility {
     return Addresss;
   }
   public void setAddresss(String Addresss) {
+    Addresss = Addresss.replaceAll("[^A-Za-z0-9 - ]","");
     if(Addresss.length()<4){
       throw new IllegalArgumentException("Addresss is too short.");
     }
@@ -72,6 +74,7 @@ public class Facility {
     return City;
   }
   public void setCity(String City) {
+    City = City.replaceAll("[^A-Za-z0-9 - ]","");
     if(City.length()<4){
       throw new IllegalArgumentException("City is too short.");
     }
@@ -84,6 +87,7 @@ public class Facility {
     return State;
   }
   public void setState(String State) {
+    State = State.replaceAll("[^A-Za-z0-9 - ]","");
     if(State.length()<4){
       throw new IllegalArgumentException("State is too short.");
     }
@@ -96,6 +100,7 @@ public class Facility {
     return Zip;
   }
   public void setZip(String Zip) {
+    Zip = Zip.replaceAll("[^A-Za-z0-9 - ]","");
     if(Zip.length()<4){
       throw new IllegalArgumentException("Zip is too short.");
     }
@@ -112,4 +117,3 @@ public class Facility {
   }
 
 }
-

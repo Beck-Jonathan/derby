@@ -4,6 +4,7 @@ import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.UserDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.User_Team_LineDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
 import com.beck.javaiii_kirkwood.personal_project.models.User;
 import com.beck.javaiii_kirkwood.personal_project.models.User_Team_Line;
 import jakarta.servlet.ServletException;
@@ -25,7 +26,7 @@ import java.util.Map;
 @WebServlet("/addUser_Team_Line")
 public class AddUser_Team_LineServlet extends HttpServlet{
   static List<User> allUsers = UserDAO.getAllUser();
-  static List<Team> allTeams = TeamDAO.getActiveTeam();
+  static List<TeamVM> allTeams = TeamDAO.getActiveTeam();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

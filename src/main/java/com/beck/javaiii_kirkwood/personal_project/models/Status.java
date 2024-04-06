@@ -42,6 +42,7 @@ public class Status {
     return Name;
   }
   public void setName(String Name) {
+    Name = Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(Name.length()<4){
       throw new IllegalArgumentException("Name is too short.");
     }
