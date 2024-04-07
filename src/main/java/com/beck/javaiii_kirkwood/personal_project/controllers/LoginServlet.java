@@ -62,6 +62,7 @@ public class LoginServlet extends HttpServlet{
         id=UserDAO.getUserIDByUserName(_User_Name);
         user.setUser_ID(id);
         user=UserDAO.getUserByPrimaryKey(user);
+        user.setUser_PW(null);
         results.put("dbStatus",user.getEmail());
         HttpSession session = req.getSession();
         session.setAttribute("User",user);

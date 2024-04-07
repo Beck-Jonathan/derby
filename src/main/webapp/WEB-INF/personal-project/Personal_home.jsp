@@ -1,11 +1,13 @@
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
-<div class="table-responsive"><table class="table table-bordered">
+<c:if test="${not empty User}">
+    <p>Your current privilege level is ${User.privilege_ID}. Use the edit privilege button below
+        to grant yourself further access.</p>
+</c:if>
+<div class="table-responsive col-12">
+<table class="table table-bordered">
 
 
 
-
-
-    <h4>Admin Section, ignore for now</h4>
     <thead>
     <tr>
         <th scope="col">Table</th>
@@ -13,7 +15,17 @@
     </tr>
     </thead>
     <tbody>
-    <tr><td>Join Us</td><td><a href="joinus"> View </a> </td></tr>
+    <c:if test="${empty User}">
+        <tr><td>Join Us</td><td><a href="joinus"> View </a> </td></tr>
+    </c:if>
+    <c:if test="${not empty User}">
+        <tr><td>View all League</td><td><a href="all-Leagues"> View </a> </td></tr>
+        <tr><td>View all Team</td><td><a href="all-Teams"> View </a> </td></tr>
+        <tr><td>Edit privilege</td><td><a href="user_change_priv"> View </a> </td></tr>
+    </c:if>
+
+<c:if test="${User.privilege_ID > 3}">
+    <tr><td>ADMIN SECTION<td>IGNORE FOR NOW</td></tr>
     <tr><td>View all Type</td><td><a href="all-Types"> View </a> </td></tr>
     <tr><td>View all Status</td><td><a href="all-Status"> View </a> </td></tr>
     <tr><td>View all Privilege</td><td><a href="all-Privileges"> View </a> </td></tr>
@@ -26,8 +38,11 @@
     <tr><td>View all TwoFA</td><td><a href="all-TwoFAs"> View </a> </td></tr>
     <tr><td>View all User_Event_Line</td><td><a href="all-User_Event_Lines"> View </a> </td></tr>
     <tr><td>View all User_Team_Line</td><td><a href="all-User_Team_Lines"> View </a> </td></tr>
-
+</c:if>
     </tbody>
 </table>
+
     </div>
+
+
         <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>

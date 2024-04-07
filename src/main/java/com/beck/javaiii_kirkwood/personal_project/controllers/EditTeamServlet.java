@@ -37,8 +37,8 @@ public class EditTeamServlet extends HttpServlet {
     HttpSession session = req.getSession();
     session.setAttribute("team", team);
     String applicationPath = req.getServletContext().getRealPath("");
-    String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-    session.setAttribute("displayTeamLogo",uploadFilePath+File.separator +File.separator+team.getLogo());
+    String uploadFilePath = ""+UPLOAD_DIR;
+    session.setAttribute("displayTeamLogo",uploadFilePath+"//"+team.getLogo());
     req.setAttribute("mode", mode);
     session.setAttribute("currentPage", req.getRequestURL());
     req.setAttribute("pageTitle", "Add Team");

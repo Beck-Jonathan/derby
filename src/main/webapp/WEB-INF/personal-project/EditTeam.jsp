@@ -7,8 +7,20 @@ Create the JSP For Viuw/Edit from the Team table
     <form method="post" action="${appURL}/editTeam" id = "editTeam" >"
         <!-- Team_ID -->
         <div class ="row" id = "row0">
+            <div class ="col col-sm-4" >
             <h2>Team_ID  :
                 ${fn:escapeXml(team.team_ID)}</h2>
+            </div>
+            <div class ="col col-sm-4">
+            </div>
+            <div class ="col col-sm-4">
+                <img src="${displayTeamLogo}" style="height: 100px; margin: 10px;
+                        border: 4px solid #${team.team_Primary_Color};
+                        box-shadow: 2px 2px 5px 5px #${team.team_Secondary_Color}, 6px 6px 1px 1px #${team.team_Tertiary_Color};"
+                     class="<c:if test="${not empty results.teamLogoerror}">is-invalid</c:if> " placeholder="Logo" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="displayTeamLogo" name="displayTeamLogo" value="${fn:escapeXml(team.logo)}">
+
+            </div>
+
         </div>
         <!-- League_ID -->
         <div class ="row" id = "row1">
@@ -34,36 +46,39 @@ Create the JSP For Viuw/Edit from the Team table
                 </c:if>
             </div>
         </div>
-        <!-- Team_Primary_Color -->
+        <!-- start colors -->
         <div class ="row" id = "row3">
+        <!-- Team_Primary_Color -->
+        <div class ="col col-sm-3" >
             <label for="inputteamTeam_Primary_Color" class="form-label">Team_Primary_Color</label>
             <div class="input-group input-group-lg">
-                <input type="color" class="<c:if test="${not empty results.teamTeam_Primary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Primary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Primary_Color" name="inputteamTeam_Primary_Color" value="${fn:escapeXml(team.team_Primary_Color)}">
+                <input type="color" class="<c:if test="${not empty results.teamTeam_Primary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Primary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Primary_Color" name="inputteamTeam_Primary_Color" value="#${fn:escapeXml(team.team_Primary_Color)}">
                 <c:if test="${not empty results.teamTeam_Primary_Colorerror}">
                     <div class="invalid-feedback">${results.teamTeam_Primary_Colorerror}</div>
                 </c:if>
             </div>
         </div>
         <!-- Team_Secondary_Color -->
-        <div class ="row" id = "row4">
+        <div class ="col col-sm-3" >
             <label for="inputteamTeam_Secondary_Color" class="form-label">Team_Secondary_Color</label>
             <div class="input-group input-group-lg">
-                <input type="color" class="<c:if test="${not empty results.teamTeam_Secondary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Secondary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Secondary_Color" name="inputteamTeam_Secondary_Color" value="${fn:escapeXml(team.team_Secondary_Color)}">
+                <input type="color" class="<c:if test="${not empty results.teamTeam_Secondary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Secondary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Secondary_Color" name="inputteamTeam_Secondary_Color" value="#${fn:escapeXml(team.team_Secondary_Color)}">
                 <c:if test="${not empty results.teamTeam_Secondary_Colorerror}">
                     <div class="invalid-feedback">${results.teamTeam_Secondary_Colorerror}</div>
                 </c:if>
             </div>
         </div>
         <!-- Team_Tertiary_Color -->
-        <div class ="row" id = "row5">
+        <div class ="col col-sm-3" >
             <label for="inputteamTeam_Tertiary_Color" class="form-label">Team_Tertiary_Color</label>
             <div class="input-group input-group-lg">
-                <input type="color" class="<c:if test="${not empty results.teamTeam_Tertiary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Tertiary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Tertiary_Color" name="inputteamTeam_Tertiary_Color" value="${fn:escapeXml(team.team_Tertiary_Color)}">
+                <input type="color" class="<c:if test="${not empty results.teamTeam_Tertiary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Tertiary_Color" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamTeam_Tertiary_Color" name="inputteamTeam_Tertiary_Color" value="#${fn:escapeXml(team.team_Tertiary_Color)}">
                 <c:if test="${not empty results.teamTeam_Tertiary_Colorerror}">
                     <div class="invalid-feedback">${results.teamTeam_Tertiary_Colorerror}</div>
                 </c:if>
             </div>
         </div>
+        </div> <!-- end colors -->
         <!-- Team_City -->
         <div class ="row" id = "row6">
             <label for="inputteamTeam_City" class="form-label">Team_City</label>
@@ -94,13 +109,7 @@ Create the JSP For Viuw/Edit from the Team table
                 </c:if>
             </div>
         </div>
-        <div class ="row" id = "row9">
-            <label for="displayTeamLogo" class="form-label">Logo</label>
-            <div >
-                <img src="${displayTeamLogo}"  class="<c:if test="${not empty results.teamLogoerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Logo" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="displayTeamLogo" name="displayTeamLogo" value="${fn:escapeXml(team.logo)}">
 
-            </div>
-        </div>
         <div class="align-items-center mt-0">
             <div class="d-grid"><button class="btn btn-orange mb-0" type="submit">Edit Team </button></div>
             <c:if test="${not empty results.dbStatus}"

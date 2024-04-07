@@ -9,7 +9,9 @@ Create the JSP  For Viewing All of The  Team table
         <div class="col-12">
             <h1>All Roller Teams</h1>
             <p>There ${Teams.size() eq 1 ? "is" : "are"}&nbsp;${Teams.size()} Team${Teams.size() ne 1 ? "s" : ""}</p>
+<c:if test="${User.privilege_ID > 1}">
             Add Team   <a href="addTeam">Add</a>
+</c:if>
             <c:if test="${Teams.size() > 0}">
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
@@ -24,13 +26,16 @@ Create the JSP  For Viewing All of The  Team table
                         <th scope="col">Team_State</th>
                         <th scope="col">Logo</th>
                         <th scope="col">is_active</th>
+
                         <th scope="col">Edit</th>
+                        <c:if test="${User.privilege_ID > 2}">
                         <th scope="col">Delete</th>
+                        </c:if>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${Teams}" var="team">
-                        <tr>
+
                             <td><a href = "editteam?teamid=${team.team_ID}&mode=view">${fn:escapeXml(team.team_ID)}</a></td>
                             <td>${fn:escapeXml(team.league_name)}</td>
                             <td>${fn:escapeXml(team.name)}</td>
@@ -42,10 +47,12 @@ Create the JSP  For Viewing All of The  Team table
                             <td>${fn:escapeXml(team.logo)}</td>
                             <td><input type="checkbox" disabled <c:if test="${team.is_active}">checked</c:if>></td>
                             <td><a href = "editteam?teamid=${team.team_ID}&mode=edit" > Edit </a></td>
+                            <c:if test="${User.privilege_ID > 2}">
                             <td><a href = "deleteteam?teamid=${team.team_ID}&mode=<c:choose><c:when test="${team.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>
 						</c:choose>">
                                 <c:if test="${!team.is_active}">un</c:if>Delete </a></td>
+                        </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>

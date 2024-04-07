@@ -9,7 +9,9 @@ Create the JSP  For Viewing All of The  League table
         <div class="col-12">
             <h1>All Roller Leagues</h1>
             <p>There ${Leagues.size() eq 1 ? "is" : "are"}&nbsp;${Leagues.size()} League${Leagues.size() ne 1 ? "s" : ""}</p>
+<c:if test="${User.privilege_ID > 2}">
             Add League   <a href="addLeague">Add</a>
+</c:if>
             <c:if test="${Leagues.size() > 0}">
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
@@ -22,12 +24,14 @@ Create the JSP  For Viewing All of The  League table
                         <th scope="col">Description</th>
                         <th scope="col">is_active</th>
                         <th scope="col">Edit</th>
+                <c:if test="${User.privilege_ID > 3}">
                         <th scope="col">Delete</th>
+                </c:if>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${Leagues}" var="league">
-                        <tr>
+
                             <td><a href = "editleague?leagueid=${league.league_ID}&mode=view">${fn:escapeXml(league.league_ID)}</a></td><td>${fn:escapeXml(league.league_Name)}</td>
                             <td>${fn:escapeXml(league.league_Level)}</td>
                             <td>${fn:escapeXml(league.monthly_Due)}</td>
@@ -35,10 +39,12 @@ Create the JSP  For Viewing All of The  League table
                             <td>${fn:escapeXml(league.description)}</td>
                             <td><input type="checkbox" disabled <c:if test="${league.is_active}">checked</c:if>></td>
                             <td><a href = "editleague?leagueid=${league.league_ID}&mode=edit" > Edit </a></td>
+                            <c:if test="${User.privilege_ID > 3}">
                             <td><a href = "deleteleague?leagueid=${league.league_ID}&mode=<c:choose><c:when test="${league.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>
 						</c:choose>">
                                 <c:if test="${!league.is_active}">un</c:if>Delete </a></td>
+                        </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>

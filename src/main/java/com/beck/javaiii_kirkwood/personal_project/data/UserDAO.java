@@ -192,5 +192,23 @@ public class UserDAO {
     return id;
   }
 
+  public static int updatePriv(int userId, int privForDb) throws SQLException {
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_user_update_privilege(? ,?)}"))
+        {
+          statement.setInt(1,userId);
+          statement.setInt(2,privForDb);
+
+          result=statement.executeUpdate();
+
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update user . Try again later");
+        }
+      }
+    }
+    return result;
+  }
 }
 

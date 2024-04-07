@@ -30,8 +30,10 @@ Create the JSP  For adding to The  Team table
                 </c:if>
             </div>
         </div>
-        <!-- Team_Primary_Color -->
+        <!-- start colors -->
         <div class ="row" id = "row2">
+        <!-- Team_Primary_Color -->
+        <div class ="col col-sm-3" >
             <label for="inputteamTeam_Primary_Color" class="form-label">Team_Primary_Color</label>
             <div class="input-group input-group-lg">
                 <input size="50" type="color" class="<c:if test="${not empty results.teamTeam_Primary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Primary_Color" id="inputteamTeam_Primary_Color" name="inputteamTeam_Primary_Color" value="${fn:escapeXml(results.Team_Primary_Color)}">
@@ -41,7 +43,7 @@ Create the JSP  For adding to The  Team table
             </div>
         </div>
         <!-- Team_Secondary_Color -->
-        <div class ="row" id = "row3">
+        <div class ="col col-sm-3" id = "row3">
             <label for="inputteamTeam_Secondary_Color" class="form-label">Team_Secondary_Color</label>
             <div class="input-group input-group-lg">
                 <input size="50" type="color" class="<c:if test="${not empty results.teamTeam_Secondary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Secondary_Color" id="inputteamTeam_Secondary_Color" name="inputteamTeam_Secondary_Color" value="${fn:escapeXml(results.Team_Secondary_Color)}">
@@ -51,7 +53,7 @@ Create the JSP  For adding to The  Team table
             </div>
         </div>
         <!-- Team_Tertiary_Color -->
-        <div class ="row" id = "row4">
+        <div class ="col col-sm-3" id = "row4">
             <label for="inputteamTeam_Tertiary_Color" class="form-label">Team_Tertiary_Color</label>
             <div class="input-group input-group-lg">
                 <input size="50" type="color" class="<c:if test="${not empty results.teamTeam_Tertiary_Colorerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Team_Tertiary_Color" id="inputteamTeam_Tertiary_Color" name="inputteamTeam_Tertiary_Color" value="${fn:escapeXml(results.Team_Tertiary_Color)}">
@@ -60,6 +62,7 @@ Create the JSP  For adding to The  Team table
                 </c:if>
             </div>
         </div>
+        </div> <!-- end colors row -->
         <!-- Team_City -->
         <div class ="row" id = "row5">
             <label for="inputteamTeam_City" class="form-label">Team_City</label>
