@@ -164,7 +164,7 @@ public class TeamDAO {
           statement.setString(17,newTeam.getLogo());
           statement.setBoolean(18,oldTeam.getis_active());
           statement.setBoolean(19,newTeam.getis_active());
-          statement.executeUpdate();
+          result=statement.executeUpdate();
         } catch (SQLException e) {
           throw new RuntimeException("Could not update Team . Try again later");
         }

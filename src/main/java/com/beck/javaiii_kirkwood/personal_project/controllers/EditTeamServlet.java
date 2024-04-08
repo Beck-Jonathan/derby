@@ -14,7 +14,9 @@ import jakarta.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @WebServlet("/editteam")
 public class EditTeamServlet extends HttpServlet {
@@ -46,6 +48,108 @@ public class EditTeamServlet extends HttpServlet {
     req.setAttribute("Leagues", allLeagues);
     req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
   }
-}
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    Map<String, String> results = new HashMap<>();
+    String mode = req.getParameter("mode");
+    req.setAttribute("mode",mode);
+//to set the drop downs
+    allLeagues = LeagueDAO.getAllLeague();
+    req.setAttribute("Leagues", allLeagues);
+//to get the old Team
+    HttpSession session = req.getSession();
+    Team _oldTeam= (Team)session.getAttribute("team");
+//to get the new event's info
+    String _League_ID = req.getParameter("inputteamLeague_ID");
+    _League_ID=_League_ID.trim();
+    String _Name = req.getParameter("inputteamName");
+    _Name=_Name.trim();
+    String _Team_Primary_Color = req.getParameter("inputteamTeam_Primary_Color");
+    _Team_Primary_Color=_Team_Primary_Color.trim();
+    String _Team_Secondary_Color = req.getParameter("inputteamTeam_Secondary_Color");
+    _Team_Secondary_Color=_Team_Secondary_Color.trim();
+    String _Team_Tertiary_Color = req.getParameter("inputteamTeam_Tertiary_Color");
+    _Team_Tertiary_Color=_Team_Tertiary_Color.trim();
+    String _Team_City = req.getParameter("inputteamTeam_City");
+    _Team_City=_Team_City.trim();
+    String _Team_State = req.getParameter("inputteamTeam_State");
+    _Team_State=_Team_State.trim();
+    String _Logo = req.getParameter("inputteamLogo");
+    _Logo=_Logo.trim();
 
+    results.put("League_ID",_League_ID);
+    results.put("Name",_Name);
+    results.put("Team_Primary_Color",_Team_Primary_Color);
+    results.put("Team_Secondary_Color",_Team_Secondary_Color);
+    results.put("Team_Tertiary_Color",_Team_Tertiary_Color);
+    results.put("Team_City",_Team_City);
+    results.put("Team_State",_Team_State);
+    results.put("Logo",_Logo);
+
+    Team _newTeam = new Team();
+    int errors =0;
+    try {
+      _newTeam.setLeague_ID(Integer.valueOf(_League_ID));
+    } catch(IllegalArgumentException e) {results.put("teamLeague_IDerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setName(_Name);
+    } catch(IllegalArgumentException e) {results.put("teamNameerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setTeam_Primary_Color(_Team_Primary_Color);
+    } catch(IllegalArgumentException e) {results.put("teamTeam_Primary_Colorerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setTeam_Secondary_Color(_Team_Secondary_Color);
+    } catch(IllegalArgumentException e) {results.put("teamTeam_Secondary_Colorerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setTeam_Tertiary_Color(_Team_Tertiary_Color);
+    } catch(IllegalArgumentException e) {results.put("teamTeam_Tertiary_Colorerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setTeam_City(_Team_City);
+    } catch(IllegalArgumentException e) {results.put("teamTeam_Cityerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setTeam_State(_Team_State);
+    } catch(IllegalArgumentException e) {results.put("teamTeam_Stateerror", e.getMessage());
+      errors++;
+    }
+    try {
+      _newTeam.setLogo(_Logo);
+    } catch(IllegalArgumentException e) {results.put("teamLogoerror", e.getMessage());
+      errors++;
+    }
+
+    _newTeam.setis_active(true);
+//to update the database
+    int result=0;
+    if (errors==0){
+      try{
+        result=TeamDAO.update(_oldTeam,_newTeam);
+      }catch(Exception ex){
+        results.put("dbStatus","Database Error");
+      }
+      if (result>0){
+        results.put("dbStatus","Team updated");
+        resp.sendRedirect("all-Teams");
+        return;
+      } else {
+        results.put("dbStatus","Team Not Updated");
+      }
+    }
+//standard
+    req.setAttribute("results", results);
+    req.setAttribute("pageTitle", "Edit a Team ");
+    req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
+  }
+}
 

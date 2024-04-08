@@ -51,6 +51,16 @@ public class EmailService
 
 
   }
+  public static boolean send2faCode_Roller(String Code, String email){
+    String subject = "Roller Derby New Skater Confirmation";
+    String code = Code;
+    String Email=email;
+    String message = "<h2>Welcome to Roller Derby!</h2>";
+    message += "<p>Please enter code <b>" + code + "</b> to activate your account.</p>";
+    return sendemail(Email, subject, message);
+
+
+  }
   public static boolean sendPasswordResetEmail(String email, String token, HttpServletRequest req) {
     String subject = "LearnX New User Confirmation";
     String message = "<h2>Welcome to LearnX</h2>";

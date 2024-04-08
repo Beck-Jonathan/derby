@@ -4,7 +4,7 @@ Create the JSP For Viuw/Edit from the Event table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/editEvent" id = "editEvent" >"
+    <form method="post" action="${appURL}/editevent" id = "editEvent" >"
         <!-- Event_ID -->
         <div class ="row" id = "row0">
             <h2>Event_ID  :

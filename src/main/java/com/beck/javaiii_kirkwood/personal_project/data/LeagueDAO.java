@@ -135,7 +135,7 @@ public class LeagueDAO {
           statement.setString(11,newLeague.getDescription());
           statement.setBoolean(12,oldLeague.getis_active());
           statement.setBoolean(13,newLeague.getis_active());
-          statement.executeUpdate();
+          result=statement.executeUpdate();
         } catch (SQLException e) {
           throw new RuntimeException("Could not update League . Try again later");
         }

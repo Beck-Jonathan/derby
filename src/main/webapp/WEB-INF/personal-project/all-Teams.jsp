@@ -26,8 +26,9 @@ Create the JSP  For Viewing All of The  Team table
                         <th scope="col">Team_State</th>
                         <th scope="col">Logo</th>
                         <th scope="col">is_active</th>
-
+                <c:if test="${User.privilege_ID > 1}">
                         <th scope="col">Edit</th>
+                </c:if>
                         <c:if test="${User.privilege_ID > 2}">
                         <th scope="col">Delete</th>
                         </c:if>
@@ -46,7 +47,9 @@ Create the JSP  For Viewing All of The  Team table
                             <td>${fn:escapeXml(team.team_State)}</td>
                             <td>${fn:escapeXml(team.logo)}</td>
                             <td><input type="checkbox" disabled <c:if test="${team.is_active}">checked</c:if>></td>
+                        <c:if test="${User.privilege_ID > 1}">
                             <td><a href = "editteam?teamid=${team.team_ID}&mode=edit" > Edit </a></td>
+                        </c:if>
                             <c:if test="${User.privilege_ID > 2}">
                             <td><a href = "deleteteam?teamid=${team.team_ID}&mode=<c:choose><c:when test="${team.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>

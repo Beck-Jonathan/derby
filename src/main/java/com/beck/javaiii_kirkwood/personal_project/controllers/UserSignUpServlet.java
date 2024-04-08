@@ -116,11 +116,11 @@ public class UserSignUpServlet extends HttpServlet{
           TwoFA twofa = new TwoFA(id);
           TwoFADAO.add(twofa);
           String code = TwoFADAO.getTwoFAById(id);
-          EmailService.send2faCode(code,_Email);
-          resp.sendRedirect("twoFA");
+          EmailService.send2faCode_Roller(code,_Email);
+
           HttpSession session = req.getSession();
           session.setAttribute("UserID",id);
-
+          resp.sendRedirect("twoFA");
           return;
         } catch (SQLException e) {
           throw new RuntimeException(e);

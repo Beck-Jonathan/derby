@@ -23,7 +23,10 @@ Create the JSP  For Viewing All of The  League table
                         <th scope="col">Active_Days</th>
                         <th scope="col">Description</th>
                         <th scope="col">is_active</th>
-                        <th scope="col">Edit</th>
+                        <c:if test="${User.privilege_ID > 2}">
+                            <th scope="col">Edit</th>
+                        </c:if>
+
                 <c:if test="${User.privilege_ID > 3}">
                         <th scope="col">Delete</th>
                 </c:if>
@@ -38,7 +41,10 @@ Create the JSP  For Viewing All of The  League table
                             <td>${fn:escapeXml(league.active_Days)}</td>
                             <td>${fn:escapeXml(league.description)}</td>
                             <td><input type="checkbox" disabled <c:if test="${league.is_active}">checked</c:if>></td>
+                        <c:if test="${User.privilege_ID > 2}">
                             <td><a href = "editleague?leagueid=${league.league_ID}&mode=edit" > Edit </a></td>
+                        </c:if>
+
                             <c:if test="${User.privilege_ID > 3}">
                             <td><a href = "deleteleague?leagueid=${league.league_ID}&mode=<c:choose><c:when test="${league.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>

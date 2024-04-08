@@ -4,7 +4,7 @@ Create the JSP For Viuw/Edit from the Team table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/editTeam" id = "editTeam" >"
+    <form method="post" action="${appURL}/editteam" id = "editteam" >"
         <!-- Team_ID -->
         <div class ="row" id = "row0">
             <div class ="col col-sm-4" >

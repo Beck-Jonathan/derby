@@ -1,10 +1,10 @@
 <%--************
 Create the JSP For Viuw/Edit from the League table
- Created By Jonathan Beck 4/6/2024
+ Created By Jonathan Beck 4/8/2024
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/editLeague" id = "editLeague" >"
+    <form method="post" action="${appURL}/editleague" id = "editleague" >"
         <!-- League_ID -->
         <div class ="row" id = "row0">
             <h2>League_ID  :
@@ -40,8 +40,18 @@ Create the JSP For Viuw/Edit from the League table
                 </c:if>
             </div>
         </div>
-        <!-- Description -->
+        <!-- Active Days -->
         <div class ="row" id = "row4">
+            <label for="inputleagueActive_Days" class="form-label">Active Days</label>
+            <div class="input-group input-group-lg">
+                <input type="text" class="<c:if test="${not empty results.leagueActive_Dayserror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Active Days" id="inputleagueActive_Days" name="inputleagueActive_Days" value="${fn:escapeXml(results.Active_Days)}">
+                <c:if test="${not empty results.leagueActive_Dayserror}">
+                    <div class="invalid-feedback">${results.leagueActive_Dayserror}</div>
+                </c:if>
+            </div>
+        </div>
+        <!-- Description -->
+        <div class ="row" id = "row5">
             <label for="inputleagueDescription" class="form-label">Description</label>
             <div class="input-group input-group-lg">
                 <input type="text" class="<c:if test="${not empty results.leagueDescriptionerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Description" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputleagueDescription" name="inputleagueDescription" value="${fn:escapeXml(league.description)}">

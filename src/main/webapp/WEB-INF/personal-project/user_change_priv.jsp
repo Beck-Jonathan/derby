@@ -28,8 +28,8 @@ Create the JSP  manully updating your own privlidges
         </div>
     </form>
     <p>level 1 can view leagues and teams <br/>
-        level 2 can add a team <br/>
-        level 3 can  delete a team, and add a league<br/>
+        level 2 can add and edit a team <br/>
+        level 3 can  delete a team, and add/edit a league<br/>
         level 4 can delete a league<br/></p>
 </c:if>
 </div>

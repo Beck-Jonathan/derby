@@ -119,7 +119,7 @@ public class EventDAO {
           statement.setInt(7,newEvent.getType_ID());
           statement.setBoolean(8,oldEvent.getis_active());
           statement.setBoolean(9,newEvent.getis_active());
-          statement.executeUpdate();
+          result=statement.executeUpdate();
         } catch (SQLException e) {
           throw new RuntimeException("Could not update Event . Try again later");
         }
