@@ -5,7 +5,7 @@ Created By Jonathan Beck3/3/2024
 ***************/
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addUser" id = "addUser" >"
+    <form method="post" action="${appURL}/addUser" id = "addUser" >
         <!-- User_Name -->
         <div class ="row" id = "row0">
             <label for="inputuserUser_Name" class="form-label">User_Name</label>

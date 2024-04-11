@@ -4,7 +4,7 @@ Create the JSP  For adding to The  Privilege table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addPrivilege" id = "addPrivilege" >"
+    <form method="post" action="${appURL}/addPrivilege" id = "addPrivilege" >
         <!-- Name -->
         <div class ="row" id = "row0">
             <label for="inputprivilegeName" class="form-label">Name</label>

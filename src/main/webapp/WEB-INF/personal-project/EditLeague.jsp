@@ -4,7 +4,7 @@ Create the JSP For Viuw/Edit from the League table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/editleague" id = "editleague" >"
+    <form method="post" action="${appURL}/editleague" id = "editleague" >
         <!-- League_ID -->
         <div class ="row" id = "row0">
             <h2>League_ID  :

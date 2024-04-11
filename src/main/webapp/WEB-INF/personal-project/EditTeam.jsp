@@ -4,7 +4,7 @@ Create the JSP For Viuw/Edit from the Team table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/editteam" id = "editteam" >"
+    <form method="post" action="${appURL}/editteam" id = "editteam"  enctype="multipart/form-data" >
         <!-- Team_ID -->
         <div class ="row" id = "row0">
             <div class ="col col-sm-4" >
@@ -103,7 +103,7 @@ Create the JSP For Viuw/Edit from the Team table
         <div class ="row" id = "row8">
             <label for="inputteamLogo" class="form-label">Logo</label>
             <div class="input-group input-group-lg">
-                <input type="text" class="<c:if test="${not empty results.teamLogoerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Logo" <c:if test="${mode eq 'view'}"> disabled </c:if>  id="inputteamLogo" name="inputteamLogo" value="${fn:escapeXml(team.logo)}">
+                <input type="file" size="50" accept=".jpg,.jpeg,.png" class="<c:if test="${not empty results.teamLogoerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Logo" id="inputteamLogo" name="inputteamLogo" value="${fn:escapeXml(team.logo)}">
                 <c:if test="${not empty results.teamLogoerror}">
                     <div class="invalid-feedback">${results.teamLogoerror}</div>
                 </c:if>

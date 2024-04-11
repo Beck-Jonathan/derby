@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 import com.beck.javaiii_kirkwood.personal_project.data.LeagueDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.League;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +22,15 @@ public class AddLeagueServlet extends HttpServlet{
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Add League");
     req.getRequestDispatcher("WEB-INF/personal-project/AddLeague.jsp").forward(req, resp);
@@ -29,6 +38,14 @@ public class AddLeagueServlet extends HttpServlet{
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
+    HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
     String _League_Name = req.getParameter("inputleagueLeague_Name");
     _League_Name=_League_Name.trim();
     String _League_Level = req.getParameter("inputleagueLeague_Level");

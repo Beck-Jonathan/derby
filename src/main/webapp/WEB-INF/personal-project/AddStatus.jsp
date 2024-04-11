@@ -4,7 +4,7 @@ Create the JSP  For adding to The  Status table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addStatus" id = "addStatus" >"
+    <form method="post" action="${appURL}/addStatus" id = "addStatus" >
         <!-- Name -->
         <div class ="row" id = "row0">
             <label for="inputstatusName" class="form-label">Name</label>

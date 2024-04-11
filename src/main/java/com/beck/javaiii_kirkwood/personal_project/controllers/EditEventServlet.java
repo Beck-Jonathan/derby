@@ -6,6 +6,7 @@ import com.beck.javaiii_kirkwood.personal_project.data.TypeDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
 import com.beck.javaiii_kirkwood.personal_project.models.Facility;
 import com.beck.javaiii_kirkwood.personal_project.models.Type;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -27,6 +28,14 @@ public class EditEventServlet extends HttpServlet {
   static List<Type> allTypes = TypeDAO.getActiveType();
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
+    HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
     String mode = req.getParameter("mode");
     int primaryKey = Integer.parseInt(req.getParameter("eventid"));
         Event event= new Event();
@@ -36,7 +45,7 @@ public class EditEventServlet extends HttpServlet {
     } catch (SQLException e) {
       req.setAttribute("dbStatus",e.getMessage());
     }
-    HttpSession session = req.getSession();
+
     session.setAttribute("event",event);
     req.setAttribute("mode",mode);
     session.setAttribute("currentPage",req.getRequestURL());
@@ -51,6 +60,14 @@ public class EditEventServlet extends HttpServlet {
 
 @Override
 protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+  //To restrict this page based on privilege level
+  int PRIVILEGE_NEEDED = 0;
+  HttpSession session = req.getSession();
+  User user = (User)session.getAttribute("User");
+  if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+    resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+    return;
+  }
   Map<String, String> results = new HashMap<>();
   String mode = req.getParameter("mode");
   req.setAttribute("mode",mode);
@@ -60,7 +77,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
   allTypes = TypeDAO.getAllType();
   req.setAttribute("Types", allTypes);
 //to get the old Event
-  HttpSession session = req.getSession();
+
   Event _oldEvent= (Event)session.getAttribute("event");
 //to get the new event's info
   String _Facility_ID = req.getParameter("inputeventFacility_ID");

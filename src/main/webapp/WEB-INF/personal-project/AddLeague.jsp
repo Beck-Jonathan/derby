@@ -5,7 +5,7 @@ Create the JSP  For adding to The  League table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addLeague" id = "addLeague" >"
+    <form method="post" action="${appURL}/addLeague" id = "addLeague" >
         <!-- League_Name -->
         <div class ="row" id = "row0">
             <label for="inputleagueLeague_Name" class="form-label">League_Name</label>

@@ -1,13 +1,19 @@
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <c:if test="${not empty User}">
-    <p>Your current privilege level is ${User.privilege_ID}. Use the edit privilege button below
-        to grant yourself further access.</p>
+    <p>Your current privilege level is ${User.privilege_ID}. For convenience during development
+       use the edit privilege button below to grant yourself further access.
+    This will be removed when we are ready for deployment</p>
 </c:if>
 <div class="table-responsive col-12">
 <table class="table table-bordered">
 
 
 
+
+    <c:if test="${empty User}">
+        <!--<tr><td>Join Us</td><td><a href="joinus"> View </a> </td></tr> -->
+    </c:if>
+    <c:if test="${not empty User}">
     <thead>
     <tr>
         <th scope="col">Table</th>
@@ -15,10 +21,6 @@
     </tr>
     </thead>
     <tbody>
-    <c:if test="${empty User}">
-        <tr><td>Join Us</td><td><a href="joinus"> View </a> </td></tr>
-    </c:if>
-    <c:if test="${not empty User}">
         <tr><td>View all League</td><td><a href="all-Leagues"> View </a> </td></tr>
         <tr><td>View all Team</td><td><a href="all-Teams"> View </a> </td></tr>
         <tr><td>Edit privilege</td><td><a href="user_change_priv"> View </a> </td></tr>

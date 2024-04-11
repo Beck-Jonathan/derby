@@ -66,6 +66,7 @@ public class LoginServlet extends HttpServlet{
         results.put("dbStatus",user.getEmail());
         HttpSession session = req.getSession();
         session.setAttribute("User",user);
+        User XXXX = (User) session.getAttribute("User");
         String currentPage =  session.getAttribute("currentPage").toString();
 
         resp.sendRedirect(currentPage);

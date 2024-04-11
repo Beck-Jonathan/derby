@@ -4,7 +4,7 @@ Create the JSP  For adding to The  Facility table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-  <form method="post" action="${appURL}/addFacility" id = "addFacility" >"
+  <form method="post" action="${appURL}/addFacility" id = "addFacility" >
     <!-- Name -->
     <div class ="row" id = "row0">
       <label for="inputfacilityName" class="form-label">Name</label>

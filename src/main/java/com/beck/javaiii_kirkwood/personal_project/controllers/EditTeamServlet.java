@@ -5,11 +5,9 @@ import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.League;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +15,21 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+
+
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
+
+@MultipartConfig(
+
+    fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+    maxFileSize = 1024 * 1024 * 10,      // 10 MB
+    maxRequestSize = 1024 * 1024 * 100   // 100 MB
+)
 
 @WebServlet("/editteam")
 public class EditTeamServlet extends HttpServlet {
@@ -43,13 +56,19 @@ public class EditTeamServlet extends HttpServlet {
     session.setAttribute("displayTeamLogo",uploadFilePath+"//"+team.getLogo());
     req.setAttribute("mode", mode);
     session.setAttribute("currentPage", req.getRequestURL());
-    req.setAttribute("pageTitle", "Add Team");
+    req.setAttribute("pageTitle", "Edit Team");
     allLeagues = LeagueDAO.getAllLeague();
     req.setAttribute("Leagues", allLeagues);
     req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
   }
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String applicationPath = req.getServletContext().getRealPath("");
+    String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
+    File fileSaveDir = new File(uploadFilePath);
+    if (!fileSaveDir.exists()) {
+      fileSaveDir.mkdirs();
+    }
     Map<String, String> results = new HashMap<>();
     String mode = req.getParameter("mode");
     req.setAttribute("mode",mode);
@@ -59,7 +78,7 @@ public class EditTeamServlet extends HttpServlet {
 //to get the old Team
     HttpSession session = req.getSession();
     Team _oldTeam= (Team)session.getAttribute("team");
-//to get the new event's info
+//to get the new team's info
     String _League_ID = req.getParameter("inputteamLeague_ID");
     _League_ID=_League_ID.trim();
     String _Name = req.getParameter("inputteamName");
@@ -74,7 +93,33 @@ public class EditTeamServlet extends HttpServlet {
     _Team_City=_Team_City.trim();
     String _Team_State = req.getParameter("inputteamTeam_State");
     _Team_State=_Team_State.trim();
-    String _Logo = req.getParameter("inputteamLogo");
+    //new logo
+    Part filePart =null;
+    try {
+
+       filePart = req.getPart("inputteamLogo");
+    }
+    catch (Exception ex){
+      results.put("dbStatus",ex.getMessage());
+    }
+
+    assert filePart != null;
+    String fileName = filePart.getSubmittedFileName();
+    try {
+      for (Part part : req.getParts()) {
+        part.write(uploadFilePath + File.separator + fileName);
+
+      }
+    } catch (Exception ex){
+      results.put("dbStatus",ex.getMessage());
+      req.setAttribute("results", results);
+      req.setAttribute("pageTitle", "Edit Team ");
+      req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
+      return;
+    }
+
+
+    String _Logo = fileName;
     _Logo=_Logo.trim();
 
     results.put("League_ID",_League_ID);

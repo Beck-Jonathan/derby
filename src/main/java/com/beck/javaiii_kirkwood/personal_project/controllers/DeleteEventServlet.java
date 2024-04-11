@@ -7,6 +7,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.EventDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,8 +21,16 @@ import java.util.Map;
 @WebServlet("/deleteevent")public class DeleteEventServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    Map<String, String> results = new HashMap<>();
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+    Map<String, String> results = new HashMap<>();
+
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Delete Event");
     int EventID = Integer.valueOf(req.getParameter("eventid"));

@@ -1,11 +1,10 @@
-/******************
+<!--
 Create the JSP for signing up for the league.
 Created By Jonathan Beck3/10/2024
-
-***************/
+-->
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/twoFA" id = "twoFA" >"
+    <form method="post" action="${appURL}/twoFA" id = "twoFA" >
         <!-- Two FA Code -->
         <div class ="row" id = "row0">
             <label for="inputuser2faCode" class="form-label">TwoFA Code</label>

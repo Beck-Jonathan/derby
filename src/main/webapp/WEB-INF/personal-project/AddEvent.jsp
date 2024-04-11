@@ -4,7 +4,7 @@ Create the JSP  For adding to The  Event table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addEvent" id = "addEvent" >"
+    <form method="post" action="${appURL}/addEvent" id = "addEvent" >
         <!-- Facility_ID -->
         <div class ="row" id = "row0">
             <label for="inputeventFacility_ID" class="form-label">Facility_ID</label>

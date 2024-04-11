@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.FacilityDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Facility;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -21,7 +22,15 @@ public class AddFacilityServlet extends HttpServlet{
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Add Facility");
     req.getRequestDispatcher("WEB-INF/personal-project/AddFacility.jsp").forward(req, resp);
@@ -29,6 +38,14 @@ public class AddFacilityServlet extends HttpServlet{
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
+    HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
     String _Name = req.getParameter("inputfacilityName");
     String _Addresss = req.getParameter("inputfacilityAddresss");
     String _City = req.getParameter("inputfacilityCity");

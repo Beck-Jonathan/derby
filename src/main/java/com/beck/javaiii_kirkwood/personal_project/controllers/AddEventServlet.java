@@ -6,6 +6,7 @@ import com.beck.javaiii_kirkwood.personal_project.data.TypeDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
 import com.beck.javaiii_kirkwood.personal_project.models.Facility;
 import com.beck.javaiii_kirkwood.personal_project.models.Type;
+import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -35,7 +36,15 @@ public class AddEventServlet extends HttpServlet{
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
+
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Add Event");
     allFacilitys = FacilityDAO.getAllFacility();
@@ -47,6 +56,14 @@ public class AddEventServlet extends HttpServlet{
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    //To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
+    HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("User");
+    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+      resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+      return;
+    }
     allFacilitys = FacilityDAO.getAllFacility();
     req.setAttribute("Facilitys", allFacilitys);
     allTypes = TypeDAO.getAllType();

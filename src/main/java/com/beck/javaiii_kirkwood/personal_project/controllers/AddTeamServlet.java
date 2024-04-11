@@ -16,18 +16,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import  java.io.*;
-import java.util.*;
-import javax.servlet.*;
-import  javax.servlet.http.*;
+
 
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import  org.apache.commons.fileupload.*;
-import  org.apache.commons.fileupload.disk.*;
-import  org.apache.commons.fileupload.servlet.*;
-import  org.apache.commons.io.output.*;
+
 /******************
  Create the Servlet  For adding to The  Team table
  Created By Jonathan Beck3/18/2024
@@ -88,7 +83,7 @@ public class AddTeamServlet extends HttpServlet{
     //testing file upload stuff
 
     //ServletContext context = pageContext.getServletContext();
-    String _Logo = "test";
+
     Part filePart = req.getPart("inputteamLogo");
     Map<String, String> results = new HashMap<>();
     String fileName = filePart.getSubmittedFileName();
@@ -104,27 +99,6 @@ public class AddTeamServlet extends HttpServlet{
       req.getRequestDispatcher("WEB-INF/personal-project/AddTeam.jsp").forward(req, resp);
       return;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-     //***//
-
-
-
-
-
-
-
-
 
     results.put("League_ID",_League_ID);
     results.put("Name",_Name);

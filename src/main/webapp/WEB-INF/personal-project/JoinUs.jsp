@@ -5,10 +5,10 @@ Created By Jonathan Beck3/10/2024
 --%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/joinus" id = "JoinUs" >"
+    <form method="post" action="${appURL}/joinus" id = "JoinUs" >
         <!-- User_Name -->
         <div class ="row" id = "row0">
-            <label for="inputuserUser_Name" class="form-label">User_Name</label>
+            <label for="inputuserUser_Name" class="form-label">User Name</label>
             <div class="input-group input-group-lg">
                 <input type="text" class="<c:if test="${not empty results.userUser_Nameerror3}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_Name" id="inputuserUser_Name" name="inputuserUser_Name" value="${results.User_Name3}">
                 <c:if test="${not empty results.userUser_Nameerror3}">
@@ -18,7 +18,7 @@ Created By Jonathan Beck3/10/2024
         </div>
         <!-- User_PW -->
         <div class ="row" id = "row1">
-            <label for="inputuserUser_PW" class="form-label">User_PW</label>
+            <label for="inputuserUser_PW" class="form-label">Password</label>
             <div class="input-group input-group-lg">
                 <input type="password" class="<c:if test="${not empty results.userUser_PWerror3}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW" id="inputuserUser_PW" name="inputuserUser_PW" value="${results.User_PW3}">
                 <c:if test="${not empty results.userUser_PWerror3}">
@@ -28,7 +28,7 @@ Created By Jonathan Beck3/10/2024
         </div>
         <!-- User_PW2 -->
         <div class ="row" id = "row2">
-            <label for="inputuserUser_PW2" class="form-label">User_PW</label>
+            <label for="inputuserUser_PW2" class="form-label">Confirm Password</label>
             <div class="input-group input-group-lg">
                 <input type="password" class="<c:if test="${not empty results.userUser_PW2error}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW2" id="inputuserUser_PW2" name="inputuserUser_PW2" value="${results.User_PW2}">
                 <c:if test="${not empty results.userUser_PW2error}">
@@ -50,7 +50,7 @@ Created By Jonathan Beck3/10/2024
         </div>
         <!-- Language_ID -->
         <div class ="row" id = "row5">
-            <label for="inputuserLanguage_ID" class="form-label">Language_ID</label>
+            <label for="inputuserLanguage_ID" class="form-label">Language</label>
             <div class="input-group input-group-lg">
                 <select  class="<c:if test="${not empty results.userLanguage_IDerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Language_ID" id="inputuserLanguage_ID" name="inputuserLanguage_ID" value="${results.Language_ID}">
 

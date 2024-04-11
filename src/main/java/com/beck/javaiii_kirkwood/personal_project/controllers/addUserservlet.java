@@ -27,6 +27,7 @@ public class addUserservlet extends HttpServlet{
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    resp.sendError(HttpServletResponse.SC_FORBIDDEN);
     HttpSession session = req.getSession();
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Add User");

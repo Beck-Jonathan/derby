@@ -4,7 +4,7 @@ Create the JSP  For adding to The  Type table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addType" id = "addType" >"
+    <form method="post" action="${appURL}/addType" id = "addType" >
         <!-- Name -->
         <div class ="row" id = "row0">
             <label for="inputtypeName" class="form-label">Name</label>

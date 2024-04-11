@@ -4,7 +4,7 @@ Create the JSP  For adding to The  User_Event_Line table
 **********--%>
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
 <div class = "container">
-    <form method="post" action="${appURL}/addUser_Event_Line" id = "addUser_Event_Line" >"
+    <form method="post" action="${appURL}/addUser_Event_Line" id = "addUser_Event_Line" >
         <!-- User_ID -->
         <div class ="row" id = "row0">
             <label for="inputuser_event_lineUser_ID" class="form-label">User_ID</label>

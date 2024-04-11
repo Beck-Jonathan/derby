@@ -12,21 +12,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Gave the user &quot;something to do&quot;. User can change their own priv level, view, add, delete teams and leagues based on priv level.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditLeagueServlet.java" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Created edit league and edit team functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddEventServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddEventServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddFacilityServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddFacilityServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddLeagueServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddLeagueServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddTeamServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddTeamServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteEventServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteEventServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteFacilityServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteFacilityServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLanguageServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLanguageServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLeagueServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteLeagueServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteTeamServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/DeleteTeamServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditEventServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditEventServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditPrivilegeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditPrivilegeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditLeagueServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditLeagueServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditTeamServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditTeamServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/UserSignUpServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/UserSignUpServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/EventDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/EventDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/LeagueDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/LeagueDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/TeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/TeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/LoginServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/addUserservlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/addUserservlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddEvent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddEvent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddFacility.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddFacility.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddLanguage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddLanguage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddLeague.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddLeague.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddPrivilege.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddPrivilege.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddStatus.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddStatus.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddType.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddType.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUserEventLine.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUserEventLine.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUserTeamLine.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/AddUserTeamLine.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditEvent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditEvent.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditLeague.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditLeague.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditTeam.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/EditTeam.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/all-Teams.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/all-Teams.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/JoinUs.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/JoinUs.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Personal_home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Personal_home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/TwoFA.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/TwoFA.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/user_change_priv.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/user_change_priv.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -507,7 +524,8 @@
       <workItem from="1712339234570" duration="2896000" />
       <workItem from="1712346810796" duration="542000" />
       <workItem from="1712411089229" duration="4659000" />
-      <workItem from="1712416614575" duration="24721000" />
+      <workItem from="1712416614575" duration="28296000" />
+      <workItem from="1712859164052" duration="3583000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -749,7 +767,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712503362344</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Created edit league and edit team functionality.">
+      <option name="closed" value="true" />
+      <created>1712614437675</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712614437675</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -763,7 +789,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Stopped email messages on 404 errors." />
     <MESSAGE value="Updates to email servlet" />
     <MESSAGE value="Starting work on webpage project" />
     <MESSAGE value="updates to header" />
@@ -788,7 +813,8 @@
     <MESSAGE value="Learnx midterm fixes, showing courses class demo." />
     <MESSAGE value="Updates to team and league behaviors" />
     <MESSAGE value="Gave the user &quot;something to do&quot;. User can change their own priv level, view, add, delete teams and leagues based on priv level." />
-    <option name="LAST_COMMIT_MESSAGE" value="Gave the user &quot;something to do&quot;. User can change their own priv level, view, add, delete teams and leagues based on priv level." />
+    <MESSAGE value="Created edit league and edit team functionality." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created edit league and edit team functionality." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -800,12 +826,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/addUserservlet.java</url>
-          <line>38</line>
+          <line>39</line>
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/addUserservlet.java</url>
-          <line>56</line>
+          <line>57</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -844,19 +870,9 @@
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddLeagueServlet.java</url>
-          <line>31</line>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddTeamServlet.java</url>
-          <line>91</line>
+          <line>86</line>
           <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddTeamServlet.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/user_change_priv.java</url>
@@ -869,14 +885,14 @@
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditTeamServlet.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditLeagueServlet.java</url>
+          <line>79</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditLeagueServlet.java</url>
-          <line>62</line>
-          <option name="timeStamp" value="69" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/EditTeamServlet.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="72" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
