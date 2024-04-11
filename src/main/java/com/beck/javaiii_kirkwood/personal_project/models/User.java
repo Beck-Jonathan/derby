@@ -54,10 +54,10 @@ public class User {
   public void setUser_Name(String User_Name) {
     User_Name = User_Name.replaceAll("[^A-Za-z0-9 - ]","");
     if(User_Name.length()<4){
-      throw new IllegalArgumentException("User_Name is too short.");
+      throw new IllegalArgumentException("User Name is too short. It must be greater than 3 characters.");
     }
     if(User_Name.length()>100){
-      throw new IllegalArgumentException("User_Name is too long.");
+      throw new IllegalArgumentException("User_Name is too long, it must be less than 101 characters");
     }
     this.User_Name = User_Name;
   }
@@ -93,7 +93,7 @@ public class User {
       throw new IllegalArgumentException("Email is too short.");
     }
     if(Email.length()>100){
-      throw new IllegalArgumentException("Email is too long.");
+      throw new IllegalArgumentException("Email is too long, it must be under 101 characters");
     }
     this.Email = Email;
   }

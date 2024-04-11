@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet{
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    HttpSession session = req.getSession();
     req.setAttribute("pageTitle", "Log in!");
 
     String _User_Name = req.getParameter("inputuserUser_Name");
@@ -54,17 +54,19 @@ public class LoginServlet extends HttpServlet{
 
     int id =0;
     try {
-      String hased = UserDAO.get_pw(_User_Name);
-      if(!BCrypt.checkpw(_User_PW,hased)){
-        results.put("loginFail", "Invalid passsword");
+      String hashed = UserDAO.get_pw(_User_Name);
+      if(!BCrypt.checkpw(_User_PW,hashed)){
+
+        session.setAttribute("loginFail", "Login Failed, please verify your username and password");
       }
       else{
+        session.removeAttribute("loginFail");
         id=UserDAO.getUserIDByUserName(_User_Name);
         user.setUser_ID(id);
         user=UserDAO.getUserByPrimaryKey(user);
         user.setUser_PW(null);
         results.put("dbStatus",user.getEmail());
-        HttpSession session = req.getSession();
+
         session.setAttribute("User",user);
         User XXXX = (User) session.getAttribute("User");
         String currentPage =  session.getAttribute("currentPage").toString();
@@ -77,14 +79,14 @@ public class LoginServlet extends HttpServlet{
 
     }
     catch (Exception ex){
-      results.put("dbStatus",ex.getMessage());
+      session.setAttribute("loginFail", "Login Failed, please verify your username and password");
     }
 
     if (id==0){
-      results.put("dbStatus","Login Fail!");
+      results.put("dbStatus1","Login Failed, please verify your username and password");
 
     }
-    HttpSession session = req.getSession();
+
     String currentPage =  session.getAttribute("currentPage").toString();
 
 

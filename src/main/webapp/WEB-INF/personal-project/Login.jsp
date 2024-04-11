@@ -6,7 +6,7 @@
 
 <!-- User_Name -->
         <div class ="row" id = "Loginrow0">
-            <label for="inputuserUser_Name" class="form-label">User_Name</label>
+            <label for="inputuserUser_Name" class="form-label">UserName</label>
             <div class="input-group input-group-lg">
                 <input type="hidden" id="currentpage" name="currentpage" value=${requestScope['javax.servlet.forward.request_uri']}/>
                 <input type="text" class="<c:if test="${not empty results.userUser_Nameerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_Name" id="inputuserUser_Name" name="inputuserUser_Name" value="${results.User_Name}">
@@ -17,7 +17,7 @@
         </div>
         <!-- User_PW -->
         <div class ="row" id = "Loginrow1">
-            <label for="inputuserUser_PW" class="form-label">User_PW</label>
+            <label for="inputuserUser_PW" class="form-label">Password</label>
             <div class="input-group input-group-lg">
                 <input type="password" class="<c:if test="${not empty results.userUser_PWerror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="User_PW" id="inputuserUser_PW" name="inputuserUser_PW" value="${results.User_PW}">
                 <c:if test="${not empty results.userUser_PWerror}">
@@ -25,18 +25,19 @@
                 </c:if>
             </div>
         </div>
-        <!-- button -->
+        <!-- button and message-->
+        <c:if test="${not empty loginFail}">
+            <label for="button" class="form-label"><p>${loginFail}</label>
 
+        </c:if>
         <div class="align-items-center mt-0">
-            <div class="d-grid"><button class="btn btn-orange mb-0" type="submit">Sign in!</button></div>
+            <div class="d-grid"><button class="btn btn-orange mb-0" id="button"type="submit">Sign in!</button></div>
 
         </div>
 
 
     </form>
-        <c:if test="${not empty dbStatus}">
-            <div class="invalid-feedback">${sessionScope.dbStatus}</div>
-        </c:if>
+
 
     </c:if>
         <c:if test="${not empty User}">
