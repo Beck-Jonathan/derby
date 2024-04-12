@@ -57,6 +57,10 @@ public class UserSignUpServlet extends HttpServlet{
     String _Email = req.getParameter("inputuserEmail");
     String _Language_ID = req.getParameter("inputuserLanguage_ID");
 
+
+
+
+
     Map<String, String> results = new HashMap<>();
     results.put("User_Name3",_User_Name);
     results.put("User_PW3",_User_PW);
@@ -66,10 +70,23 @@ public class UserSignUpServlet extends HttpServlet{
     results.put("Language_ID",_Language_ID);
 
     User user = new User();
+
     int errors =0;
+
     try {
       user.setUser_Name(_User_Name);
     } catch(IllegalArgumentException e) {results.put("userUser_Nameerror3", e.getMessage());
+      errors++;
+    }
+    boolean usernameFree = false;
+    try {
+      usernameFree = UserDAO.usernameFree(_User_Name);
+    } catch (Exception e) {
+      results.put("dbStatus",e.getMessage());
+      errors++;
+    }
+    if (!usernameFree){
+      results.put("userUser_Nameerror3", "This username is already taken.");
       errors++;
     }
     try {
@@ -90,6 +107,16 @@ public class UserSignUpServlet extends HttpServlet{
       user.setEmail(_Email);
     } catch(IllegalArgumentException e) {results.put("userEmailerror", e.getMessage());
       errors++;
+    }
+    try {
+      boolean emailFree = UserDAO.emailFree(_Email);
+    } catch (Exception e) {
+      results.put("dbStatus",e.getMessage());
+      errors++;
+    }
+    if (!usernameFree){
+      results.put("userEmailerror", "This email  is already taken.");
+    errors++;
     }
     try {
       user.setLanguage_ID(Integer.valueOf(_Language_ID));

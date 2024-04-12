@@ -2,19 +2,30 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 
 import com.beck.javaiii_kirkwood.learnx.Models.Course;
 import com.beck.javaiii_kirkwood.learnx.Models.CourseCategory;
+import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.CourseDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 @WebServlet("/courses")
 public class CourseServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    HttpSession session = req.getSession();
+    User user = (User)session.getAttribute("activeUser");
+    if (user!=null) {
+      TreeMap<Course, Instant> userCourses = CourseDAO.getCoursesEnrolled(5, 0, user.getID());
+      req.setAttribute("userCourses", userCourses);
+    }
     String [] categoryTry = req.getParameterValues("category");
     String skillTry = req.getParameter("skill-level");
     int limitTry = 0;

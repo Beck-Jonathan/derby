@@ -210,5 +210,49 @@ public class UserDAO {
     }
     return result;
   }
+  public static boolean usernameFree(String username) throws SQLException {
+    boolean result = true;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_user_free(? )}"))
+        {
+          statement.setString(1,username);
+
+          try (ResultSet resultSet = statement.executeQuery()){
+            if(resultSet.next()) {
+              result = (resultSet.getInt(1)==0);
+            }
+
+          }
+
+        } catch (SQLException e) {
+          throw new RuntimeException("Could complete query. Try again later");
+        }
+      }
+    }
+    return result;
+  }
+  public static boolean emailFree(String username) throws SQLException {
+    boolean result = true;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_email_free(? )}"))
+        {
+          statement.setString(1,username);
+
+          try (ResultSet resultSet = statement.executeQuery()){
+            if(resultSet.next()) {
+              result = (resultSet.getInt(1)==0);
+            }
+
+          }
+
+        } catch (SQLException e) {
+          throw new RuntimeException("Could complete query. Try again later");
+        }
+      }
+    }
+    return result;
+  }
 }
 

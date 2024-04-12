@@ -55,7 +55,15 @@ Page content START -->
                                                 <c:if test="${sessionScope.activeUser.privileges eq 'student'}">
                                                     <!-- Enroll -->
                                                     <div class="mt-3 mt-sm-0">
+                                                        <c:choose>
+                                                            <c:when test="${!userCourses.containsKey(course)}">
                                                         <a href="${appURL}/enroll?course=${course.id}" class="btn btn-dark">Enroll</a>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">enrolled</a>
+                                                            </c:otherwise>
+                                                        </c:choose>
+
                                                     </div>
                                                 </c:if>
                                             </div>

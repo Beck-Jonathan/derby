@@ -37,6 +37,10 @@ public class User {
     this.language = language;
   }
 
+  public User(int id, String firstName, String lastName, String email, String phone, String language, String status, String privileges, Instant created_at, Instant last_logged_in, Instant updated_at) {
+    this(id, firstName, lastName, email, phone, null, status, privileges, created_at, last_logged_in, updated_at,language);
+  }
+
   public User() {
   }
 
