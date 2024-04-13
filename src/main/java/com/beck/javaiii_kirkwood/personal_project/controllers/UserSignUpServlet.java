@@ -95,7 +95,7 @@ public class UserSignUpServlet extends HttpServlet{
       errors++;
     }
     if (!_User_PW.equals(_User_PW2)){
-      results.put("userUser_PW1error", "Passwords do not match");
+      results.put("userUser_PW2error", "Passwords do not match");
       errors++;
     }
     try {
@@ -108,13 +108,14 @@ public class UserSignUpServlet extends HttpServlet{
     } catch(IllegalArgumentException e) {results.put("userEmailerror", e.getMessage());
       errors++;
     }
+    boolean emailFree = true;
     try {
-      boolean emailFree = UserDAO.emailFree(_Email);
+       emailFree = UserDAO.emailFree(_Email);
     } catch (Exception e) {
       results.put("dbStatus",e.getMessage());
       errors++;
     }
-    if (!usernameFree){
+    if (!emailFree){
       results.put("userEmailerror", "This email  is already taken.");
     errors++;
     }

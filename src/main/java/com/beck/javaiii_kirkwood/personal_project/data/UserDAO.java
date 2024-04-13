@@ -214,7 +214,7 @@ public class UserDAO {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection !=null){
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_user_free(? )}"))
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_check_username_avail(? )}"))
         {
           statement.setString(1,username);
 
@@ -232,13 +232,13 @@ public class UserDAO {
     }
     return result;
   }
-  public static boolean emailFree(String username) throws SQLException {
+  public static boolean emailFree(String email) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection !=null){
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_email_free(? )}"))
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_check_email_avail(? )}"))
         {
-          statement.setString(1,username);
+          statement.setString(1,email);
 
           try (ResultSet resultSet = statement.executeQuery()){
             if(resultSet.next()) {
