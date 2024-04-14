@@ -12,9 +12,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="In class assignment.">
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Added check to see if username / password is available on the signup servlet.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/AddGardenServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/AddPlantServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/AllGardensServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/AllPlantsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/DeleteGardenServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/DeletePlantServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/EditGardenServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/EditPlantServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/controller/garden_home.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/data/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/data/GardenDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/data/PlantDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/model/Garden.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/garden/model/Plant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Garden_Add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Garden_All.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Garden_Edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Plant_Add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Plant_All.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/Plant_Edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/garden_bottom.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/garden_index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/garden/garden_top.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -498,7 +521,8 @@
       <workItem from="1712859164052" duration="3699000" />
       <workItem from="1712867691875" duration="3288000" />
       <workItem from="1712877759914" duration="9816000" />
-      <workItem from="1713013304083" duration="1059000" />
+      <workItem from="1713013304083" duration="1947000" />
+      <workItem from="1713047977053" duration="3236000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -772,7 +796,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712888900074</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Added check to see if username / password is available on the signup servlet.">
+      <option name="closed" value="true" />
+      <created>1713014837252</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1713014837252</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -786,7 +818,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Terms and Conditions" />
     <MESSAGE value="sTarted Work on Final. Created servlet, controller and DAO method for add facility. Crated servlet, controller and DAO for view all facility." />
     <MESSAGE value="Created DAOs and Models for remaining tables." />
     <MESSAGE value="Login, password reset, create account" />
@@ -811,7 +842,8 @@
     <MESSAGE value="Updates based on progress report 4 feedback." />
     <MESSAGE value="More Updates based on progress report 4 feedback." />
     <MESSAGE value="In class assignment." />
-    <option name="LAST_COMMIT_MESSAGE" value="In class assignment." />
+    <MESSAGE value="Added check to see if username / password is available on the signup servlet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added check to see if username / password is available on the signup servlet." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
