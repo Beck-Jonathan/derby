@@ -12,10 +12,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="DRY homework">
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="suggested improvement">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/Department.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/JobListing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/CourseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/CourseServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/CourseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/CourseDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -504,7 +504,7 @@
       <workItem from="1713293055937" duration="1872000" />
       <workItem from="1713311138624" duration="601000" />
       <workItem from="1713405291925" duration="10000" />
-      <workItem from="1713482217125" duration="5902000" />
+      <workItem from="1713482217125" duration="6773000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -802,7 +802,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713487696377</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="suggested improvement">
+      <option name="closed" value="true" />
+      <created>1713488327782</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1713488327782</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -816,7 +824,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Login, password reset, create account" />
     <MESSAGE value="View all and create for various data objects." />
     <MESSAGE value="Fixed error on error page. Fixed link to view all leagues." />
     <MESSAGE value="updated resume" />
@@ -841,7 +848,8 @@
     <MESSAGE value="Added check to see if username / password is available on the signup servlet." />
     <MESSAGE value="silly garden project demo." />
     <MESSAGE value="DRY homework" />
-    <option name="LAST_COMMIT_MESSAGE" value="DRY homework" />
+    <MESSAGE value="suggested improvement" />
+    <option name="LAST_COMMIT_MESSAGE" value="suggested improvement" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
