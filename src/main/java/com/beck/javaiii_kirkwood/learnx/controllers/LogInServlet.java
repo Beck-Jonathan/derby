@@ -78,6 +78,7 @@ public class LogInServlet extends HttpServlet {
           }
           session.setAttribute("activeUser",userFromDatabase);
           session.setAttribute("flashMessageSuccess","Logged in!");
+          session.setAttribute("language",userFromDatabase.getLanguage());
           resp.sendRedirect(redirect);
 
           return;

@@ -12,10 +12,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="suggested improvement">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/Department.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/JobListing.java" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Day 23 quiz">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/translation.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/translation_ar.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/translation_fr.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/translation_sk.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/LogInServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/LogInServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Shared/Base.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Shared/Base.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Shared/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Shared/top.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-users.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/student.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/student.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top-nav.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top-nav.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -504,7 +514,7 @@
       <workItem from="1713293055937" duration="1872000" />
       <workItem from="1713311138624" duration="601000" />
       <workItem from="1713405291925" duration="10000" />
-      <workItem from="1713482217125" duration="6773000" />
+      <workItem from="1713482217125" duration="11136000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -810,7 +820,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713488327782</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Day 23 quiz">
+      <option name="closed" value="true" />
+      <created>1713489054489</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1713489054489</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -824,8 +842,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="View all and create for various data objects." />
-    <MESSAGE value="Fixed error on error page. Fixed link to view all leagues." />
     <MESSAGE value="updated resume" />
     <MESSAGE value="Fixed error." />
     <MESSAGE value="Midterm Exam" />
@@ -849,7 +865,9 @@
     <MESSAGE value="silly garden project demo." />
     <MESSAGE value="DRY homework" />
     <MESSAGE value="suggested improvement" />
-    <option name="LAST_COMMIT_MESSAGE" value="suggested improvement" />
+    <MESSAGE value="Day 23 qui" />
+    <MESSAGE value="Day 23 quiz" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day 23 quiz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -895,16 +913,6 @@
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/StudentServlet.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/AddTeamServlet.java</url>
           <line>86</line>
           <option name="timeStamp" value="63" />
@@ -935,14 +943,14 @@
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/Course.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/data/EventDAO.java</url>
           <line>56</line>
           <option name="timeStamp" value="85" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java</url>
+          <line>68</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

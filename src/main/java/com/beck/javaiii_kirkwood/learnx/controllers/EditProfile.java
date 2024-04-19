@@ -66,6 +66,7 @@ public class EditProfile extends HttpServlet {
           int result = UserDAO.update(userFromSession);
           if (result == 1) {
             session.setAttribute("activeUser", userFromSession);
+            session.setAttribute("language",userFromSession.getLanguage());
           }
         }
 

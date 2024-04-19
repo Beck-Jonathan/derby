@@ -7,7 +7,11 @@
 
                 <%--                Add flash message tags--%>
 
-                <p>There ${users.size() eq 1 ? "is" : "are"}&nbsp;${users.size()} user${user.size() ne 1 ? "s" : ""}</p>
+                <p><fmt:message key="allUsers.userCount">
+                    <fmt:param value="${fn:length(users) == 1 ? 'is' : 'are'}" />
+                    <fmt:param value="${fn:length(users)}" />
+                    <fmt:param value="${fn:length(users) != 1 ? 's' : ''}" />
+                </fmt:message></p>
                 <c:if test="${users.size() > 0}">
                     <div class="table-responsive">
                         <table class="table table-bordered">

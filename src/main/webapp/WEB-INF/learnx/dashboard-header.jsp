@@ -11,8 +11,8 @@
                     </c:otherwise>
                 </c:choose>
                 <ul class="list-inline">
-                    <li class="list-item"><i class="fas fa-star text-warning"></i> Member since <fmt:formatDate value="${activeUser.createdDate}" type="both" timeStyle="full" dateStyle="full"></fmt:formatDate><br/></li>
-                    <li class="list-item"><i class="fas fa-cake text-success"></i> Entered This Mortal Coil <fmt:formatDate value="${activeUser.birthdayDate}" type="date"  dateStyle="full"></fmt:formatDate></li>
+                    <li class="list-item"><i class="fas fa-star text-warning"></i> <fmt:message key="dashboard.membersince"/> <fmt:formatDate value="${activeUser.createdDate}" type="both" timeStyle="full" dateStyle="full"></fmt:formatDate><br/></li>
+                    <li class="list-item"><i class="fas fa-cake text-success"></i> <fmt:message key="dashboard.birthday"/>  <fmt:formatDate value="${activeUser.birthdayDate}" type="date"  dateStyle="full"></fmt:formatDate></li>
 
                 </ul>
 
