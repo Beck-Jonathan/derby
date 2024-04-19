@@ -8,6 +8,7 @@
 
             <!-- Main content START -->
             <div class="col-xl-9">
+                <jsp:include page="../Shared/flashMessage.jsp"></jsp:include>
 
                 <!-- Counter boxes START -->
                 <div class="row mb-4">
@@ -121,9 +122,10 @@
                                                                         <td>
                                                                             <!-- Info -->
                                                                             <div class="overflow-hidden">
-                                                                                <h6 class="mb-0">85%</h6>
+                                                                                <c:set value="${5/62}" var="percent_complete"></c:set>
+                                                                                <h6 class="mb-0"><fmt:formatNumber value="${percent_complete}" maxFractionDigits="1" type="percent" ></fmt:formatNumber></h6>
                                                                                 <div class="progress progress-sm bg-primary bg-opacity-10">
-                                                                                    <div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+                                                                                    <div class="progress-bar bg-primary aos" role="progressbar" data-aos="slide-right" data-aos-delay="200" data-aos-duration="1000" data-aos-easing="ease-in-out" style="width: ${percent_complete*100}%" aria-valuenow="${percent_complete}" aria-valuemin="0" aria-valuemax="100">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

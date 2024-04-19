@@ -52,6 +52,11 @@ Page content START -->
                                                 <div class="d-flex align-items-center">
                                                     <p class="mb-0 ms-2">${course.teacherFirstName}&nbsp${course.teacherLastName}</p>
                                                 </div>
+                                                <!--price -->
+                                                <div class="d-flex align-items-center">
+                                                    <p class="mb-0 ms-2">The price is <fmt:formatNumber value="${course.price}" type="currency"/></p>
+                                                </div>
+
                                                 <c:if test="${sessionScope.activeUser.privileges eq 'student'}">
                                                     <!-- Enroll -->
                                                     <div class="mt-3 mt-sm-0">

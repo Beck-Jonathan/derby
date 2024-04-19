@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.CourseDAO;
+import com.beck.javaiii_kirkwood.shared.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,8 +19,8 @@ public class EnrollmentServlet extends HttpServlet {
     HttpSession session = req.getSession();
     String x = "banana";
 
-    User activeUser = (User)session.getAttribute("activeUser");
-    if(activeUser == null || !activeUser.getPrivileges().equals("student")) {
+    User activeUser = Helpers.getUserFromSession(session);
+    if(activeUser == null || !Helpers.isStudent(activeUser)) {
       resp.sendRedirect("courses");
       return;
     }

@@ -9,14 +9,7 @@
         </div>
     </div>
     <div>
-<c:choose>
-    <c:when test="${not empty flashMessageSuccess}">
-        <div class="alert alert-success mb-2" role="alert">
-        ${flashMessageSuccess}
-        </div>
-        <c:remove var="flashMessageSuccess" scope="session" />
-    </c:when>
-</c:choose>
+        <jsp:include page="../Shared/flashMessage.jsp"></jsp:include>
 
     </div>
 

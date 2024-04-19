@@ -12,20 +12,7 @@
                     </div>
                     <div class="card-body">
 
-                        <c:choose>
-                            <c:when test="${not empty flashMessageSuccess}">
-                                <div class="alert alert-success my-2">
-                                        ${flashMessageSuccess}
-                                </div>
-                                <c:remove var="flashMessageSuccess" scope="session"></c:remove>
-                            </c:when>
-                            <c:when test="${not empty flashMessageWarning}">
-                                <div class="alert alert-warning my-2">
-                                        ${flashMessageWarning}
-                                </div>
-                                <c:remove var="flashMessageWarning" scope="session"></c:remove>
-                            </c:when>
-                        </c:choose>
+                        <jsp:include page="../Shared/flashMessage.jsp"></jsp:include>
 
 
                         <form action="${appURL}/edit-user?id=${user.ID}" method="post" class="row">

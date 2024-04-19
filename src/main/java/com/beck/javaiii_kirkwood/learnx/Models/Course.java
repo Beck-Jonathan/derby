@@ -13,6 +13,8 @@ public class Course implements Comparable{
   private int categoryId;
   private String categoryName;
 
+  private static Double price = 1234.567;
+
   public Course() {
   }
 
@@ -26,6 +28,10 @@ public class Course implements Comparable{
     this.teacherLastName = teacherLastName;
     this.categoryId = categoryId;
     this.categoryName = categoryName;
+  }
+
+  public  Double getPrice() {
+    return price;
   }
 
   public int getId() {

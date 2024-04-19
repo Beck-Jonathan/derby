@@ -4,6 +4,7 @@
             <h3 class="card-header-title text-light">Edit Profile</h3>
         </div>
         <div class="card-body">
+            <jsp:include page="../Shared/flashMessage.jsp"></jsp:include>
             <form action="${appURL}/edit-profile" method="post" class="row">
                 <%-- First Name--%>
                 <div class="col-md-6">

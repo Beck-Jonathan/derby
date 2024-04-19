@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.UserDAO;
+import com.beck.javaiii_kirkwood.shared.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ public class DeleteAccountServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    User user = (User)session.getAttribute("activeUser");
+    User user = Helpers.getUserFromSession(session);
     if(user == null) {
       resp.sendRedirect("signin?redirect=delete-account");
       return;
@@ -35,7 +36,7 @@ public class DeleteAccountServlet extends HttpServlet {
     results.put("email", email);
 
     HttpSession session = req.getSession();
-    User activeUser = (User)session.getAttribute("activeUser");
+    User activeUser = Helpers.getUserFromSession(session);
     if(!email.equals(activeUser.getEmail())) {
       results.put("emailError", "The value you entered is not the same as <b>'" + activeUser.getEmail() + "'</b>.");
     }

@@ -50,6 +50,10 @@ public class EventDAO {
         statement.setString(1, _event.getEvent_ID().toString());
 
         try (ResultSet resultSet = statement.executeQuery()){
+          ResultSetMetaData rsmd = resultSet.getMetaData();
+          for (int i=1;i<rsmd.getColumnCount()-1;i++) {
+            System.out.println(rsmd.getColumnLabel(i));
+          }
           if(resultSet.next()){Integer Event_ID = resultSet.getInt("Event_ID");
             Integer Facility_ID = resultSet.getInt("Facility_ID");
             LocalDate Date = resultSet.getDate("Date").toLocalDate();

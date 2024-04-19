@@ -5,6 +5,7 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.UserDAO;
+import com.beck.javaiii_kirkwood.shared.Helpers;
 import com.beck.javaiii_kirkwood.shared.MyValidators;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -22,7 +23,7 @@ public class EditProfile extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    User userFromSession = (User) session.getAttribute("activeUser");
+    User userFromSession = Helpers.getUserFromSession(session);
     if (userFromSession == null) {
       session.setAttribute("flashMessageWarning", "You must be logged in to edit your profile");
       resp.sendRedirect("login?redirect=edit-profile");
@@ -43,7 +44,7 @@ public class EditProfile extends HttpServlet {
 
 
       HttpSession session = req.getSession();
-      User userFromSession = (User)session.getAttribute("activeUser");
+      User userFromSession = Helpers.getUserFromSession(session);
       int errors=0;
       if (userFromSession!=null){
 

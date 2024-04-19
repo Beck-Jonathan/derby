@@ -4,6 +4,7 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 import com.beck.javaiii_kirkwood.learnx.Models.Course;
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.CourseDAO;
+import com.beck.javaiii_kirkwood.shared.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ public class StudentServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    User activeUser = (User)session.getAttribute("activeUser");
-    if(activeUser == null || !activeUser.getPrivileges().equals("student")) {
+    User activeUser = Helpers.getUserFromSession(session);
+    if(activeUser == null || !Helpers.isStudent(activeUser)) {
       session.setAttribute("flashMessageWarning", "You must be a student to view this content.");
       resp.sendRedirect("signin?redirect=student");
       return;
