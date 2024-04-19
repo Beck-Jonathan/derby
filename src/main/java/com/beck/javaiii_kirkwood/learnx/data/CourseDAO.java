@@ -41,7 +41,7 @@ public class CourseDAO extends Database {
         }
       }
     } catch (SQLException e) {
-      throw new RuntimeException(e);
+      throw new RuntimeException("likely bad query",e);
     }
     return courses;
   }

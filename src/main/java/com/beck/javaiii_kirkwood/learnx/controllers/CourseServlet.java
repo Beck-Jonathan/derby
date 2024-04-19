@@ -14,9 +14,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.time.Instant;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @WebServlet("/courses")
 public class CourseServlet extends HttpServlet {
@@ -56,7 +54,16 @@ public class CourseServlet extends HttpServlet {
     // To do: For pagination
     int limit = limitTry;
     int offset = offsetTry;
-    List<Course> courses = CourseDAO.get(limit, offset, categoryFilter, skillFilter);
+    List<Course> courses = new ArrayList<>();
+
+    try {
+      courses = CourseDAO.get(limit, offset, categoryFilter, skillFilter);
+    }
+    catch (Exception ex){
+      resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+      return;
+    }
+
     List<CourseCategory> categories = CourseDAO.getAllCategories();
     req.setAttribute("courses", courses);
     req.setAttribute("categories", categories);
