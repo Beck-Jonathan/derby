@@ -3,10 +3,7 @@ package com.beck.javaiii_kirkwood.learnx.data;
 import com.beck.javaiii_kirkwood.learnx.Models.Department;
 import com.beck.javaiii_kirkwood.learnx.Models.JobListing;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -41,12 +38,14 @@ public class JobListingDAO {
             department.setDepartment_name(department_name);
             Boolean featured = resultSet.getBoolean("featured");
             String position = resultSet.getString("position");
-            //Instant posted_at = resultSet.getTimestamp("posted_at");
-            Instant posted_at = Instant.from(Instant.now());
+            Timestamp posted_at = resultSet.getTimestamp("posted_at");
+            Instant posted_at2= posted_at.toInstant();
+
+            //Instant posted_at = Instant.from(Instant.now());
             String contract = resultSet.getString("contract");
             String location = resultSet.getString("location");
             String job_description = resultSet.getString("job_description");
-            JobListing _job_listing = new JobListing( job_id, department, featured, position, posted_at, contract, location, job_description);
+            JobListing _job_listing = new JobListing( job_id, department, featured, position, posted_at2, contract, location, job_description);
             result.add(_job_listing);
           }
         }
