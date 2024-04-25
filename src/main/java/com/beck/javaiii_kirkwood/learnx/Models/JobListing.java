@@ -12,6 +12,17 @@ public class JobListing {
   private String location;
   private String description;
 
+  public JobListing(int job_id, Department department, boolean featured, String position, Instant posted_at, String contract, String location, String description) {
+    this.job_id = job_id;
+    this.department = department;
+    this.featured = featured;
+    this.position = position;
+    this.posted_at = posted_at;
+    this.contract = contract;
+    this.location = location;
+    this.description = description;
+  }
+
   public int getJob_id() {
     return job_id;
   }
