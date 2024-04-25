@@ -13,11 +13,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Helpers.noErrors method as part of the &quot;keep code DRY assignment&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/JobListingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/JobListing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/Models/JobListing.java" afterDir="false" />
-    </list>
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Day24 quiz" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -513,7 +509,7 @@
       <workItem from="1713997530661" duration="8000" />
       <workItem from="1714070101282" duration="1162000" />
       <workItem from="1714074863856" duration="600000" />
-      <workItem from="1714085425488" duration="1260000" />
+      <workItem from="1714085425488" duration="1494000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -851,7 +847,23 @@
       <option name="project" value="LOCAL" />
       <updated>1714070662859</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Day24 quiz">
+      <option name="closed" value="true" />
+      <created>1714086803678</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1714086803679</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Day24 quiz">
+      <option name="closed" value="true" />
+      <created>1714086910091</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1714086910091</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -865,7 +877,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Midterm Exam" />
     <MESSAGE value="Various updates" />
     <MESSAGE value="Refactored all JSP and servlets related to view all and add" />
     <MESSAGE value="View current 2fa" />
@@ -890,7 +901,8 @@
     <MESSAGE value="Day 23 quiz" />
     <MESSAGE value="Translation work and assignment" />
     <MESSAGE value="Helpers.noErrors method as part of the &quot;keep code DRY assignment&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Helpers.noErrors method as part of the &quot;keep code DRY assignment&quot;" />
+    <MESSAGE value="Day24 quiz" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day24 quiz" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -974,11 +986,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java</url>
           <line>68</line>
           <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/JobListingDAO.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="88" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
