@@ -7,6 +7,9 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class Helpers {
@@ -47,5 +50,17 @@ public class Helpers {
 
   public static Boolean isAdmin(User user){
     return user.getPrivileges().equals("admin");
+  }
+
+  public static Boolean noErrors(HashMap results, List<String> potentialErrors){
+    Boolean result = true;
+    for (String errorMessage : potentialErrors){
+      if(results.containsKey(errorMessage)){
+        result=false;
+        break;
+      }
+
+    }
+    return result;
   }
 }

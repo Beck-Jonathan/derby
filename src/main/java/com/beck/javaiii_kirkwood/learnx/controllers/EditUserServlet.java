@@ -3,6 +3,7 @@ package com.beck.javaiii_kirkwood.learnx.controllers;
 
 import com.beck.javaiii_kirkwood.learnx.Models.User;
 import com.beck.javaiii_kirkwood.learnx.data.UserDAO;
+import com.beck.javaiii_kirkwood.shared.Helpers;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,9 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet("/edit-user")
@@ -53,6 +56,17 @@ public class EditUserServlet extends HttpServlet {
   }
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    List<String> potentialErrors = new ArrayList<>();
+
+    potentialErrors.add("firstNameError");
+    potentialErrors.add("lastNameError");
+    potentialErrors.add("emailError");
+    potentialErrors.add("phoneError");
+    potentialErrors.add("languageError");
+    potentialErrors.add("statusError");
+    potentialErrors.add("privError");
+
+
     int userId = 0;
     try {
       userId = Integer.parseInt(req.getParameter("id"));
@@ -68,7 +82,7 @@ public class EditUserServlet extends HttpServlet {
     String statusInput = req.getParameter("statusInput");
     String privilegesInput = req.getParameter("privInput");
 
-    Map<String, String> results = new HashMap<>();
+    HashMap<String, String> results = new HashMap<>();
     User user = UserDAO.get(userId);
     if(user != null) {
       // todo: validate these strings
@@ -83,6 +97,7 @@ public class EditUserServlet extends HttpServlet {
       }
       if(emailInput != null && !emailInput.equals(user.getEmail()) && userFromDatabase != null) {
         results.put("emailError", "A user with that email address already exists.");
+        potentialErrors.add("emailError");
       }
       if(!results.containsKey("emailError")) {
         try {
@@ -98,6 +113,7 @@ public class EditUserServlet extends HttpServlet {
         }
       } catch (Exception e) {
         results.put("phoneError", e.getMessage());
+
       }
 
       try {
@@ -118,9 +134,7 @@ public class EditUserServlet extends HttpServlet {
         results.put("privError", e.getMessage());
       }
       HttpSession session = req.getSession();
-      if (!results.containsKey("firstNameError") && !results.containsKey("lastNameError")
-          && !results.containsKey("emailError") && !results.containsKey("phoneError")
-          && !results.containsKey("languageError") && !results.containsKey("statusError") && !results.containsKey("privError")
+      if (Helpers.noErrors(results,potentialErrors)
       ) {
         UserDAO.update(user);
         session.setAttribute("flashMessageSuccess", "User updated");
