@@ -12,19 +12,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Day24 Quiz">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/GroupChat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/GroupChatEndpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/MyDecoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/MyEncoder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/MyJson.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/group-chat.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/group-chat.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/group-chat.js" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Chatbox demo.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/CourseAdminServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/adminServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/admin-dashboard.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/bottom.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/bottom.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/top.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-sidebar.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,9 +27,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -524,7 +517,7 @@
       <workItem from="1713997530661" duration="8000" />
       <workItem from="1714070101282" duration="1162000" />
       <workItem from="1714074863856" duration="600000" />
-      <workItem from="1714085425488" duration="10717000" />
+      <workItem from="1714085425488" duration="12683000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -886,7 +879,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714086945006</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Chatbox demo.">
+      <option name="closed" value="true" />
+      <created>1714096979603</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1714096979603</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -900,7 +901,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Refactored all JSP and servlets related to view all and add" />
     <MESSAGE value="View current 2fa" />
     <MESSAGE value="Errors fixed from html validator" />
     <MESSAGE value="created error handling" />
@@ -925,7 +925,8 @@
     <MESSAGE value="Helpers.noErrors method as part of the &quot;keep code DRY assignment&quot;" />
     <MESSAGE value="Day24 quiz" />
     <MESSAGE value="Day24 Quiz" />
-    <option name="LAST_COMMIT_MESSAGE" value="Day24 Quiz" />
+    <MESSAGE value="Chatbox demo." />
+    <option name="LAST_COMMIT_MESSAGE" value="Chatbox demo." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1009,6 +1010,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/EditProfile.java</url>
           <line>68</line>
           <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/controllers/CourseAdminServlet.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
