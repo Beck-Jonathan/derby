@@ -322,6 +322,88 @@ public class UserDAO {
     }
     return user;
   }
+
+  public static int deleteUser(int userID) {
+    int rowsAffected=0;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_User( ?)}")){
+          statement.setInt(1,userID);
+          rowsAffected = statement.executeUpdate();
+          if (rowsAffected == 0) {
+            throw new RuntimeException("Could not Delete User. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not Delete User. Try again later");
+    }
+    return rowsAffected;
+  }
+
+  public static List<User> getTeachers() throws SQLException {
+    List<User> results = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      try (CallableStatement statement = connection.prepareCall("{CALL sp_get_all_teachers()}")) {
+
+        try (ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {
+
+            int ID = resultSet.getInt("id");
+            String first_name = resultSet.getString("first_name");
+            if (resultSet.wasNull()) {
+              first_name = "";
+            }
+            String last_name = resultSet.getString("last_name");
+            if (resultSet.wasNull()) {
+              last_name = "";
+            }
+            String email = resultSet.getString("email");
+            if (resultSet.wasNull()) {
+              email = "";
+            }
+            String phone = resultSet.getString("phone");
+            if (resultSet.wasNull()) {
+              phone = "";
+            }
+            char[] password = null;
+            //if(resultSet.wasNull()){password="";}
+            String status = resultSet.getString("status");
+            if (resultSet.wasNull()) {
+              status = "";
+            }
+            String privileges = resultSet.getString("privileges");
+            if (resultSet.wasNull()) {
+              privileges = "";
+            }
+            Instant created_at = resultSet.getTimestamp("created_at").toInstant();
+            if (resultSet.wasNull()) {
+              created_at = new Date().toInstant();
+            }
+            Instant last_logged_in = resultSet.getTimestamp("last_logged_in").toInstant();
+            if (resultSet.wasNull()) {
+              last_logged_in = new Date().toInstant();
+              ;
+            }
+            Instant updated_at = resultSet.getTimestamp("updated_at").toInstant();
+            if (resultSet.wasNull()) {
+              updated_at = new Date().toInstant();
+              ;
+            }
+            String language = resultSet.getString("language");
+            if (resultSet.wasNull()) {
+              language = "";
+            }
+            User result = new User(ID, first_name, last_name, email, phone, null, status, privileges, created_at, last_logged_in, updated_at, language);
+            results.add(result);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      System.out.println(e.getSQLState());
+    }
+    return results;
+  }
 }
 
 

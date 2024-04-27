@@ -12,6 +12,13 @@ public class Course implements Comparable{
   private String teacherLastName;
   private int categoryId;
   private String categoryName;
+  private int teacherID;
+
+
+
+
+
+
 
   private static Double price = 1234.567;
 
@@ -28,6 +35,16 @@ public class Course implements Comparable{
     this.teacherLastName = teacherLastName;
     this.categoryId = categoryId;
     this.categoryName = categoryName;
+  }
+
+  public Course(Integer id, String name, String description, String level, String picture, Integer teacherId, Integer categoryId) {
+    this.id=id;
+    this.name=name;
+    this.description=description;
+    this.level=level;
+    this.picture=picture;
+    this.teacherID=teacherId;
+    this.categoryId=categoryId;
   }
 
   public  Double getPrice() {
@@ -110,5 +127,13 @@ public class Course implements Comparable{
   public int compareTo(@NotNull Object o) {
     Course other = (Course) o;
     return this.id-other.id;
+  }
+
+  public int getTeacherID() {
+    return teacherID;
+  }
+
+  public void setTeacherID(int teacherID) {
+    this.teacherID = teacherID;
   }
 }

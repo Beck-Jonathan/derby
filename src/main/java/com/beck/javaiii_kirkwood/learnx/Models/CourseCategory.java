@@ -13,6 +13,11 @@ public class CourseCategory {
     this.name = name;
     this.numCourses = numCourses;
   }
+  public CourseCategory(int id, String name) {
+    this.id = id;
+    this.name = name;
+
+  }
 
   public int getId() {
     return id;
