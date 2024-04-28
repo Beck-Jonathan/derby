@@ -17,17 +17,20 @@ public class JobListingDAO {
     getAll().forEach(System.out::println);
   }
 
-  public static List<JobListing> getAll() {
+  public static List<JobListing> getAll(){
+    return getAll(100,0,"","");
+  }
+  public static List<JobListing> getAll(int limit, int offset,String _department,String Location) {
     List<JobListing> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_get_job_listings(?,?,?,?)}"))
 
         {
-          statement.setInt(1,20);
-          statement.setInt(2,0);
-          statement.setString(3,"");
-          statement.setString(4,"");
+          statement.setInt(1,limit);
+          statement.setInt(2,offset);
+          statement.setString(3,_department);
+          statement.setString(4,Location);
 
           try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {Integer job_id = resultSet.getInt("job_id");
