@@ -12,9 +12,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Assignment 12 (extra credit)">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/JobListingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/learnx/data/JobListingDAO.java" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Day 24 quiz fix">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/MyValidators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/MyValidators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/translation_sk.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/translation_sk.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/dashboard-main.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,7 @@
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\learnx" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.11">
     <configuration default="true" type="AZURE_FUNCTION_SUPPORT" factoryName="Run Functions">
       <option name="appName" />
       <option name="appServicePlanName" />
@@ -517,7 +518,7 @@
       <workItem from="1714085425488" duration="12817000" />
       <workItem from="1714147875229" duration="14721000" />
       <workItem from="1714223795477" duration="41000" />
-      <workItem from="1714318035468" duration="344000" />
+      <workItem from="1714318035468" duration="674000" />
     </task>
     <task id="LOCAL-00001" summary="Email setup">
       <option name="closed" value="true" />
@@ -903,7 +904,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714180252337</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="Day 24 quiz fix">
+      <option name="closed" value="true" />
+      <created>1714318497724</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1714318497724</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -917,7 +926,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="created error handling" />
     <MESSAGE value="Fixed errors noted by professor via slack." />
     <MESSAGE value="Fixed redirect on login." />
     <MESSAGE value="Added error test servlet to throw a 405 on purpose." />
@@ -942,7 +950,8 @@
     <MESSAGE value="Chatbox demo." />
     <MESSAGE value="Assignment 11" />
     <MESSAGE value="Assignment 12 (extra credit)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Assignment 12 (extra credit)" />
+    <MESSAGE value="Day 24 quiz fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Day 24 quiz fix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

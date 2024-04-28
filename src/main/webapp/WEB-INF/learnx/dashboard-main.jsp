@@ -30,13 +30,14 @@
                     <label class="form-label" for="phoneInput">Phone number</label>
                     <input  type="text" class="form-control" id="phoneInput" name="phoneInput" value="${fn:escapeXml(activeUser.phone)}">
                 </div>
-
+                    <!-- Language -->
                 <div class="col-md-6">
                     <label class="form-label" for="languageInput">Language</label>
                     <select class="form-select <c:if test="${not empty results.languageError}"> is-invalid </c:if>"  name="languageInput" id="languageInput">
                         <option value="en" <c:if test="${activeUser.language eq 'en'}">selected</c:if>>English</option>
                         <option value="sk" <c:if test="${activeUser.language eq 'sk'}">selected</c:if>>Slovak</option>
                         <option value="ar" <c:if test="${activeUser.language eq 'ar'}">selected</c:if>>Arabic</option>
+                        <option value="fr" <c:if test="${activeUser.language eq 'fr'}">selected</c:if>>French</option>
                     </select>
                     <c:if test="${not empty results.languageError}"> ${results.languageError} </c:if>
 
