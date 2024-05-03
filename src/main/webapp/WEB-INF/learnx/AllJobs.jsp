@@ -16,7 +16,7 @@ Create the JSP  For Viewing All of The  Job_Listing table
                     <div class="row border border-dark my-4 p-2">
                         <div class="col-md-6 d-flex flex-column mt-2">
                             <div class = "mt-2">
-                                <strong> ${fn:escapeXml(job_listing.department.department_id)}</strong>
+                                <strong> ${fn:escapeXml(job_listing.department.department_name)}</strong>
                                 <span class="badge rounded-pill bg-success">Badge </span>
                                 <span class="badge rounded-pill bg-warning text-light">Badge </span>
                             </div>
