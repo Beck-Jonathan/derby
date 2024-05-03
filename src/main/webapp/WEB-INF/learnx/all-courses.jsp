@@ -76,7 +76,8 @@ Page content START -->
                                     </div>
                                 </div>
                             </div>
-                        </div> <%-- end card --%>
+                        </div>
+                            <%-- end card --%>
                             <div class="modal fade" id="courseModal${course.id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">

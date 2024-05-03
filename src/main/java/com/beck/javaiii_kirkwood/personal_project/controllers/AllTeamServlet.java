@@ -29,7 +29,8 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
   req.setAttribute("Teams", teams);
   req.setAttribute("pageTitle", "All Teams");
-  req.getRequestDispatcher("WEB-INF/personal-project/all-Teams.jsp").forward(req,resp);
+  //req.getRequestDispatcher("WEB-INF/personal-project/all-Teams.jsp").forward(req,resp);
+    req.getRequestDispatcher("WEB-INF/personal-project/all-Team-Card.jsp").forward(req,resp);
 
 }
 }

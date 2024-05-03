@@ -23,6 +23,10 @@ public class JobListing {
     this.description = description;
   }
 
+  public JobListing() {
+
+  }
+
   public int getJob_id() {
     return job_id;
   }

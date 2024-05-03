@@ -13,6 +13,7 @@
                     <c:if test = "${sessionScope.activeUser.privileges eq 'admin'}">
                     <a class="list-group-item" href="${appURL}/all-users"><i class="fas fa-user-pen me-2"></i>All Users</a>
                     <a class="list-group-item" href="${appURL}/all-courses"><i class="fas fa-user-pen me-2"></i>All Courses</a>
+                        <a class="list-group-item" href="${appURL}/applications"><i class="fas fa-user-pen me-2"></i>All Applications</a>
                     </c:if>
                     <a class="list-group-item" href="${appURL}/edit-profile"><i class="fas fa-user-pen me-2"></i>Edit Profile</a>
                     <c:if test = "${sessionScope.activeUser.privileges eq 'student'}">

@@ -36,7 +36,7 @@ Create the JSP  For Viewing All of The  Team table
                     </thead>
                     <tbody>
                     <c:forEach items="${Teams}" var="team">
-
+                    <tr>
                             <td><a href = "editteam?teamid=${team.team_ID}&mode=view">${fn:escapeXml(team.team_ID)}</a></td>
                             <td>${fn:escapeXml(team.league_name)}</td>
                             <td>${fn:escapeXml(team.name)}</td>
