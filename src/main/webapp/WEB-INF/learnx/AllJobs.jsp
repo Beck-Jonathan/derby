@@ -10,42 +10,34 @@ Create the JSP  For Viewing All of The  Job_Listing table
             <p>There ${Job_Listings.size() eq 1 ? "is" : "are"}&nbsp;${Job_Listings.size()} Job_Listing${Job_Listings.size() ne 1 ? "s" : ""}</p>
             Add Job_Listing   <a href="addJob_Listing">Add</a>
             <c:if test="${Job_Listings.size() > 0}">
-                <div class="table-responsive"><table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">Job_id</th>
-                        <th scope="col">Apply</th>
-                        <th scope="col">department_id</th>
-                        <th scope="col">featured</th>
-                        <th scope="col">position</th>
-                        <th scope="col">posted_at</th>
-                        <th scope="col">contract</th>
-                        <th scope="col">location</th>
-                        <th scope="col">job_description</th>
 
+                <c:forEach items="${Job_Listings}" var="job_listing">
+                <div class="container">
+                    <div class="row border border-dark my-4 p-2">
+                        <div class="col-md-6 d-flex flex-column mt-2">
+                            <div class = "mt-2">
+                                <strong> ${fn:escapeXml(job_listing.department.department_id)}</strong>
+                                <span class="badge rounded-pill bg-success">Badge </span>
+                                <span class="badge rounded-pill bg-warning text-light">Badge </span>
+                            </div>
+                            <h4 class ="my-2"><a href = "apply-learnx?job_id=${job_listing.job_id}" >${fn:escapeXml(job_listing.position)}</a> </h4>
+                            <div class = "mb-2">
+                                <span class="me-2"> ${fn:escapeXml(job_listing.posted_at)} </span>
+                                <span class="me-2">${fn:escapeXml(job_listing.contract)}</span>
+                                <span>${fn:escapeXml(job_listing.location)}</span>
+                            </div>
+                        </div> <!--end col 1-->
+                        <div class="col-md-6 d-flex justify-content-md-end align-items-center">
+                            <div >
+                                <span class ="badge rounded-pill bg-primary"> Tag </span>
+                                <span class ="ms-2 badge rounded-pill bg-secondary"> Tag </span>
+                                <span class ="ms-2 badge rounded-pill bg-dark"> Tag </span>
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${Job_Listings}" var="job_listing">
-                        <tr>
-                            <td>${fn:escapeXml(job_listing.job_id)}</td>
-                            <td><a href = "apply-learnx?job_id=${job_listing.job_id}" > Apply </a></td>
-                            <td>${fn:escapeXml(job_listing.department.department_id)}</td>
-                            <td>${fn:escapeXml(job_listing.featured)}</td>
-                            <td>${fn:escapeXml(job_listing.position)}</td>
-                            <td>${fn:escapeXml(job_listing.posted_at)}</td>
-                            <td>${fn:escapeXml(job_listing.contract)}</td>
-                            <td>${fn:escapeXml(job_listing.location)}</td>
-                            <td>${fn:escapeXml(job_listing.description)}</td>
-
-
-
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                            </div>
+                        </div> <!-- end col 2 -->
+                    </div>
                 </div>
+                </c:forEach>
             </c:if>
         </div>
     </div>
