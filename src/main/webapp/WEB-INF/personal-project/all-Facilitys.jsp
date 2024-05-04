@@ -20,25 +20,28 @@ Create the JSP  For Viewing All of The  Facility table
             <th scope="col">State</th>
             <th scope="col">Zip</th>
             <th scope="col">is_active</th>
+            <c:if test="${User.privilege_ID > 1}">
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
+            </c:if>
           </tr>
           </thead>
           <tbody>
           <c:forEach items="${Facilitys}" var="facility">
             <tr>
-              <td>${facility.facility_ID}</td>
-              <td>${facility.name}</td>
+              <td><a href = "editfacility?facilityid=${facility.facility_ID}&mode=view">${fn:escapeXml(facility.facility_ID)}</a></td><td>${fn:escapeXml(facility.name)}</td>              <td>${facility.name}</td>
               <td>${facility.addresss}</td>
               <td>${facility.city}</td>
               <td>${facility.state}</td>
               <td>${facility.zip}</td>
               <td><input type="checkbox" disabled <c:if test="${facility.is_active}">checked</c:if>></td>
+              <c:if test="${User.privilege_ID > 1}">
               <td><a href = "editfacility?facilityid=${facility.facility_ID}" > Edit </a></td>
               <td><a href = "deletefacility?facilityid=${facility.facility_ID}&mode=<c:choose><c:when test="${facility.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>
 						</c:choose>">
                 <c:if test="${!facility.is_active}">un</c:if>Delete </a></td>
+              </c:if>
             </tr>
           </c:forEach>
           </tbody>

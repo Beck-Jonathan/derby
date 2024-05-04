@@ -132,8 +132,8 @@ public class FacilityDAO {
           statement.setString(11,newFacility.getZip());
           statement.setBoolean(12,oldFacility.getis_active());
           statement.setBoolean(13,newFacility.getis_active());
-          statement.executeUpdate();
-        } catch (SQLException e) {
+          result=statement.executeUpdate();
+        } catch (Exception e) {
           throw new RuntimeException("Could not update Facility . Try again later");
         }
       }

@@ -33,13 +33,25 @@
             <c:if test="${empty User}">
             <a href="joinus">   <button type="button" value="SignUp" id="SignUp" ></button></a>
             </c:if>
+            <c:if test="${not empty User}">
+            <c:if test="${User.privilege_ID eq 1}">
+                <a href="user-dash">   <button type="button" value="User Dashboard" id="user-dash" ></button></a>
+            </c:if>
+            <c:if test="${User.privilege_ID eq 2}">
+                <a href="team-admin-dash">   <button type="button" value="Team Admin Dashboard" id="team-admin-dash" ></button></a>
+            </c:if>
+            <c:if test="${User.privilege_ID eq 3}">
+                <a href="league-admin-dash">   <button type="button" value="League Admin Dashboard" id="league-admin-dash" ></button></a>
+            </c:if>
+            </c:if>
         </div>
 
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c4" >
+
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c5" >
             <button type="button" value="ManageDB" id="ManageDB" ></button>
 
         </div>
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c5" >
+        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c6" >
         <%@include file="/WEB-INF/personal-project/Login.jsp"%>
 
         </div>

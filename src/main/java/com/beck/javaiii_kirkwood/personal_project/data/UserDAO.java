@@ -17,6 +17,8 @@ package com.beck.javaiii_kirkwood.personal_project.data;/// <summary>
 /// A new remark should be added for each update.
 ///</remarks>
 
+import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import com.beck.javaiii_kirkwood.personal_project.models.User;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -24,7 +26,9 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
 public class UserDAO {
@@ -254,5 +258,66 @@ public class UserDAO {
     }
     return result;
   }
+
+  public static List<Team> selectTeamByUser(User user){
+
+
+      List<Team> result = new ArrayList<>();
+      try (Connection connection = getConnection()) {
+        if (connection != null) {
+          try(CallableStatement statement = connection.prepareCall("{CALL sp_select_team_by_user(?)}"))
+          {statement.setInt(1,user.getUser_ID());
+            try(ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+              Integer Team_ID = resultSet.getInt("Team_Team_ID");
+              Integer League_ID = resultSet.getInt("Team_League_ID");
+              String Name = resultSet.getString("Team_Name");
+              String Team_Primary_Color = resultSet.getString("Team_Team_Primary_Color");
+              String Team_Secondary_Color = resultSet.getString("Team_Team_Secondary_Color");
+              String Team_Tertiary_Color = resultSet.getString("Team_Team_Tertiary_Color");
+              String Team_City = resultSet.getString("Team_Team_City");
+              String Team_State = resultSet.getString("Team_Team_State");
+              String Logo = resultSet.getString("Team_Logo");
+              boolean is_active = resultSet.getBoolean("Team_is_active");
+              Team _team = new Team( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active);
+              result.add(_team);
+            }
+          }
+          }
+        }
+      } catch (SQLException e) {
+        throw new RuntimeException("Could not retrieve Teams. Try again later");
+      }
+      return result;
+  }
+
+  public static List<Event> selectEventsByUser(User user){
+
+
+    List<Event> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_select_event_by_user(?)}"))
+        {statement.setInt(1,user.getUser_ID());
+          try(ResultSet resultSet = statement.executeQuery()) {
+          while (resultSet.next()) {
+            Integer Event_ID = resultSet.getInt("Event_Event_ID");
+            Integer Facility_ID = resultSet.getInt("Event_Facility_ID");
+            LocalDate Date = resultSet.getDate("Event_Date").toLocalDate();
+            Integer Type_ID = resultSet.getInt("Event_Type_ID");
+            boolean is_active = resultSet.getBoolean("Event_is_active");
+            Event _event = new Event( Event_ID, Facility_ID, Date, Type_ID, is_active);
+            result.add(_event);
+          }
+        }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Events. Try again later");
+    }
+    return result;
+  }
+
+
 }
 

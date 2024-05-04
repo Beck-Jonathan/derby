@@ -9,22 +9,18 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/signout")
-public class UserSignOutServlet extends HttpServlet {
+@WebServlet("/league-admin-dash")
+public class LeagueAdminDashServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    req.setAttribute("pageTitle", "Privacy Policy");
-    req.getRequestDispatcher("WEB-INF/learnx/privacy-policy.jsp").forward(req, resp);
+    HttpSession session = req.getSession();
+    session.setAttribute("currentPage",req.getRequestURL());
+    req.setAttribute("pageTitle", "League Admin Dashboard");
+    req.getRequestDispatcher("WEB-INF/personal-project/LeagueAdminDash.jsp").forward(req, resp);
   }
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    HttpSession session = req.getSession();
-
-
-    String currentPage =  session.getAttribute("currentPage").toString();
-    session.removeAttribute("User");
-    resp.sendRedirect("home");
-    return;
+    super.doPost(req, resp);
   }
 }
