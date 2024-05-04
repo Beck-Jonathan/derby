@@ -95,7 +95,7 @@ public class AddApplication extends HttpServlet{
     String _desiredSalary = req.getParameter("inputjob_applicationdesiredSalary");
     if (_desiredSalary!=null) {
       _desiredSalary = _desiredSalary.replace('$',' ');
-      _desiredSalary = _desiredSalary.replace(',',' ');
+      _desiredSalary = _desiredSalary.replaceAll(",","");
       _desiredSalary = _desiredSalary.trim();
 
     }
