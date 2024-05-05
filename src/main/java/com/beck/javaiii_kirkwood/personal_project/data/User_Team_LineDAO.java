@@ -29,11 +29,10 @@ public class User_Team_LineDAO {
   public static int add(User_Team_Line _user_team_line) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Team_Line( ?, ?, ?, ?)}")){
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Team_Line( ?, ?)}")){
           statement.setInt(1,_user_team_line.getUser_ID());
           statement.setInt(2,_user_team_line.getTeam_ID());
-          statement.setDate(3, Date.valueOf(_user_team_line.getDate_assgined()));
-          statement.setBoolean(4,_user_team_line.getis_active());
+
           numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not add User_Team_Line. Try again later");
@@ -124,22 +123,23 @@ public class User_Team_LineDAO {
     }
     return result;
   }
-  public static int deleteUser_Team_Line(int user_team_lineID) {
-    int rowsAffected=0;
-    try (Connection connection = getConnection()) {
+  public static int remove(User_Team_Line _user_team_line) {
+    int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_User_Team_Line( ?)}")){
-          statement.setInt(1,user_team_lineID);
-          rowsAffected = statement.executeUpdate();
-          if (rowsAffected == 0) {
-            throw new RuntimeException("Could not Delete User_Team_Line. Try again later");
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_User_Team_Line( ?, ?)}")){
+          statement.setInt(1,_user_team_line.getUser_ID());
+          statement.setInt(2,_user_team_line.getTeam_ID());
+
+          numRowsAffected = statement.executeUpdate();
+          if (numRowsAffected == 0) {
+            throw new RuntimeException("Could not remove User_Team_Line. Try again later");
           }
         }
       }
     } catch (SQLException e) {
-      throw new RuntimeException("Could not Delete User_Team_Line. Try again later");
+      throw new RuntimeException("Could not add User_Team_Line. Try again later");
     }
-    return rowsAffected;
+    return numRowsAffected;
   }
   public static int undeleteUser_Team_Line(int user_team_lineID) {
     int rowsAffected=0;

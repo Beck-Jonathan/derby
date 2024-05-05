@@ -7,6 +7,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.EventDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.EventVM;
 import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -52,7 +53,7 @@ import java.util.Map;
         results.put("dbStatus",ex.getMessage());
       }
     }
-    List<Event> events = null;
+    List<EventVM> events = null;
     events = EventDAO.getAllEvent();
     req.setAttribute("results",results);
     req.setAttribute("Events", events);

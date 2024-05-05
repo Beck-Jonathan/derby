@@ -105,22 +105,24 @@ public class EditTeamServlet extends HttpServlet {
 
     assert filePart != null;
     String fileName = filePart.getSubmittedFileName();
+    String _Logo = fileName;
+    _Logo=_Logo.trim();
     try {
       for (Part part : req.getParts()) {
         part.write(uploadFilePath + File.separator + fileName);
 
       }
     } catch (Exception ex){
-      results.put("dbStatus",ex.getMessage());
-      req.setAttribute("results", results);
-      req.setAttribute("pageTitle", "Edit Team ");
-      req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
-      return;
+      _Logo=_oldTeam.getLogo();
+      //results.put("dbStatus",ex.getMessage());
+      //req.setAttribute("results", results);
+      //req.setAttribute("pageTitle", "Edit Team ");
+      //req.getRequestDispatcher("WEB-INF/personal-project/EditTeam.jsp").forward(req, resp);
+      //return;
     }
 
 
-    String _Logo = fileName;
-    _Logo=_Logo.trim();
+
 
     results.put("League_ID",_League_ID);
     results.put("Name",_Name);

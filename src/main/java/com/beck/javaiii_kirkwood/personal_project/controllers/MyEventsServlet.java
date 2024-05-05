@@ -9,6 +9,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.UserDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.EventVM;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
@@ -35,7 +36,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
   }
 
   session.setAttribute("currentPage",req.getRequestURL());
-  List<Event> events = null;
+  List<EventVM> events = null;
 
   events = UserDAO.selectEventsByUser(user);
 

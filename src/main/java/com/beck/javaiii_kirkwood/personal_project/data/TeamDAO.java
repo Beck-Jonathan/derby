@@ -18,6 +18,7 @@ package com.beck.javaiii_kirkwood.personal_project.data;
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.personal_project.models.League;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
 import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
 
@@ -61,20 +62,27 @@ public class TeamDAO {
         statement.setString(1, _team.getTeam_ID().toString());
 
         try (ResultSet resultSet = statement.executeQuery()){
-          if(resultSet.next()){Integer Team_ID = resultSet.getInt("Team_ID");
-            Integer League_ID = resultSet.getInt("League_ID");
-            String Name = resultSet.getString("Name");
-            String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
-            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
-            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
-            String Team_City = resultSet.getString("Team_City");
-            String Team_State = resultSet.getString("Team_State");
-            String Logo = resultSet.getString("Logo");
-            String League_name = resultSet.getString("League_Name");
-            String Description = resultSet.getString("Description");
-            boolean is_active = resultSet.getBoolean("is_active");
-            result = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
-                League_name,Description);}
+          if(resultSet.next()){
+            Integer Team_ID = resultSet.getInt("Team_Team_ID");
+            Integer League_ID = resultSet.getInt("Team_League_ID");
+            String Name = resultSet.getString("Team_Name");
+            String Team_Primary_Color = resultSet.getString("Team_Team_Primary_Color");
+            String Team_Secondary_Color = resultSet.getString("Team_Team_Secondary_Color");
+            String Team_Tertiary_Color = resultSet.getString("Team_Team_Tertiary_Color");
+            String Team_City = resultSet.getString("Team_Team_City");
+            String Team_State = resultSet.getString("Team_Team_State");
+            String Logo = resultSet.getString("Team_Logo");
+            boolean is_active = resultSet.getBoolean("Team_is_active");
+            Integer League_League_ID = resultSet.getInt("League_League_ID");
+            String League_League_Name = resultSet.getString("League_League_Name");
+            String League_League_Level = resultSet.getString("League_League_Level");
+            Double League_Monthly_Due = resultSet.getDouble("League_Monthly_Due");
+            String League_Active_Days = resultSet.getString("League_Active_Days");
+            String League_Description = resultSet.getString("League_Description");
+            boolean League_is_active = resultSet.getBoolean("League_is_active");
+            League _league = new League(League_League_ID,League_League_Name,League_League_Level,League_Monthly_Due,League_Active_Days,League_Description,League_is_active);
+            result = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,_league);
+          }
         }
       }
     } catch (SQLException e) {
@@ -83,52 +91,66 @@ public class TeamDAO {
     return result;
   }
   public static List<TeamVM> getAllTeam() {
-    List<TeamVM> result = new ArrayList<>();
-    try (Connection connection = getConnection()) {
-      if (connection != null) {
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
-          while (resultSet.next()) {Integer Team_ID = resultSet.getInt("Team_ID");
-            Integer League_ID = resultSet.getInt("League_ID");
-            String Name = resultSet.getString("Name");
-            String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
-            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
-            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
-            String Team_City = resultSet.getString("Team_City");
-            String Team_State = resultSet.getString("Team_State");
-            String Logo = resultSet.getString("Logo");
-            String League_name = resultSet.getString("League_Name");
-            String Description = resultSet.getString("Description");
-            boolean is_active = resultSet.getBoolean("is_active");
-            TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
-                League_name,Description);
-            result.add(_team);
+
+      List<TeamVM> result = new ArrayList<>();
+      try (Connection connection = getConnection()) {
+        if (connection != null) {
+          try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+              Integer Team_ID = resultSet.getInt("Team_Team_ID");
+              Integer League_ID = resultSet.getInt("Team_League_ID");
+              String Name = resultSet.getString("Team_Name");
+              String Team_Primary_Color = resultSet.getString("Team_Team_Primary_Color");
+              String Team_Secondary_Color = resultSet.getString("Team_Team_Secondary_Color");
+              String Team_Tertiary_Color = resultSet.getString("Team_Team_Tertiary_Color");
+              String Team_City = resultSet.getString("Team_Team_City");
+              String Team_State = resultSet.getString("Team_Team_State");
+              String Logo = resultSet.getString("Team_Logo");
+              boolean is_active = resultSet.getBoolean("Team_is_active");
+              Integer League_League_ID = resultSet.getInt("League_League_ID");
+              String League_League_Name = resultSet.getString("League_League_Name");
+              String League_League_Level = resultSet.getString("League_League_Level");
+              Double League_Monthly_Due = resultSet.getDouble("League_Monthly_Due");
+              String League_Active_Days = resultSet.getString("League_Active_Days");
+              String League_Description = resultSet.getString("League_Description");
+              boolean League_is_active = resultSet.getBoolean("League_is_active");
+              League _league = new League(League_League_ID,League_League_Name,League_League_Level,League_Monthly_Due,League_Active_Days,League_Description,League_is_active);
+              TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,_league);
+              result.add(_team);
+            }
+          }
           }
         }
-        }
+      } catch (SQLException e) {
+        throw new RuntimeException("Could not retrieve Teams. Try again later");
       }
-    } catch (SQLException e) {
-      throw new RuntimeException("Could not retrieve Teams. Try again later");
-    }
-    return result;}
+      return result;
+  }
   public static List<TeamVM> getActiveTeam() {
     List<TeamVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Team()}")) {try(ResultSet resultSet = statement.executeQuery()) {
-          while (resultSet.next()) {Integer Team_ID = resultSet.getInt("Team_ID");
-            Integer League_ID = resultSet.getInt("League_ID");
-            String Name = resultSet.getString("Name");
-            String Team_Primary_Color = resultSet.getString("Team_Primary_Color");
-            String Team_Secondary_Color = resultSet.getString("Team_Secondary_Color");
-            String Team_Tertiary_Color = resultSet.getString("Team_Tertiary_Color");
-            String Team_City = resultSet.getString("Team_City");
-            String Team_State = resultSet.getString("Team_State");
-            String Logo = resultSet.getString("Logo");
-            String League_name = resultSet.getString("League_Name");
-            String Description = resultSet.getString("Description");
-            boolean is_active = resultSet.getBoolean("is_active");
-            TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,
-                League_name,Description);
+          while (resultSet.next()) {
+            Integer Team_ID = resultSet.getInt("Team_Team_ID");
+            Integer League_ID = resultSet.getInt("Team_League_ID");
+            String Name = resultSet.getString("Team_Name");
+            String Team_Primary_Color = resultSet.getString("Team_Team_Primary_Color");
+            String Team_Secondary_Color = resultSet.getString("Team_Team_Secondary_Color");
+            String Team_Tertiary_Color = resultSet.getString("Team_Team_Tertiary_Color");
+            String Team_City = resultSet.getString("Team_Team_City");
+            String Team_State = resultSet.getString("Team_Team_State");
+            String Logo = resultSet.getString("Team_Logo");
+            boolean is_active = resultSet.getBoolean("Team_is_active");
+            Integer League_League_ID = resultSet.getInt("League_League_ID");
+            String League_League_Name = resultSet.getString("League_League_Name");
+            String League_League_Level = resultSet.getString("League_League_Level");
+            Double League_Monthly_Due = resultSet.getDouble("League_Monthly_Due");
+            String League_Active_Days = resultSet.getString("League_Active_Days");
+            String League_Description = resultSet.getString("League_Description");
+            boolean League_is_active = resultSet.getBoolean("League_is_active");
+            League _league = new League(League_League_ID,League_League_Name,League_League_Level,League_Monthly_Due,League_Active_Days,League_Description,League_is_active);
+            TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,_league);
             result.add(_team);
           }
         }

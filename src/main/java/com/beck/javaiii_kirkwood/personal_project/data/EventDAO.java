@@ -17,6 +17,9 @@ package com.beck.javaiii_kirkwood.personal_project.data;/// <summary>
 /// A new remark should be added for each update.
 ///</remarks>
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.EventVM;
+import com.beck.javaiii_kirkwood.personal_project.models.Facility;
+import com.beck.javaiii_kirkwood.personal_project.models.Type;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -43,8 +46,8 @@ public class EventDAO {
     }
     return numRowsAffected;
   }
-  public static Event getEventByPrimaryKey(Event _event) throws SQLException{
-    Event result = null;
+  public static EventVM getEventByPrimaryKey(Event _event) throws SQLException{
+    EventVM result = null;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Event(?)}")) {
         statement.setString(1, _event.getEvent_ID().toString());
@@ -54,12 +57,26 @@ public class EventDAO {
           for (int i=1;i<rsmd.getColumnCount()-1;i++) {
             System.out.println(rsmd.getColumnLabel(i));
           }
-          if(resultSet.next()){Integer Event_ID = resultSet.getInt("Event_ID");
-            Integer Facility_ID = resultSet.getInt("Facility_ID");
-            LocalDate Date = resultSet.getDate("Date").toLocalDate();
-            Integer Type_ID = resultSet.getInt("Type_ID");
-            boolean is_active = resultSet.getBoolean("is_active");
-            result = new Event( Event_ID, Facility_ID, Date, Type_ID, is_active);}
+          if(resultSet.next()){
+            Integer Event_ID = resultSet.getInt("Event_Event_ID");
+            Integer Facility_ID = resultSet.getInt("Event_Facility_ID");
+            LocalDate Date = resultSet.getDate("Event_Date").toLocalDate();
+            Integer Type_ID = resultSet.getInt("Event_Type_ID");
+            boolean is_active = resultSet.getBoolean("Event_is_active");
+            Integer Facility_Facility_ID = resultSet.getInt("Facility_Facility_ID");
+            String Facility_Name = resultSet.getString("Facility_Name");
+            String Facility_Addresss = resultSet.getString("Facility_Addresss");
+            String Facility_City = resultSet.getString("Facility_City");
+            String Facility_State = resultSet.getString("Facility_State");
+            String Facility_Zip = resultSet.getString("Facility_Zip");
+            boolean Facility_is_active = resultSet.getBoolean("Facility_is_active");
+            Facility facility = new Facility(Facility_Facility_ID,Facility_Name,Facility_Addresss,Facility_City,Facility_State,Facility_Zip,Facility_is_active);
+            Integer Type_Type_ID = resultSet.getInt("Type_Type_ID");
+            String Type_Name = resultSet.getString("Type_Name");
+            boolean Type_is_active = resultSet.getBoolean("Type_is_active");
+            Type type = new Type(Type_Type_ID,Type_Name,Type_is_active);
+            result = new EventVM( Event_ID, Facility_ID, Date, Type_ID, is_active,facility,type);
+          }
         }
       }
     } catch (SQLException e) {
@@ -67,17 +84,30 @@ public class EventDAO {
     }
     return result;
   }
-  public static List<Event> getAllEvent() {
-    List<Event> result = new ArrayList<>();
+  public static List<EventVM> getAllEvent() {
+    List<EventVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Event()}")) {try(ResultSet resultSet = statement.executeQuery()) {
-          while (resultSet.next()) {Integer Event_ID = resultSet.getInt("Event_ID");
-            Integer Facility_ID = resultSet.getInt("Facility_ID");
-            LocalDate Date = resultSet.getDate("Date").toLocalDate();
-            Integer Type_ID = resultSet.getInt("Type_ID");
-            boolean is_active = resultSet.getBoolean("is_active");
-            Event _event = new Event( Event_ID, Facility_ID, Date, Type_ID, is_active);
+          while (resultSet.next()) {
+            Integer Event_ID = resultSet.getInt("Event_Event_ID");
+            Integer Facility_ID = resultSet.getInt("Event_Facility_ID");
+            LocalDate Date = resultSet.getDate("Event_Date").toLocalDate();
+            Integer Type_ID = resultSet.getInt("Event_Type_ID");
+            boolean is_active = resultSet.getBoolean("Event_is_active");
+            Integer Facility_Facility_ID = resultSet.getInt("Facility_Facility_ID");
+            String Facility_Name = resultSet.getString("Facility_Name");
+            String Facility_Addresss = resultSet.getString("Facility_Addresss");
+            String Facility_City = resultSet.getString("Facility_City");
+            String Facility_State = resultSet.getString("Facility_State");
+            String Facility_Zip = resultSet.getString("Facility_Zip");
+            boolean Facility_is_active = resultSet.getBoolean("Facility_is_active");
+            Facility facility = new Facility(Facility_Facility_ID,Facility_Name,Facility_Addresss,Facility_City,Facility_State,Facility_Zip,Facility_is_active);
+            Integer Type_Type_ID = resultSet.getInt("Type_Type_ID");
+            String Type_Name = resultSet.getString("Type_Name");
+            boolean Type_is_active = resultSet.getBoolean("Type_is_active");
+            Type type = new Type(Type_Type_ID,Type_Name,Type_is_active);
+            EventVM _event = new EventVM( Event_ID, Facility_ID, Date, Type_ID, is_active,facility,type);
             result.add(_event);
           }
         }
@@ -87,17 +117,30 @@ public class EventDAO {
       throw new RuntimeException("Could not retrieve Events. Try again later");
     }
     return result;}
-  public static List<Event> getActiveEvent() {
-    List<Event> result = new ArrayList<>();
+  public static List<EventVM> getActiveEvent() {
+    List<EventVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_active_Event()}")) {try(ResultSet resultSet = statement.executeQuery()) {
-          while (resultSet.next()) {Integer Event_ID = resultSet.getInt("Event_ID");
-            Integer Facility_ID = resultSet.getInt("Facility_ID");
-            LocalDate Date = resultSet.getDate("Date").toLocalDate();
-            Integer Type_ID = resultSet.getInt("Type_ID");
-            boolean is_active = resultSet.getBoolean("is_active");
-            Event _event = new Event( Event_ID, Facility_ID, Date, Type_ID, is_active);
+          while (resultSet.next()) {
+            Integer Event_ID = resultSet.getInt("Event_Event_ID");
+            Integer Facility_ID = resultSet.getInt("Event_Facility_ID");
+            LocalDate Date = resultSet.getDate("Event_Date").toLocalDate();
+            Integer Type_ID = resultSet.getInt("Event_Type_ID");
+            boolean is_active = resultSet.getBoolean("Event_is_active");
+            Integer Facility_Facility_ID = resultSet.getInt("Facility_Facility_ID");
+            String Facility_Name = resultSet.getString("Facility_Name");
+            String Facility_Addresss = resultSet.getString("Facility_Addresss");
+            String Facility_City = resultSet.getString("Facility_City");
+            String Facility_State = resultSet.getString("Facility_State");
+            String Facility_Zip = resultSet.getString("Facility_Zip");
+            boolean Facility_is_active = resultSet.getBoolean("Facility_is_active");
+            Facility facility = new Facility(Facility_Facility_ID,Facility_Name,Facility_Addresss,Facility_City,Facility_State,Facility_Zip,Facility_is_active);
+            Integer Type_Type_ID = resultSet.getInt("Type_Type_ID");
+            String Type_Name = resultSet.getString("Type_Name");
+            boolean Type_is_active = resultSet.getBoolean("Type_is_active");
+            Type type = new Type(Type_Type_ID,Type_Name,Type_is_active);
+            EventVM _event = new EventVM( Event_ID, Facility_ID, Date, Type_ID, is_active,facility,type);
             result.add(_event);
           }
         }

@@ -33,6 +33,9 @@
 
  <script src="js/site.js"></script>
  <script src="js/header1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script src="${appURL}/js/custom.js"></script>
+<script src="${appURL}/js/loading.js"></script>
 </body>
 
 

@@ -8,15 +8,13 @@ Create the JSP  For Viewing All of The  Team table as cards
 <div class = "container">
     <div class="row">
         <div class="col-12">
-            <h1>All Roller Teams</h1>
-            <p>There ${Teams.size() eq 1 ? "is" : "are"}&nbsp;${Teams.size()} Team${Teams.size() ne 1 ? "s" : ""}</p>
-            <c:if test="${User.privilege_ID > 1}">
-                Add Team   <a href="addTeam">Add</a>
-            </c:if>
-            <c:if test="${Teams.size() > 0}">
+            <%@include file="/WEB-INF/personal-project/partialTeams.jsp"%>
+            <p>You ${Teams.size() eq 1 ? "are not on" : "are not on"}&nbsp;${NotMyTeams.size()} Team${NotMyTeams.size() ne 1 ? "s" : ""}</p>
+
+            <c:if test="${NotMyTeams.size() > 0}">
                 <div >
 
-                <c:forEach items="${Teams}" var="team">
+                <c:forEach items="${NotMyTeams}" var="team">
                     <div class="col-12">
 
                         <div class="card shadow overflow-hidden p-2">
@@ -26,17 +24,17 @@ Create the JSP  For Viewing All of The  Team table as cards
                                 </div>
                                 <div class="col-md-7">
                                     <div class="card-body">
-                                        <!-- Badge and rating -->
+                                        <!-- -->
                                         <div class="d-flex justify-content-between align-items-center mb-2">
-                                            <!-- Badge -->
+                                            <!--  -->
                                             <a href="${appURL}/courses?category=${team.league_ID}" class="badge text-bg-primary mb-2 mb-sm-0">${team.league_ID}</a>
                                         </div>
 
-                                        <!-- Title -->
+                                        <!--  -->
                                         <h5 class="card-title"><a href="#" data-bs-toggle="modal" data-bs-target="#courseModal${team.team_ID}">${team.name}</a></h5>
-                                        <p class="text-truncate-2 d-none d-lg-block">${team.team_City}</p>
+                                        <p class="text-truncate-2 d-none d-lg-block">${team.team_City}, ${team.team_State}</p>
 
-                                        <!-- Info -->
+                                        <!--  -->
                                         <ul class="list-inline">
                                             <li class="list-inline-item h6 fw-light"><a href="${appURL}/courses?skill-level=${fn:toLowerCase(course.level)}"><i class="fas fa-signal
                                                 <c:choose>
@@ -56,20 +54,14 @@ Create the JSP  For Viewing All of The  Team table as cards
                                             </th>
                                         </table>
 
-                                        <!-- Teacher and Enroll -->
+                                        <!--  -->
 
-
-                                        <c:if test="${sessionScope.activeUser.privileges eq '1'}">
-                                            <!-- Enroll -->
+                                        <c:if test="${User.privilege_ID > 0}">
+                                            <!--  -->
                                             <div class="mt-3 mt-sm-0">
-                                                <c:choose>
-                                                    <c:when test="${!skaterTeams.containsKey(course)}">
-                                                        <a href="${appURL}/enroll?course=${team.id}" class="btn btn-dark">Enroll</a>
-                                                    </c:when>
-                                                    <c:otherwise>
-                                                        <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">enrolled</a>
-                                                    </c:otherwise>
-                                                </c:choose>
+
+                                                <a href="manage-teams?teamid=${team.team_ID}&mode=join" class="btn btn-secondary btn-lg " role="button" aria-disabled="false">Join</a>
+
 
                                             </div>
                                         </c:if>
@@ -81,6 +73,8 @@ Create the JSP  For Viewing All of The  Team table as cards
                     </div>
                 </c:forEach>
             </c:if>
+
+
         </div>
     </div>
 </div>

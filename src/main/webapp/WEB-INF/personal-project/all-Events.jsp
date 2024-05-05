@@ -14,26 +14,38 @@ Create the JSP  For Viewing All of The  Event table
                     <thead>
                     <tr>
                         <th scope="col">Event_ID</th>
-                        <th scope="col">Facility_ID</th>
+                        <th scope="col">Facility</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Type_ID</th>
+                        <th scope="col">Type</th>
                         <th scope="col">is_active</th>
-                        <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                <c:if test="${User.privilege_ID eq 2}">
+                    <th scope="col">Join</th>
+                </c:if>
+                <c:if test="${User.privilege_ID > 2}">
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </c:if>
+
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${Events}" var="event">
                         <tr>
-                            <td><a href = "editevent?eventid=${event.event_ID}&mode=view">${event.event_ID}</a></td><td>${event.facility_ID}</td>
+                            <td><a href = "editevent?eventid=${event.event_ID}&mode=view">${event.event_ID}</a></td>
+                            <td>${event.facility.name}</td>
                             <td>${event.date}</td>
-                            <td>${event.type_ID}</td>
+                            <td>${event.type.name}</td>
                             <td><input type="checkbox" disabled <c:if test="${event.is_active}">checked</c:if>></td>
+                            <c:if test="${User.privilege_ID eq 2}">
+                            <td><a href = "joinevent?eventid=${event.event_ID}&mode=join" > Join</a>
+                            </c:if>
+                            <c:if test="${User.privilege_ID > 2}">
                             <td><a href = "editevent?eventid=${event.event_ID}&mode=edit" > Edit </a></td>
                             <td><a href = "deleteevent?eventid=${event.event_ID}&mode=<c:choose><c:when test="${event.is_active}">0</c:when>
 						<c:otherwise>1</c:otherwise>
 						</c:choose>">
                                 <c:if test="${!event.is_active}">un</c:if>Delete </a></td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>

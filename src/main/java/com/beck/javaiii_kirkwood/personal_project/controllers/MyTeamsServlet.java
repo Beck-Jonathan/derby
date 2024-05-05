@@ -9,6 +9,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 import com.beck.javaiii_kirkwood.personal_project.data.TeamDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.UserDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Team;
+import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
 import com.beck.javaiii_kirkwood.personal_project.models.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -21,7 +22,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 @WebServlet("/My-Teams")
-public class MyTeamsServlet extends HttpServlet {@Override
+public class MyTeamsServlet extends HttpServlet {
+  @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 //To restrict this page based on privilege level
@@ -34,11 +36,15 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
   }
 
   session.setAttribute("currentPage",req.getRequestURL());
-  List<Team> teams = null;
+  List<TeamVM> teams = null;
 
   teams = UserDAO.selectTeamByUser(user);
+  List<TeamVM> unassignedTeams = null;
 
-  req.setAttribute("Teams", teams);
+  unassignedTeams = UserDAO.selectUnAssignedTeamByUser(user);
+
+  req.setAttribute("MyTeams", teams);
+  req.setAttribute("NotMyTeams", unassignedTeams);
   req.setAttribute("pageTitle", "My Teams");
   req.getRequestDispatcher("WEB-INF/personal-project/MyTeams.jsp").forward(req,resp);
 

@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@WebServlet("/deleteuser_event_line")public class DeleteUser_Event_LineServlet extends HttpServlet {
+@WebServlet("/deleteuser_event_line")
+public class DeleteUser_Event_LineServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     Map<String, String> results = new HashMap<>();
@@ -29,7 +30,7 @@ import java.util.Map;
     int result = 0;
     if (mode==0){
       try{
-        result = User_Event_LineDAO.deleteUser_Event_Line(User_Event_LineID);
+       // result = User_Event_LineDAO.remove(User_Event_LineID);
       }
       catch(Exception ex){
         results.put("dbStatus",ex.getMessage());

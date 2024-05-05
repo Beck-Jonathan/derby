@@ -22,4 +22,19 @@ $(document).ready(function(){
 	$( "#ManageDB" ).button( "option", "icon", "ui-icon-check" );
 	$( "#ManageDB" ).button( "option", "showIcon", "true" );
 	$( "#ManageDB" ).button( "option", "label", "ManageDB" );
+
+	$("#user-dash").button();
+	$( "#user-dash" ).button( "option", "icon", "ui-icon-check" );
+	$( "#user-dash" ).button( "option", "showIcon", "true" );
+	$( "#user-dash" ).button( "option", "label", "User Dashboard" );
+
+	$("#team-admin-dash").button();
+	$( "#team-admin-dash" ).button( "option", "icon", "ui-icon-check" );
+	$( "#team-admin-dash" ).button( "option", "showIcon", "true" );
+	$( "#team-admin-dash" ).button( "option", "label", "Team Admin Dashboard" );
+
+	$("#league-admin-dash").button();
+	$( "#league-admin-dash" ).button( "option", "icon", "ui-icon-check" );
+	$( "#league-admin-dash" ).button( "option", "showIcon", "true" );
+	$( "#league-admin-dash" ).button( "option", "label", "League Admin Dashboard" );
 })

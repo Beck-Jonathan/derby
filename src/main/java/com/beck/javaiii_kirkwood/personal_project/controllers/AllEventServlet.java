@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 
 import com.beck.javaiii_kirkwood.personal_project.data.EventDAO;
 import com.beck.javaiii_kirkwood.personal_project.models.Event;
+import com.beck.javaiii_kirkwood.personal_project.models.EventVM;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -24,7 +25,7 @@ public class AllEventServlet extends HttpServlet {
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
   HttpSession session = req.getSession();
   session.setAttribute("currentPage",req.getRequestURL());
-  List<Event> Events = null;
+  List<EventVM> Events = null;
 
     Events =EventDAO.getAllEvent();
 

@@ -8,7 +8,10 @@ Create the JSP  For Viewing All of The  Facility table
     <div class="col-12">
       <h1>All Roller Facilitys</h1>
       <p>There ${Facilitys.size() eq 1 ? "is" : "are"}&nbsp;${Facilitys.size()} Facility${Facilitys.size() ne 1 ? "s" : ""}</p>
+
+      <c:if test="${User.privilege_ID > 2}">
       Add Facility   <a href="addFacility">Add</a>
+      </c:if>
       <c:if test="${Facilitys.size() > 0}">
         <div class="table-responsive"><table class="table table-bordered">
           <thead>

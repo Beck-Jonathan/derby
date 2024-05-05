@@ -30,11 +30,10 @@ public class User_Event_LineDAO {
   public static int add(User_Event_Line _user_event_line) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Event_Line( ?, ?, ?, ?)}")){
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Event_Line( ?, ?) }")){
           statement.setInt(1,_user_event_line.getUser_ID());
           statement.setInt(2,_user_event_line.getEvent_ID());
-          statement.setDate(3, Date.valueOf(_user_event_line.getDate_assgined()));
-          statement.setBoolean(4,_user_event_line.getis_active());
+
           numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not add User_Event_Line. Try again later");
@@ -125,22 +124,23 @@ public class User_Event_LineDAO {
     }
     return result;
   }
-  public static int deleteUser_Event_Line(int user_event_lineID) {
-    int rowsAffected=0;
-    try (Connection connection = getConnection()) {
+  public static int remove(User_Event_Line _user_event_line) {
+    int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_User_Event_Line( ?)}")){
-          statement.setInt(1,user_event_lineID);
-          rowsAffected = statement.executeUpdate();
-          if (rowsAffected == 0) {
-            throw new RuntimeException("Could not Delete User_Event_Line. Try again later");
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_remove_User_Event_Line( ?, ?) }")){
+          statement.setInt(1,_user_event_line.getUser_ID());
+          statement.setInt(2,_user_event_line.getEvent_ID());
+
+          numRowsAffected = statement.executeUpdate();
+          if (numRowsAffected == 0) {
+            throw new RuntimeException("Could not add User_Event_Line. Try again later");
           }
         }
       }
     } catch (SQLException e) {
-      throw new RuntimeException("Could not Delete User_Event_Line. Try again later");
+      throw new RuntimeException("Could not add User_Event_Line. Try again later");
     }
-    return rowsAffected;
+    return numRowsAffected;
   }
   public static int undeleteUser_Event_Line(int user_event_lineID) {
     int rowsAffected=0;

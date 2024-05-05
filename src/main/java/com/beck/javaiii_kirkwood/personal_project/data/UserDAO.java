@@ -17,9 +17,7 @@ package com.beck.javaiii_kirkwood.personal_project.data;/// <summary>
 /// A new remark should be added for each update.
 ///</remarks>
 
-import com.beck.javaiii_kirkwood.personal_project.models.Event;
-import com.beck.javaiii_kirkwood.personal_project.models.Team;
-import com.beck.javaiii_kirkwood.personal_project.models.User;
+import com.beck.javaiii_kirkwood.personal_project.models.*;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.sql.CallableStatement;
@@ -259,10 +257,10 @@ public class UserDAO {
     return result;
   }
 
-  public static List<Team> selectTeamByUser(User user){
+  public static List<TeamVM> selectTeamByUser(User user){
 
 
-      List<Team> result = new ArrayList<>();
+      List<TeamVM> result = new ArrayList<>();
       try (Connection connection = getConnection()) {
         if (connection != null) {
           try(CallableStatement statement = connection.prepareCall("{CALL sp_select_team_by_user(?)}"))
@@ -279,7 +277,15 @@ public class UserDAO {
               String Team_State = resultSet.getString("Team_Team_State");
               String Logo = resultSet.getString("Team_Logo");
               boolean is_active = resultSet.getBoolean("Team_is_active");
-              Team _team = new Team( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active);
+              Integer League_League_ID = resultSet.getInt("League_League_ID");
+              String League_League_Name = resultSet.getString("League_League_Name");
+              String League_League_Level = resultSet.getString("League_League_Level");
+              Double League_Monthly_Due = resultSet.getDouble("League_Monthly_Due");
+              String League_Active_Days = resultSet.getString("League_Active_Days");
+              String League_Description = resultSet.getString("League_Description");
+              boolean League_is_active = resultSet.getBoolean("League_is_active");
+              League _league = new League(League_League_ID,League_League_Name,League_League_Level,League_Monthly_Due,League_Active_Days,League_Description,League_is_active);
+              TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,_league);
               result.add(_team);
             }
           }
@@ -291,10 +297,10 @@ public class UserDAO {
       return result;
   }
 
-  public static List<Event> selectEventsByUser(User user){
+  public static List<EventVM> selectEventsByUser(User user){
 
 
-    List<Event> result = new ArrayList<>();
+    List<EventVM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_select_event_by_user(?)}"))
@@ -306,7 +312,19 @@ public class UserDAO {
             LocalDate Date = resultSet.getDate("Event_Date").toLocalDate();
             Integer Type_ID = resultSet.getInt("Event_Type_ID");
             boolean is_active = resultSet.getBoolean("Event_is_active");
-            Event _event = new Event( Event_ID, Facility_ID, Date, Type_ID, is_active);
+            Integer Facility_Facility_ID = resultSet.getInt("Facility_Facility_ID");
+            String Facility_Name = resultSet.getString("Facility_Name");
+            String Facility_Addresss = resultSet.getString("Facility_Addresss");
+            String Facility_City = resultSet.getString("Facility_City");
+            String Facility_State = resultSet.getString("Facility_State");
+            String Facility_Zip = resultSet.getString("Facility_Zip");
+            boolean Facility_is_active = resultSet.getBoolean("Facility_is_active");
+            Facility facility = new Facility(Facility_Facility_ID,Facility_Name,Facility_Addresss,Facility_City,Facility_State,Facility_Zip,Facility_is_active);
+            Integer Type_Type_ID = resultSet.getInt("Type_Type_ID");
+            String Type_Name = resultSet.getString("Type_Name");
+            boolean Type_is_active = resultSet.getBoolean("Type_is_active");
+            Type type = new Type(Type_Type_ID,Type_Name,Type_is_active);
+            EventVM _event = new EventVM( Event_ID, Facility_ID, Date, Type_ID, is_active,facility,type);
             result.add(_event);
           }
         }
@@ -314,6 +332,46 @@ public class UserDAO {
       }
     } catch (SQLException e) {
       throw new RuntimeException("Could not retrieve Events. Try again later");
+    }
+    return result;
+  }
+
+  public static List<TeamVM> selectUnAssignedTeamByUser(User user){
+
+
+    List<TeamVM> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_select_unassgned_team_by_user(?)}"))
+        {statement.setInt(1,user.getUser_ID());
+          try(ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+              Integer Team_ID = resultSet.getInt("Team_Team_ID");
+              Integer League_ID = resultSet.getInt("Team_League_ID");
+              String Name = resultSet.getString("Team_Name");
+              String Team_Primary_Color = resultSet.getString("Team_Team_Primary_Color");
+              String Team_Secondary_Color = resultSet.getString("Team_Team_Secondary_Color");
+              String Team_Tertiary_Color = resultSet.getString("Team_Team_Tertiary_Color");
+              String Team_City = resultSet.getString("Team_Team_City");
+              String Team_State = resultSet.getString("Team_Team_State");
+              String Logo = resultSet.getString("Team_Logo");
+              boolean is_active = resultSet.getBoolean("Team_is_active");
+              Integer League_League_ID = resultSet.getInt("League_League_ID");
+              String League_League_Name = resultSet.getString("League_League_Name");
+              String League_League_Level = resultSet.getString("League_League_Level");
+              Double League_Monthly_Due = resultSet.getDouble("League_Monthly_Due");
+              String League_Active_Days = resultSet.getString("League_Active_Days");
+              String League_Description = resultSet.getString("League_Description");
+              boolean League_is_active = resultSet.getBoolean("League_is_active");
+              League _league = new League(League_League_ID,League_League_Name,League_League_Level,League_Monthly_Due,League_Active_Days,League_Description,League_is_active);
+              TeamVM _team = new TeamVM( Team_ID, League_ID, Name, Team_Primary_Color, Team_Secondary_Color, Team_Tertiary_Color, Team_City, Team_State, Logo, is_active,_league);
+              result.add(_team);
+            }
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Teams. Try again later");
     }
     return result;
   }
