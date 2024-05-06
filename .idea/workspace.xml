@@ -12,16 +12,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Password reset system">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/personal_project/controllers/HowToPlayServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/howtoplay.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/Roller/footer.png" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="static page content">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/shared/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_bottom.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/personal_top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/site.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Personal_home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/personal-project/Personal_home.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -530,15 +523,7 @@
       <workItem from="1714589465400" duration="2728000" />
       <workItem from="1714689853750" duration="9624000" />
       <workItem from="1714829416914" duration="48903000" />
-      <workItem from="1715018777009" duration="1979000" />
-    </task>
-    <task id="LOCAL-00011" summary="View all and create for various data objects.">
-      <option name="closed" value="true" />
-      <created>1709572755260</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1709572755260</updated>
+      <workItem from="1715018777009" duration="2744000" />
     </task>
     <task id="LOCAL-00012" summary="Fixed error on error page. Fixed link to view all leagues.">
       <option name="closed" value="true" />
@@ -924,7 +909,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714963176920</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="static page content">
+      <option name="closed" value="true" />
+      <created>1715020897743</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1715020897744</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -949,7 +942,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updates to team and league behaviors" />
     <MESSAGE value="Gave the user &quot;something to do&quot;. User can change their own priv level, view, add, delete teams and leagues based on priv level." />
     <MESSAGE value="Created edit league and edit team functionality." />
     <MESSAGE value="Updates based on progress report 4 feedback." />
@@ -974,7 +966,8 @@
     <MESSAGE value="parsing error" />
     <MESSAGE value="Final Project Updates" />
     <MESSAGE value="Password reset system" />
-    <option name="LAST_COMMIT_MESSAGE" value="Password reset system" />
+    <MESSAGE value="static page content" />
+    <option name="LAST_COMMIT_MESSAGE" value="static page content" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -1,5 +1,5 @@
 <%@include file="/WEB-INF/personal-project/personal_top.jsp"%>
-<c:if test="${not empty User}">
+<c:if test="${User.privilege_ID > 5}">
     <p>Your current privilege level is ${User.privilege_ID}. For convenience during development
        use the edit privilege button below to grant yourself further access.
     This will be removed when we are ready for deployment</p>
@@ -13,7 +13,8 @@
     <c:if test="${empty User}">
         <!--<tr><td>Join Us</td><td><a href="joinus"> View </a> </td></tr> -->
     </c:if>
-    <c:if test="${not empty User}">
+
+    <c:if test="${User.privilege_ID > 5}">
     <thead>
     <tr>
         <th scope="col">Table</th>
@@ -24,9 +25,9 @@
         <tr><td>View all League</td><td><a href="all-Leagues"> View </a> </td></tr>
         <tr><td>View all Team</td><td><a href="all-Teams"> View </a> </td></tr>
         <tr><td>Edit privilege</td><td><a href="user_change_priv"> View </a> </td></tr>
-    </c:if>
 
-<c:if test="${User.privilege_ID > 3}">
+
+
     <tr><td>ADMIN SECTION<td>IGNORE FOR NOW</td></tr>
     <tr><td>View all Type</td><td><a href="all-Types"> View </a> </td></tr>
     <tr><td>View all Status</td><td><a href="all-Status"> View </a> </td></tr>
