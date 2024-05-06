@@ -70,6 +70,6 @@
 <main>
 <div class ="row">
 
-    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/left.png" alt="Left Image"></div>
+    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/Roller/banner.png" alt="Left Image"></div>
     <div class = "col-lg-8 pe-0 ps-0" id="mainForm">
         <input type="hidden" id="currentpage" name="currentpage" value=${requestScope['javax.servlet.forward.request_uri']}/>

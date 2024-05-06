@@ -13,7 +13,7 @@ User dash<br/>
         </div>
         <div class ="row" id = "row1">
         <div class ="col-md-4" id = "r1c1">
-
+            <%@include file="/WEB-INF/personal-project/UserProfile.jsp"%>
         </div>
         <div class ="col-md-8" id = "r1c2">
             <%@include file="/WEB-INF/personal-project/partialTeams.jsp"%>

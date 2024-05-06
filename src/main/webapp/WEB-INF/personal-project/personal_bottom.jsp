@@ -1,5 +1,5 @@
 </div> <!-- end row-->
-<div class = "col-sm-2 ps-0 .d-none .d-xxl-block" id="right"><img src="images/right.png" alt="Right Hand Border" ></div>
+<div class = "col-sm-2 ps-0 .d-none .d-xxl-block" id="right"><img src="images/Roller/banner.png" alt="Right Hand Border" ></div>
 
 </div> <!-- end row-->
 

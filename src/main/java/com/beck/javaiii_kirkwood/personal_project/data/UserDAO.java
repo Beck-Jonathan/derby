@@ -376,6 +376,47 @@ public class UserDAO {
     return result;
   }
 
+  public static boolean deleteUser(int userID) throws SQLException {
+    boolean result = true;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_delete_user(? )}")) {
+          statement.setInt(1, userID);
+
+          try {
+            int value = statement.executeUpdate();
+            result = (value == 1);
+          } catch (SQLException e) {
+            throw new RuntimeException("Could delete user. Try again later");
+          }
+        }
+      }
+      return result;
+    }
+  }
+    public static boolean resetPW(User user) throws SQLException {
+      boolean result = true;
+      try (Connection connection = getConnection()) {
+        if (connection != null) {
+          try (CallableStatement statement = connection.prepareCall("{CALL sp_update_password(?,? )}")) {
+            statement.setString(1, user.getUser_Name());
+            String hashPassword = BCrypt.hashpw(String.valueOf(user.getUser_PW()), BCrypt.gensalt(12));
+
+            statement.setString(2,hashPassword);
+
+            try {
+              int value = statement.executeUpdate();
+              result = (value == 1);
+            } catch (SQLException e) {
+              throw new RuntimeException("Could update password. Try again later");
+            }
+          }
+        }
+        return result;
+      }
+
+  }
+
 
 }
 

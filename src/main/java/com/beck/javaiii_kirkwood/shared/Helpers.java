@@ -7,10 +7,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Helpers {
   public static long ageInYears(String birthDay) {
@@ -62,5 +59,21 @@ public class Helpers {
 
     }
     return result;
+  }
+  public static String genPW(){
+    String pw = "KW";
+    Random r = new Random();
+
+    for (int i=0;i<12;i++){
+      pw += (char)(r.nextInt(26) + 'a');
+    }
+    for (int i=0;i<5;i++){
+      pw+=r.nextInt(9);
+    }
+    pw+="!";
+
+
+
+    return pw;
   }
 }

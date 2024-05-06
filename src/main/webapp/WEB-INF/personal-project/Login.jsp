@@ -27,8 +27,10 @@
         </div>
         <!-- button and message-->
         <c:if test="${not empty loginFail}">
-            <label for="button" class="form-label"><p>${loginFail}</label>
-
+            <label for="button" class="form-label"><p>${loginFail}</p></label>
+            <c:if test="${loginFail == 'Login Failed, please verify your username and password'}">
+            <a href="resetpw">Reset Password?</a>
+        </c:if>
         </c:if>
         <div class="align-items-center mt-0">
             <div class="d-grid"><button class="btn btn-orange mb-0" id="button"type="submit">Sign in!</button></div>

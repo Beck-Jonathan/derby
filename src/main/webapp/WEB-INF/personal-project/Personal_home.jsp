@@ -46,5 +46,23 @@
 
     </div>
 
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h2 class="display-4 text-center">Welcome to Cedar Rapids Roller Derby</h2>
+        <p class="lead text-center">Let's Skate</p>
+        <div class="row">
+            <div class="col col-md-4">
+                <img src="images/Roller/1.png" />
+            </div>
+            <div class="col col-md-4">
+                <img src="images/Roller/2.png" />
+            </div>
+            <div class="col col-md-4">
+                <img src="images/Roller/3.png" />
+            </div>
+        </div>
+    </div>
+</div>
+
 
         <%@include file="/WEB-INF/personal-project/personal_bottom.jsp"%>

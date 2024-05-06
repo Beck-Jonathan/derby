@@ -77,10 +77,27 @@ public class EmailService
     message += "<p>If you did not request to reset your password, you can ignore this message. Your password will not be changed.</p>";
     return sendemail(email, subject, message);
 
+  }
+
+  public static boolean sendReset(String password, String email, String username){
+    String subject = "Roller Password Reset";
+    String message = "<h2>Welcome Back to Roller Derby</h2>";
+    message += "<p>Use this link to rest your password/p>" +
+        "<p><a href=https://javaiii-kirkwood.azurewebsites.net/resetpw?code="+password+"&user="+username+"&email="+email+" > reset password </a></p>";
 
 
 
+    return sendemail(email, subject, message);
 
+  }
+
+  public static boolean sendNewPassword(String password, String email, String username){
+    String subject = "Roller Password Reset";
+    String message = "<h2>Welcome Back to Roller Derby</h2>";
+    message += "<p>your new password is <h2> "+password+"</h2></p><br/>" ;
+    message+= "<p> your user name is"+username+"</p>";
+
+    return sendemail(email, subject, message);
   }
 
 

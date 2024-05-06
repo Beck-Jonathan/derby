@@ -1,10 +1,8 @@
 package com.beck.javaiii_kirkwood.personal_project.controllers;
 
+import com.beck.javaiii_kirkwood.personal_project.data.UserBioDAO;
 import com.beck.javaiii_kirkwood.personal_project.data.UserDAO;
-import com.beck.javaiii_kirkwood.personal_project.models.Event;
-import com.beck.javaiii_kirkwood.personal_project.models.EventVM;
-import com.beck.javaiii_kirkwood.personal_project.models.TeamVM;
-import com.beck.javaiii_kirkwood.personal_project.models.User;
+import com.beck.javaiii_kirkwood.personal_project.models.*;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 @WebServlet("/user-dash")
@@ -34,7 +33,15 @@ public class UserDashServlet extends HttpServlet {
     List<TeamVM> teams = null;
 
     teams = UserDAO.selectTeamByUser(user);
+    UserBio bio = new UserBio();
+    try {
+       bio = UserBioDAO.getUser_BioByPrimaryKey(user.getUser_ID());
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
+
+    req.setAttribute("user_bio", bio);
     req.setAttribute("MyTeams", teams);
 
     session.setAttribute("Events", events);
