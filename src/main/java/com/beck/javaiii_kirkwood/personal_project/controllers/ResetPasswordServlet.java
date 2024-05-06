@@ -31,28 +31,30 @@ public class ResetPasswordServlet extends HttpServlet {
     String username = req.getParameter("user");
     String email = req.getParameter("email");
     User user = new User();
-    user.setUser_Name(username);
-    boolean result = false;
-    try{
+    if (code!=null && username!=null && email !=null) {
+      user.setUser_Name(username);
+      boolean result = false;
+      try {
 
-     result=     PasswordResetDAO.verify(username,code);
-     if (result){
-       PasswordResetDAO.delete(username,code);
-       String newPW = Helpers.genPW();
-       user.setUser_PW(newPW.toCharArray());
-       result = UserDAO.resetPW(user);
-       if (result){
-         EmailService.sendNewPassword(email,newPW,username);
-         resp.sendRedirect("home");
-         return;
-       }
-     }
+        result = PasswordResetDAO.verify(username, code);
+        if (result) {
+          PasswordResetDAO.delete(username, code);
+          String newPW = Helpers.genPW();
+          user.setUser_PW(newPW.toCharArray());
+          result = UserDAO.resetPW(user);
+          if (result) {
+            EmailService.sendNewPassword(newPW, email, username);
+            resp.sendRedirect("home");
+            return;
+          }
+        }
+      } catch (Exception e) {
+
+      }
+
+      req.getRequestDispatcher("WEB-INF/personal-project/home.jsp").forward(req, resp);
     }
-    catch (Exception e) {
-
-    }
-
-    req.getRequestDispatcher("WEB-INF/personal-project/home.jsp").forward(req, resp);
+    req.getRequestDispatcher("WEB-INF/personal-project/reset-password.jsp").forward(req, resp);
   }
 
   @Override
@@ -113,7 +115,7 @@ public class ResetPasswordServlet extends HttpServlet {
         session.setAttribute("loginFail", "Password Reset email sent!");
         results.put("dbStatus","email sent");
 
-        EmailService.sendReset(password,email,username);
+        EmailService.sendReset(resetCode,email,username);
 
         resp.sendRedirect("home");
         return;

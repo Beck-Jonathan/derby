@@ -83,7 +83,7 @@ public class EmailService
     String subject = "Roller Password Reset";
     String message = "<h2>Welcome Back to Roller Derby</h2>";
     message += "<p>Use this link to rest your password/p>" +
-        "<p><a href=https://javaiii-kirkwood.azurewebsites.net/resetpw?code="+password+"&user="+username+"&email="+email+" > reset password </a></p>";
+        "<p><a href=http://localhost:8080/JavaIII_Kirkwood_war_exploded/resetpw?code="+password+"&user="+username+"&email="+email+" > reset password </a></p>";
 
 
 
@@ -92,7 +92,7 @@ public class EmailService
   }
 
   public static boolean sendNewPassword(String password, String email, String username){
-    String subject = "Roller Password Reset";
+    String subject = "Roller Password has been Reset";
     String message = "<h2>Welcome Back to Roller Derby</h2>";
     message += "<p>your new password is <h2> "+password+"</h2></p><br/>" ;
     message+= "<p> your user name is"+username+"</p>";

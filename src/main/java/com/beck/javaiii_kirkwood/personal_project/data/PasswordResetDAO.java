@@ -37,7 +37,7 @@ public class PasswordResetDAO {
     boolean result = false;
     try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_password_reset(?,? )}")) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_verify_password_reset(?,? )}")) {
           statement.setString(1, username);
 
           statement.setString(2, reset_id);
