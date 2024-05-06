@@ -22,16 +22,16 @@
 
 <header id="rollerHeader" onload="formatHeader">
     <div class="row ">
-        <div class="col-sm-1 .d-sm-none .d-xxl-block" id="topleftblack" ></div>
-        <div class="col-sm-1 .d-sm-none .d-xxl-block" id="Headerr1c1" >
+        <div class="col-md-1 " id="topleftblack" ></div>
+        <div class="col-md-1 " id="Headerr1c1" >
 
 
         </div>
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c2" >
+        <div class="col-sm-2 " id="Headerr1c2" >
             <a href="home"> <button type="button" value="Home" id="Home" ></button> </a>
         </div>
 
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c3" >
+        <div class="col-sm-2 " id="Headerr1c3" >
             <c:if test="${empty User}">
             <a href="joinus">   <button type="button" value="SignUp" id="SignUp" ></button></a>
             </c:if>
@@ -49,11 +49,11 @@
         </div>
 
 
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c5" >
-            <button type="button" value="ManageDB" id="ManageDB" ></button>
+        <div class="col-sm-2 " id="Headerr1c5" >
+
 
         </div>
-        <div class="col-sm-2 .d-sm-none .d-xxl-block" id="Headerr1c6" >
+        <div class="col-sm-2 " id="Headerr1c6" >
         <%@include file="/WEB-INF/personal-project/Login.jsp"%>
 
         </div>
@@ -70,6 +70,6 @@
 <main>
 <div class ="row">
 
-    <div class = "col-sm-2 pe-0 .d-xxl-block"  id="left"><img src="images/Roller/banner.png" alt="Left Image"></div>
-    <div class = "col-lg-8 pe-0 ps-0" id="mainForm">
+    <div class = "hidden-sm col-md-2  pe-0 "  id="left"><img src="images/Roller/banner.png" alt="Left Image"></div>
+    <div class = "col-md-8 pe-0 ps-0" id="mainForm">
         <input type="hidden" id="currentpage" name="currentpage" value=${requestScope['javax.servlet.forward.request_uri']}/>

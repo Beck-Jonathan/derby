@@ -16,7 +16,7 @@
 
 a {color:black !important; }
 
-#topleftblack, #bottomleftblack, #toprightblack, #bottomrightblack,#footerimage,#headerimage{
+#topleftblack,#Headerr1c1, #bottomleftblack, #toprightblack, #bottomrightblack,#footerimage,#headerimage{
 
 	background-color: black;
 }

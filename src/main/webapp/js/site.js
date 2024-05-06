@@ -2,63 +2,7 @@ $(document).ready(function(){
 
 	var activeTab=0;
 	let date  = new Date();
-	$(window).resize(function(){
-		var width = document.body.clientWidth;
-		//adjust what shows based on width
-		if (width<1400){
-			$('#left').hide();
-				$('#right').hide();
-			
-			//$('#topleftblack').hide();
-			//$('#toprightblack').hide();
-			//$('#bottomleftblack').hide();
-			//$('#bottomrightblack').hide();
-			$('#mainForm').removeClass("col-lg-6");
-			$('#mainForm').addClass("col-lg-10");
-			}
-			else{
-				$('#mainForm').removeClass("col-lg-10");
-				$('#mainForm').addClass("col-lg-4");
-				
-				$('#topleftblack').show();
-				$('#toprightblack').show();
-				$('#bottomleftblack').show();
-				$('#bottomrightblack').show();
-				$('#left').show();
-				$('#right').show();	
-				$('#blankright').show();
-				$('#blankleft').show();
-				
-				
 
-			}
-		if (width<1650){
-			$('#blankleft').hide();
-			$('#blankright').hide();
-			
-			$('#mainForm').removeClass("col-lg-4");
-			$('#mainForm').removeClass("col-lg-6");
-			$('#mainForm').addClass("col-lg-8");
-
-
-		}
-		else{
-			$('#mainForm').removeClass("col-lg-8");
-			$('#mainForm').addClass("col-lg-4");
-			$('#topleftblack').show();
-				$('#toprightblack').show();
-				$('#bottomleftblack').show();
-				$('#bottomrightblack').show();
-			$('#blankright').show();
-			$('#blankleft').show();
-			
-			
-
-
-		}
-		
-			
-	})
 
 	
 	//hide this unless they select yes

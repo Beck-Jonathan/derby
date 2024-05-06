@@ -1,23 +1,18 @@
 </div> <!-- end row-->
-<div class = "col-sm-2 ps-0 .d-none .d-xxl-block" id="right"><img src="images/Roller/banner.png" alt="Right Hand Border" ></div>
+<div class = "hidden-sm col-md-2 ps-0 " id="right"><img src="images/Roller/banner.png" alt="Right Hand Border" ></div>
 
 </div> <!-- end row-->
 
 
 
 
-
-
-
-
-
-
 <footer>
     <div class="row">
-        <div class="col-sm-2 .d-none .d-xxl-block" id="bottomleftblack" ></div>
-
-        <div class="col-xxl-8" id="footerimage"><img src="images/footer.png" alt="footer_image" ></div>
-        <div class="col-sm-2. d-none .d-xxl-block" id="bottomrightblack"></div>
+        <div class="hidden-sm col-md-2" id="bottomleftblack" ></div>
+        <div class="col-md-2 col-sm-2" id="howtoplay"></div>
+        <div class="col-md-4 col-sm-8" id="footerimage"><img  width="100%" src="images/Roller/footer.png" alt="footer_image" ></div>
+        <div class="col-md-2 col-sm-2" id="privacypolicy"><p><a href="howtoplay"> How To play</a></p></div>
+        <div class="hidden-sm col-md-2  " id="bottomrightblack"></div>
 
     </div>
 

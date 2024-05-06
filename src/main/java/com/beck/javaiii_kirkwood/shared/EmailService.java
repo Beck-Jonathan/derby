@@ -82,8 +82,11 @@ public class EmailService
   public static boolean sendReset(String password, String email, String username){
     String subject = "Roller Password Reset";
     String message = "<h2>Welcome Back to Roller Derby</h2>";
-    message += "<p>Use this link to rest your password/p>" +
+    message += "<p>Use this link to rest your password if you are on localhost/p>" +
         "<p><a href=http://localhost:8080/JavaIII_Kirkwood_war_exploded/resetpw?code="+password+"&user="+username+"&email="+email+" > reset password </a></p>";
+
+    message += "<p>Use this link to rest your password if you are on the azure deployment/p>" ;
+    message+= "<br><br/> <p><a href=https://javaiii-kirkwood.azurewebsites.net/resetpw?code="+password+"&user="+username+"&email="+email+" > reset password </a></p>";
 
 
 
