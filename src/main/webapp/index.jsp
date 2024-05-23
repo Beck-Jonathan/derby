@@ -40,7 +40,8 @@
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
             <h3>Class Final Projects</h3>
             <div class="list-group">
-                <a href="home" class="list-group-item list-group-item-action">Java Final Project (Jakarta EE, Servlets, JSP, MySQL)</a>
+                <a href="https://github.com/Beck-Jonathan/Capstone" class="list-group-item list-group-item-action">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
+                <a href="home" class="list-group-item list-group-item-action">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
                 <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="list-group-item list-group-item-action">.Net II Final Project (.Net, C#, T-Sql)</a>
                 <a href="apply" class="list-group-item list-group-item-action">Client Side Scripting Final Project (JavaScript, html, css)</a>
                 <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch" class="list-group-item list-group-item-action">Honors Project (C#)</a>

@@ -12,13 +12,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="homepage fix">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/icons/briefcase-fill.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/icons/github.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/icons/linkedin.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/icons/mailbox.svg" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="homepage updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/demos/postfix.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/demos/postfix.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -532,15 +527,9 @@
       <workItem from="1715022993476" duration="604000" />
       <workItem from="1715111474047" duration="705000" />
       <workItem from="1715797787767" duration="601000" />
-      <workItem from="1715969312860" duration="2414000" />
-    </task>
-    <task id="LOCAL-00013" summary="updated resume">
-      <option name="closed" value="true" />
-      <created>1709669594456</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1709669594456</updated>
+      <workItem from="1715969312860" duration="103696000" />
+      <workItem from="1716487494350" duration="23000" />
+      <workItem from="1716487546197" duration="5079000" />
     </task>
     <task id="LOCAL-00014" summary="Fixed error.">
       <option name="closed" value="true" />
@@ -926,7 +915,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715021584967</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="homepage updates">
+      <option name="closed" value="true" />
+      <created>1715971985896</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1715971985897</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -951,7 +948,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Created edit league and edit team functionality." />
     <MESSAGE value="Updates based on progress report 4 feedback." />
     <MESSAGE value="More Updates based on progress report 4 feedback." />
     <MESSAGE value="In class assignment." />
@@ -976,7 +972,8 @@
     <MESSAGE value="Password reset system" />
     <MESSAGE value="static page content" />
     <MESSAGE value="homepage fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="homepage fix" />
+    <MESSAGE value="homepage updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="homepage updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
