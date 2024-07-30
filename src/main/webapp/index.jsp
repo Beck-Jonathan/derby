@@ -46,6 +46,7 @@
                 <a href="apply" class="list-group-item list-group-item-action">Client Side Scripting Final Project (JavaScript, html, css)</a>
                 <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch" class="list-group-item list-group-item-action">Honors Project (C#)</a>
                 <a href="https://play.unity.com/mg/other/build1-sg" class="list-group-item list-group-item-action">2d Game Dev Final Project (unity, c#)</a>
+                <a href="budget_bome" class="list-group-item list-group-item-action">Budgeting Demo</a>
                 <a href="${appURL}/learnx" class="list-group-item list-group-item-action">Java III coursework Demo</a>
 
 

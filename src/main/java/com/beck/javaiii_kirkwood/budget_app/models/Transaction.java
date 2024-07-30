@@ -53,7 +53,7 @@ public class Transaction {
     return Transaction_ID;
   }
   public void setTransaction_ID(Integer Transaction_ID) {
-    if(Transaction_ID<10000){
+    if(Transaction_ID<0){
       throw new IllegalArgumentException("Transaction_ID is too short.");
     }
     if(Transaction_ID>1000000){
@@ -72,7 +72,7 @@ public class Transaction {
   }
   public void setCategory_ID(String Category_ID) {
     Category_ID = Category_ID.replaceAll("[^A-Za-z0-9 - ]","");
-    if(Category_ID.length()<4){
+    if(Category_ID.length()<3){
       throw new IllegalArgumentException("Category_ID is too short.");
     }
     if(Category_ID.length()>100){

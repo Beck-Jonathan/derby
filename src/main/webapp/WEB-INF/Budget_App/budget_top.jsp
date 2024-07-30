@@ -28,11 +28,11 @@
 
         </div>
         <div class="col-sm-2 " id="Headerr1c2" >
-            <a href="budget"> <button type="button" value="Home" id="Home" ></button> </a>
+            <a href="budget_bome"> <button type="button" value="Home" id="Home" ></button> </a>
         </div>
 
         <div class="col-sm-2 " id="Headerr1c3" >
-            <c:if test="${empty User}">
+            <c:if test="${empty User_B}">
                 <a href="budgetwithus">   <button type="button" value="SignUp" id="SignUp" ></button></a>
             </c:if>
             <c:if test="${not empty User_B}">

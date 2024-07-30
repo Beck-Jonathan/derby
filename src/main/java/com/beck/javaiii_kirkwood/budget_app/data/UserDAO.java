@@ -225,6 +225,43 @@ public class UserDAO {
     }
 
   }
+  public static List<String> getUser_Roles(User _user) throws SQLException{
+    List<String> result = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_User_User_Role_Line(?)}")) {
+
+        statement.setString(1, _user.getUser_ID().toString());
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while(resultSet.next()){
+            String Role_ID = resultSet.getString("User_Role_Line_Role_ID");
+            result.add(Role_ID);
+
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+  public static int addRole(String role, int userID ) {
+    int numRowsAffected=0;try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Role_Line( ?, ?)}")){
+          statement.setString(1,role);
+          statement.setInt(2,userID);
+          numRowsAffected = statement.executeUpdate();
+          if (numRowsAffected == 0) {
+            throw new RuntimeException("Could not add User_Role_Line. Try again later");
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not add User_Role_Line. Try again later");
+    }
+    return numRowsAffected;
+  }
 
 
 }

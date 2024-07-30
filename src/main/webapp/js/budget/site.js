@@ -15,25 +15,31 @@ console.log("ready on new version")
 	$( "#SignIn" ).button( "option", "showIcon", "true" );
 	$( "#SignIn" ).button( "option", "label", "SignIn" );
 
-
-	$("#ManageDB").button();
-	$( "#ManageDB" ).button( "option", "icon", "ui-icon-check" );
-	$( "#ManageDB" ).button( "option", "showIcon", "true" );
-	$( "#ManageDB" ).button( "option", "label", "ManageDB" );
-
 	$("#user-dash").button();
 	$( "#user-dash" ).button( "option", "icon", "ui-icon-check" );
 	$( "#user-dash" ).button( "option", "showIcon", "true" );
-	$( "#user-dash" ).button( "option", "label", "User Dashboard" );
+	$( "#user-dash" ).button( "option", "label", "User Dash" );
 
-	$("#team-admin-dash").button();
-	$( "#team-admin-dash" ).button( "option", "icon", "ui-icon-check" );
-	$( "#team-admin-dash" ).button( "option", "showIcon", "true" );
-	$( "#team-admin-dash" ).button( "option", "label", "Team Admin Dashboard" );
+	$("#Add").button();
+	$( "#Add" ).button( "option", "icon", "ui-icon-check" );
+	$( "#Add" ).button( "option", "showIcon", "true" );
+	$( "#Add" ).button( "option", "label", "Add" );
 
-	$("#league-admin-dash").button();
-	$( "#league-admin-dash" ).button( "option", "icon", "ui-icon-check" );
-	$( "#league-admin-dash" ).button( "option", "showIcon", "true" );
-	$( "#league-admin-dash" ).button( "option", "label", "League Admin Dashboard" );
+	$("#View").button();
+	$( "#View" ).button( "option", "icon", "ui-icon-check" );
+	$( "#View" ).button( "option", "showIcon", "true" );
+	$( "#View" ).button( "option", "label", "View" );
+
+
+	$("#Category").button();
+	$( "#Category" ).button( "option", "icon", "ui-icon-check" );
+	$( "#Category" ).button( "option", "showIcon", "true" );
+	$( "#Category" ).button( "option", "label", "Category" );
+
+
+	$("#MoneyBreakdown").button();
+	$( "#MoneyBreakdown" ).button( "option", "icon", "ui-icon-check" );
+	$( "#MoneyBreakdown" ).button( "option", "showIcon", "true" );
+	$( "#MoneyBreakdown" ).button( "option", "label", "Category" );
 
 });

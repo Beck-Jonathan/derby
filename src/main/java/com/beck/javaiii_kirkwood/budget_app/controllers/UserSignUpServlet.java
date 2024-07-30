@@ -35,8 +35,6 @@ public class UserSignUpServlet extends HttpServlet{
     req.setAttribute("pageTitle", "Join Us!");
 
 
-
-
     req.getRequestDispatcher("WEB-INF/Budget_App/register.jsp").forward(req, resp);  }
 
   @Override
@@ -121,6 +119,7 @@ public class UserSignUpServlet extends HttpServlet{
         results.put("dbStatus","User Added");
         try {
           id  = UserDAO.getUserID(_Email);
+          UserDAO.addRole("User",id);
           results.put("UserID", String.valueOf(id));
           //TwoFA twofa = new TwoFA(id);
           //TwoFADAO.add(twofa);

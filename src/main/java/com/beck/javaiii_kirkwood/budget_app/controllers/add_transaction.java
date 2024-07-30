@@ -29,10 +29,10 @@ public class add_transaction extends HttpServlet {
 
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    String Role = "Client";
+    String Role = "User";
 
     User user = (User)session.getAttribute("User_B");
-    if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+    if (user==null||!user.getRoles().contains("User")){
       resp.sendError(HttpServletResponse.SC_FORBIDDEN);
       return;
     }

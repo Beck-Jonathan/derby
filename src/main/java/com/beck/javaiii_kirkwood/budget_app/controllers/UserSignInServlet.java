@@ -65,6 +65,8 @@ public class UserSignInServlet extends HttpServlet{
         user.setUser_ID(id);
         user=UserDAO.getUserByPrimaryKey(user);
         user.setUser_PW(null);
+        List<String> roles = UserDAO.getUser_Roles(user);
+        user.setRoles(roles);
         results.put("dbStatus",user.getEmail());
 
         session.setAttribute("User_B",user);
@@ -86,8 +88,12 @@ public class UserSignInServlet extends HttpServlet{
       results.put("dbStatus1","Login Failed, please verify your username and password");
 
     }
+    Object currentPageObject = session.getAttribute("currentPage");
+    String currentPage = "budget_home";
+    if (currentPageObject !=null) {
+      currentPage = session.getAttribute("currentPage").toString();
+    }
 
-    String currentPage =  session.getAttribute("currentPage").toString();
 
 
     session.setAttribute("dbStatus","Login Fail!");

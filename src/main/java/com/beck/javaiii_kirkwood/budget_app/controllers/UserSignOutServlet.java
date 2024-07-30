@@ -16,7 +16,8 @@ public class UserSignOutServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.setAttribute("pageTitle", "Budget With Us");
-    req.getRequestDispatcher("WEB-INF/Budget_App/budget_home.jsp").forward(req, resp);
+    resp.sendRedirect("budget_bome");
+    return;
   }
 
   @Override
@@ -27,6 +28,8 @@ public class UserSignOutServlet extends HttpServlet {
     String currentPage =  session.getAttribute("currentPage").toString();
     session.invalidate();
     req.setAttribute("pageTitle", "Budget With Us");
-    req.getRequestDispatcher("WEB-INF/Budget_App/budget_home.jsp").forward(req, resp);
+    resp.sendRedirect("budget_bome");
+    return;
+
   }
 }

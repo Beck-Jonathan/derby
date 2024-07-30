@@ -29,6 +29,15 @@ public class User {
   private String User_Name;
   private char[] User_PW;
   private String Email;
+
+  public List<String> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(List<String> roles) {
+    this.roles = roles;
+  }
+
   private List<String> roles;
 
   public User(){}

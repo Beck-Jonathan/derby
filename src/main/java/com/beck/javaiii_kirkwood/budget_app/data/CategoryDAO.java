@@ -26,7 +26,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
-import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
+import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 public class CategoryDAO {
 
   public static int add(Category _category) {

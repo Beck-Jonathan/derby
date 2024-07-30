@@ -32,6 +32,30 @@ import java.util.Locale;
 
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 public class TransactionDAO {
+
+  public static int update(Transaction oldTransaction, Transaction newTransaction) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Transaction(?,?,?)}"))
+        {
+          statement.setInt(1,oldTransaction.getTransaction_ID());
+          statement.setInt(2,oldTransaction.getUser_ID());
+
+
+          statement.setString(3,newTransaction.getCategory_ID());
+
+
+
+          result=statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Transaction . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+
   public static List<Transaction> getTransactionFromFile(File uploadedFile, String type) {
     List<Transaction> result = new ArrayList<>();
     BufferedReader reader;
@@ -225,11 +249,20 @@ public class TransactionDAO {
     return added;
 
   }
-  public static List<Transaction> getTransactionByUser(User _user) throws SQLException{
+  public static List<Transaction> getTransactionByUser(Integer User_ID) throws SQLException {
+    return getTransactionByUser(User_ID,50,100);
+  }
+  public static List<Transaction> getTransactionByUser(Integer User_ID, int pagesize) throws SQLException {
+    return getTransactionByUser(User_ID,pagesize,0);}
+
+
+  public static List<Transaction> getTransactionByUser(int userID, int pagesize, int offset) throws SQLException{
     List<Transaction> result = new ArrayList<>();
     try(Connection connection = getConnection()) {
-      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_user_Transaction(?)}")) {
-        statement.setInt(1, _user.getUser_ID());
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User(?,?,?)}")) {
+        statement.setInt(1, userID);
+        statement.setInt(2, pagesize);
+        statement.setInt(3, offset);
 
         try (ResultSet resultSet = statement.executeQuery()){
           while (resultSet.next()){
@@ -258,6 +291,46 @@ public class TransactionDAO {
     }
     return result;
   }
+
+  public static int getTransactionCountByUser(int userID) throws SQLException{
+    int result = 0;
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_count(?)}")) {
+        statement.setInt(1, userID);
+
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while (resultSet.next()){
+            result = resultSet.getInt(1);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+
+  public static double getTransactionCategoryTotal(int userID, String category_id) throws SQLException{
+    double result = 0;
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_transaction_category_total(?,?)}")) {
+        statement.setInt(1, userID);
+        statement.setString(2, category_id);
+
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while (resultSet.next()){
+            result = resultSet.getDouble(1);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+
 
 }
 
