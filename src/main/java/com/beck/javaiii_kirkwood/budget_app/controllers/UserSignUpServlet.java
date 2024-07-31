@@ -120,6 +120,7 @@ public class UserSignUpServlet extends HttpServlet{
         try {
           id  = UserDAO.getUserID(_Email);
           UserDAO.addRole("User",id);
+          UserDAO.addDefaultCategories(id);
           results.put("UserID", String.valueOf(id));
           //TwoFA twofa = new TwoFA(id);
           //TwoFADAO.add(twofa);
@@ -127,8 +128,20 @@ public class UserSignUpServlet extends HttpServlet{
           //EmailService.send2faCode_Roller(code,_Email);
 
           HttpSession session = req.getSession();
+
+
+
+          user.setUser_ID(id);
+          user=UserDAO.getUserByPrimaryKey(user);
+          user.setUser_PW(null);
+          List<String> roles = UserDAO.getUser_Roles(user);
+          user.setRoles(roles);
           session.setAttribute("UserID",id);
-          resp.sendRedirect("budget");
+          session.setAttribute("User_B",user);
+          resp.sendRedirect("budget_bome");
+
+
+
           return;
         } catch (SQLException e) {
           throw new RuntimeException(e);
@@ -139,8 +152,10 @@ public class UserSignUpServlet extends HttpServlet{
       }
     }
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Create a User ");
-    req.getRequestDispatcher("WEB-INF/Budget_App/register.jsp").forward(req, resp);
+    req.setAttribute("pageTitle", "Budget With Us ");
+    resp.sendRedirect("budget_bome");
+    return;
+
 
   }
 }

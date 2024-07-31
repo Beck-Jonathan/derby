@@ -56,7 +56,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
     session.setAttribute("currentPage",req.getRequestURL());
     List<Transaction> transactions = null;
     int transaction_count=0;
-    List<Category> allCategories = CategoryDAO.getAllCategory();
+
     int page_size=20;
 
     int page_number = 1;
@@ -67,7 +67,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
 
     // page_size = req.get
 
-    int offset=page_number*page_size;
+    int offset=(page_number-1)*page_size;
 
 
     try {
@@ -84,7 +84,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
     req.setAttribute("noOfPages", total_pages);
     //fix current page
     req.setAttribute("currentPage", page_number);
-    allCategories = CategoryDAO.getAllCategory();
+    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
 
 

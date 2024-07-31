@@ -23,11 +23,12 @@ public class MoneyBreakdownServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    List<Category> categories = CategoryDAO.getAllCategory();
+
 
     User user = (User)session.getAttribute("User_B");
     List<Category_VM> results =  new ArrayList<>();
-    for (Category c : categories){
+    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    for (Category c : allCategories){
       try {
         double amount = TransactionDAO.getTransactionCategoryTotal(user.getUser_ID(),c.getCategory_ID());
         Category_VM partial = new Category_VM(c.getCategory_ID(),amount);

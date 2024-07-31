@@ -160,6 +160,31 @@ public class UserDAO {
     }
     return result;
   }
+
+  public static boolean addDefaultCategories(int userID) throws SQLException {
+    boolean result = true;
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_create_default_categories(? )}")) {
+          statement.setInt(1, userID);
+
+          try {
+            int results = statement.executeUpdate();
+
+            if (results < 1) {
+              result = false;
+            }
+
+          } catch (SQLException e) {
+            throw new RuntimeException("Could complete query. Try again later");
+          }
+        }
+      }
+
+    }
+    return result;
+  }
+
   public static boolean emailFree(String email) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {

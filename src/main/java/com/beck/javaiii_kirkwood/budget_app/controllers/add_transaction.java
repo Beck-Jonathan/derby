@@ -88,8 +88,8 @@ public class add_transaction extends HttpServlet {
 
 
 
-    session.setAttribute("Transactions", transactions);
-    resp.sendRedirect("all-Transactions");
+
+    resp.sendRedirect("budget_bome");
     return;
 
     //session.setAttribute("currentPage",req.getRequestURL());

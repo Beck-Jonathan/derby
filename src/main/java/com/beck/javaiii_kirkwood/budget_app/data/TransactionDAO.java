@@ -56,6 +56,29 @@ public class TransactionDAO {
     return result;
   }
 
+  public static int bulkUpdate(int userid, String category, String query) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_assign_categories(?,?,?)}"))
+        {
+          statement.setInt(1,userid);
+          statement.setString(2,category);
+
+
+          statement.setString(3,query);
+
+
+
+          result=statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Transaction . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+
   public static List<Transaction> getTransactionFromFile(File uploadedFile, String type) {
     List<Transaction> result = new ArrayList<>();
     BufferedReader reader;
@@ -209,7 +232,7 @@ public class TransactionDAO {
         }
         }
       }
-    } catch (SQLException e) {
+    } catch (Exception e) {
       throw new RuntimeException("Could not add Transaction. Try again later");
     }
 
@@ -250,11 +273,10 @@ public class TransactionDAO {
 
   }
   public static List<Transaction> getTransactionByUser(Integer User_ID) throws SQLException {
-    return getTransactionByUser(User_ID,50,100);
+    return getTransactionByUser(User_ID,10,0);
   }
   public static List<Transaction> getTransactionByUser(Integer User_ID, int pagesize) throws SQLException {
     return getTransactionByUser(User_ID,pagesize,0);}
-
 
   public static List<Transaction> getTransactionByUser(int userID, int pagesize, int offset) throws SQLException{
     List<Transaction> result = new ArrayList<>();
@@ -283,6 +305,42 @@ public class TransactionDAO {
             //String Category_Category_ID = resultSet.getString("Category_Category_ID");
             Transaction _result = new Transaction( Transaction_ID, User_ID, Category_ID, Account_Num, Post_Date, Check_No, Description, Amount, Type, Status);
           result.add(_result);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+
+  public static List<Transaction> searchTransactionByUser(int userID, String query ) throws SQLException{
+    List<Transaction> result = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_find_transaction(?,?)}")) {
+        statement.setInt(1, userID);
+        statement.setString(2, query);
+
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while (resultSet.next()){
+            Integer Transaction_ID = resultSet.getInt("Transaction_Transaction_ID");
+            Integer User_ID = resultSet.getInt("Transaction_User_ID");
+            String Category_ID = resultSet.getString("Transaction_Category_ID");
+            String Account_Num = resultSet.getString("Transaction_Account_Num");
+            Date Post_Date = resultSet.getDate("Transaction_Post_Date");
+            Integer Check_No = resultSet.getInt("Transaction_Check_No");
+            String Description = resultSet.getString("Transaction_Description");
+            Double Amount = resultSet.getDouble("Transaction_Amount");
+            String Type = resultSet.getString("Transaction_Type");
+            String Status = resultSet.getString("Transaction_Status");
+            Integer User_User_ID = resultSet.getInt("User_User_ID");
+            String User_User_Name = resultSet.getString("User_User_Name");
+            //String User_User_PW = resultSet.getString("User_User_PW");
+            String User_Email = resultSet.getString("User_Email");
+            //String Category_Category_ID = resultSet.getString("Category_Category_ID");
+            Transaction _result = new Transaction( Transaction_ID, User_ID, Category_ID, Account_Num, Post_Date, Check_No, Description, Amount, Type, Status);
+            result.add(_result);
           }
         }
       }

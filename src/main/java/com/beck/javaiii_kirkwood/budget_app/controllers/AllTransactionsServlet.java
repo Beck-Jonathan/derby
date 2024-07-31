@@ -37,7 +37,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
   session.setAttribute("currentPage",req.getRequestURL());
   List<Transaction> transactions = null;
   int transaction_count=0;
-    List<Category> allCategories = CategoryDAO.getAllCategory();
+
   int page_size=20;
 
     int page_number = 1;
@@ -48,7 +48,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
     // page_size = req.get
 
-    int offset=page_number*page_size;
+    int offset=(page_number-1)*(page_size);
 
 
     try {
@@ -65,7 +65,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
     req.setAttribute("noOfPages", total_pages);
     //fix current page
     req.setAttribute("currentPage", page_number);
-    allCategories = CategoryDAO.getAllCategory();
+    List <Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
 
 

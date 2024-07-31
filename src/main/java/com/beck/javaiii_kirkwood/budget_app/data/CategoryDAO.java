@@ -19,6 +19,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 /// A new remark should be added for each update.
 ///</remarks>
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
+import com.beck.javaiii_kirkwood.budget_app.models.User;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,11 +30,12 @@ import java.time.LocalDate;
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 public class CategoryDAO {
 
-  public static int add(Category _category) {
+  public static int add(Category _category, int user_ID) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Category( ?)}")){
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Category( ?,?)}")){
           statement.setString(1,_category.getCategory_ID());
+          statement.setInt(2,user_ID);
           numRowsAffected = statement.executeUpdate();
           if (numRowsAffected == 0) {
             throw new RuntimeException("Could not add Category. Try again later");
@@ -46,11 +48,13 @@ public class CategoryDAO {
     return numRowsAffected;
   }
 
-  public static List<Category> getAllCategory() {
+  public static List<Category> getCategoryByUser(int userID) {
     List<Category> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Category()}")) {try(ResultSet resultSet = statement.executeQuery()) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_user_Category(?)}")) {
+          statement.setInt(1,userID);
+          try(ResultSet resultSet = statement.executeQuery()) {
           while (resultSet.next()) {String Category_ID = resultSet.getString("Category_Category_ID");
             Category _category = new Category( Category_ID);
             result.add(_category);
@@ -79,6 +83,23 @@ public class CategoryDAO {
       throw new RuntimeException("Could not Delete Category. Try again later");
     }
     return rowsAffected;
+  }
+  public static int update(Category oldCategory, Category newCategory, User user) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Category(? ,?,? )}"))
+        {
+          statement.setString(1,oldCategory.getCategory_ID());
+          statement.setString(2,newCategory.getCategory_ID());
+          statement.setInt(3,user.getUser_ID());
+          result=statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Category . Try again later");
+        }
+      }
+    }
+    return result;
   }
 
 

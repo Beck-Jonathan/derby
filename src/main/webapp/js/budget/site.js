@@ -34,12 +34,12 @@ console.log("ready on new version")
 	$("#Category").button();
 	$( "#Category" ).button( "option", "icon", "ui-icon-check" );
 	$( "#Category" ).button( "option", "showIcon", "true" );
-	$( "#Category" ).button( "option", "label", "Category" );
+	$( "#Category" ).button( "option", "label", "Category Management" );
 
 
 	$("#MoneyBreakdown").button();
 	$( "#MoneyBreakdown" ).button( "option", "icon", "ui-icon-check" );
 	$( "#MoneyBreakdown" ).button( "option", "showIcon", "true" );
-	$( "#MoneyBreakdown" ).button( "option", "label", "Category" );
+	$( "#MoneyBreakdown" ).button( "option", "label", "BreakDown" );
 
 });

@@ -17,7 +17,7 @@
 
             </div>
             <div class="col col-md-2">
-                <a href="addTransactionCategory">   <button type="button" value="Category" id="Category" ></button></a>
+                <a href="all-Categories">   <button type="button" value="Category" id="Category" ></button></a>
             </div>
             <div class="col col-md-2">
                 <a href="MoneyBreakdown">   <button type="button" value="MoneyBreakdown" id="MoneyBreakdown" ></button></a>

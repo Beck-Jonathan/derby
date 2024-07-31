@@ -6,9 +6,10 @@ Create the JSP  For Viewing All of The  Transaction table
 <div class = "container">
     <div class="row">
         <div class="col-12">
-            <h1>All Roller Transactions</h1>
+            <h1>All ${User_B.email} Transactions</h1>
             <p>There ${Transactions.size() eq 1 ? "is" : "are"}&nbsp;${Transactions.size()} Transaction${Transactions.size() ne 1 ? "s" : ""}</p>
             Add Category   <a href="addTransactionCategory">Add</a>
+            search transactions <a href="search_transaction">search</a>
             <c:if test="${Transactions.size() > 0}">
 
                 <div class="table-responsive">
@@ -82,8 +83,8 @@ The when condition does not display a link for the current page--%>
 <form action="all-Transactions" method="get">
     Select a page:&nbsp;
     <select name="page">
-        <c:forEach var="i" begin="0" end="${noOfPages}">
-            <option value=${i}>${i+1}</option>
+        <c:forEach var="i" begin="1" end="${noOfPages}">
+            <option value=${i}>${i}</option>
         </c:forEach>
 
     </select>
