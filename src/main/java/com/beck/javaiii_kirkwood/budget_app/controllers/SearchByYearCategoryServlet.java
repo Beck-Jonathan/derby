@@ -1,7 +1,10 @@
-package com.beck.javaiii_kirkwood.budget_app.controllers;
+package com.beck.javaiii_kirkwood.budget_app.controllers; /******************
+ Create the Servlet  For Viewing all of the  Transaction table
+ Created By Jonathan Beck 7/22/2024
+ ***************/
 
-import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -11,47 +14,29 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.sql.SQLException;
+import java.sql.Date;
+import java.util.HashMap;
 import java.util.List;
-
-@WebServlet("/categorize_transaction")
-public class CategorizeTransactionServlet extends HttpServlet {
+import java.util.Map;
+@WebServlet("/year_and_category")
+public class SearchByYearCategoryServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+//To restrict this page based on privilege level
+    int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
-    session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Categorize Somethin'");
-
-    int x = 0;
-    req.getRequestDispatcher("WEB-INF/Budget_App/ViewAllTransactions.jsp").forward(req, resp);
-  }
-
-  @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    HttpSession session = req.getSession();
-    System.out.println("test");
-    User user = (User)session.getAttribute("User_B");
-
-    String id =req.getParameter("t_id");
     String category = req.getParameter("category");
-    Transaction old_t = new Transaction();
-    old_t.setUser_ID(user.getUser_ID());
-    old_t.setTransaction_ID(Integer.parseInt(id));
-
-    Transaction new_t = new Transaction();
-    new_t.setCategory_ID(category);
-    try {
-      int result = TransactionDAO.update(old_t,new_t);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
-    session.setAttribute("currentPage",req.getRequestURL());
-
-
+    int year = Integer.parseInt(req.getParameter("year"));
+    Date date = new Date(year-1900,11,31);
+    User user = (User)session.getAttribute("User_B");
+    //if (user==null||user.getPrivilege_ID()<PRIVILEGE_NEEDED){
+    // resp.sendError(HttpServletResponse.SC_FORBIDDEN);
+    // return;
+    // }
 
     session.setAttribute("currentPage",req.getRequestURL());
     List<Transaction> transactions = null;
@@ -67,13 +52,13 @@ public class CategorizeTransactionServlet extends HttpServlet {
 
     // page_size = req.get
 
-    int offset=(page_number-1)*page_size;
+    int offset=(page_number-1)*(page_size);
 
 
     try {
-      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID());
 
-      transactions = TransactionDAO.getTransactionByUser(user.getUser_ID(),page_size,offset);
+
+      transactions = TransactionDAO.getTransactionByUserYearCategpry(user.getUser_ID(),date,category,page_size,offset);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
@@ -84,15 +69,13 @@ public class CategorizeTransactionServlet extends HttpServlet {
     req.setAttribute("noOfPages", total_pages);
     //fix current page
     req.setAttribute("currentPage", page_number);
-    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    List <Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
 
 
     req.setAttribute("Transactions", transactions);
     req.setAttribute("pageTitle", "All Transactions");
     req.getRequestDispatcher("WEB-INF/Budget_App/ViewAllTransactions.jsp").forward(req,resp);
-
-
 
   }
 }

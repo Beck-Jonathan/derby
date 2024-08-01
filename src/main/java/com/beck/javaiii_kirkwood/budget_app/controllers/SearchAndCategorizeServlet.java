@@ -35,7 +35,7 @@ public class SearchAndCategorizeServlet extends HttpServlet {
     List<Transaction> transactions = null;
     int transaction_count=0;
     String query = req.getParameter("query");
-    req.setAttribute("search",query);
+    session.setAttribute("search",query);
     if (query!=null && !query.equals("")) {
       try {
         transactions = TransactionDAO.searchTransactionByUser(user.getUser_ID(), query);
@@ -64,12 +64,17 @@ public class SearchAndCategorizeServlet extends HttpServlet {
     session.setAttribute("currentPage",req.getRequestURL());
     int update = 0;
     int transaction_count=0;
-    String query = req.getParameter("s_id");
-    String category = req.getParameter("category");
-    try {
-      update = TransactionDAO.bulkUpdate(user.getUser_ID(),category,query);
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
+    String query = (String) session.getAttribute("search");
+    if(query==null||query.equals("")||query.length()<2){
+
+    }
+    else {
+      String category = req.getParameter("category");
+      try {
+        update = TransactionDAO.bulkUpdate(user.getUser_ID(), category, query);
+      } catch (SQLException e) {
+        throw new RuntimeException(e);
+      }
     }
 
     req.setAttribute("updates", update);

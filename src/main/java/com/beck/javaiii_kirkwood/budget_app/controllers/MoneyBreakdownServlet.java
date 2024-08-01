@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.data.UserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -26,18 +27,34 @@ public class MoneyBreakdownServlet extends HttpServlet {
 
 
     User user = (User)session.getAttribute("User_B");
-    List<Category_VM> results =  new ArrayList<>();
+
     List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
-    for (Category c : allCategories){
-      try {
-        double amount = TransactionDAO.getTransactionCategoryTotal(user.getUser_ID(),c.getCategory_ID());
-        Category_VM partial = new Category_VM(c.getCategory_ID(),amount);
-        results.add(partial);
-      } catch (SQLException e) {
-        throw new RuntimeException(e);
+
+    int year_range=0;
+    // new approach
+    try {
+       year_range = UserDAO.yearRange(user.getUser_ID());
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    List<List<Category_VM>> years = new ArrayList<>(year_range);
+    for (int i=0;i<year_range;i++){
+      years.add(i, new ArrayList<>(allCategories.size()));
+      for (int k=0;k< allCategories.size();k++){
+        Category_VM c = new Category_VM(allCategories.get(k).getCategory_ID(),0);
+
+        years.get(i).add(k,c);
       }
     }
-    session.setAttribute("categories",results);
+    try {
+      int size = TransactionDAO.getAnalysis(years, user.getUser_ID());
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+
+    int x=0;
+
+    session.setAttribute("categories",years);
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Money Breakdown");
 

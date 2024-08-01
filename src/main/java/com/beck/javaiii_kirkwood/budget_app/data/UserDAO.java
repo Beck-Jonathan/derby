@@ -288,5 +288,28 @@ public class UserDAO {
     return numRowsAffected;
   }
 
+  public static int yearRange(int user_ID) throws SQLException {
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_user_transaction_time_range(? )}"))
+        {
+          statement.setInt(1,user_ID);
+
+          try (ResultSet resultSet = statement.executeQuery()){
+            if(resultSet.next()) {
+              result = resultSet.getInt(1);
+            }
+
+          }
+
+        } catch (SQLException e) {
+          throw new RuntimeException("Could complete query. Try again later");
+        }
+      }
+    }
+    return result;
+  }
+
 
 }

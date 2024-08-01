@@ -63,8 +63,8 @@ public class add_transaction extends HttpServlet {
     } catch (Exception ex){
       results.put("dbStatus",ex.getMessage());
       req.setAttribute("results", results);
-      req.setAttribute("pageTitle", "Create a Team ");
-      req.getRequestDispatcher("WEB-INF/personal-project/AddTeam.jsp").forward(req, resp);
+      req.setAttribute("pageTitle", "Upload a file ");
+      req.getRequestDispatcher("WEB-INF/Budget_App/add_transaction.jsp").forward(req, resp);
       return;
     }
     File uploadedFile = new File(uploadFilePath + File.separator + fileName);
@@ -86,9 +86,7 @@ public class add_transaction extends HttpServlet {
 
 
 
-
-
-
+    uploadedFile.delete();
     resp.sendRedirect("budget_bome");
     return;
 

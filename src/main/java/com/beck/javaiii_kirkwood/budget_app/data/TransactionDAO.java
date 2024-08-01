@@ -18,6 +18,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 
@@ -25,6 +26,7 @@ import java.io.*;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
@@ -78,6 +80,38 @@ public class TransactionDAO {
     }
     return result;
   }
+  //getTransactionForExportByUser
+  public static List<Transaction> getTransactionForExportByUser(int userID) throws SQLException{
+    List<Transaction> result = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_transaction_for_export(?)}")) {
+        statement.setInt(1, userID);
+
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while (resultSet.next()){
+            Integer Transaction_ID = resultSet.getInt("Transaction_Transaction_ID");
+            Integer User_ID = resultSet.getInt("Transaction_User_ID");
+            String Category_ID = resultSet.getString("Transaction_Category_ID");
+            String Account_Num = resultSet.getString("Transaction_Account_Num");
+            Date Post_Date = resultSet.getDate("Transaction_Post_Date");
+            Integer Check_No = resultSet.getInt("Transaction_Check_No");
+            String Description = resultSet.getString("Transaction_Description");
+            Double Amount = resultSet.getDouble("Transaction_Amount");
+            String Type = resultSet.getString("Transaction_Type");
+            String Status = resultSet.getString("Transaction_Status");
+
+            Transaction _result = new Transaction( Transaction_ID, User_ID, Category_ID, Account_Num, Post_Date, Check_No, Description, Amount, Type, Status);
+            result.add(_result);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+
 
   public static List<Transaction> getTransactionFromFile(File uploadedFile, String type) {
     List<Transaction> result = new ArrayList<>();
@@ -349,7 +383,39 @@ public class TransactionDAO {
     }
     return result;
   }
+  //getAnalysis
 
+  public static int getAnalysis(List<List<Category_VM>> years, int user_ID ) throws SQLException{
+    int result = 0;
+    int no_categories = years.get(0).size();
+    try(Connection connection = getConnection()) {
+      for (int i=0;i<years.size();i++) {
+        for (int k = 0; k < no_categories; k++) {
+
+          try (CallableStatement statement = connection.prepareCall("{CALL sp_total_Category_by_time(?,?,?)}")) {
+            statement.setString(1, years.get(i).get(k).getCategory_ID());
+            int year = LocalDateTime.now().getYear()-i-1900;
+            Date date = new Date(year, 11, 31);
+            statement.setDate(2, date);
+            statement.setInt(3, user_ID);
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+              while (resultSet.next()) {
+                years.get(i).get(k).setCount(resultSet.getInt(1));
+                years.get(i).get(k).setAmount(resultSet.getDouble(2));
+                System.out.println(resultSet.getInt(1));
+
+              }
+            }
+
+          } catch (SQLException e) {
+            throw new RuntimeException(e);
+          }
+        }
+      }
+    }
+    return result;
+  }
   public static int getTransactionCountByUser(int userID) throws SQLException{
     int result = 0;
     try(Connection connection = getConnection()) {
@@ -389,6 +455,45 @@ public class TransactionDAO {
     return result;
   }
 
+  public static List<Transaction> getTransactionByUserYearCategpry(int userID, Date date,String category, int limit, int offset ) throws SQLException{
+    List<Transaction> result = new ArrayList<>();
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_Year_Category(?,?,?,?,?)}")) {
+        statement.setInt(1, userID);
+        statement.setDate(2, date);
+        statement.setString(3, category);
+        statement.setInt(4, limit);
+        statement.setInt(5, offset);
+
+
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          while (resultSet.next()){
+            Integer Transaction_ID = resultSet.getInt("Transaction_Transaction_ID");
+            Integer User_ID = resultSet.getInt("Transaction_User_ID");
+            String Category_ID = resultSet.getString("Transaction_Category_ID");
+            String Account_Num = resultSet.getString("Transaction_Account_Num");
+            Date Post_Date = resultSet.getDate("Transaction_Post_Date");
+            Integer Check_No = resultSet.getInt("Transaction_Check_No");
+            String Description = resultSet.getString("Transaction_Description");
+            Double Amount = resultSet.getDouble("Transaction_Amount");
+            String Type = resultSet.getString("Transaction_Type");
+            String Status = resultSet.getString("Transaction_Status");
+            Integer User_User_ID = resultSet.getInt("User_User_ID");
+            String User_User_Name = resultSet.getString("User_User_Name");
+            //String User_User_PW = resultSet.getString("User_User_PW");
+            String User_Email = resultSet.getString("User_Email");
+            //String Category_Category_ID = resultSet.getString("Category_Category_ID");
+            Transaction _result = new Transaction( Transaction_ID, User_ID, Category_ID, Account_Num, Post_Date, Check_No, Description, Amount, Type, Status);
+            result.add(_result);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
 
 }
 

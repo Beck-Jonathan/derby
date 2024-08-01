@@ -13,18 +13,30 @@ Create the JSP  For Viewing All of The  Category table
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">Category_ID</th>
-                        <th scope="col">Total</th>
+                        <c:forEach var="i" begin="0" end="${categories.size()-1}">
+
+                        <th>${2024-i}</th>
+
+
+                    </c:forEach>
+                        <th scope="col">Category</th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach items="${categories}" var="category">
+                    <c:forEach var="k" begin="0" end="${categories[0].size()}">
                         <tr>
-                            <td>    ${category.amount}                        </td>
-                            <td>      ${category.category_ID}                      </td>
+                    <c:forEach var="l" begin="0" end="${categories.size()-1}">
+
+                            <td>
+                                <a href="year_and_category?category=${categories[0][k].category_ID}&year=${2024-l}" >   $ ${categories[l][k].amount}  <br/> Count:${categories[l][k].count}</a>
+                            </td>
+
+                    </c:forEach>
+                            <td>  ${categories[0][k].category_ID}</td>
                         </tr>
                     </c:forEach>
+
                     </tbody>
                 </table>
                 </div>

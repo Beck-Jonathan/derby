@@ -40,29 +40,19 @@ Create the JSP  For Viewing All of The  Transaction table
                             <td>${fn:escapeXml(transaction.status)}</td>
 
                             <td>
-                                <form action="categorize_transaction" method="post">
+                                <div name ="change" >
                                 <input type="hidden" name="t_id" value =${transaction.transaction_ID}>
-                                <select name="category">
+                                <select  class="category" name="category">
                                     <c:forEach items="${Categories}" var="category">
-                                        <option value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
+                                        <option  value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
                                     </c:forEach>
-
                                 </select>
-                                    <td><input type="submit" value="Submit" /></td>
-                                </form>
-
-                            </td>
-
+                                </td>
+                            <td><button  onclick="takevalues(${transaction.transaction_ID})">save</button></td>
+                                </div>
 
 
 
-
-                        <%--************  <td><a href = "deletetransaction?transactionid=${transaction.transaction_ID}&mode=<c:choose><c:when test="${transaction.is_active}">0</c:when>
-                      <c:otherwise>1</c:otherwise>
-                      </c:choose>">
-                              <c:if test="${!transaction.is_active}">un</c:if>Delete </a></td>
-                      </tr>
-                      **********--%>
                   </c:forEach>
                   </tbody>
               </table>

@@ -16,15 +16,8 @@ Create the JSP  For Viewing All of The  Transaction table
                 <input type="submit" value="Submit">
 
             </form>
-            <form method="post" action="${appURL}/search_transaction" id = "apply">
-            <input type="hidden" name="s_id" value =${search}>
-            <select name="category">
-                <c:forEach items="${Categories}" var="category">
-                    <option value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
-                </c:forEach>
 
-            </select>
-            <td><input type="submit" value="Submit" /></td>
+
             </form>
             <c:if test="${Transactions.size() > 0}">
 
@@ -54,7 +47,17 @@ Create the JSP  For Viewing All of The  Transaction table
                             <td>${fn:escapeXml(transaction.amount)}</td>
                             <td>${fn:escapeXml(transaction.type)}</td>
                             <td>${fn:escapeXml(transaction.status)}</td>
-                            <td>${fn:escapeXml(transaction.category_ID)}</td>
+                            <td>
+                                <div name ="change" >
+                                    <input type="hidden" name="t_id" value =${transaction.transaction_ID}>
+                                    <select  class="category" name="category">
+                                        <c:forEach items="${Categories}" var="category">
+                                            <option  value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
+                                        </c:forEach>
+                                    </select>
+                            </td>
+                            <td><button  onclick="takevalues(${transaction.transaction_ID})">save</button></td>
+                </div>
 
 
 
@@ -75,8 +78,21 @@ Create the JSP  For Viewing All of The  Transaction table
 
 
             </c:if>
+
         </div>
     </div>
+<c:if test="${Transactions.size()>2}">
+<form method="post" action="${appURL}/search_transaction" id = "apply">
+    <input type="hidden" name="s_id" value =${search}>
+    <select name="category">
+        <c:forEach items="${Categories}" var="category">
+            <option value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
+        </c:forEach>
+
+    </select>
+    <td><input type="submit" value="Submit" /></td>
+</form>
+</c:if>
 </div>
 
 
