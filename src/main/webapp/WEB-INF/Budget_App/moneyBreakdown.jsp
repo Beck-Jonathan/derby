@@ -4,6 +4,7 @@ Create the JSP  For Viewing All of The  Category table
 **********--%>
 <%@include file="/WEB-INF/Budget_App/budget_top.jsp"%>
 <div class = "container">
+    <%@include file="/WEB-INF/Budget_App/user_dash_buttons.jsp"%>
     <div class="row">
         <div class="col-12">
             <h1>All Roller Categorys</h1>
@@ -13,26 +14,28 @@ Create the JSP  For Viewing All of The  Category table
                 <div class="table-responsive"><table class="table table-bordered">
                     <thead>
                     <tr>
-                        <c:forEach var="i" begin="0" end="${categories.size()-1}">
+                        <c:forEach var="i" begin="0" end="${categories.size()-2}">
 
                         <th>${2024-i}</th>
 
 
                     </c:forEach>
+                        <th scope="col">Total</th>
                         <th scope="col">Category</th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="k" begin="0" end="${categories[0].size()}">
+                    <c:forEach var="k" begin="0" end="${categories[0].size()-1}">
                         <tr>
                     <c:forEach var="l" begin="0" end="${categories.size()-1}">
 
                             <td>
-                                <a href="year_and_category?category=${categories[0][k].category_ID}&year=${2024-l}" >   $ ${categories[l][k].amount}  <br/> Count:${categories[l][k].count}</a>
+                                <a href="all-Transactions?category=${categories[0][k].category_ID}&year=${2024-l}" >   $ ${categories[l][k].amount}  <br/> Count:${categories[l][k].count}</a>
                             </td>
 
                     </c:forEach>
+
                             <td>  ${categories[0][k].category_ID}</td>
                         </tr>
                     </c:forEach>

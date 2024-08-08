@@ -307,18 +307,24 @@ public class TransactionDAO {
 
   }
   public static List<Transaction> getTransactionByUser(Integer User_ID) throws SQLException {
-    return getTransactionByUser(User_ID,10,0);
+    return getTransactionByUser(User_ID,"",0,10,0,"",0);
   }
-  public static List<Transaction> getTransactionByUser(Integer User_ID, int pagesize) throws SQLException {
-    return getTransactionByUser(User_ID,pagesize,0);}
+  public static List<Transaction> getTransactionByUser(int User_ID, int pagesize) throws SQLException {
+    return getTransactionByUser(User_ID,"",0,pagesize,0,"",0);}
 
-  public static List<Transaction> getTransactionByUser(int userID, int pagesize, int offset) throws SQLException{
+  public static List<Transaction> getTransactionByUser(Integer User_ID, int pagesize, int offset) throws SQLException {
+    return getTransactionByUser(User_ID,"",0,pagesize,offset,"",0);}
+  public static List<Transaction> getTransactionByUser(int userID,String category, int year, int pagesize, int offset, String sortBy, int order) throws SQLException{
     List<Transaction> result = new ArrayList<>();
     try(Connection connection = getConnection()) {
-      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User(?,?,?)}")) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User(?,?,?,?,?,?,?)}")) {
         statement.setInt(1, userID);
-        statement.setInt(2, pagesize);
-        statement.setInt(3, offset);
+        statement.setString(2, category);
+        statement.setInt(3, year);
+        statement.setInt(4, pagesize);
+        statement.setInt(5, offset);
+        statement.setString(6, sortBy);
+        statement.setInt(7, order);
 
         try (ResultSet resultSet = statement.executeQuery()){
           while (resultSet.next()){
@@ -390,14 +396,28 @@ public class TransactionDAO {
     int no_categories = years.get(0).size();
     try(Connection connection = getConnection()) {
       for (int i=0;i<years.size();i++) {
+        no_categories=years.get(i).size();
         for (int k = 0; k < no_categories; k++) {
 
-          try (CallableStatement statement = connection.prepareCall("{CALL sp_total_Category_by_time(?,?,?)}")) {
-            statement.setString(1, years.get(i).get(k).getCategory_ID());
+          try (CallableStatement statement = connection.prepareCall("{CALL sp_total_Category_by_time(?,?,?,?)}")) {
+            if (years.get(i).get(k).getCategory_ID().equals("Total In")||years.get(i).get(k).getCategory_ID().equals("Total Out")){
+              statement.setString(1,"");
+            }
+            else {
+              statement.setString(1, years.get(i).get(k).getCategory_ID());
+            }
             int year = LocalDateTime.now().getYear()-i-1900;
-            Date date = new Date(year, 11, 31);
-            statement.setDate(2, date);
+            if (i==years.size()-1){
+              Date date = new Date(2000, 11, 31);
+              statement.setDate(2, date);
+            }
+            else{
+              Date date = new Date(year, 11, 31);
+              statement.setDate(2, date);
+            }
+
             statement.setInt(3, user_ID);
+            statement.setString(4, years.get(i).get(k).getSign());
 
             try (ResultSet resultSet = statement.executeQuery()) {
               while (resultSet.next()) {
@@ -408,7 +428,7 @@ public class TransactionDAO {
               }
             }
 
-          } catch (SQLException e) {
+          } catch (Exception e) {
             throw new RuntimeException(e);
           }
         }
@@ -416,11 +436,13 @@ public class TransactionDAO {
     }
     return result;
   }
-  public static int getTransactionCountByUser(int userID) throws SQLException{
+  public static int getTransactionCountByUser(int userID, String category, int year) throws SQLException{
     int result = 0;
     try(Connection connection = getConnection()) {
-      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_count(?)}")) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_count(?,?,?)}")) {
         statement.setInt(1, userID);
+        statement.setString(2, category);
+        statement.setInt(3, year);
 
 
         try (ResultSet resultSet = statement.executeQuery()){
@@ -435,12 +457,13 @@ public class TransactionDAO {
     return result;
   }
 
-  public static double getTransactionCategoryTotal(int userID, String category_id) throws SQLException{
+  public static double getTransactionCategoryTotal(int userID, String category_id, String direction) throws SQLException{
     double result = 0;
     try(Connection connection = getConnection()) {
-      try(CallableStatement statement = connection.prepareCall("{CALL sp_transaction_category_total(?,?)}")) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_transaction_category_total(?,?,?)}")) {
         statement.setInt(1, userID);
         statement.setString(2, category_id);
+        statement.setString(3, direction);
 
 
         try (ResultSet resultSet = statement.executeQuery()){

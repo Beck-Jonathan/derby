@@ -1,5 +1,7 @@
 package com.beck.javaiii_kirkwood.budget_app.models;
 
+import java.util.Objects;
+
 public class Category {
   private String Category_ID;
 
@@ -13,6 +15,10 @@ public class Category {
     return Category_ID;
   }
   public void setCategory_ID(String Category_ID) {
+    if (Category_ID.equals("")){
+      this.Category_ID = "";
+      return;
+    }
     Category_ID = Category_ID.replaceAll("[^A-Za-z0-9 - ]","");
     if(Category_ID.length()<2){
       throw new IllegalArgumentException("Category_ID is too short.");

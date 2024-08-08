@@ -1,6 +1,7 @@
 <%@include file="/WEB-INF/Budget_App/budget_top.jsp"%>
 
 <div class="table-responsive col-12">
+  <%@include file="/WEB-INF/Budget_App/user_dash_buttons.jsp"%>
   <table class="table table-bordered">
 
 
@@ -22,7 +23,7 @@
         </c:if>
       </div>
         <div class="align-items-center mt-0">
-          <div class="d-grid"><button class="btn btn-orange mb-0" type="submit">Sign Up</button></div>
+          <div class="d-grid"><button class="btn btn-orange mb-0" type="submit">Import Transactions</button></div>
           <c:if test="${not empty results.dbStatus}"
           ><p>${results.dbStatus}</p>
           </c:if>

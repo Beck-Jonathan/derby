@@ -26,6 +26,8 @@ public class AllTransactionsServlet extends HttpServlet {
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 //To restrict this page based on privilege level
+
+
   int PRIVILEGE_NEEDED = 0;
   HttpSession session = req.getSession();
   User user = (User)session.getAttribute("User_B");
@@ -33,6 +35,56 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
    // resp.sendError(HttpServletResponse.SC_FORBIDDEN);
    // return;
  // }
+   HashMap<String,String> parameters = new HashMap<>();
+    Integer year = 0;
+    try {
+      year= Integer.parseInt(req.getParameter("year"));
+    } catch (Exception e){
+      year=0;
+    }
+    parameters.put("year",year.toString());
+    session.setAttribute("year",year);
+    Integer direction = 0;
+    boolean reverse=false;
+    if (req.getParameter("reverse")!=null) {
+      try {
+        reverse = Boolean.parseBoolean(req.getParameter("reverse"));
+      }
+      catch (Exception e ){
+        reverse=false;
+      }
+    }
+
+      if (reverse) {
+         direction = 1 ;}
+
+         else {
+          direction = 0;
+        }
+
+
+    session.setAttribute("reverse",reverse);
+
+
+    String category = "";
+    try  {
+      category= (req.getParameter("category"));
+    } catch (Exception e){
+      category="";
+    }
+    if (category==null){category="";}
+    parameters.put("category",category);
+    session.setAttribute("category",category);
+    String sort = "";
+    try  {
+      sort= (req.getParameter("sort"));
+    } catch (Exception e){
+      sort="";
+    }
+    parameters.put("sort",sort);
+    session.setAttribute("sort",sort);
+
+
 
   session.setAttribute("currentPage",req.getRequestURL());
   List<Transaction> transactions = null;
@@ -45,6 +97,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
     if(req.getParameter("page") != null) {
       page_number = Integer.parseInt(req.getParameter("page"));
     }
+    session.setAttribute("page_number",page_number);
 
     // page_size = req.get
 
@@ -52,9 +105,9 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
 
 
     try {
-      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID());
+      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID(),category,year);
 
-      transactions = TransactionDAO.getTransactionByUser(user.getUser_ID(),page_size,offset);
+      transactions = TransactionDAO.getTransactionByUser(user.getUser_ID(),category,year,page_size,offset,sort,direction);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

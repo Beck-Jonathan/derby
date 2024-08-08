@@ -5,23 +5,25 @@ Create the JSP  For Viewing All of The  Transaction table
 <%@include file="/WEB-INF/Budget_App/budget_top.jsp"%>
 <div class = "container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="addr" addr="${appURL}">
+            <%@include file="/WEB-INF/Budget_App/user_dash_buttons.jsp"%>
             <h1>All ${User_B.email} Transactions</h1>
             <p>There ${Transactions.size() eq 1 ? "is" : "are"}&nbsp;${Transactions.size()} Transaction${Transactions.size() ne 1 ? "s" : ""}</p>
-            Add Category   <a href="addTransactionCategory">Add</a>
-            search transactions <a href="search_transaction">search</a>
+            Add Category   <a href="addTransactionCategory">Add</a> <br/>
+            search transactions <a href="search_transaction">search</a> <br/>
+            Reverse order <a href="${appURL}/all-Transactions?sort=${sort}&direction=${direction}&category=${category}&year=${year}&reverse=true">reverse</a><br/>
             <c:if test="${Transactions.size() > 0}">
 
                 <div class="table-responsive">
                     <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th scope="col">Transaction_ID</th>
+                        <th scope="col"><a href="${appURL}/all-Transactions?sort=ID&direction=${direction}&category=${category}&year=${year}">Transaction_ID</a></th>
                         <th scope="col">Account_Num</th>
-                        <th scope="col">Post_Date</th>
-                        <th scope="col">Check_No</th>
+                        <th scope="col"><a href="${appURL}/all-Transactions?sort=Date&direction=${direction}&category=${category}&year=${year}">Post_Date</a></th>
+                        <th scope="col"><a href="${appURL}/all-Transactions?sort=Check&direction=${direction}&category=${category}&year=${year}">Check_No</a></th>
                         <th scope="col">Description</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col"><a href="${appURL}/all-Transactions?sort=Amount&direction=${direction}&category=${category}&year=${year}">Amount</a></th>
                         <th scope="col">Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Category</th>
@@ -41,14 +43,15 @@ Create the JSP  For Viewing All of The  Transaction table
 
                             <td>
                                 <div name ="change" >
+                                    <label for="${transaction.transaction_ID}" id="${transaction.transaction_ID}_status" class="form-label" style="display: none;">Category::</label>
                                 <input type="hidden" name="t_id" value =${transaction.transaction_ID}>
-                                <select  class="category" name="category">
-                                    <c:forEach items="${Categories}" var="category">
+                                <select  class="category" name="category" onchange="" id="${transaction.transaction_ID}">
+                                    <c:forEach items="${Categories}" var="category" >
                                         <option  value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
                                     </c:forEach>
                                 </select>
                                 </td>
-                            <td><button  onclick="takevalues(${transaction.transaction_ID})">save</button></td>
+                            <td><button  onclick="takevalues(${transaction.transaction_ID},'${appURL}')">save</button></td>
                                 </div>
 
 
@@ -65,16 +68,28 @@ Create the JSP  For Viewing All of The  Transaction table
 </div>
 <%--For displaying Previous link except for the 1st page --%>
 <c:if test="${currentPage != 1}">
-    <td><a href="all-Transactions?page=${currentPage - 1}">Previous</a></td>
+    <form action="all-Transactions" method="get">
+        <input type="hidden" name="sort" value="${sort}">
+        <input type="hidden" name="category" value="${category}">
+        <input type="hidden" name="year" value="${year}">
+        <input type="hidden" name="reverse" value="${reverse}">
+        <input type="hidden" name="page" value="${currentPage-1}">
+        <br/><br/>
+        <input type="submit" value="Previous Page" />
+    </form>
 </c:if>
 
 <%--For displaying Page numbers.
 The when condition does not display a link for the current page--%>
-<form action="all-Transactions" method="get">
-    Select a page:&nbsp;
-    <select name="page">
+<form action="all-Transactions" method="get" >
+    <input type="hidden" name="sort" value="${sort}">
+    <input type="hidden" name="category" value="${category}">
+    <input type="hidden" name="year" value="${year}">
+    <input type="hidden" name="reverse" value="${reverse}">
+    Select a page :
+    <select name="page" onchange="this.form.submit()">
         <c:forEach var="i" begin="1" end="${noOfPages}">
-            <option value=${i}>${i}</option>
+            <option value=${i}  ${currentPage == i ? ' selected' : ''} >${i}</option>
         </c:forEach>
 
     </select>
@@ -84,7 +99,15 @@ The when condition does not display a link for the current page--%>
 
 <%--For displaying Next link --%>
 <c:if test="${currentPage lt noOfPages}">
-    <td><a href="all-Transactions?page=${currentPage + 1}">Next</a></td>
+    <form action="all-Transactions" method="get">
+        <input type="hidden" name="sort" value="${sort}">
+        <input type="hidden" name="category" value="${category}">
+        <input type="hidden" name="year" value="${year}">
+        <input type="hidden" name="reverse" value="${reverse}">
+        <input type="hidden" name="page" value="${currentPage+1}">
+        <br/><br/>
+        <input type="submit" value="Next Page" />
+    </form>
 </c:if>
 </main>
 <%@include file="/WEB-INF/Budget_App/budget_bottom.jsp"%>

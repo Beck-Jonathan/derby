@@ -67,12 +67,13 @@ public class CategoryDAO {
     }
     return result;}
 
-  public static int deleteCategory(int categoryID) {
+  public static int deleteCategory(String categoryID, int User_ID) {
     int rowsAffected=0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
-        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Category( ?)}")){
-          statement.setInt(1,categoryID);
+        try (CallableStatement statement = connection.prepareCall("{CALL sp_Delete_Category( ?,?)}")){
+          statement.setString(1,categoryID);
+          statement.setInt(2,User_ID);
           rowsAffected = statement.executeUpdate();
           if (rowsAffected == 0) {
             throw new RuntimeException("Could not Delete Category. Try again later");

@@ -6,6 +6,7 @@ Create the JSP  For Viewing All of The  Transaction table
 <div class = "container">
     <div class="row">
         <div class="col-12">
+            <%@include file="/WEB-INF/Budget_App/user_dash_buttons.jsp"%>
             <h1>All Roller Transactions</h1>
             <p>There ${Transactions.size() eq 1 ? "is" : "are"}&nbsp;${Transactions.size()} Transaction${Transactions.size() ne 1 ? "s" : ""}</p>
             Search

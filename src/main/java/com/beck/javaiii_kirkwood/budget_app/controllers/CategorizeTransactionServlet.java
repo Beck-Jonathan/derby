@@ -71,7 +71,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
 
 
     try {
-      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID());
+      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID(),"",0);
 
       transactions = TransactionDAO.getTransactionByUser(user.getUser_ID(),page_size,offset);
     } catch (SQLException e) {
