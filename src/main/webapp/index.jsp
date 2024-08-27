@@ -36,21 +36,25 @@
             that push the boundaries of my skills.</div>
         <div class="col-md-3"> </div>
     </div>
+    <div class ="row mb4">
+        <div class="col-md-3"> </div>
+        <div class="col-md-6">
+            <p> A pdf explaining the below applications is linked  <a href="${pageContext.request.contextPath}/sample_inputs/README.pdf" download="README.pdf" >here.</a>
+        </div>
+        <div class="col-md-3"> </div>
+    </div>
     <div class="row justify-content-center" style="text-align: center;">
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
-            <h3>Class Final Projects</h3>
+            <h3>Noteworthy Projects</h3>
             <div class="list-group">
-                <a href="https://github.com/Beck-Jonathan/Capstone" class="list-group-item list-group-item-action">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
-                <a href="home" class="list-group-item list-group-item-action">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
-                <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="list-group-item list-group-item-action">.Net II Final Project (.Net, C#, T-Sql)</a>
-                <a href="apply" class="list-group-item list-group-item-action">Client Side Scripting Final Project (JavaScript, html, css)</a>
-                <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch" class="list-group-item list-group-item-action">Honors Project (C#)</a>
-                <a href="https://play.unity.com/mg/other/build1-sg" class="list-group-item list-group-item-action">2d Game Dev Final Project (unity, c#)</a>
-                <a href="budget_bome" class="list-group-item list-group-item-action">Budgeting Demo</a>
-                <a href="${appURL}/learnx" class="list-group-item list-group-item-action">Java III coursework Demo</a>
-
-
-
+                <a href="https://github.com/Beck-Jonathan/Capstone" class="border">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
+                <a href="home" class="border">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
+                <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="border">.Net II/III Final Project (.Net, Razr, cshtml, C#, T-Sql)</a>
+                <a href="apply" class="border">Client Side Scripting Final Project (JavaScript, html, css)</a>
+                <div class="container row"><div class="col-md-8 border"><a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch">Honors Project (C#)</a> </div><div class="col-md-4 border"><a href="${pageContext.request.contextPath}/sample_inputs/Table_Gen.rar" download="sample_data.rar" >Download Sample</a></div></div>
+                <a href="https://play.unity.com/mg/other/build1-sg" class="border">2d Game Dev Final Project (unity, c#)</a>
+                <div class="container row"><div class="col-md-8 border"> <a href="budget_bome">Budgeting Demo</a></div><div class="col-md-4 border"><a href="${pageContext.request.contextPath}/sample_inputs/truncated.txt" download="sample_data.txt" >Download Sample</a></div></div>
+                <a href="${appURL}/learnx" class="border">Java III coursework Demo</a>
 
             </div>
         </div>
@@ -60,6 +64,7 @@
                 <a href="./Resume/May_Smartutor_Econ.pdf" class="list-group-item list-group-item-action">Smartutor Example (Pearson)</a>
                 <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
                 <a href="postFix" class="list-group-item list-group-item-action">PostFixCalculator</a>
+                <a href="api_home" class="list-group-item list-group-item-action">Api Reader</a>
 
 
             </div>

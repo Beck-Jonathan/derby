@@ -12,45 +12,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Continued work on budget project">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/QuizNotes/shape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/AllMortgagesServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CalculateMortgageServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/DeleteCategoryServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/UTSServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/MortgageDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Month.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Mortgage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Mortgage_VM.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/CalcMortgage.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/UTS.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/all-Mortgages.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/delete_category.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/user_dash_buttons.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Amortization doodles">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/model/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/api_experiment/home.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sample_inputs/README.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sample_inputs/Table_Gen.rar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sample_inputs/truncated.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/AllTransactionsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/AllTransactionsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CategorizeTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CategorizeTransactionServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/MoneyBreakdownServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/MoneyBreakdownServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/SearchByYearCategoryServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/CategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/TransactionDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Category_VM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/models/Category_VM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/ViewAllTransactions.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/ViewAllTransactions.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/add_category.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/add_category.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/add_transaction.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/add_transaction.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/all_categories.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/all_categories.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/budget_bottom.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/budget_bottom.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/budget_top.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/budget_top.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/edit_category.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/edit_category.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/moneyBreakdown.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/moneyBreakdown.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/search_categorize_transaction.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/search_categorize_transaction.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/user_dash.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/Budget_App/user_dash.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-courses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/learnx/all-courses.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/budget/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/budget/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/budget/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/jquery-ui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/js/budget/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/budget/site.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -124,6 +97,7 @@
     "Tomcat Server.group-chat.jsp.executor": "Run",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "20",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/jjbec/IdeaProjects/JavaIII_Kirkwood/src/main/webapp/js/budget",
     "list.type.of.created.stylesheet": "CSS",
@@ -136,7 +110,7 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -158,11 +132,11 @@
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\personal-project\css" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\sample_inputs" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\css\budget" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\images\icons" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\images\Roller" />
       <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\webapp\WEB-INF\Shared" />
-      <recent name="C:\Users\jjbec\IdeaProjects\JavaIII_Kirkwood\src\main\java\com\beck\javaiii_kirkwood\QuizNotes" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.11">
@@ -573,15 +547,14 @@
       <workItem from="1722003856395" duration="12299000" />
       <workItem from="1722350377168" duration="262000" />
       <workItem from="1722350658161" duration="89080000" />
-      <workItem from="1722946465631" duration="14591000" />
-    </task>
-    <task id="LOCAL-00019" summary="View current 2fa">
-      <option name="closed" value="true" />
-      <created>1710795609849</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1710795609849</updated>
+      <workItem from="1722946465631" duration="15977000" />
+      <workItem from="1723392159669" duration="7300000" />
+      <workItem from="1724374645338" duration="478000" />
+      <workItem from="1724426772797" duration="23000" />
+      <workItem from="1724429309969" duration="54000" />
+      <workItem from="1724438038594" duration="17000" />
+      <workItem from="1724596802750" duration="7974000" />
+      <workItem from="1724721985822" duration="1723000" />
     </task>
     <task id="LOCAL-00020" summary="Errors fixed from html validator">
       <option name="closed" value="true" />
@@ -967,7 +940,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722550324388</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Amortization doodles">
+      <option name="closed" value="true" />
+      <created>1723146809429</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1723146809430</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -992,7 +973,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="In class assignment." />
     <MESSAGE value="Added check to see if username / password is available on the signup servlet." />
     <MESSAGE value="silly garden project demo." />
     <MESSAGE value="DRY homework" />
@@ -1017,7 +997,8 @@
     <MESSAGE value="homepage updates" />
     <MESSAGE value="Beginning work for budget project." />
     <MESSAGE value="Continued work on budget project" />
-    <option name="LAST_COMMIT_MESSAGE" value="Continued work on budget project" />
+    <MESSAGE value="Amortization doodles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Amortization doodles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1197,10 +1178,31 @@
           <line>119</line>
           <option name="timeStamp" value="250" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="251" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="254" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="255" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="257" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="jdk.internal.net.http.HttpResponseImpl" memberName="sslSession" />
         <PinnedItemInfo parentTag="com.mysql.cj.result.Field" memberName="databaseName" />
         <PinnedItemInfo parentTag="com.mysql.cj.jdbc.result.ResultSetImpl" memberName="invalidRowReason" />
       </pinned-members>

@@ -61,44 +61,106 @@ console.log("ready on new version")
 
 	let submit_mortgage = document.getElementById("Save_Mortgage")
 	submit_mortgage.setAttribute("disabled","true");
+	// to get and validate the input for Present_Value
+	var Present_Value_input= document.getElementById("inputmortgagePresent_Value");
+	Present_Value_input.addEventListener('keyup',function(){
+			if (Present_Value_input.value!=""&& $.isNumeric(Present_Value_input.value)){
+				$(Present_Value_input).addClass("ui-state-active");
+				$(Present_Value_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Present_Value_input).removeClass("ui-state-active");
+				$(Present_Value_input).addClass("ui-state-error");
+
+			}
+		}
+	);
+// to get and validate the input for Future_Value
+	var Future_Value_input= document.getElementById("inputmortgageFuture_Value");
+	Future_Value_input.addEventListener('keyup',function(){
+			if (Future_Value_input.value!=""&& $.isNumeric(Future_Value_input.value)){
+				$(Future_Value_input).addClass("ui-state-active");
+				$(Future_Value_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Future_Value_input).removeClass("ui-state-active");
+				$(Future_Value_input).addClass("ui-state-error");
+
+			}
+		}
+	);
+// to get and validate the input for Interest_Rate
+	var Interest_Rate_input= document.getElementById("inputmortgageInterest_Rate");
+	Interest_Rate_input.value='';
+	Interest_Rate_input.addEventListener('keyup',function(){
+			if (Interest_Rate_input.value!=""&& $.isNumeric(Interest_Rate_input.value)){
+				$(Interest_Rate_input).addClass("ui-state-active");
+				$(Interest_Rate_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Interest_Rate_input).removeClass("ui-state-active");
+				$(Interest_Rate_input).addClass("ui-state-error");
+
+			}
+		}
+	);
+// to get and validate the input for Monthly_Payment
+	var Monthly_Payment_input= document.getElementById("inputmortgageMonthly_Payment");
+	Monthly_Payment_input.addEventListener('keyup',function(){
+			if (Monthly_Payment_input.value!=""&& $.isNumeric(Monthly_Payment_input.value)){
+				$(Monthly_Payment_input).addClass("ui-state-active");
+				$(Monthly_Payment_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Monthly_Payment_input).removeClass("ui-state-active");
+				$(Monthly_Payment_input).addClass("ui-state-error");
+
+			}
+		}
+	);
+// to get and validate the input for Extra_Payment
+	var Extra_Payment_input= document.getElementById("inputmortgageExtra_Payment");
+	Extra_Payment_input.addEventListener('keyup',function(){
+			if (Extra_Payment_input.value!=""&& $.isNumeric(Extra_Payment_input.value)){
+				$(Extra_Payment_input).addClass("ui-state-active");
+				$(Extra_Payment_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Extra_Payment_input).removeClass("ui-state-active");
+				$(Extra_Payment_input).addClass("ui-state-error");
+
+			}
+		}
+	);
+// to get and validate the input for Remaining_Term
+	var Remaining_Term_input= document.getElementById("inputmortgageRemaining_Term");
+	Remaining_Term_input.addEventListener('keyup',function(){
+			if (Remaining_Term_input.value!=""&& $.isNumeric(Remaining_Term_input.value)){
+				$(Remaining_Term_input).addClass("ui-state-active");
+				$(Remaining_Term_input).removeClass("ui-state-error");
+			}
+			else {
+				$(Remaining_Term_input).removeClass("ui-state-active");
+				$(Remaining_Term_input).addClass("ui-state-error");
+
+			}
+		}
+	);
 	var payment = document.getElementById("Mortgage_Payment")
 	if (payment!=null) {
 		let submit_mortgage = document.getElementById("Save_Mortgage")
 
 		payment.addEventListener('click', function () {
-			var errors=0;
-			var p=0;
-			var r=0;
-			var n=0;
-			var i=0;
-			//get pv
-			var pv = document.getElementById("inputmortgagePresent_Value")
-			if (pv.value!="") {
-				 p = pv.value;
-			}
-			else{errors++;}
-			//get rate
-			var rate = document.getElementById("inputmortgageInterest_Rate")
-			if (rate.value!="") {
-				 i = rate.value*1.00/100/12;
 
-			}
-			else{errors++;}
-			//get fv
-			var fv = document.getElementById("inputmortgageFuture_Value")
-			if (fv.value!="") {
-				 fv = fv.value;
-			}
-			else{errors++;}
 
-			//get nper
-			var nper = document.getElementById("inputmortgageRemaining_Term")
-			if (nper.value!="") {
-				 n = nper.value;
 
-			}
-			else{errors++;}
-			if (errors==0){
+
+		console.log(document.getElementsByClassName("ui-state-error").length);
+			if (document.getElementsByClassName("ui-state-error").length===0){
+				p = Present_Value_input.value;
+				i = Interest_Rate_input.value*1.00/100/12;
+				fv = Future_Value_input.value;
+				n=Remaining_Term_input.value;
 				var payment_bpx = document.getElementById("inputmortgageMonthly_Payment");
 				console.log("Pricipal:"+p+"\n Interest Rate: "+i+"\n Nper: "+n+" ")
 				var monthly_payment = Math.round(p * i * (Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1)*100)/100;
