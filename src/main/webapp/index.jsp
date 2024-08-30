@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/loading.css">
     <script src="js/loading.js"></script>
+    <script src="js/home.js"></script>
 </head>
 <body>
 <div class="container py-4 text-center">
@@ -39,7 +40,6 @@
     <div class ="row mb4">
         <div class="col-md-3"> </div>
         <div class="col-md-6">
-            <p> A pdf explaining the below applications is linked  <a href="${pageContext.request.contextPath}/sample_inputs/README.pdf" download="README.pdf" >here.</a>
         </div>
         <div class="col-md-3"> </div>
     </div>
@@ -47,24 +47,215 @@
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
             <h3>Noteworthy Projects</h3>
             <div class="list-group">
-                <a href="https://github.com/Beck-Jonathan/Capstone" class="border">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
-                <a href="home" class="border">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
+                <!-- start capstone -->
+                <div class ="container row" id="capstone">
+                    <div class="col-md-11">
+                        <a href="https://github.com/Beck-Jonathan/Capstone" class="border">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                       A year long class project to explore the entire software development lifecycle.
+                    </div>
+                </div>
+                <!-- end capstone -->
+                <!-- start java personal project-->
+                <div class="container row" id="java">
+                    <div class="col-md-11">
+                        <a href="home" class="border">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        Web application to manage custom sports leagues.
+                    </div>
+                </div>
+                    <!-- end java personal project -->
+                <!-- start .net project-->
+                <div class="container row" id="net">
+                <div class="col-md-11">
                 <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="border">.Net II/III Final Project (.Net, Razr, cshtml, C#, T-Sql)</a>
-                <a href="apply" class="border">Client Side Scripting Final Project (JavaScript, html, css)</a>
-                <div class="container row"><div class="col-md-8 border"><a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch">Honors Project (C#)</a> </div><div class="col-md-4 border"><a href="${pageContext.request.contextPath}/sample_inputs/Table_Gen.rar" download="sample_data.rar" >Download Sample</a></div></div>
+                </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        Desktop Multi-User/Multi-Role Application
+
+                    </div>
+                </div>
+                    <!-- end .Net -->
+                <!-- client side start -->
+                <div class="container row" id="client">
+                    <div class="col-md-11">
+                        <a href="apply" class="border">Client Side Scripting Final Project (JavaScript, html, css)</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                      Uses frameworks to develop a use-friendly form.
+                    </div>
+                </div>
+                <!-- client side end-->
+                <!--honors start -->
+                <div class="container row" id="honors">
+                    <div class="col-md-8 border">
+                        <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch">Honors Project (C#)</a>
+                    </div>
+                    <div class="col-md-3 border">
+                        <a href="${pageContext.request.contextPath}/sample_inputs/Table_Gen.rar" download="sample_data.rar" >Download Sample</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        Takes a data dictionary and creates various code snippets to ease development.
+                    </div>
+                </div>
+                <!-- honors end -->
+                <!-- 2d game start -->
+                <div class="container row" id="game">
+                    <div class="col-md-11">
                 <a href="https://play.unity.com/mg/other/build1-sg" class="border">2d Game Dev Final Project (unity, c#)</a>
-                <div class="container row"><div class="col-md-8 border"> <a href="budget_bome">Budgeting Demo</a></div><div class="col-md-4 border"><a href="${pageContext.request.contextPath}/sample_inputs/truncated.txt" download="sample_data.txt" >Download Sample</a></div></div>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                       ?
+
+                    </div>
+                    <div class="explanationContainer">
+                        Full realized 2d platforming game,
+                    </div>
+                </div>
+                <!-- 2d game end -->
+                <!-- budget demo start -->
+                <div class="container row" id="budget">
+                    <div class="col-md-6 border">
+                        <a href="budget_bome">Budgeting Demo</a>
+                    </div>
+                    <div class="col-md-5 border">
+                        <a href="${pageContext.request.contextPath}/sample_inputs/truncated.txt" download="sample_data.txt" >Download Sample</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        A budget analysis tool.
+                    </div>
+                </div>
+                <!-- buget end-->
+                <!-- courseowrk start -->
+                <div class="container row" id="coursework">
+                    <div class="col-md-11">
                 <a href="${appURL}/learnx" class="border">Java III coursework Demo</a>
+                    </div>
+                        <div class="col-md-1 border questionMark" >
+                            ?
+                        </div>
+                        <div class="explanationContainer">
+                           example Java Coursework
+                        </div>
+                    </div>
+                <!-- coursework end -->
+                <!-- micro header start -->
+                <div class="container row">
+                    <div class="col-md-12">
+                        <h3>Micro Projects</h3>
+                    </div>
+                </div>
+                <!-- micro header end -->
+                <!-- ST start -->
+                <div class="container row" id="pearson">
+                    <div class="col-md-11">
+                        <a href="./Resume/May_Smartutor_Econ.pdf" class="list-group-item list-group-item-action">Smartutor Example (Pearson)</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                       SmarTutor
+                    </div>
+                </div>
+                <!-- st end -->
+                <!-- email sender start -->
+                <div class="container row" id="email">
+                    <div class="col-md-11">
+                        <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        Basic email sending interface.
+                    </div>
+                </div>
+                <!-- email sender end -->
+
+                <!--postfix start -->
+
+                <div class="container row" id="postfix">
+                    <div class="col-md-11">
+                        <a href="postFix" class="list-group-item list-group-item-action">PostFixCalculator</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                         a post fix calculator
+                    </div>
+                </div>
+                <!-- postfix  end -->
+                <!-- api reader start -->
+                <div class="container row" id="apidemo">
+                    <div class="col-md-11">
+                        <a href="api_home" class="list-group-item list-group-item-action">Api Reader</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        Reads MLB player data.
+                    </div>
+                </div>
+                <!-- api end -->
+
+
+
 
             </div>
+            <!-- projects end -->
+
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-5">
-            <h3>Micro Projects</h3>
+            <h3>Associated Skills</h3>
             <div class="list-group">
-                <a href="./Resume/May_Smartutor_Econ.pdf" class="list-group-item list-group-item-action">Smartutor Example (Pearson)</a>
-                <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
-                <a href="postFix" class="list-group-item list-group-item-action">PostFixCalculator</a>
-                <a href="api_home" class="list-group-item list-group-item-action">Api Reader</a>
+                <ul>
+                    <li class="skill" id="cSharp">C#</li>
+                    <li class="skill" id="Servlets">Java Servlets</li>
+                    <li class="skill" id="JSP">Java JSP</li>
+                    <li class="skill" id="Framework">Java Frameworks</li>
+                    <li class="skill" id="Html">HTML</li>
+                    <li class="skill" id="CSS">CSS</li>
+                    <li class="skill" id="JavaScript">JavaScript</li>
+                    <li class="skill" id="Api">API</li>
+                    <li class="skill" id="Multi">MultiUser / Multi Role</li>
+                    <li class="skill" id="MySql">MySQL</li>
+                    <li class="skill" id="T-SQL">T-SQL</li>
+                    <li class="skill" id="Unity">Unity</li>
+                    <li class="skill" id="Git">Github and source control#</li>
+                    <li class="skill" id="UnitTests">Unit Test</li>
+                    <li class="skill" id="Tech">Technical Documentation</li>
+                    <li class="skill" id="Agile">Agile</li>
+                    <li class="skill" id="Solid">Solid</li>
+                    <li class="skill" id="Interfaces">Interfaces</li>
+                    <li class="skill" id="DataStruct">Data Structures</li>
+                </ul>
+
+
+
+
 
 
             </div>

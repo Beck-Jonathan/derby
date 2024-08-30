@@ -5,6 +5,7 @@
   </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
+      <artifact name="JavaIII_Kirkwood:war" />
       <artifact name="JavaIII_Kirkwood:war exploded" />
     </artifacts-to-build>
   </component>
@@ -12,12 +13,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Index Touch Ups">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="API touch ups">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/home.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/data/PlayerJSON.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/api_experiment/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/api_experiment/home.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/CategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/CategoryDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +27,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Jsp File" />
         <option value="Class" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -85,7 +85,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Debug",
+    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
     "Tomcat Server.dashboard-main.jsp.executor": "Run",
     "Tomcat Server.group-chat.jsp.executor": "Run",
     "git-widget-placeholder": "main",
@@ -547,15 +547,7 @@
       <workItem from="1724429309969" duration="54000" />
       <workItem from="1724438038594" duration="17000" />
       <workItem from="1724596802750" duration="7974000" />
-      <workItem from="1724721985822" duration="4483000" />
-    </task>
-    <task id="LOCAL-00021" summary="Errors fixed from html validator">
-      <option name="closed" value="true" />
-      <created>1711484403068</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1711484403069</updated>
+      <workItem from="1724721985822" duration="17804000" />
     </task>
     <task id="LOCAL-00022" summary="created error handling">
       <option name="closed" value="true" />
@@ -941,7 +933,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724723864854</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="API touch ups">
+      <option name="closed" value="true" />
+      <created>1724770042699</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1724770042699</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -966,7 +966,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="silly garden project demo." />
     <MESSAGE value="DRY homework" />
     <MESSAGE value="suggested improvement" />
     <MESSAGE value="Day 23 qui" />
@@ -991,7 +990,8 @@
     <MESSAGE value="Continued work on budget project" />
     <MESSAGE value="Amortization doodles" />
     <MESSAGE value="Index Touch Ups" />
-    <option name="LAST_COMMIT_MESSAGE" value="Index Touch Ups" />
+    <MESSAGE value="API touch ups" />
+    <option name="LAST_COMMIT_MESSAGE" value="API touch ups" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1170,16 +1170,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CalculateMortgageServlet.java</url>
           <line>119</line>
           <option name="timeStamp" value="250" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="259" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/API_Test/controller/api_home_controller.java</url>
-          <line>67</line>
-          <option name="timeStamp" value="260" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

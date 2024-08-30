@@ -13,7 +13,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 ///< remarks>
 ///UPDATER: updater_name
 ///< br />
-/// UPDATED: yyyy-MM-dd
+/// UPDATED: yyyy-MM-ddcedar
 /// < br />
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
@@ -29,7 +29,13 @@ import java.util.List;
 import java.time.LocalDate;
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 public class CategoryDAO {
-
+  /**
+   *
+   * @param _category dafda fda
+   * @param user_ID dfaadfa
+   * @return number of rows effected
+   * @
+   */
   public static int add(Category _category, int user_ID) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
