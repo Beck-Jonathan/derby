@@ -54,6 +54,11 @@ console.log("ready on new version")
 	$( "#Mortgage" ).button( "option", "showIcon", "true" );
 	$( "#Mortgage" ).button( "option", "label", "Mortgage" );
 
+	$("#PieChart").button();
+	$( "#PieChart" ).button( "option", "icon", "ui-icon-check" );
+	$( "#PieChart" ).button( "option", "showIcon", "true" );
+	$( "#PieChart" ).button( "option", "label", "Pie Chart" );
+
 	$("#Mortgage_Payment").button();
 	$( "#Mortgage_Payment" ).button( "option", "icon", "ui-icon-check" );
 	$( "#Mortgage_Payment" ).button( "option", "showIcon", "true" );
