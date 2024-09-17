@@ -1,6 +1,9 @@
 $(document).ready(function() {
+    let address = $(location).attr('href');
+    address=address.replace("PieChart","");
+    console.log(address);
     let userid=0;
-    $.get("/JavaIII_Kirkwood_war_exploded/user_Id", function(response){
+    $.get(address+"user_Id", function(response){
 
         userid = response;
     });
@@ -9,14 +12,10 @@ $(document).ready(function() {
 
         let year = $('#inputtransactionYear').val();
         $("#chartContainer").slideUp();
-        console.log("try")
-
-        console.log("try2");
-
 
        jQuery.ajax({
            type:"get",
-           url: "/JavaIII_Kirkwood_war_exploded/category_by_year/",
+           url: address+"category_by_year/",
            data : {"sort":year,
                "user_id" : userid,
                "type":"pie"
@@ -60,7 +59,7 @@ $(document).ready(function() {
             $("#barContainer").slideUp();
             jQuery.ajax({
                 type:"get",
-                url: "/JavaIII_Kirkwood_war_exploded/category_by_year/",
+                url: address+"category_by_year/",
                 data : {"sort":category,
                     "user_id" : userid,
                     "type":"bar"
