@@ -37,7 +37,7 @@ public class CalculateMortgageServlet extends HttpServlet{
     }
 
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Add Mortgage");
+    req.setAttribute("pageTitle", "Mortgage");
     ;
 
     req.getRequestDispatcher("WEB-INF/Budget_App/CalcMortgage.jsp").forward(req, resp);
@@ -132,7 +132,7 @@ public class CalculateMortgageServlet extends HttpServlet{
       }
     }
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Create a Mortgage ");
+    req.setAttribute("pageTitle", "Mortgage");
     req.getRequestDispatcher("WEB-INF/Budget_App/CalcMortgage.jsp").forward(req, resp);
 
   }

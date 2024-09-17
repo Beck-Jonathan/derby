@@ -25,7 +25,6 @@ public class PieChartController extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
 
-
     User user = (User)session.getAttribute("User_B");
 
     List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
@@ -37,59 +36,14 @@ public class PieChartController extends HttpServlet {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    int loop=0;
-    List<List<Category_VM>> years = new ArrayList<>(year_range+1);
-    for(int i=0;i<year_range+1;i++){
-      years.add(i, new ArrayList<>(allCategories.size()+2));
-    }
-
-    //add each year and category combo
-    for (int i=0;i<=year_range;i++) {
-      for (int k = 0; k < allCategories.size(); k++) {
-        Category_VM c = new Category_VM(allCategories.get(k).getCategory_ID(), 0);
-        years.get(i).add(k, c);
-      }
-    }
-
-    //add each year total, pos and neg
-    for (int i=0;i<=year_range;i++) {
-
-      Category_VM c = new Category_VM("Total In", 0,"pos");
-      years.get(i).add( c);
-      Category_VM d = new Category_VM("Total Out", 0,"neg");
-      years.get(i).add( d);
-
-    }
-
-    //add each category total, ignoring year
-    years.add( new ArrayList<>(allCategories.size()+2));
-    for (int k = 0; k < allCategories.size(); k++) {
-      Category_VM c = new Category_VM(allCategories.get(k).getCategory_ID(), 0);
-      years.get(years.size()-1).add(k, c);
-    }
-    //get each grand total
-    Category_VM total_in = new Category_VM("", 0,"pos");
-    years.get(years.size()-1).add(total_in);
-    Category_VM total_out = new Category_VM("", 0,"neg");
-    years.get(years.size()-1).add(total_out);
-
-    int x=6;
-    //to add grand totals, pos and neg
-    //not implemented
 
 
 
-    try {
-      int size = TransactionDAO.getAnalysis(years, user.getUser_ID());
-    } catch (SQLException e) {
-      throw new RuntimeException(e);
-    }
+    session.setAttribute("Categories",allCategories);
+    session.setAttribute("yearRange",year_range);
 
-
-
-    session.setAttribute("categories",years);
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Money Breakdown");
+    req.setAttribute("pageTitle", "Pie Chart");
 
     req.getRequestDispatcher("WEB-INF/Budget_App/PieChart.jsp").forward(req, resp);
   }
@@ -99,7 +53,7 @@ public class PieChartController extends HttpServlet {
 
     HttpSession session = req.getSession();
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Budget Home");
+    req.setAttribute("pageTitle", "Pie Chart");
     req.getRequestDispatcher("WEB-INF/Budget_App/PieChart.jsp").forward(req, resp);
 
   }

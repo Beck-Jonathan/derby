@@ -31,7 +31,19 @@
 <script type="text/javascript" src="https://cdn.canvasjs.com/jquery.canvasjs.min.js"></script>
 
 <script src="js/budget/site.js"></script>
-<script src="js/budget/pieChart.js"></script>
+
+<c:if test="${pageTitle eq 'Mortgage'}">
+    <script src="js/budget/mortgage.js"></script>
+</c:if>
+
+<c:if test="${pageTitle eq 'Pie Chart'}">
+    <script src="js/budget/pieChart.js"></script>
+</c:if>
+
+
+
+
+
 
 
 

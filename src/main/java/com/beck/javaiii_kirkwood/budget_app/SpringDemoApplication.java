@@ -1,4 +1,4 @@
-package com.beck.javaiii_kirkwood.budget_app.models;
+package com.beck.javaiii_kirkwood.budget_app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

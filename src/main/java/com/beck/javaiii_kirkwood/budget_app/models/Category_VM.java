@@ -1,6 +1,20 @@
 package com.beck.javaiii_kirkwood.budget_app.models;
 
+import jakarta.persistence.Entity;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Category_VM extends Category {
+  @Id
+  private Long id;
+
+  public Category_VM() {
+
+  }
+
   public double getAmount() {
     return amount;
   }
@@ -38,4 +52,11 @@ public class Category_VM extends Category {
     this.count=count;
   }
 
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Long getId() {
+    return id;
+  }
 }
