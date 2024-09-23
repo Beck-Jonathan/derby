@@ -5,6 +5,7 @@ import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.UserDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iUserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -24,11 +25,15 @@ import java.util.List;
 public class MoneyBreakdownServlet extends HttpServlet {
   private  iCategoryDAO categoryDAO;
   private iTransactionDAO transactionDAO;
+  private iUserDAO userDAO;
+
+
 
   @Override
   public void init() throws ServletException {
     categoryDAO = new CategoryDAO();
     transactionDAO = new TransactionDAO();
+    userDAO = new UserDAO();
   }
 
   @Override
@@ -44,7 +49,7 @@ public class MoneyBreakdownServlet extends HttpServlet {
     int year_range=0;
     // new approach
     try {
-       year_range = UserDAO.yearRange(user.getUser_ID());
+       year_range = userDAO.yearRange(user.getUser_ID());
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

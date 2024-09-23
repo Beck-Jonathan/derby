@@ -8,6 +8,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
  ***************/
 import com.beck.javaiii_kirkwood.budget_app.data.*;
+import com.beck.javaiii_kirkwood.budget_app.iData.iUserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.*;
 import com.beck.javaiii_kirkwood.shared.EmailService;
 import com.mysql.cj.Session;
@@ -28,7 +29,12 @@ import java.util.Map;
 @WebServlet("/budget_in")
 public class UserSignInServlet extends HttpServlet{
 
+  private iUserDAO userDAO;
 
+  @Override
+  public void init() throws ServletException {
+    userDAO = new UserDAO();
+  }
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.setAttribute("pageTitle", "Log in!");
@@ -54,18 +60,18 @@ public class UserSignInServlet extends HttpServlet{
 
     int id =0;
     try {
-      String hashed = UserDAO.get_pw(_User_Name);
+      String hashed = userDAO.get_pw(_User_Name);
       if(!BCrypt.checkpw(_User_PW,hashed)){
 
         session.setAttribute("loginFail", "Login Failed, please verify your username and password");
       }
       else{
         session.removeAttribute("loginFail");
-        id=UserDAO.getUserIDByUserName(_User_Name);
+        id=userDAO.getUserIDByUserName(_User_Name);
         user.setUser_ID(id);
-        user=UserDAO.getUserByPrimaryKey(user);
+        user=userDAO.getUserByPrimaryKey(user);
         user.setUser_PW(null);
-        List<String> roles = UserDAO.getUser_Roles(user);
+        List<String> roles = userDAO.getUser_Roles(user);
         user.setRoles(roles);
         results.put("dbStatus",user.getEmail());
 

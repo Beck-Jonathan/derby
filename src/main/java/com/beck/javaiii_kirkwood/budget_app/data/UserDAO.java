@@ -1,5 +1,6 @@
 package com.beck.javaiii_kirkwood.budget_app.data;
 
+import com.beck.javaiii_kirkwood.budget_app.iData.iUserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.*;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -13,9 +14,9 @@ import java.util.List;
 
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 
-public class UserDAO {
+public class UserDAO implements iUserDAO {
 
-  public static int add(User _user) {
+  public int add(User _user) {
     int numRowsAffected=0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -38,7 +39,7 @@ public class UserDAO {
     return numRowsAffected;
   }
 
-  public static int getUserID(String email) throws SQLException{
+  public  int getUserID(String email) throws SQLException{
     int userId = 0;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_user_id_by_email(?)}")) {
@@ -59,7 +60,7 @@ public class UserDAO {
     return userId;
   }
 
-  public static User getUserByPrimaryKey(User _user) throws SQLException{
+  public  User getUserByPrimaryKey(User _user) throws SQLException{
     User result = null;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_User(?)}")) {
@@ -84,7 +85,7 @@ public class UserDAO {
 
 
 
-  public static String get_pw(String username) {
+  public  String get_pw(String username) {
     String pw="";
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -110,7 +111,7 @@ public class UserDAO {
     return pw;
   }
 
-  public static int getUserIDByUserName(String username) {
+  public  int getUserIDByUserName(String username) {
     int id=0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -138,7 +139,7 @@ public class UserDAO {
   }
 
 
-  public static boolean usernameFree(String username) throws SQLException {
+  public  boolean usernameFree(String username) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection !=null){
@@ -161,7 +162,7 @@ public class UserDAO {
     return result;
   }
 
-  public static boolean addDefaultCategories(int userID) throws SQLException {
+  public  boolean addDefaultCategories(int userID) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -185,7 +186,7 @@ public class UserDAO {
     return result;
   }
 
-  public static boolean emailFree(String email) throws SQLException {
+  public  boolean emailFree(String email) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection !=null){
@@ -210,7 +211,7 @@ public class UserDAO {
 
 
 
-  public static boolean deleteUser(int userID) throws SQLException {
+  public  boolean deleteUser(int userID) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -228,7 +229,7 @@ public class UserDAO {
       return result;
     }
   }
-  public static boolean resetPW(User user) throws SQLException {
+  public  boolean resetPW(User user) throws SQLException {
     boolean result = true;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -250,7 +251,7 @@ public class UserDAO {
     }
 
   }
-  public static List<String> getUser_Roles(User _user) throws SQLException{
+  public  List<String> getUser_Roles(User _user) throws SQLException{
     List<String> result = new ArrayList<>();
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_User_User_Role_Line(?)}")) {
@@ -270,7 +271,7 @@ public class UserDAO {
     }
     return result;
   }
-  public static int addRole(String role, int userID ) {
+  public  int addRole(String role, int userID ) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
         try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_User_Role_Line( ?, ?)}")){
@@ -288,7 +289,7 @@ public class UserDAO {
     return numRowsAffected;
   }
 
-  public static int yearRange(int user_ID) throws SQLException {
+  public  int yearRange(int user_ID) throws SQLException {
     int result = 0;
     try (Connection connection = getConnection()) {
       if (connection !=null){

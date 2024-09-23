@@ -4,6 +4,7 @@ import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.UserDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iUserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -22,6 +23,13 @@ import java.util.List;
 @WebServlet("/PieChart")
 public class PieChartController extends HttpServlet {
   public static iCategoryDAO categoryDAO;
+  private iUserDAO userDAO;
+
+  @Override
+  public void init() throws ServletException {
+    userDAO = new UserDAO();
+    categoryDAO = new CategoryDAO();
+  }
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     if (categoryDAO==null){
@@ -36,7 +44,7 @@ public class PieChartController extends HttpServlet {
     int year_range=0;
     // new approach
     try {
-      year_range = UserDAO.yearRange(user.getUser_ID());
+      year_range = userDAO.yearRange(user.getUser_ID());
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

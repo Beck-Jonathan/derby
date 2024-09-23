@@ -8,6 +8,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
  ***************/
 import com.beck.javaiii_kirkwood.budget_app.data.*;
+import com.beck.javaiii_kirkwood.budget_app.iData.iUserDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.*;
 import com.beck.javaiii_kirkwood.shared.EmailService;
 import jakarta.servlet.ServletException;
@@ -25,10 +26,12 @@ import java.util.Map;
 
 @WebServlet("/budgetwithus")
 public class UserSignUpServlet extends HttpServlet{
+  private iUserDAO userDAO;
 
-
-
-
+  @Override
+  public void init() throws ServletException {
+    userDAO = new UserDAO();
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -69,7 +72,7 @@ public class UserSignUpServlet extends HttpServlet{
     }
     boolean usernameFree = false;
     try {
-      usernameFree = UserDAO.usernameFree(_User_Name);
+      usernameFree = userDAO.usernameFree(_User_Name);
     } catch (Exception e) {
       results.put("dbStatus",e.getMessage());
       errors++;
@@ -95,7 +98,7 @@ public class UserSignUpServlet extends HttpServlet{
     }
     boolean emailFree = true;
     try {
-      emailFree = UserDAO.emailFree(_Email);
+      emailFree = userDAO.emailFree(_Email);
     } catch (Exception e) {
       results.put("dbStatus",e.getMessage());
       errors++;
@@ -109,7 +112,7 @@ public class UserSignUpServlet extends HttpServlet{
     int result=0;
     if (errors==0){
       try{
-        result=UserDAO.add(user);
+        result=userDAO.add(user);
         HttpSession session = req.getSession();
         session.setAttribute("User_B",user);
       }catch(Exception ex){
@@ -118,9 +121,9 @@ public class UserSignUpServlet extends HttpServlet{
       if (result>0){
         results.put("dbStatus","User Added");
         try {
-          id  = UserDAO.getUserID(_Email);
-          UserDAO.addRole("User",id);
-          UserDAO.addDefaultCategories(id);
+          id  = userDAO.getUserID(_Email);
+          userDAO.addRole("User",id);
+          userDAO.addDefaultCategories(id);
           results.put("UserID", String.valueOf(id));
           //TwoFA twofa = new TwoFA(id);
           //TwoFADAO.add(twofa);
@@ -132,9 +135,9 @@ public class UserSignUpServlet extends HttpServlet{
 
 
           user.setUser_ID(id);
-          user=UserDAO.getUserByPrimaryKey(user);
+          user=userDAO.getUserByPrimaryKey(user);
           user.setUser_PW(null);
-          List<String> roles = UserDAO.getUser_Roles(user);
+          List<String> roles = userDAO.getUser_Roles(user);
           user.setRoles(roles);
           session.setAttribute("UserID",id);
           session.setAttribute("User_B",user);
