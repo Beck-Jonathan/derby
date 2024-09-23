@@ -6,6 +6,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
  ***************/
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import jakarta.servlet.ServletException;
@@ -18,9 +19,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@WebServlet("/deleteBudgetCategory")public class DeleteCategoryServlet extends HttpServlet {
+@WebServlet("/deleteBudgetCategory")
+public class DeleteCategoryServlet extends HttpServlet {
+  public static iCategoryDAO categoryDAO;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
     Map<String, String> results = new HashMap<>();
 
 //To restrict this page based on privilege level
@@ -40,7 +46,7 @@ import java.util.Map;
 
     if (!CategoryID.equals("Uncategorized")) {
       try {
-        result = CategoryDAO.deleteCategory(CategoryID, user.getUser_ID());
+        result = categoryDAO.deleteCategory(CategoryID, user.getUser_ID());
       } catch (Exception ex) {
         results.put("dbStatus", ex.getMessage());
       }
@@ -50,7 +56,7 @@ import java.util.Map;
 
 
     List<Category> categories = null;
-    categories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    categories = categoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("results",results);
     req.setAttribute("Categories", categories);
     req.setAttribute("pageTitle", "All Category");

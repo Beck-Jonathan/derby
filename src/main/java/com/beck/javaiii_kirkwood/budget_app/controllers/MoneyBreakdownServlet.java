@@ -3,6 +3,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.UserDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -20,15 +21,18 @@ import java.util.List;
 
 @WebServlet("/MoneyBreakdown")
 public class MoneyBreakdownServlet extends HttpServlet {
-
+  public static iCategoryDAO categoryDAO;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
     HttpSession session = req.getSession();
 
 
     User user = (User)session.getAttribute("User_B");
 
-    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    List<Category> allCategories = categoryDAO.getCategoryByUser(user.getUser_ID());
 
     int year_range=0;
     // new approach

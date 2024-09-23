@@ -397,7 +397,11 @@ public class TransactionDAO {
               while (resultSet.next()) {
                 boolean isTotal=false;
                 String category = resultSet.getString(1);
+                if (resultSet.wasNull()){
+                  continue;
+                }
                 int year = 0;
+
                 resultSet.getInt(2);
                 if (!resultSet.wasNull()){
                   year = resultSet.getInt(2);

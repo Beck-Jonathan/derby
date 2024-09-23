@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import jakarta.servlet.ServletException;
@@ -22,10 +23,13 @@ import java.util.Map;
 @WebServlet("/editCategory")
 public class EditCategoryServlet extends HttpServlet{
 
-
+  public static iCategoryDAO categoryDAO;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
 //To restrict this page based on privilege level
     int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
@@ -51,6 +55,9 @@ public class EditCategoryServlet extends HttpServlet{
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
 //To restrict this page based on privilege level
     int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
@@ -86,7 +93,7 @@ public class EditCategoryServlet extends HttpServlet{
     int result=0;
     if (errors==0){
       try{
-        result=CategoryDAO.update(_oldCategory,_newCategory,user);
+        result=categoryDAO.update(_oldCategory,_newCategory,user);
       }catch(Exception ex){
         results.put("dbStatus","Database Error");
       }

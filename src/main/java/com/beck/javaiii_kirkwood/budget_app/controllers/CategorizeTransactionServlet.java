@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -18,10 +19,13 @@ import java.util.List;
 
 @WebServlet("/categorize_transaction")
 public class CategorizeTransactionServlet extends HttpServlet {
-
+  public static iCategoryDAO categoryDAO;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Categorize Somethin'");
 
@@ -32,8 +36,11 @@ public class CategorizeTransactionServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
     HttpSession session = req.getSession();
-    System.out.println("test");
+
     User user = (User)session.getAttribute("User_B");
 
     String id =req.getParameter("t_id");
@@ -84,7 +91,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
     req.setAttribute("noOfPages", total_pages);
     //fix current page
     req.setAttribute("currentPage", page_number);
-    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    List<Category> allCategories = categoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
 
 

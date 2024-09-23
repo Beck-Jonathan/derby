@@ -5,6 +5,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers; /******************
 
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -21,10 +22,15 @@ import java.util.List;
 import java.util.Map;
 @WebServlet("/all-Transactions")
 public class AllTransactionsServlet extends HttpServlet {
+  public static iCategoryDAO categoryDAO;
 
   @Override
 protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
 //To restrict this page based on privilege level
 
 
@@ -118,7 +124,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
     req.setAttribute("noOfPages", total_pages);
     //fix current page
     req.setAttribute("currentPage", page_number);
-    List <Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    List <Category> allCategories = categoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
 
 

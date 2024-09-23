@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -19,13 +20,16 @@ import java.util.List;
 
 @WebServlet("/search_transaction")
 public class SearchAndCategorizeServlet extends HttpServlet {
-
+  public static iCategoryDAO categoryDAO;
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     HttpSession session = req.getSession();
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
     User user = (User)session.getAttribute("User_B");
-    List<Category> allCategories = CategoryDAO.getCategoryByUser(user.getUser_ID());
+    List<Category> allCategories = categoryDAO.getCategoryByUser(user.getUser_ID());
     req.setAttribute("Categories", allCategories);
     if (user==null){
       resp.sendError(HttpServletResponse.SC_FORBIDDEN);
@@ -53,7 +57,9 @@ public class SearchAndCategorizeServlet extends HttpServlet {
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
 
     HttpSession session = req.getSession();
     User user = (User)session.getAttribute("User_B");

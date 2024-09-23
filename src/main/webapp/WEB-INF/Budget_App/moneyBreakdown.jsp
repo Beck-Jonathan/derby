@@ -31,7 +31,7 @@ Create the JSP  For Viewing All of The  Category table
                     <c:forEach var="l" begin="0" end="${categories.size()-1}">
 
                             <td>
-                                <a href="all-Transactions?category=${categories[0][k].category_ID}&year=${2024-l}" >   $ ${categories[l][k].amount}  <br/> Count:${categories[l][k].count}</a>
+                                <a href="all-Transactions?category=${categories[0][k].category_ID}&year=${2024-l}" >   <fmt:formatNumber value="${categories[l][k].amount}" type="currency" maxFractionDigits="0"/>  <br/> Count:${categories[l][k].count}</a>
                             </td>
 
                     </c:forEach>

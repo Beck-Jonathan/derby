@@ -18,6 +18,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import java.sql.CallableStatement;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
-public class CategoryDAO {
+public class CategoryDAO implements iCategoryDAO {
   /**
    *
    * @param _category dafda fda
@@ -36,7 +37,7 @@ public class CategoryDAO {
    * @return number of rows effected
    * @
    */
-  public static int add(Category _category, int user_ID) {
+  public int add(Category _category, int user_ID) {
     int numRowsAffected=0;try (Connection connection = getConnection()) {
       if (connection != null) {
         try (CallableStatement statement = connection.prepareCall("{CALL sp_insert_Category( ?,?)}")){
@@ -54,7 +55,7 @@ public class CategoryDAO {
     return numRowsAffected;
   }
 
-  public static List<Category> getCategoryByUser(int userID) {
+  public List<Category> getCategoryByUser(int userID) {
     List<Category> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -73,7 +74,7 @@ public class CategoryDAO {
     }
     return result;}
 
-  public static int deleteCategory(String categoryID, int User_ID) {
+  public int deleteCategory(String categoryID, int User_ID) {
     int rowsAffected=0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -91,7 +92,7 @@ public class CategoryDAO {
     }
     return rowsAffected;
   }
-  public static int update(Category oldCategory, Category newCategory, User user) throws SQLException{
+  public int update(Category oldCategory, Category newCategory, User user) throws SQLException{
     int result = 0;
     try (Connection connection = getConnection()) {
       if (connection !=null){

@@ -6,6 +6,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
  ***************/
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import jakarta.servlet.ServletException;
@@ -18,9 +19,14 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/all-Categories")
-public class AllCategoriesServlet extends HttpServlet {@Override
-protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+public class AllCategoriesServlet extends HttpServlet {
+  public static iCategoryDAO categoryDAO;
 
+  @Override
+protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    if (categoryDAO==null){
+      categoryDAO = new CategoryDAO();
+    }
 //To restrict this page based on privilege level
   int PRIVILEGE_NEEDED = 0;
   HttpSession session = req.getSession();
@@ -33,7 +39,7 @@ protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws Se
   session.setAttribute("currentPage",req.getRequestURL());
   List<Category> categories = null;
 
-  categories =CategoryDAO.getCategoryByUser(user.getUser_ID());
+  categories =categoryDAO.getCategoryByUser(user.getUser_ID());
 
   req.setAttribute("Categories", categories);
   req.setAttribute("pageTitle", "All categories");
