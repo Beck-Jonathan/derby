@@ -22,14 +22,17 @@ import java.util.Map;
 
 @WebServlet("/addTransactionCategory")
 public class AddCategoryServlet extends HttpServlet{
-  public static iCategoryDAO categoryDAO;
+  private  iCategoryDAO categoryDAO;
+
+  @Override
+  public void init() throws ServletException {
+    categoryDAO = new CategoryDAO();
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    if (categoryDAO==null){
-      categoryDAO = new CategoryDAO();
-    }
+
 //To restrict this page based on privilege level
     int PRIVILEGE_NEEDED = 0;
     HttpSession session = req.getSession();
