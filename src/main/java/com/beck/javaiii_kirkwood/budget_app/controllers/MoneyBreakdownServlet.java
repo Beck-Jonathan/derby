@@ -4,6 +4,7 @@ import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.UserDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -21,12 +22,18 @@ import java.util.List;
 
 @WebServlet("/MoneyBreakdown")
 public class MoneyBreakdownServlet extends HttpServlet {
-  public static iCategoryDAO categoryDAO;
+  private  iCategoryDAO categoryDAO;
+  private iTransactionDAO transactionDAO;
+
+  @Override
+  public void init() throws ServletException {
+    categoryDAO = new CategoryDAO();
+    transactionDAO = new TransactionDAO();
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    if (categoryDAO==null){
-      categoryDAO = new CategoryDAO();
-    }
+
     HttpSession session = req.getSession();
 
 
@@ -84,7 +91,7 @@ int x=6;
 
 
     try {
-      int size = TransactionDAO.getAnalysis(years, user.getUser_ID());
+      int size = transactionDAO.getAnalysis(years, user.getUser_ID());
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

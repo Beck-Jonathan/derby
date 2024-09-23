@@ -12,9 +12,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Extracted CategoryDAO to an interface.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/iData/iMortgageDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/MortgageDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/MortgageDAO.java" afterDir="false" />
+    <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="Extracted mortgageDAO to an interface.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/iData/iTransactionDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/AllTransactionsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/AllTransactionsServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CategorizeTransactionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/CategorizeTransactionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/ExportServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/ExportServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/MoneyBreakdownServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/MoneyBreakdownServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/SearchAndCategorizeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/SearchAndCategorizeServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/UTSServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/UTSServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/add_transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/controllers/add_transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/TransactionDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/budget_app/data/TransactionDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -562,15 +570,7 @@
       <workItem from="1726071645506" duration="9924000" />
       <workItem from="1726163139702" duration="5019000" />
       <workItem from="1726238200403" duration="15553000" />
-      <workItem from="1727103043941" duration="1458000" />
-    </task>
-    <task id="LOCAL-00028" summary="Learnx midterm fixes, showing courses class demo.">
-      <option name="closed" value="true" />
-      <created>1712281415962</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1712281415962</updated>
+      <workItem from="1727103043941" duration="2674000" />
     </task>
     <task id="LOCAL-00029" summary="Updates to team and league behaviors">
       <option name="closed" value="true" />
@@ -956,7 +956,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727104344126</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Extracted mortgageDAO to an interface.">
+      <option name="closed" value="true" />
+      <created>1727104675273</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1727104675273</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -981,7 +989,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Helpers.noErrors method as part of the &quot;keep code DRY assignment&quot;" />
     <MESSAGE value="Day24 quiz" />
     <MESSAGE value="Day24 Quiz" />
     <MESSAGE value="Chatbox demo." />
@@ -1006,7 +1013,8 @@
     <MESSAGE value="Updated implementation of budget breakdown" />
     <MESSAGE value="JS update to for budget breakdown to work on multiple deployment locations." />
     <MESSAGE value="Extracted CategoryDAO to an interface." />
-    <option name="LAST_COMMIT_MESSAGE" value="Extracted CategoryDAO to an interface." />
+    <MESSAGE value="Extracted mortgageDAO to an interface." />
+    <option name="LAST_COMMIT_MESSAGE" value="Extracted mortgageDAO to an interface." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

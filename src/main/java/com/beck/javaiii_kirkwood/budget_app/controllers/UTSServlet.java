@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -20,7 +21,12 @@ import java.util.List;
 @WebServlet("/UTS")
 public class UTSServlet extends HttpServlet {
 
+  private iTransactionDAO transactionDAO;
 
+  @Override
+  public void init() throws ServletException {
+    transactionDAO = new TransactionDAO();
+  }
 
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,7 +46,7 @@ public class UTSServlet extends HttpServlet {
     String status="";
     int result=0;
     try {
-       result = TransactionDAO.update(old_t,new_t);
+       result = transactionDAO.update(old_t,new_t);
 
     } catch (SQLException e) {
       status="error";

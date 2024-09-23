@@ -18,6 +18,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Category_VM;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
@@ -34,9 +35,9 @@ import java.time.LocalDate;
 import java.util.Locale;
 
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
-public class TransactionDAO {
+public class TransactionDAO implements iTransactionDAO {
 
-  public static int update(Transaction oldTransaction, Transaction newTransaction) throws SQLException {
+  public int update(Transaction oldTransaction, Transaction newTransaction) throws SQLException {
     int result = 0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -55,7 +56,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static int bulkUpdate(int userid, String category, String query) throws SQLException {
+   public int bulkUpdate(int userid, String category, String query) throws SQLException {
     int result = 0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -75,7 +76,7 @@ public class TransactionDAO {
   }
 
   //getTransactionForExportByUser
-  public static List<Transaction> getTransactionForExportByUser(int userID) throws SQLException {
+  public  List<Transaction> getTransactionForExportByUser(int userID) throws SQLException {
     List<Transaction> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_transaction_for_export(?)}")) {
@@ -105,7 +106,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static List<Transaction> getTransactionFromFile(File uploadedFile, String type) {
+  public  List<Transaction> getTransactionFromFile(File uploadedFile, String type) {
     List<Transaction> result = new ArrayList<>();
     BufferedReader reader;
 
@@ -205,7 +206,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static int add(Transaction _transaction) {
+  public  int add(Transaction _transaction) {
     int numRowsAffected = 0;
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -231,7 +232,7 @@ public class TransactionDAO {
     return numRowsAffected;
   }
 
-  public static int addBatch(List<Transaction> _transactions, List<Boolean> Exists) {
+  public  int addBatch(List<Transaction> _transactions, List<Boolean> Exists) {
     int added = 0;
     boolean result = true;
     int index = 0;
@@ -298,19 +299,19 @@ public class TransactionDAO {
 
   }
 
-  public static List<Transaction> getTransactionByUser(Integer User_ID) throws SQLException {
+  public  List<Transaction> getTransactionByUser(Integer User_ID) throws SQLException {
     return getTransactionByUser(User_ID, "", 0, 10, 0, "", 0);
   }
 
-  public static List<Transaction> getTransactionByUser(int User_ID, int pagesize) throws SQLException {
+  public  List<Transaction> getTransactionByUser(int User_ID, int pagesize) throws SQLException {
     return getTransactionByUser(User_ID, "", 0, pagesize, 0, "", 0);
   }
 
-  public static List<Transaction> getTransactionByUser(Integer User_ID, int pagesize, int offset) throws SQLException {
+  public  List<Transaction> getTransactionByUser(Integer User_ID, int pagesize, int offset) throws SQLException {
     return getTransactionByUser(User_ID, "", 0, pagesize, offset, "", 0);
   }
 
-  public static List<Transaction> getTransactionByUser(int userID, String category, int year, int pagesize, int offset, String sortBy, int order) throws SQLException {
+  public  List<Transaction> getTransactionByUser(int userID, String category, int year, int pagesize, int offset, String sortBy, int order) throws SQLException {
     List<Transaction> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User(?,?,?,?,?,?,?)}")) {
@@ -350,7 +351,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static List<Transaction> searchTransactionByUser(int userID, String query) throws SQLException {
+  public  List<Transaction> searchTransactionByUser(int userID, String query) throws SQLException {
     List<Transaction> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_find_transaction(?,?)}")) {
@@ -386,7 +387,7 @@ public class TransactionDAO {
   }
   //getAnalysis
 
-  public static int getAnalysis(List<List<Category_VM>> years, int user_ID) throws SQLException {
+  public  int getAnalysis(List<List<Category_VM>> years, int user_ID) throws SQLException {
     int result = 0;
 
     try (Connection connection = getConnection()) {
@@ -440,7 +441,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static int getTransactionCountByUser(int userID, String category, int year) throws SQLException {
+  public  int getTransactionCountByUser(int userID, String category, int year) throws SQLException {
     int result = 0;
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_count(?,?,?)}")) {
@@ -460,7 +461,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static double getTransactionCategoryTotal(int userID, String category_id, String direction) throws SQLException {
+  public  double getTransactionCategoryTotal(int userID, String category_id, String direction) throws SQLException {
     double result = 0;
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_transaction_category_total(?,?,?)}")) {
@@ -480,7 +481,7 @@ public class TransactionDAO {
     return result;
   }
 
-  public static List<Transaction> getTransactionByUserYearCategpry(int userID, Date date, String category, int limit, int offset) throws SQLException {
+  public  List<Transaction> getTransactionByUserYearCategpry(int userID, Date date, String category, int limit, int offset) throws SQLException {
     List<Transaction> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       try (CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Transaction_by_User_Year_Category(?,?,?,?,?)}")) {

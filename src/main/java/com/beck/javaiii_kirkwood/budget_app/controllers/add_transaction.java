@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.budget_app.controllers;
 
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import jakarta.servlet.ServletException;
@@ -10,6 +11,7 @@ import jakarta.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +26,13 @@ import java.util.Map;
 )
 public class add_transaction extends HttpServlet {
   private static final String UPLOAD_DIR = "uploads";
+  private iTransactionDAO transactionDAO;
+
+  @Override
+  public void init() throws ServletException {
+    transactionDAO = new TransactionDAO();
+  }
+
   @Override
 
 
@@ -70,7 +79,11 @@ public class add_transaction extends HttpServlet {
     File uploadedFile = new File(uploadFilePath + File.separator + fileName);
     List<Transaction> transactions = null;
 
-    transactions = TransactionDAO.getTransactionFromFile(uploadedFile,"Altra");
+    try {
+      transactions = transactionDAO.getTransactionFromFile(uploadedFile,"Altra");
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
     Integer NewTrans = 0;
     Integer oldTrans = 0;
     int totalTrans = transactions.size();
@@ -82,9 +95,11 @@ public class add_transaction extends HttpServlet {
     for (Transaction t : transactions) {
       t.setUser_ID(user.getUser_ID());
     }
-      TransactionDAO.addBatch(transactions,transExist);
-
-
+    try {
+      transactionDAO.addBatch(transactions,transExist);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
     uploadedFile.delete();
     resp.sendRedirect("budget_bome");

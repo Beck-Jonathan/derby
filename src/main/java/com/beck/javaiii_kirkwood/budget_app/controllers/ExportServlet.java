@@ -5,9 +5,11 @@ package com.beck.javaiii_kirkwood.budget_app.controllers; /******************
 
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
+import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -26,9 +28,17 @@ import java.util.List;
 import java.util.Map;
 @WebServlet("/Export")
 public class ExportServlet extends HttpServlet {
+
+  private iTransactionDAO transactionDAO;
   private static final String UPLOAD_DIR = "uploads";
   private static final long serialVersionUID = 1L;
   private ServletFileUpload uploader = null;
+
+  @Override
+  public void init(ServletConfig config) throws ServletException {
+    transactionDAO =  new TransactionDAO();
+  }
+
   @Override
   public void init() throws ServletException{
     DiskFileItemFactory fileFactory = new DiskFileItemFactory();
@@ -53,7 +63,7 @@ public class ExportServlet extends HttpServlet {
     List<Transaction> transactions = null;
 
     try {
-      transactions = TransactionDAO.getTransactionForExportByUser(user.getUser_ID());
+      transactions = transactionDAO.getTransactionForExportByUser(user.getUser_ID());
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

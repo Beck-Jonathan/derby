@@ -3,6 +3,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -19,13 +20,19 @@ import java.util.List;
 
 @WebServlet("/categorize_transaction")
 public class CategorizeTransactionServlet extends HttpServlet {
-  public static iCategoryDAO categoryDAO;
+  private static iCategoryDAO categoryDAO;
+  private iTransactionDAO transactionDAO;
+
+  @Override
+  public void init() throws ServletException {
+    categoryDAO = new CategoryDAO();
+    transactionDAO =  new TransactionDAO();
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    if (categoryDAO==null){
-      categoryDAO = new CategoryDAO();
-    }
+
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Categorize Somethin'");
 
@@ -36,9 +43,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    if (categoryDAO==null){
-      categoryDAO = new CategoryDAO();
-    }
+
     HttpSession session = req.getSession();
 
     User user = (User)session.getAttribute("User_B");
@@ -52,7 +57,7 @@ public class CategorizeTransactionServlet extends HttpServlet {
     Transaction new_t = new Transaction();
     new_t.setCategory_ID(category);
     try {
-      int result = TransactionDAO.update(old_t,new_t);
+      int result = transactionDAO.update(old_t,new_t);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
@@ -78,9 +83,9 @@ public class CategorizeTransactionServlet extends HttpServlet {
 
 
     try {
-      transaction_count = TransactionDAO.getTransactionCountByUser(user.getUser_ID(),"",0);
+      transaction_count = transactionDAO.getTransactionCountByUser(user.getUser_ID(),"",0);
 
-      transactions = TransactionDAO.getTransactionByUser(user.getUser_ID(),page_size,offset);
+      transactions = transactionDAO.getTransactionByUser(user.getUser_ID(),page_size,offset);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

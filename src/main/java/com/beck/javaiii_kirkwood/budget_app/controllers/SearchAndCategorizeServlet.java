@@ -3,6 +3,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
 import com.beck.javaiii_kirkwood.budget_app.data.CategoryDAO;
 import com.beck.javaiii_kirkwood.budget_app.data.TransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.iData.iCategoryDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iTransactionDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Category;
 import com.beck.javaiii_kirkwood.budget_app.models.Transaction;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
@@ -20,7 +21,15 @@ import java.util.List;
 
 @WebServlet("/search_transaction")
 public class SearchAndCategorizeServlet extends HttpServlet {
-  public static iCategoryDAO categoryDAO;
+  private  iCategoryDAO categoryDAO;
+  private iTransactionDAO transactionDAO;
+
+  @Override
+  public void init() throws ServletException {
+    transactionDAO = new TransactionDAO();
+
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -42,7 +51,7 @@ public class SearchAndCategorizeServlet extends HttpServlet {
     session.setAttribute("search",query);
     if (query!=null && !query.equals("")) {
       try {
-        transactions = TransactionDAO.searchTransactionByUser(user.getUser_ID(), query);
+        transactions = transactionDAO.searchTransactionByUser(user.getUser_ID(), query);
       } catch (SQLException e) {
         throw new RuntimeException(e);
       }
@@ -77,7 +86,7 @@ public class SearchAndCategorizeServlet extends HttpServlet {
     else {
       String category = req.getParameter("category");
       try {
-        update = TransactionDAO.bulkUpdate(user.getUser_ID(), category, query);
+        update = transactionDAO.bulkUpdate(user.getUser_ID(), category, query);
       } catch (SQLException e) {
         throw new RuntimeException(e);
       }
