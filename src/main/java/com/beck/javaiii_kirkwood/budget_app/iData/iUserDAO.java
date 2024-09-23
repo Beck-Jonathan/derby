@@ -12,6 +12,12 @@ import java.util.List;
 
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 
+/**
+ * @author Jonathan
+ * @version 1.5
+ * @since 1.2
+ */
+
 public interface iUserDAO {
   public int add(User _user);
   public  int getUserID(String email) throws SQLException;
