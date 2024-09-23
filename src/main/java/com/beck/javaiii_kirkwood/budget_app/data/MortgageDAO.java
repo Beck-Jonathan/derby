@@ -18,6 +18,7 @@ package com.beck.javaiii_kirkwood.budget_app.data;
 /// Update comments go here, include method or methods were changed or added
 /// A new remark should be added for each update.
 ///</remarks>
+import com.beck.javaiii_kirkwood.budget_app.iData.iMortgageDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Mortgage;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
-public class MortgageDAO {
+public class MortgageDAO implements iMortgageDAO {
 
 //  public static int add(Mortgage _mortgage) {
 //    int numRowsAffected=0;try (Connection connection = getConnection()) {
@@ -137,7 +138,7 @@ public class MortgageDAO {
 //    return getMortgagebyUser( User_ID,20,0);}
 //  public static List<Mortgage> getMortgagebyUser(Integer User_ID, int pagesize) {
 //    return getMortgagebyUser(User_ID,pagesize,0);}
-  public static List<Mortgage> getMortgagebyUser(Integer User_ID,int limit,int offset) {
+  public List<Mortgage> getMortgagebyUser(Integer User_ID,int limit,int offset) {
     List<Mortgage> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {

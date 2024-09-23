@@ -6,6 +6,7 @@ package com.beck.javaiii_kirkwood.budget_app.controllers;
  ***************/
 
 import com.beck.javaiii_kirkwood.budget_app.data.MortgageDAO;
+import com.beck.javaiii_kirkwood.budget_app.iData.iMortgageDAO;
 import com.beck.javaiii_kirkwood.budget_app.models.Mortgage;
 import com.beck.javaiii_kirkwood.budget_app.models.User;
 import jakarta.servlet.ServletException;
@@ -20,6 +21,13 @@ import java.util.List;
 import java.util.Map;
 @WebServlet("/all-Mortgages")
 public class AllMortgagesServlet extends HttpServlet {
+  public iMortgageDAO mortgageDAO;
+
+  @Override
+  public void init() throws ServletException {
+    mortgageDAO = new MortgageDAO();
+  }
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -35,7 +43,7 @@ public class AllMortgagesServlet extends HttpServlet {
     session.setAttribute("currentPage", req.getRequestURL());
     List<Mortgage> mortgages = null;
 
-    mortgages = MortgageDAO.getMortgagebyUser(user.getUser_ID(), 100, 0);
+    mortgages = mortgageDAO.getMortgagebyUser(user.getUser_ID(), 100, 0);
 
     req.setAttribute("Mortgages", mortgages);
     req.setAttribute("pageTitle", "All Mortgages");
