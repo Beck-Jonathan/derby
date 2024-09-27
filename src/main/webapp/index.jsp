@@ -52,6 +52,19 @@
         <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
             <h3>Noteworthy Projects</h3>
             <div class="list-group">
+                <!-- start derby -->
+                <div class ="container row" id="derby">
+                    <div class="col-md-11">
+                        <a href="http://crrollerderby.com/" class="border">Cedar Rapids Roller Derby (Joomla)</a>
+                    </div>
+                    <div class="col-md-1 border questionMark" >
+                        ?
+                    </div>
+                    <div class="explanationContainer">
+                        I maintain and update the website for the CRRD, using Joomla.
+                    </div>
+                </div>
+                <!-- end derby -->
                 <!-- start capstone -->
                 <div class ="container row" id="capstone">
                     <div class="col-md-11">
@@ -234,34 +247,49 @@
 
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-5">
-            <h3>Associated Skills</h3>
+
             <div class="list-group">
                 <ul>
-                    <li class="skill" id="cSharp">C#</li>
-                    <li class="skill" id="Servlets">Java Servlets</li>
-                    <li class="skill" id="JSP">Java JSP</li>
-                    <li class="skill" id="Framework">JavaScript Frameworks</li>
-                    <li class="skill" id="Html">HTML</li>
-                    <li class="skill" id="CSS">CSS</li>
-                    <li class="skill" id="JavaScript">JavaScript</li>
-                    <li class="skill" id="Api">API</li>
+                    <section id="technical">
+                        <h3>Technical Skills</h3>
+
+                        <li class="skill" id="Servlets">Java Servlets</li>
+                        <li class="skill" id="JSP">Java JSP</li>
+                        <li class="skill" id="Framework">JavaScript Frameworks</li>
+                        <li class="skill" id="JavaScript">JavaScript</li>
+                        <li class="skill" id="Api">API</li>
+                        <li class="skill" id="Html">HTML</li>
+                        <li class="skill" id="CSS">CSS</li>
+                        <li class="skill" id="MySql">MySQL</li>
+
+                        <li class="skill" id="cSharp">C#</li>
+                        <li class="skill" id="T-SQL">T-SQL</li>
+                        <li class="skill" id="Unity">Unity</li>
+                        <li class="skill" id="Interfaces">Interfaces</li>
+                        <li class="skill" id="DataStruct">Data Structures</li>
+                        <li class="skill" id="Joomla">Joomla</li>
+
+
+
+
+
+
+
+                    </section>
+
+                    <section id="Design">
+                        <h3>System Design Skills</h3>
+                    </section>
+
                     <li class="skill" id="Multi">MultiUser / Multi Role</li>
-                    <li class="skill" id="MySql">MySQL</li>
-                    <li class="skill" id="T-SQL">T-SQL</li>
-                    <li class="skill" id="Unity">Unity</li>
                     <li class="skill" id="Git">Github and source control#</li>
                     <li class="skill" id="UnitTests">Unit Test</li>
                     <li class="skill" id="Tech">Technical Documentation</li>
                     <li class="skill" id="Agile">Agile</li>
-                    <li class="skill" id="Solid">Solid</li>
-                    <li class="skill" id="Interfaces">Interfaces</li>
-                    <li class="skill" id="DataStruct">Data Structures</li>
+                    <li class="skill" id="Solid">SOLID</li>
+
+
                 </ul>
-
-
-
-
-
 
             </div>
         </div>

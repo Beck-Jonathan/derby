@@ -14,9 +14,9 @@ Create the JSP  For Viewing All of The  Transaction table
             Reverse order <a href="${appURL}/all-Transactions?sort=${sort}&direction=${direction}&category=${category}&year=${year}&reverse=true">reverse</a><br/>
             <c:if test="${Transactions.size() > 0}">
 
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                    <thead>
+                <div >
+                    <table class="table table-hover ">
+                        <thead class="thead-dark">
                     <tr>
                         <th scope="col"><a href="${appURL}/all-Transactions?sort=ID&direction=${direction}&category=${category}&year=${year}">Transaction_ID</a></th>
                         <th scope="col">Account_Num</th>
@@ -27,7 +27,8 @@ Create the JSP  For Viewing All of The  Transaction table
                         <th scope="col">Type</th>
                         <th scope="col">Status</th>
                         <th scope="col">Category</th>
-                        <th scope="col">Save</th>
+                        <th scope="col"></th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -41,20 +42,26 @@ Create the JSP  For Viewing All of The  Transaction table
                             <td>${fn:escapeXml(transaction.type)}</td>
                             <td>${fn:escapeXml(transaction.status)}</td>
 
-                            <td>
-                                <div name ="change" >
-                                    <label for="${transaction.transaction_ID}" id="${transaction.transaction_ID}_status" class="form-label" style="display: none;">Category::</label>
+
+                                <td id ="change+${transaction.transaction_ID}" >
+
+
                                 <input type="hidden" name="t_id" value =${transaction.transaction_ID}>
                                 <select  class="category" name="category" onchange="" id="${transaction.transaction_ID}">
                                     <c:forEach items="${Categories}" var="category" >
                                         <option  value="${category.category_ID}"  ${category.category_ID == transaction.category_ID ? 'selected' : ''}>${category.category_ID}</option>
                                     </c:forEach>
                                 </select>
+
+
                                 </td>
-                            <td><button  onclick="takevalues(${transaction.transaction_ID},'${appURL}')">save</button></td>
-                                </div>
+                                <td style="width:50px">
 
+                                    <div id="${transaction.transaction_ID}_status"  style="border:none; display:none;"  > xx </div>
 
+                                            </td>
+
+                        </tr>
 
                   </c:forEach>
                   </tbody>

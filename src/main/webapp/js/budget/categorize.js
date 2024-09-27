@@ -15,23 +15,24 @@ $(document).ready(function() {
 }
 function takevalues(x,url) {
 
-    document.getElementById(x+"_status").style.transition = "all 2s";
+
     if (category == null) {
         return;
     }
-    $("#"+x+"_status").show("slide", { direction: "left" }, 300);
-    document.getElementById(x+"_status").innerText="loading";
-    document.getElementById(x+"_status").style.color="red";
+    $("#"+x+"_status").slideUp();
+    document.getElementById(x+"_status").innerHTML="<h5>&#9202</h5>";
+
+    $("#"+x+"_status").slideDown();
 
 
     const xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
             console.log(xhr.responseText);
-            console.log(x+"_status");
-            document.getElementById(x+"_status").innerText=xhr.responseText;
+
+            document.getElementById(x + "_status").innerHTML = "<h5>&#x2705</h5>";
             document.getElementById(x+"_status").style.color="green";
-            $("#"+x+"_status").hide("fade", { direction: "right" }, 300);
+            $("#"+x+"_status").slideUp(2000);
         }
     }
 

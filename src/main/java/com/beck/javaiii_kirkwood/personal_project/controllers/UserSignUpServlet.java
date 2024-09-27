@@ -3,7 +3,6 @@ package com.beck.javaiii_kirkwood.personal_project.controllers;
 /******************
  Create the Servlet  For adding to The  User table
  Created By Jonathan Beck3/3/2024
-
  ***************/
 import com.beck.javaiii_kirkwood.personal_project.data.*;
 import com.beck.javaiii_kirkwood.personal_project.models.*;

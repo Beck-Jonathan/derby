@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $(".explanationContainer").hide();
 
-
+    $("#Joomla").attr('title', 'Created using Joomla content management.');
     $("#cSharp").attr('title', 'Created using C Sharp programming language');
     $("#Servlets").attr('title', 'Uses servlets to run backend logic.');
     $("#JSP").attr('title', 'Uses Java Server Pages to display dynamic content');
@@ -53,6 +53,18 @@ $(document).ready(function() {
         }
 
     });
+
+    //select derby
+    $("#derby").hover(function () {
+        $('.skill').finish();
+        addskill("Joomla");
+
+
+
+    }, function () {
+        clearskills();
+    });
+    //end select derby
 
     //select capstone
     $("#capstone").hover(function () {
