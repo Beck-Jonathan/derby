@@ -54,10 +54,10 @@
             <div class="list-group">
                 <!-- start derby -->
                 <div class ="container row" id="derby">
-                    <div class="col-md-11">
-                        <a href="http://crrollerderby.com/" class="border">Cedar Rapids Roller Derby (Joomla)</a>
+                    <div class="col-11 project">
+                        <a href="http://crrollerderby.com/" class="filldiv" >Cedar Rapids Roller Derby </a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1 questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -67,10 +67,10 @@
                 <!-- end derby -->
                 <!-- start capstone -->
                 <div class ="container row" id="capstone">
-                    <div class="col-md-11">
-                        <a href="https://github.com/Beck-Jonathan/Capstone" class="border">CapStone Project (.Net, ASP, MVC,WPF,C#, T-SQL)</a>
+                    <div class="col-11 project">
+                        <a href="https://github.com/Beck-Jonathan/Capstone" class="filldiv" >CapStone Project </a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1 questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -80,10 +80,10 @@
                 <!-- end capstone -->
                 <!-- start java personal project-->
                 <div class="container row" id="java">
-                    <div class="col-md-11">
-                        <a href="home" class="border">Java Personal Project (Jakarta EE, Servlets, JSP, MySQL)</a>
+                    <div class="col-11 project">
+                        <a href="home" class="filldiv" >Java Personal Project</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1 questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -93,10 +93,10 @@
                     <!-- end java personal project -->
                 <!-- start .net project-->
                 <div class="container row" id="net">
-                <div class="col-md-11">
-                <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII" class="border">.Net II/III Final Project (.Net, Razr, cshtml, C#, T-Sql)</a>
+                <div class="col-11 project">
+                <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII"  class="filldiv">.Net II/III Final Project </a>
                 </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -107,10 +107,10 @@
                     <!-- end .Net -->
                 <!-- client side start -->
                 <div class="container row" id="client">
-                    <div class="col-md-11">
-                        <a href="apply" class="border">Client Side Scripting Final Project (JavaScript, html, css)</a>
+                    <div class="col-11 project">
+                        <a href="apply" class="filldiv">Client Side Scripting Final Project </a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -120,13 +120,13 @@
                 <!-- client side end-->
                 <!--honors start -->
                 <div class="container row" id="honors">
-                    <div class="col-md-8 border">
-                        <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch">Honors Project (C#)</a>
+                    <div class="col-6  project">
+                        <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch " class="filldiv">Honors Project </a>
                     </div>
-                    <div class="col-md-3 border">
-                        <a href="${pageContext.request.contextPath}/sample_inputs/Table_Gen.rar" download="sample_data.rar" >Download Sample</a>
+                    <div class="col-5  sample">
+                        <a href="${pageContext.request.contextPath}/sample_inputs/Table_Gen.rar" download="sample_data.rar"  class="filldiv">Download Sample</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -136,10 +136,10 @@
                 <!-- honors end -->
                 <!-- 2d game start -->
                 <div class="container row" id="game">
-                    <div class="col-md-11">
-                <a href="https://play.unity.com/mg/other/build1-sg" class="border">2d Game Dev Final Project (unity, c#)</a>
+                    <div class="col-11 project">
+                <a href="https://play.unity.com/mg/other/build1-sg" class="filldiv">2d Game Dev Final Project</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark " >
                        ?
 
                     </div>
@@ -150,13 +150,13 @@
                 <!-- 2d game end -->
                 <!-- budget demo start -->
                 <div class="container row" id="budget">
-                    <div class="col-md-6 border">
-                        <a href="budget_bome">Budgeting Demo</a>
+                    <div class="col-6  project">
+                        <a href="budget_bome" class="filldiv">Budgeting Demo</a>
                     </div>
-                    <div class="col-md-5 border">
-                        <a href="${pageContext.request.contextPath}/sample_inputs/truncated.txt" download="sample_data.txt" >Download Sample</a>
+                    <div class="col-5  sample">
+                        <a href="${pageContext.request.contextPath}/sample_inputs/truncated.txt" download="sample_data.txt" class="filldiv">Download Sample</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -166,10 +166,10 @@
                 <!-- buget end-->
                 <!-- courseowrk start -->
                 <div class="container row" id="coursework">
-                    <div class="col-md-11">
-                <a href="${appURL}/learnx" class="border">Java III coursework Demo</a>
+                    <div class="col-11 project">
+                <a href="${appURL}/learnx" class="filldiv">Java III coursework Demo</a>
                     </div>
-                        <div class="col-md-1 border questionMark" >
+                        <div class="col-1 questionMark" >
                             ?
                         </div>
                         <div class="explanationContainer">
@@ -179,17 +179,17 @@
                 <!-- coursework end -->
                 <!-- micro header start -->
                 <div class="container row">
-                    <div class="col-md-12">
+                    <div class="col-12">
                         <h3>Micro Projects</h3>
                     </div>
                 </div>
                 <!-- micro header end -->
                 <!-- ST start -->
                 <div class="container row" id="pearson">
-                    <div class="col-md-11">
-                        <a href="./Resume/May_Smartutor_Econ.pdf" class="list-group-item list-group-item-action">Smartutor Example (Pearson)</a>
+                    <div class="col-11 micro">
+                        <a href="./Resume/May_Smartutor_Econ.pdf" class="filldiv" >Smartutor Example (Pearson)</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1 questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -199,10 +199,10 @@
                 <!-- st end -->
                 <!-- email sender start -->
                 <div class="container row" id="email">
-                    <div class="col-md-11">
-                        <a href="email" class="list-group-item list-group-item-action">Email Sender</a>
+                    <div class="col-11 micro">
+                        <a href="email" class="filldiv">Email Sender</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -214,10 +214,10 @@
                 <!--postfix start -->
 
                 <div class="container row" id="postfix">
-                    <div class="col-md-11">
-                        <a href="postFix" class="list-group-item list-group-item-action">PostFixCalculator</a>
+                    <div class="col-11 micro">
+                        <a href="postFix" class="filldiv" >PostFixCalculator</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1 questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -227,10 +227,10 @@
                 <!-- postfix  end -->
                 <!-- api reader start -->
                 <div class="container row" id="apidemo">
-                    <div class="col-md-11">
-                        <a href="api_home" class="list-group-item list-group-item-action">Api Reader</a>
+                    <div class="col-11 micro">
+                        <a href="api_home" class="filldiv">Api Reader</a>
                     </div>
-                    <div class="col-md-1 border questionMark" >
+                    <div class="col-1  questionMark" >
                         ?
                     </div>
                     <div class="explanationContainer">
@@ -255,6 +255,7 @@
 
                         <li class="skill" id="Servlets">Java Servlets</li>
                         <li class="skill" id="JSP">Java JSP</li>
+                        <li class="skill" id="Jakarta">Jakarta</li>
                         <li class="skill" id="Framework">JavaScript Frameworks</li>
                         <li class="skill" id="JavaScript">JavaScript</li>
                         <li class="skill" id="Api">API</li>
@@ -262,7 +263,8 @@
                         <li class="skill" id="CSS">CSS</li>
                         <li class="skill" id="MySql">MySQL</li>
 
-                        <li class="skill" id="cSharp">C#</li>
+                        <li class="skill" id="cSharp">C#..Net</li>
+                        <li class="skill" id="razr">Razr</li>
                         <li class="skill" id="T-SQL">T-SQL</li>
                         <li class="skill" id="Unity">Unity</li>
                         <li class="skill" id="Interfaces">Interfaces</li>

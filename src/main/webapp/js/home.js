@@ -80,6 +80,7 @@ $(document).ready(function() {
         addskill("Agile");
         addskill("Solid");
         addskill("Interfaces");
+        addskill("razr");
 
 
     }, function () {
@@ -100,6 +101,7 @@ $(document).ready(function() {
         addskill("Multi");
         addskill("Git");
         addskill("Solid");
+        addskill("Jakarta");
 
 
     }, function () {
@@ -120,6 +122,7 @@ $(document).ready(function() {
 
         addskill("Solid");
         addskill("Interfaces");
+        addskill("razr");
 
 
     }, function () {
@@ -207,6 +210,7 @@ $(document).ready(function() {
         addskill("Tech");
         addskill("Agile");
         addskill("Solid");
+        addskill("Jakarta");
 
 
     }, function () {
