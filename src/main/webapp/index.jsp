@@ -22,10 +22,10 @@
     <div class="row">
         <div class="col-md-4 h2"> Jonathan Beck</div>
         <div class="col-md-4"> </div>
-        <div class="col-md-1"> <a href="https://github.com/Beck-Jonathan"> <img src="images/icons/github.svg"></a></div>
-        <div class="col-md-1"> <a href="mailto:beckjonathanj@gmail.com" target="_blank"> <img src="images/icons/mailbox.svg"> </a></div>
-        <div class="col-md-1"> <a href="./Resume/resume_beck.pdf"> <img src="images/icons/briefcase-fill.svg"></a></div>
-        <div class="col-md-1"> <a href="https://www.linkedin.com/in/Beck-Jonathan/"> <img src="images/icons/linkedin.svg"></a></div>
+        <div class="col-md-1 icon"> <a href="https://github.com/Beck-Jonathan"> <img src="images/icons/github.svg"></a></div>
+        <div class="col-md-1 icon" > <a href="mailto:beckjonathanj@gmail.com" target="_blank"> <img src="images/icons/mailbox.svg"> </a></div>
+        <div class="col-md-1 icon"> <a href="./Resume/resume_beck.pdf"> <img src="images/icons/briefcase-fill.svg"></a></div>
+        <div class="col-md-1 icon"> <a href="https://www.linkedin.com/in/Beck-Jonathan/"> <img src="images/icons/linkedin.svg"></a></div>
 
 
     </div>
@@ -48,13 +48,13 @@
         </div>
         <div class="col-md-3"> </div>
     </div>
-    <div class="row justify-content-center" style="text-align: center;">
-        <div class="col-xs-12 col-sm-6 col-lg-5 mb-4">
+    <div class="row justify-content-center " style="text-align: center;">
+        <div class="col-xs-12 col-sm-6 col-lg-5 mb-4 ">
             <h3>Noteworthy Projects</h3>
-            <div class="list-group">
+            <div class="list-group project-list">
                 <!-- start derby -->
                 <div class ="container row" id="derby">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                         <a href="http://crrollerderby.com/" class="filldiv" >Cedar Rapids Roller Derby </a>
                     </div>
                     <div class="col-1 questionMark" >
@@ -67,7 +67,7 @@
                 <!-- end derby -->
                 <!-- start capstone -->
                 <div class ="container row" id="capstone">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                         <a href="https://github.com/Beck-Jonathan/Capstone" class="filldiv" >CapStone Project </a>
                     </div>
                     <div class="col-1 questionMark" >
@@ -80,7 +80,7 @@
                 <!-- end capstone -->
                 <!-- start java personal project-->
                 <div class="container row" id="java">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                         <a href="home" class="filldiv" >Java Personal Project</a>
                     </div>
                     <div class="col-1 questionMark" >
@@ -93,7 +93,7 @@
                     <!-- end java personal project -->
                 <!-- start .net project-->
                 <div class="container row" id="net">
-                <div class="col-11 project">
+                <div class="col-10 project">
                 <a href="https://github.com/Beck-Jonathan/RollerDerbyNetII"  class="filldiv">.Net II/III Final Project </a>
                 </div>
                     <div class="col-1  questionMark" >
@@ -107,7 +107,7 @@
                     <!-- end .Net -->
                 <!-- client side start -->
                 <div class="container row" id="client">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                         <a href="apply" class="filldiv">Client Side Scripting Final Project </a>
                     </div>
                     <div class="col-1  questionMark" >
@@ -120,7 +120,7 @@
                 <!-- client side end-->
                 <!--honors start -->
                 <div class="container row" id="honors">
-                    <div class="col-6  project">
+                    <div class="col-5  project">
                         <a href="https://github.com/Beck-Jonathan/Object_oriented_sql_tables/tree/TSQL_Branch " class="filldiv">Honors Project </a>
                     </div>
                     <div class="col-5  sample">
@@ -136,7 +136,7 @@
                 <!-- honors end -->
                 <!-- 2d game start -->
                 <div class="container row" id="game">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                 <a href="https://play.unity.com/mg/other/build1-sg" class="filldiv">2d Game Dev Final Project</a>
                     </div>
                     <div class="col-1  questionMark " >
@@ -150,7 +150,7 @@
                 <!-- 2d game end -->
                 <!-- budget demo start -->
                 <div class="container row" id="budget">
-                    <div class="col-6  project">
+                    <div class="col-5  project">
                         <a href="budget_bome" class="filldiv">Budgeting Demo</a>
                     </div>
                     <div class="col-5  sample">
@@ -166,7 +166,7 @@
                 <!-- buget end-->
                 <!-- courseowrk start -->
                 <div class="container row" id="coursework">
-                    <div class="col-11 project">
+                    <div class="col-10 project">
                 <a href="${appURL}/learnx" class="filldiv">Java III coursework Demo</a>
                     </div>
                         <div class="col-1 questionMark" >
@@ -177,16 +177,22 @@
                         </div>
                     </div>
                 <!-- coursework end -->
+            </div>
+
+            <!-- noteworthy end -->
+
                 <!-- micro header start -->
                 <div class="container row">
                     <div class="col-12">
                         <h3>Micro Projects</h3>
                     </div>
                 </div>
+
                 <!-- micro header end -->
+            <div class="list-group project-list">
                 <!-- ST start -->
                 <div class="container row" id="pearson">
-                    <div class="col-11 micro">
+                    <div class="col-10 micro">
                         <a href="./Resume/May_Smartutor_Econ.pdf" class="filldiv" >Smartutor Example (Pearson)</a>
                     </div>
                     <div class="col-1 questionMark" >
@@ -199,7 +205,7 @@
                 <!-- st end -->
                 <!-- email sender start -->
                 <div class="container row" id="email">
-                    <div class="col-11 micro">
+                    <div class="col-10 micro">
                         <a href="email" class="filldiv">Email Sender</a>
                     </div>
                     <div class="col-1  questionMark" >
@@ -214,7 +220,7 @@
                 <!--postfix start -->
 
                 <div class="container row" id="postfix">
-                    <div class="col-11 micro">
+                    <div class="col-10 micro">
                         <a href="postFix" class="filldiv" >PostFixCalculator</a>
                     </div>
                     <div class="col-1 questionMark" >
@@ -227,7 +233,7 @@
                 <!-- postfix  end -->
                 <!-- api reader start -->
                 <div class="container row" id="apidemo">
-                    <div class="col-11 micro">
+                    <div class="col-10 micro">
                         <a href="api_home" class="filldiv">Api Reader</a>
                     </div>
                     <div class="col-1  questionMark" >
@@ -249,10 +255,11 @@
         <div class="col-xs-12 col-sm-6 col-lg-5">
 
             <div class="list-group">
-                <ul>
-                    <section id="technical">
-                        <h3>Technical Skills</h3>
 
+
+                        <h3>Technical Skills</h3>
+                <section id="technical" class="project-list">
+                        <ul>
                         <li class="skill" id="Servlets">Java Servlets</li>
                         <li class="skill" id="JSP">Java JSP</li>
                         <li class="skill" id="Jakarta">Jakarta</li>
@@ -270,6 +277,7 @@
                         <li class="skill" id="Interfaces">Interfaces</li>
                         <li class="skill" id="DataStruct">Data Structures</li>
                         <li class="skill" id="Joomla">Joomla</li>
+                        </ul>
 
 
 
@@ -279,9 +287,10 @@
 
                     </section>
 
-                    <section id="Design">
+
                         <h3>System Design Skills</h3>
-                    </section>
+                <section id="Design" class="project-list" >
+                    <ul  >
 
                     <li class="skill" id="Multi">MultiUser / Multi Role</li>
                     <li class="skill" id="Git">Github and source control#</li>
@@ -289,9 +298,11 @@
                     <li class="skill" id="Tech">Technical Documentation</li>
                     <li class="skill" id="Agile">Agile</li>
                     <li class="skill" id="Solid">SOLID</li>
+                    </ul>
 
 
-                </ul>
+
+
 
             </div>
         </div>

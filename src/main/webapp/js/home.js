@@ -220,13 +220,23 @@ $(document).ready(function() {
 
     //select pearson
     $("#pearson").hover(function () {
-        console.log("pearson")
-        $("#cSharp").css("background-color", "LightGreen")
+
+
 
     }, function () {
         clearskills()
     });
     //end select pearson
+
+    //select postfix
+    $("#postfix").hover(function () {
+        
+        addskill("DataStruct");
+
+    }, function () {
+        clearskills()
+    });
+    //end postfix
 
     //select email
     $("#email").hover(function () {
@@ -255,7 +265,7 @@ $(document).ready(function() {
 
 function addskill(skill) {
     var element = document.getElementById(skill);
-    console.log(element);
+
     $(element).animate({
         backgroundColor: '#90EE90',
         color: '#000000'
@@ -267,7 +277,7 @@ function clearskills() {
     $('.skill').finish();
     var skills = document.getElementsByClassName('skill');
     for (i = 0; i < skills.length; i++) {
-        console.log(skills[i]);
+
         $(skills[i]).animate({
             backgroundColor: '#A3A3A3',
             color: '#FFFFFF'
