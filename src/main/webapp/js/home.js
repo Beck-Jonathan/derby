@@ -1,10 +1,14 @@
 $(document).ready(function() {
     $(".explanationContainer").hide();
+    $("#techskilldescription").slideUp();
+    $("#designskilldescription").slideUp();
 
     $("#Joomla").attr('title', 'Created using Joomla content management.');
     $("#cSharp").attr('title', 'Created using C Sharp programming language');
+    $("#jakarta").attr('title', 'Uses Jakarta EE technology');
     $("#Servlets").attr('title', 'Uses servlets to run backend logic.');
     $("#JSP").attr('title', 'Uses Java Server Pages to display dynamic content');
+    $("#razor").attr('title', 'Uses Razor Server Pages to display dynamic content');
     $("#Framework").attr('title', 'Created using JavaScript frameworks, such as Vue or jQuery');
     $("#Html").attr('title', 'Created using HTML for static content');
     $("#CSS").attr('title', 'Uses Cascading Style Sheets to style and layout webpage/ ');
@@ -13,7 +17,7 @@ $(document).ready(function() {
     $("#Multi").attr('title', 'Application is a multiuser/multi role application');
     $("#MySql").attr('title', 'Uses MySQL to store data');
     $("#T-SQL").attr('title', 'Uses T-SQL to store data');
-    $("#Unity").attr('title', 'Make using Unity');
+    $("#Unity").attr('title', 'Made using Unity');
     $("#Git").attr('title', 'Uses Git/Github for source control');
     $("#UnitTests").attr('title', 'Created using test driven development');
     $("#Tech").attr('title', 'This project has extensive technical documentation');
@@ -22,6 +26,24 @@ $(document).ready(function() {
     $("#Interfaces").attr('title', 'Classes are coded to interface');
     $("#DataStruct").attr('title', 'Shows knowledge of various data structures');
 
+    $(".skill").hover(function()
+    {
+        $("#techskilldescription").finish();
+        $("#designskilldescription").finish();
+        let parent = $(this).parent().parent()[0].id;
+        if(parent==="technical") {
+            $("#techskilldescription").slideDown();
+            $("#techskilldescription").text(this.title);
+        }
+        else {
+            $("#designskilldescription").slideDown();
+            $("#designskilldescription").text(this.title);
+        }
+    },function(){
+        $("#techskilldescription").slideUp();
+        $("#designskilldescription").slideUp();
+
+    });
 
 
 
@@ -80,7 +102,7 @@ $(document).ready(function() {
         addskill("Agile");
         addskill("Solid");
         addskill("Interfaces");
-        addskill("razr");
+        addskill("razor");
 
 
     }, function () {
@@ -122,7 +144,7 @@ $(document).ready(function() {
 
         addskill("Solid");
         addskill("Interfaces");
-        addskill("razr");
+        addskill("razor");
 
 
     }, function () {
@@ -230,7 +252,7 @@ $(document).ready(function() {
 
     //select postfix
     $("#postfix").hover(function () {
-        
+
         addskill("DataStruct");
 
     }, function () {

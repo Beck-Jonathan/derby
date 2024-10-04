@@ -566,15 +566,7 @@
       <workItem from="1726238200403" duration="15553000" />
       <workItem from="1727103043941" duration="14231000" />
       <workItem from="1727465283896" duration="1272000" />
-      <workItem from="1727972532783" duration="7841000" />
-    </task>
-    <task id="LOCAL-00034" summary="In class assignment.">
-      <option name="closed" value="true" />
-      <created>1712888900074</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1712888900074</updated>
+      <workItem from="1727972532783" duration="10310000" />
     </task>
     <task id="LOCAL-00035" summary="Added check to see if username / password is available on the signup servlet.">
       <option name="closed" value="true" />
@@ -960,7 +952,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727984060216</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="homepage ui updates">
+      <option name="closed" value="true" />
+      <created>1728051485196</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1728051485196</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

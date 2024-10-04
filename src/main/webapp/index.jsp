@@ -253,12 +253,12 @@
 
         </div>
         <div class="col-xs-12 col-sm-6 col-lg-5">
+            <h3>Technical Skills</h3>
+            <div class="list-group project-list">
 
-            <div class="list-group">
 
 
-                        <h3>Technical Skills</h3>
-                <section id="technical" class="project-list">
+                <section id="technical" >
                         <ul>
                         <li class="skill" id="Servlets">Java Servlets</li>
                         <li class="skill" id="JSP">Java JSP</li>
@@ -271,25 +271,20 @@
                         <li class="skill" id="MySql">MySQL</li>
 
                         <li class="skill" id="cSharp">C#..Net</li>
-                        <li class="skill" id="razr">Razr</li>
+                        <li class="skill" id="razor">Razor</li>
                         <li class="skill" id="T-SQL">T-SQL</li>
                         <li class="skill" id="Unity">Unity</li>
                         <li class="skill" id="Interfaces">Interfaces</li>
                         <li class="skill" id="DataStruct">Data Structures</li>
                         <li class="skill" id="Joomla">Joomla</li>
                         </ul>
+                </section>
+                    <div id="techskilldescription" class="decription"><p>xx</p></div>
+            </div>
+            <h3>System Design Skills</h3>
+            <div class="list-group project-list">
 
-
-
-
-
-
-
-                    </section>
-
-
-                        <h3>System Design Skills</h3>
-                <section id="Design" class="project-list" >
+                <section id="Design"  >
                     <ul  >
 
                     <li class="skill" id="Multi">MultiUser / Multi Role</li>
@@ -299,6 +294,8 @@
                     <li class="skill" id="Agile">Agile</li>
                     <li class="skill" id="Solid">SOLID</li>
                     </ul>
+                </section>
+                    <div id="designskilldescription" class="decription"><p>xx</p></div>
 
 
 
