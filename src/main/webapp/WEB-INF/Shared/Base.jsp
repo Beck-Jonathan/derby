@@ -15,4 +15,4 @@
         <c:set var="appURL" value="${initParam['appURLLocal']}"></c:set>
     </c:otherwise>
 </c:choose>
-<c:set var="BusinessName" value="LearnX, powered by biscuits"></c:set>
+<c:set var="BusinessName" value="Jonathan Beck"></c:set>

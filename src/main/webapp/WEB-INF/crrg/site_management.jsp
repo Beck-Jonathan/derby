@@ -1,0 +1,21 @@
+<%@include file="/WEB-INF/crrg/head.jsp"%>
+<div class="table-responsive"><table class="table table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">Table</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr><td>View all Contributor</td><td><a href="all-Contributors"> View </a> </td></tr>
+    <tr><td>View all Album</td><td><a href="all-Albums"> View </a> </td></tr>
+    <tr><td>View all Picture</td><td><a href="all-Pictures"> View </a> </td></tr>
+    <tr><td>View all Skater</td><td><a href="all-Skaters"> View </a> </td></tr>
+    <tr><td>View all Tag</td><td><a href="all-Tags"> View </a> </td></tr>
+    <tr><td>View all User</td><td><a href="all-Users"> View </a> </td></tr>
+    <tr><td>View all Role</td><td><a href="all-Roles"> View </a> </td></tr>
+    <tr><td>View all User_Role_Line</td><td><a href="all-User_Role_Lines"> View </a> </td></tr>
+    </tbody>
+</table>
+</div>
+<%@include file="/WEB-INF/crrg/foot.jsp"%>
