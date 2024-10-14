@@ -11,6 +11,6 @@ import java.util.List;
 import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
 
 public interface CategoryRepository  extends JpaRepository<Category_VM, Integer>{
-  public  List<Category_VM> getOneYearAnalysis(int year, int user_ID) throws SQLException;
-  public  List<Category_VM> getOneCategoryAnalysis(String Category, int user_ID) throws SQLException;
+  List<Category_VM> getOneYearAnalysis(int year, int user_ID) throws SQLException;
+  List<Category_VM> getOneCategoryAnalysis(String Category, int user_ID) throws SQLException;
 }

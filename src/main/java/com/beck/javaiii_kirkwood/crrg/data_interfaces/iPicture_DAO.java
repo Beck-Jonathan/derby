@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.data_interfaces;
 
 import com.beck.javaiii_kirkwood.crrg.models.Picture;
+import com.beck.javaiii_kirkwood.crrg.models.Picture_VM;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -20,7 +21,7 @@ public interface iPicture_DAO {
    * @return List of Picture
    * @author Jonathan Beck
    */
-  List<Picture> getPicturebyAlbum(Integer Album_ID,int pagesize,int offset) throws SQLException;
+  List<Picture_VM> getPicturebyAlbum(Integer Album_ID,int pagesize,int offset) throws SQLException;
 
   /**
    * DAO Method to retreive by contributor Picture objects
@@ -28,7 +29,7 @@ public interface iPicture_DAO {
    * @return List of Picture
    * @author Jonathan Beck
    */
-  public List<Picture> getPicturebyContributor(Integer Contributor_ID,int pagesize,int offset) throws SQLException;
+  List<Picture_VM> getPicturebyContributor(Integer Contributor_ID, int pagesize, int offset) throws SQLException;
 
   /**
    * DAO Method to update Picture objects
@@ -44,5 +45,16 @@ public interface iPicture_DAO {
    * @return List of Picture
    * @author Jonathan Beck
    */
-  List<Picture> getAllPicture(int limit, int offset) throws SQLException;
+  List<Picture_VM> getAllPicture(int limit, int offset) throws SQLException;
+
+  /**
+   * DAO Method to retreive by Foreign Key Picture objects
+   * @return List of Picture
+   * @author Jonathan Beck
+   */
+  Picture_VM getPictureByPrimaryKey(Picture _picture) throws SQLException;
+
+  int changeActivation(int ObjectID, int mode) throws SQLException;
+  int changeApproval(int ObjectID, int mode) throws SQLException;
+
 }

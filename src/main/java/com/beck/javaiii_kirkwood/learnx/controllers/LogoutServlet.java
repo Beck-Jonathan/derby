@@ -18,7 +18,6 @@ public class LogoutServlet extends HttpServlet {
     session.removeAttribute("activeUser");
     session.setAttribute("flashMessageSuccess","Logged out! C-A-L, C-U L8R");
     resp.sendRedirect("learnx");
-    return;
   }
 
 

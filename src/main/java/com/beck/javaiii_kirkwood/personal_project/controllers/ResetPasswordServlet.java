@@ -129,7 +129,6 @@ public class ResetPasswordServlet extends HttpServlet {
     req.setAttribute("results", results);
     req.setAttribute("pageTitle", "Roller Derby! ");
     resp.sendRedirect("home");
-    return;
 
   }
 }

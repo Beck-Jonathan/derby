@@ -17,7 +17,6 @@ public class UserSignOutServlet extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     req.setAttribute("pageTitle", "Budget With Us");
     resp.sendRedirect("budget_bome");
-    return;
   }
 
   @Override
@@ -29,7 +28,6 @@ public class UserSignOutServlet extends HttpServlet {
     session.invalidate();
     req.setAttribute("pageTitle", "Budget With Us");
     resp.sendRedirect("budget_bome");
-    return;
 
   }
 }

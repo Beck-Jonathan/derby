@@ -66,4 +66,29 @@ public class Contributor_DAO implements  iContributor_DAO{
       throw new RuntimeException("Could not retrieve Contributors. Try again later");
     }
     return result;}
+
+  /**
+   * DAO Method to retreive all Contributor objects
+   * @return List of Contributor
+   * @author Jonathan Beck
+   */
+  public  List<Contributor> getDistinctContributorForDropdown() {
+    List<Contributor> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_select_distinct_and_active_Contributor_for_dropdown()}")) {
+          try(ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+              Integer Contributor_ID = resultSet.getInt("Contributor_ID");
+              String email = resultSet.getString("email");
+              Contributor _contributor = new Contributor( Contributor_ID, email);
+              result.add(_contributor);
+            }
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Contributors. Try again later");
+    }
+    return result;}
 }

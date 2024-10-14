@@ -20,4 +20,12 @@ public interface iContributor_DAO {
    */
   List<Contributor> getAllContributor(int limit, int offset) throws SQLException;
 
+
+  /**
+   * DAO Method to select distinct Contributor for dropdowns
+   * @return list of Contributor
+   * @author Jonathan Beck
+   */
+  List<Contributor> getDistinctContributorForDropdown() throws SQLException;
+
 }

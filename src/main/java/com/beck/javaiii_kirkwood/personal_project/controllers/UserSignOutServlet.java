@@ -25,6 +25,5 @@ public class UserSignOutServlet extends HttpServlet {
     String currentPage =  session.getAttribute("currentPage").toString();
     session.removeAttribute("User");
     resp.sendRedirect("home");
-    return;
   }
 }

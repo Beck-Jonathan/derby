@@ -38,7 +38,7 @@ public class TwoFADAO {
             Integer User_ID = resultSet.getInt("User_ID");
             String TwoFA_Code = resultSet.getString("TwoFA_Code");
             LocalDate DateSent = resultSet.getDate("DateSent").toLocalDate();
-            result = new TwoFA( TwoFA_ID, User_ID, TwoFA_Code, (java.time.LocalDate) DateSent);}
+            result = new TwoFA( TwoFA_ID, User_ID, TwoFA_Code, DateSent);}
         }
       }
     } catch (SQLException e) {

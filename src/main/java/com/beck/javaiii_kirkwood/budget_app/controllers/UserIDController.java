@@ -32,6 +32,5 @@ public class UserIDController extends HttpServlet {
     finally {
       pw.close();
     }
-    return;
   }
 }

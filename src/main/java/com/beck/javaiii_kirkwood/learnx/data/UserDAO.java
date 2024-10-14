@@ -100,12 +100,10 @@ public class UserDAO {
             Instant last_logged_in = resultSet.getTimestamp("last_logged_in").toInstant();
             if (resultSet.wasNull()) {
               last_logged_in = new Date().toInstant();
-              ;
             }
             Instant updated_at = resultSet.getTimestamp("updated_at").toInstant();
             if (resultSet.wasNull()) {
               updated_at = new Date().toInstant();
-              ;
             }
             String language = resultSet.getString("language");
             if (resultSet.wasNull()) {
@@ -383,12 +381,10 @@ public class UserDAO {
             Instant last_logged_in = resultSet.getTimestamp("last_logged_in").toInstant();
             if (resultSet.wasNull()) {
               last_logged_in = new Date().toInstant();
-              ;
             }
             Instant updated_at = resultSet.getTimestamp("updated_at").toInstant();
             if (resultSet.wasNull()) {
               updated_at = new Date().toInstant();
-              ;
             }
             String language = resultSet.getString("language");
             if (resultSet.wasNull()) {

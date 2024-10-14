@@ -83,7 +83,7 @@ public class LogInServlet extends HttpServlet {
 
           return;
 
-        };
+        }
       }
     }
     req.setAttribute("results", results);

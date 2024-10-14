@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/errorHandler")
+@WebServlet("/error")
 public class ErrorHandler extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -29,24 +29,21 @@ public class ErrorHandler extends HttpServlet {
     System.err.println(result);
 
 
-
-
-
     if(!errorCode.equals("404")) {
-      EmailService.sendemail(Dotenv.load().get("ADMIN_EMAIL"), "Unknown error occured", result);
+     // EmailService.sendemail(Dotenv.load().get("ADMIN_EMAIL"), "Unknown error occured", result);
     }
 
 
     resp.setContentType("text/html");
 
-    // Hello
-    //PrintWriter out = resp.getWriter();
-    //out.println("<html><body>");
-    //out.println("<pre>" + result + "</pre>");
-    //out.println("</body></html>");
+
+    PrintWriter out = resp.getWriter();
+    out.println("<html><body>");
+    out.println("<pre>" + result + "</pre>");
+    out.println("</body></html>");
 
 
         req.setAttribute("pageTitle", "Error");
-        req.getRequestDispatcher("WEB-INF/shared/error.jsp").forward(req, resp);
+        //req.getRequestDispatcher("WEB-INF/shared/error.jsp").forward(req, resp);
   }
 }

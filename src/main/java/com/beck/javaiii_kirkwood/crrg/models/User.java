@@ -1,5 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.models;
 
+import java.util.List;
+
 /**
  * @ author Jonathan Beck
  * @ version 1.0
@@ -13,10 +15,11 @@ public class User {
   private String email;
   private String phone;
   private String password;
+  private List<String> roles;
 
   public User(){}
 
-  public User(String User_ID, String first_name, String last_name, String email, String phone, String password) {
+  public User(String User_ID, String first_name, String last_name, String email, String phone, String password,List<String> roles) {
 
     this.User_ID = User_ID;
     this.first_name = first_name;
@@ -24,6 +27,7 @@ public class User {
     this.email = email;
     this.phone = phone;
     this.password = password;
+    this.roles = roles;
   }
   public String getUser_ID() {
     return User_ID;
@@ -104,5 +108,21 @@ public class User {
     this.password = password;
   }
 
+  public List<String> getRoles() {
+    return roles;
+  }
+
+  public void setRoles(List<String> roles) {
+    this.roles = roles;
+  }
+
+  public boolean isInRole(List<String> roles){
+    for (String role : roles){
+      if (this.roles.contains(role)){
+        return true;
+      }
+    }
+    return false;
+  }
 }
 

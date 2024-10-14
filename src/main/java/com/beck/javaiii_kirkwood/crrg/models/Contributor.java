@@ -1,5 +1,9 @@
 package com.beck.javaiii_kirkwood.crrg.models;
 
+import com.beck.javaiii_kirkwood.shared.MyValidators;
+
+import java.util.regex.Matcher;
+
 /**
  * @ author Jonathan Beck
  * @ version 1.0
@@ -13,6 +17,12 @@ public class Contributor {
   private String email;
 
   public Contributor(){}
+
+  public Contributor(Integer Contributor_ID, String email) {
+
+    this.Contributor_ID = Contributor_ID;
+    this.email = email;
+  }
 
   public Contributor(Integer Contributor_ID, String First_Name, String Last_Name, String email) {
 
@@ -57,14 +67,11 @@ public class Contributor {
     return email;
   }
   public void setemail(String email) {
-    email = email.replaceAll("[^A-Za-z0-9 - ]","");
-    if(email.length()<4){
-      throw new IllegalArgumentException("email is too short.");
+    Matcher matcher = MyValidators.emailPattern.matcher(email);
+    if (!matcher.matches()){
+      throw new IllegalArgumentException("Invalid email");
     }
-    if(email.length()>100){
-      throw new IllegalArgumentException("email is too long.");
-    }
-    this.email = email;
+    this.email=email;
   }
 
 }

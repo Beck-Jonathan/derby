@@ -36,7 +36,7 @@ public class PlayerJSON {
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    String jsonString = response.body().toString() ; //assign your JSON String here
+    String jsonString = response.body(); //assign your JSON String here
     JSONObject obj = new JSONObject(jsonString);
    // String pageName = obj.getJSONObject("pageInfo").getString("pageName");
 
@@ -86,7 +86,7 @@ public class PlayerJSON {
     } catch (InterruptedException e) {
       throw new RuntimeException(e.getMessage());
     }
-    String jsonString = response.body().toString() ; //assign your JSON String here
+    String jsonString = response.body(); //assign your JSON String here
     JSONObject obj = new JSONObject(jsonString);
     // String pageName = obj.getJSONObject("pageInfo").getString("pageName");
 

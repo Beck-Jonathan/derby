@@ -57,7 +57,7 @@ int x =5;
 
         showFiles(file.listFiles()); // Calls same method again.
       } else {
-        String folder = file.getParent().toString();
+        String folder = file.getParent();
         int lastindex=folder.lastIndexOf("\\");
         folder=folder.substring(lastindex+1);
         System.out.println(folder);

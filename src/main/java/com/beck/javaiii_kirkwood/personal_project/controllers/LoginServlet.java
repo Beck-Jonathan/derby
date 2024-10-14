@@ -94,7 +94,6 @@ public class LoginServlet extends HttpServlet{
     req.setAttribute("results", results);
     req.setAttribute("pageTitle", "Log in! ");
     resp.sendRedirect(currentPage);
-    return;
     //req.getRequestDispatcher("WEB-INF/personal-project/Login.jsp").forward(req, resp);
 
   }

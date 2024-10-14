@@ -38,6 +38,5 @@ public class PasswordResetServlet extends HttpServlet {
     results.put("passwordResetMsg", "If there is an account found, we will send an email");
 
     resp.sendRedirect("learnx");
-    return;
   }
 }

@@ -41,9 +41,9 @@ public class EnrollmentServlet extends HttpServlet {
       result=0;
     }
     if (result>0) {
-      session.setAttribute("flashMessageSuccess", String.format("New course added!"));
+      session.setAttribute("flashMessageSuccess", "New course added!");
     }
-    else {session.setAttribute("flashMessageWarning", String.format("Course not added!")); }
+    else {session.setAttribute("flashMessageWarning", "Course not added!"); }
     resp.sendRedirect("student");
   }
 }

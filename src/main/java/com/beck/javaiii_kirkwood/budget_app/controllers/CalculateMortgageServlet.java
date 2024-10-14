@@ -22,7 +22,6 @@ import java.util.Map;
 
 @WebServlet("/calculateMortgage")
 public class CalculateMortgageServlet extends HttpServlet{
-  ;
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +37,6 @@ public class CalculateMortgageServlet extends HttpServlet{
 
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Mortgage");
-    ;
 
     req.getRequestDispatcher("WEB-INF/Budget_App/CalcMortgage.jsp").forward(req, resp);
   }
@@ -80,7 +78,7 @@ public class CalculateMortgageServlet extends HttpServlet{
     Mortgage_VM mortgage = new Mortgage_VM();
     int errors =0;
     try {
-      mortgage.setUser_ID(Integer.valueOf(user.getUser_ID()));
+      mortgage.setUser_ID(user.getUser_ID());
     } catch(IllegalArgumentException e) {results.put("mortgageUser_IDerror", e.getMessage());
       errors++;
     }

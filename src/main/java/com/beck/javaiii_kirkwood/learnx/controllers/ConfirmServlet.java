@@ -20,7 +20,7 @@ import java.util.Objects;
 
 @WebServlet("/confirm")
 public class ConfirmServlet extends HttpServlet {
-  private static Map<String, String> results = new HashMap<>();
+  private static final Map<String, String> results = new HashMap<>();
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String resend = req.getParameter("resend");

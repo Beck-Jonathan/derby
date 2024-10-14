@@ -1,5 +1,4 @@
 package com.beck.javaiii_kirkwood.crrg.models;
-
 /**
  * @ author Jonathan Beck
  * @ version 1.0
@@ -9,6 +8,7 @@ package com.beck.javaiii_kirkwood.crrg.models;
 public class Album {
   private Integer Album_ID;
   private String Album_Name;
+  private boolean Is_Active;
 
   public Album(){}
 
@@ -16,6 +16,13 @@ public class Album {
 
     this.Album_ID = Album_ID;
     this.Album_Name = Album_Name;
+  }
+
+  public Album(Integer Album_ID, String Album_Name, boolean Is_Active) {
+
+    this.Album_ID = Album_ID;
+    this.Album_Name = Album_Name;
+    this.Is_Active = Is_Active;
   }
   public Integer getAlbum_ID() {
     return Album_ID;
@@ -35,6 +42,12 @@ public class Album {
       throw new IllegalArgumentException("Album_Name is too long.");
     }
     this.Album_Name = Album_Name;
+  }
+  public boolean getIs_Active() {
+    return Is_Active;
+  }
+  public void setIs_Active(boolean Is_Active) {
+    this.Is_Active = Is_Active;
   }
 
 }

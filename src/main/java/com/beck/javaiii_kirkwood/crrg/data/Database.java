@@ -18,7 +18,6 @@ public class Database {
       Class.forName(db_driver);
     } catch (ClassNotFoundException e) {
       System.out.println("driver not found");
-      ;
     }
     try {
       connection = DriverManager.getConnection(db_connection, db_user, db_password);
@@ -28,7 +27,6 @@ public class Database {
       }
     } catch (SQLException e) {
       System.out.println("unable to connect");
-      ;
     }
     return null;
 

@@ -44,7 +44,6 @@ public class EditPlantServlet extends HttpServlet{
     } catch (SQLException e) {
       req.setAttribute("dbStatus",e.getMessage());
     }
-    ;
     session.setAttribute("plant",plant);
     req.setAttribute("mode",mode);
     session.setAttribute("currentPage",req.getRequestURL());

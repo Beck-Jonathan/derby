@@ -24,7 +24,7 @@ public class User {
   Instant last_logged_in;
   Instant updated_at;
   String language;
-  private static LocalDate birthday = LocalDate.of(2000,01,01);
+  private static final LocalDate birthday = LocalDate.of(2000,01,01);
 
   public User(int ID, String first_name, String last_name, String email, String phone, char[] password, String status, String privileges, Instant created_at, Instant last_logged_in, Instant updated_at, String language) {
     this.ID = ID;

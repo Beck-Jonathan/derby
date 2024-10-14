@@ -157,8 +157,6 @@ public class UserSignUpServlet extends HttpServlet{
     req.setAttribute("results", results);
     req.setAttribute("pageTitle", "Budget With Us ");
     resp.sendRedirect("budget_bome");
-    return;
-
 
   }
 }

@@ -35,10 +35,10 @@ public class PostFixServlet extends HttpServlet {
 
 try {
   while (parsed.size() > 1) {
-    response = response + parsed.toString();
+    response = response + parsed;
     response = response + "<br/>";
     parsed = calculateandshrink(parsed);
-    response = response + "Becomes<br/>" + parsed.toString();
+    response = response + "Becomes<br/>" + parsed;
     response = response + "<br/>";
     response = response + "<br/>";
   }

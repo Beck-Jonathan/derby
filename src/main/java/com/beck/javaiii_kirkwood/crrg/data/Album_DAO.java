@@ -62,9 +62,13 @@ public class Album_DAO implements iAlbum_DAO{
     }
     return result;
   }
-
+  /**
+   * DAO Method to retreive all Album objects
+   * @return List of Album
+   * @author Jonathan Beck
+   */
   @Override
-  public  List<Album> getAllAlbum(int limit, int offset) {
+   public  List<Album> getAllAlbum(int limit, int offset) {
     List<Album> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
@@ -72,8 +76,52 @@ public class Album_DAO implements iAlbum_DAO{
           statement.setInt(1,limit)
           ;statement.setInt(2,offset);
           try(ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {Integer Album_ID = resultSet.getInt("Album_Album_ID");
+            while (resultSet.next()) {
+              Integer Album_ID = resultSet.getInt("Album_Album_ID");
               String Album_Name = resultSet.getString("Album_Album_Name");
+              boolean Is_Active = resultSet.getBoolean("Album_Is_Active");
+              Album _album = new Album( Album_ID, Album_Name, Is_Active);
+              result.add(_album);
+            }
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException("Could not retrieve Albums. Try again later");
+    }
+    return result;
+  }
+  public Album getAlbumByPrimaryKey(Album _album) throws SQLException{
+    Album result = null;
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Album(?)}")) {
+        statement.setString(1, _album.getAlbum_ID().toString());
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          if(resultSet.next()){Integer Album_ID = resultSet.getInt("Album_Album_ID");
+            String Album_Name = resultSet.getString("Album_Album_Name");
+            boolean Is_Active = resultSet.getBoolean("Album_Is_Active");
+            result = new Album( Album_ID, Album_Name, Is_Active);}
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result;
+  }
+  /**
+  * DAO Method to retreive all Album objects
+* @return List of Album
+* @author Jonathan Beck
+ */
+  public  List<Album> getDistinctAlbumForDropdown() {
+    List<Album> result = new ArrayList<>();
+    try (Connection connection = getConnection()) {
+      if (connection != null) {
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_select_distinct_and_active_Album_for_dropdown()}")) {
+          try(ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {Integer Album_ID = resultSet.getInt("Album_ID");
+              String Album_Name = resultSet.getString("Album_Name");
               Album _album = new Album( Album_ID, Album_Name);
               result.add(_album);
             }
@@ -86,5 +134,24 @@ public class Album_DAO implements iAlbum_DAO{
     return result;
   }
 
-}
+ public int changeActivation(int albumID, int status) throws SQLException{
+   int rowsAffected=0;
+   try (Connection connection = getConnection()) {
+     if (connection != null) {
+       try (CallableStatement statement = connection.prepareCall("{CALL sp_change_active_Album( ?,?)}")){
+         statement.setInt(1,albumID);
+         statement.setInt(2,status);
+         rowsAffected = statement.executeUpdate();
+         if (rowsAffected == 0) {
+           throw new RuntimeException("Could not change album status. Try again later");
+         }
+       }
+     }
+   } catch (SQLException e) {
+     throw new RuntimeException("Could not Delete Album. Try again later");
+   }
+   return rowsAffected;
+ }
+  }
+
 

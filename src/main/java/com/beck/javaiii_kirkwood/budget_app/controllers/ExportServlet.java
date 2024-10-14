@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -67,7 +68,7 @@ public class ExportServlet extends HttpServlet {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    PrintWriter writer = new PrintWriter(uploadFilePath+"/the-file-name.txt", "UTF-8");
+    PrintWriter writer = new PrintWriter(uploadFilePath+"/the-file-name.txt", StandardCharsets.UTF_8);
     writer.print("T_ID\tU_ID\tCategory\tAccount\tPost_Date\tCheck#\tDescription\tAmount\tType\tStatus");
     for (Transaction t : transactions){
       writer.print(t.getTransaction_ID()+"\t");

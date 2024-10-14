@@ -20,7 +20,7 @@ public class Course implements Comparable{
 
 
 
-  private static Double price = 1234.567;
+  private static final Double price = 1234.567;
 
   public Course() {
   }

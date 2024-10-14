@@ -1,14 +1,152 @@
 $(document).ready(function() {
     document.body.addEventListener('touchstart', function(e){ e.preventDefault(); });
+
     var i = 0;
     var modal = document.getElementById("myModal");
     var modalbg = document.getElementById("modalbg");
     var modalImg = document.getElementById("img01");
     var  images = document.getElementsByClassName("image");
+    var sliders = document.getElementsByClassName('slider');
+    var grayscaleSlider = document.getElementById("grayscale");
+    var hueRotateSlider = document.getElementById("hueRotate");
+
+    var grayscale="grayscale(0%)";
+    var blurry="blur(0px)";
+    var contrast="contrast(100%)";
+    var huerotate="hue-rotate(0deg)";
+    var filters=grayscale+" "+blurry+" "+contrast+" "+huerotate;
+    updateStyle(modalImg,filters);
+    console.log(modalImg.filter);
+    document.body.addEventListener('keypress',function() {
+            updateStyle(modalImg,filters);
+        }
+    );
+
+
+    grayscaleSlider.addEventListener('input',function(){
+
+        var value = grayscaleSlider.value;
+        grayscale="grayscale("+value+"%)";
+        //updateStyle(modalImg,filters);
+    })
+    hueRotateSlider.addEventListener('input',function(){
+
+        var value = hueRotateSlider.value;
+        huerotate="hue-rotate("+value+"deg)";
+        //updateStyle(modalImg,filters);
+    })
+    for (const slider of sliders) {
+        slider.addEventListener('input',function(){
+            modalImg.style.transitionDuration=".1s";
+            console.log("slide2");
+            filters=grayscale+" "+blurry+" "+contrast+" "+huerotate;
+
+            updateStyle(modalImg,filters);
+        })
+    }
+
+    document.body.addEventListener('keypress',function(e) {
+        console.log(e.key);
+        modalImg.style.transitionDuration="3s";
+
+
+        if (modal.style.display === "block") {
+            if (e.key === "a") {
+
+                grayscale="grayscale(100%)";
+
+                var current=getComputedStyle(modalImg).filter;
+                var startOfPhrase=current.lastIndexOf('grayscale');
+                var startOfLeftParen=startOfPhrase+10;
+                var startofRightParen = current.indexOf(")",startOfLeftParen);
+                var description = current.substring(startOfLeftParen,startofRightParen);
+                grayscaleSlider.value=description*100;
+            }
+            if (e.key === "b") {
+                blurry="blur(20px)";
+            }
+            if (e.key === "c") {
+                contrast="contrast(300%)";
+            }
+            if (e.key === "d") {
+                huerotate="hue-rotate(360deg)";
+                var current_1=getComputedStyle(modalImg).filter;
+                console.log("computed style: "+current_1);
+                var startOfPhrase_1=current_1.lastIndexOf('hue-rotate');
+                console.log("index start of phrase hue-rotate: "+startOfPhrase_1);
+                var subString = current_1.substring(startOfPhrase_1);
+                console.log(subString)
+                var leftParen=subString.indexOf("(")
+                var rightParen=subString.indexOf(")");
+
+                var goal =subString.substring(leftParen+1,rightParen-3);
+                console.log("goal: "+goal);
+
+
+                hueRotateSlider.value=goal;
+            }
+            filters=grayscale+" "+blurry+" "+contrast+" "+huerotate;
+            updateStyle(modalImg,filters);
+
+        }
+    });
+    document.body.addEventListener('keyup',function(e){
+        console.log(e.key);
+        var filter="";
+
+
+        if(modal.style.display==="block"){
+            if (e.key === "a") {
+                //grayscale="grayscale(0%)";
+                modalImg.style.filter=getComputedStyle(modalImg).filter;
+                //var current=getComputedStyle(modalImg).filter;
+                //var startOfPhrase=current.lastIndexOf('grayscale');
+                //var startOfLeftParen=startOfPhrase+10;
+                //var startofRightParen = current.indexOf(")",startOfLeftParen);
+                //var description = current.substring(startOfLeftParen,startofRightParen);
+                //grayscaleSlider.value=description*100;
+
+
+
+            }
+            if (e.key === "b") {
+                blurry="blur(0)";
+                modalImg.style.filter=getComputedStyle(modalImg).filter;
+            }
+            if (e.key === "c") {
+                contrast="contrast(100%)";
+                modalImg.style.filter=getComputedStyle(modalImg).filter;
+            }
+            if (e.key === "d") {
+                //huerotate="hue-rotate(0deg)";
+                modalImg.style.filter=getComputedStyle(modalImg).filter;
+            }
+            //filters=grayscale+" "+blurry+" "+contrast+" "+huerotate;
+            //updateStyle(modalImg,filters);
+            if(e.key==="Escape"){
+                closeModal(modal);
+                return;
+            }
+            if(e.key==="ArrowLeft"&&i>0){
+                i--;
+                pageLeft(i,images,modalImg);
+                offsetCalculate();
+                checkArrows(i,images);
+                return;
+            }
+            if(e.key==="ArrowRight" &&i<images.length-1){
+                i++;
+                pageRight(i,images,modalImg);
+                offsetCalculate();
+                checkArrows(i,images);
+
+            }
+        }
+    });
 
     for (const image of images) {
 
-        image.ondblclick=(event)=>{
+        image.onclick=(event)=>{
             i=0;
             while (true){
                 if (images[i].id===image.id){
@@ -45,10 +183,13 @@ $(document).ready(function() {
     checkArrows(i,images);
     };
 
-    var span = document.getElementsByClassName("close")[0];
-    span.onclick = function() {
-        modal.style.display = "none";
-        modalbg.style.display = "none";
+    modal.onclick = function(){
+        //closeModal(modal);
+    }
+    var close = document.getElementsByClassName("close")[0];
+    close.onclick = function() {
+        closeModal(modal);
+
     }
 
     const track = document.getElementById("image-track");
@@ -192,5 +333,13 @@ function offsetCalculate(){
 
      //   'right': rightString,
     //});
+}
+
+function closeModal(modal){
+        modal.style.display = "none";
+    modalbg.style.display = "none";
+    }
+function updateStyle(modalImg,filters){
+    modalImg.style.filter=filters;
 }
 

@@ -20,7 +20,7 @@ import java.util.Map;
 @WebServlet("/add_transaction")
 @MultipartConfig(
 
-    fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+    fileSizeThreshold = 1024 * 1024, // 1 MB
     maxFileSize = 1024 * 1024 * 10,      // 10 MB
     maxRequestSize = 1024 * 1024 * 100   // 100 MB
 )
@@ -103,7 +103,6 @@ public class add_transaction extends HttpServlet {
 
     uploadedFile.delete();
     resp.sendRedirect("budget_bome");
-    return;
 
     //session.setAttribute("currentPage",req.getRequestURL());
     //req.setAttribute("pageTitle", "Budget Home");

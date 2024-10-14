@@ -19,26 +19,26 @@ import static com.beck.javaiii_kirkwood.budget_app.data.Database.getConnection;
  */
 
 public interface iUserDAO {
-  public int add(User _user);
-  public  int getUserID(String email) throws SQLException;
+  int add(User _user);
+  int getUserID(String email) throws SQLException;
 
-  public  User getUserByPrimaryKey(User _user) throws SQLException ;
+  User getUserByPrimaryKey(User _user) throws SQLException ;
 
-  public  String get_pw(String username) ;
+  String get_pw(String username) ;
 
-  public  int getUserIDByUserName(String username);
+  int getUserIDByUserName(String username);
 
-  public  boolean usernameFree(String username) throws SQLException;
+  boolean usernameFree(String username) throws SQLException;
 
-  public  boolean addDefaultCategories(int userID) throws SQLException;
+  boolean addDefaultCategories(int userID) throws SQLException;
 
-  public  boolean emailFree(String email) throws SQLException ;
+  boolean emailFree(String email) throws SQLException ;
 
-  public  boolean deleteUser(int userID) throws SQLException;
-  public  boolean resetPW(User user) throws SQLException;
-  public List<String> getUser_Roles(User _user) throws SQLException;
-  public  int addRole(String role, int userID );
+  boolean deleteUser(int userID) throws SQLException;
+  boolean resetPW(User user) throws SQLException;
+  List<String> getUser_Roles(User _user) throws SQLException;
+  int addRole(String role, int userID);
 
-  public  int yearRange(int user_ID) throws SQLException ;
+  int yearRange(int user_ID) throws SQLException ;
 
 }

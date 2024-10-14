@@ -50,7 +50,6 @@ public class EditUserServlet extends HttpServlet {
     } else {
       session.setAttribute("flashMessageWarning", "No user found with that id");
       resp.sendRedirect("all-users");
-      return;
     }
 
   }

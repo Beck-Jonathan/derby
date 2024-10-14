@@ -30,7 +30,13 @@
 
     <img class="modal-content" id="img01">
 
-
+    <!-- modal sliders -->
+    <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="0" class="slider" id="grayscale">
+    </div>
+    <div class="slidecontainer">
+        <input type="range" min="0" max="360" value="0" class="slider" id="hueRotate">
+    </div>
     <!-- Modal Caption (Image Text) -->
     <div id="caption"></div>
 </div>

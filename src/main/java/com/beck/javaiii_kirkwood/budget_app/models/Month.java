@@ -7,7 +7,7 @@ public class Month {
   private int month;
   private Double beginning_bal;
   private Double rate;
-  private Double payment;
+  private final Double payment;
   private Double ending_balance;
 
   public Month(int mortgage_ID,int month, Double beginning_bal, Double rate, Double payment) {
