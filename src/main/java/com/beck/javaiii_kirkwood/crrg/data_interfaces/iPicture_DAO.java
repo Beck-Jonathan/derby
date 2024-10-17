@@ -15,21 +15,7 @@ public interface iPicture_DAO {
    */
   int add (Picture _picture) throws SQLException;
 
-  /**
-   * DAO Method to retreive by album_ID Picture objects
-   *  @param Album_ID album_id we want all the pictures from
-   * @return List of Picture
-   * @author Jonathan Beck
-   */
-  List<Picture_VM> getPicturebyAlbum(Integer Album_ID,int pagesize,int offset) throws SQLException;
 
-  /**
-   * DAO Method to retreive by contributor Picture objects
-   *  @param Contributor_ID the contributor we want all the pictures from
-   * @return List of Picture
-   * @author Jonathan Beck
-   */
-  List<Picture_VM> getPicturebyContributor(Integer Contributor_ID, int pagesize, int offset) throws SQLException;
 
   /**
    * DAO Method to update Picture objects

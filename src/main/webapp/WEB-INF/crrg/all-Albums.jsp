@@ -16,6 +16,7 @@ Create the JSP  For Viewing All of The  Album table
                         <th scope="col">Album_ID</th>
                         <th scope="col">Album_Name</th>
                         <th scope="col">Is_Active</th>
+                        <th scope="col">Count</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Activate/Deactivate</th>
                     </tr>
@@ -23,8 +24,10 @@ Create the JSP  For Viewing All of The  Album table
                     <tbody>
                     <c:forEach items="${Albums}" var="album">
                         <tr>
-                            <td><a href = "editalbum?albumid=${album.album_ID}&mode=view">${fn:escapeXml(album.album_ID)}</a></td><td>${fn:escapeXml(album.album_Name)}</td>
+                            <td><a href = "editAlbum?albumid=${album.album_ID}&mode=view">${fn:escapeXml(album.album_ID)}</a></td>
+                            <td>${fn:escapeXml(album.album_Name)}</td>
                             <td><input type="checkbox" id=${album.album_ID} class="Activation_Box" <c:if test="${album.is_Active}">checked</c:if>> <p  id="${album.album_ID}_status"></p></td>
+                            <td>${album.album_size}</td>
                             <td><a href = "editAlbum?albumid=${album.album_ID}&mode=edit" > Edit </a></td>
                             <td><a href = "deletealbum?albumid=${album.album_ID}&mode=<c:choose><c:when test="${album.is_Active}">0</c:when>
 						<c:otherwise>1</c:otherwise>

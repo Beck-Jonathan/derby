@@ -17,6 +17,7 @@ Create the JSP  For Viewing All of The  Contributor table
                         <th scope="col">First_Name</th>
                         <th scope="col">Last_Name</th>
                         <th scope="col">email</th>
+                        <th scope="col">count</th>
                         <th scope="col">Edit</th>
                         <th scope="col">Delete</th>
                     </tr>
@@ -24,11 +25,12 @@ Create the JSP  For Viewing All of The  Contributor table
                     <tbody>
                     <c:forEach items="${Contributors}" var="contributor">
                         <tr>
-                            <td><a href = "editcontributor?contributorid=${contributor.contributor_ID}&mode=view">${fn:escapeXml(contributor.contributor_ID)}</a></td><td>${fn:escapeXml(contributor.first_Name)}</td>
+                            <td><a href = "editContributor?contributorid=${contributor.contributor_ID}&mode=view">${fn:escapeXml(contributor.contributor_ID)}</a></td><td>${fn:escapeXml(contributor.first_Name)}</td>
                             <td>${fn:escapeXml(contributor.last_Name)}</td>
                             <td>${fn:escapeXml(contributor.email)}</td>
-                            <td><a href = "editcontributor?contributorid=${contributor.contributor_ID}&mode=edit" > Edit </a></td>
-                            <td><a href = "deletecontributor?contributorid=${contributor.contributor_ID}&mode=Delete">Delete </a></td>
+                            <td>${contributor.album_size}</td>
+                            <td><a href = "editContributor?contributorid=${contributor.contributor_ID}&mode=edit" > Edit </a></td>
+                            <td><a href = "editContributor?contributorid=${contributor.contributor_ID}&mode=Delete">Delete </a></td>
                         </tr>
                     </c:forEach>
                     </tbody>

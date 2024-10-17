@@ -13,39 +13,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="77200cf6-a98d-4f28-a6ba-fc435702524d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Logout_Servlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/AddUser.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/Login.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Users.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/crrg/All_users.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/All_users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/add_edit_album.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/add_edit_contributor.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/add_edit_picture.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Contributor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/models/Album_VM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/models/Contributor_VM.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/EditContributor.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/EditUser.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Contributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Contributor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Picture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Album.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Contributor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Contributor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Album.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Album.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Login_Servlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/site_management_servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/site_management_servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Login_Servlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Login_Servlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Album_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Album_DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Contributor_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Contributor_DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Picture_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Picture_DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/User_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/User_DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iAlbum_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iAlbum_DAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iContributor_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iContributor_DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iPicture_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iPicture_DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iUser_DAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data_interfaces/iUser_DAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/foot.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/foot.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/head.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/head.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/images.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/images.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/EditAlbum.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/EditAlbum.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/Login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/Login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Albums.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Albums.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Contributors.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Contributors.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Users.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/all-Users.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/site_management.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/crrg/site_management.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/crrg/crrg.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/crrg/crrg.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/crrg/crrg.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/crrg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/js/crrg/crrg_admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/js/crrg/crrg_admin.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +53,8 @@
         <option value="Interface" />
         <option value="JavaScript File" />
         <option value="CSS File" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -86,7 +81,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -115,7 +110,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Tomcat Server.Tomcat 10.1.11.executor": "Run",
+    "Tomcat Server.Tomcat 10.1.11.executor": "Debug",
     "Tomcat Server.dashboard-main.jsp.executor": "Run",
     "Tomcat Server.group-chat.jsp.executor": "Run",
     "git-widget-placeholder": "main",
@@ -599,15 +594,7 @@
       <workItem from="1727972532783" duration="10975000" />
       <workItem from="1728232015996" duration="41865000" />
       <workItem from="1728485465104" duration="45762000" />
-      <workItem from="1728850224610" duration="35368000" />
-    </task>
-    <task id="LOCAL-00038" summary="suggested improvement">
-      <option name="closed" value="true" />
-      <created>1713488327782</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1713488327782</updated>
+      <workItem from="1728850224610" duration="47672000" />
     </task>
     <task id="LOCAL-00039" summary="Day 23 quiz">
       <option name="closed" value="true" />
@@ -993,7 +980,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728922194134</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Login system">
+      <option name="closed" value="true" />
+      <created>1729174400113</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1729174400113</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1019,7 +1014,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="parsing error" />
     <MESSAGE value="Final Project Updates" />
     <MESSAGE value="Password reset system" />
     <MESSAGE value="static page content" />
@@ -1044,7 +1038,8 @@
     <MESSAGE value="homepage ui updates" />
     <MESSAGE value="DAO and IDAO for start of CRRG Image hosting project" />
     <MESSAGE value="Code cleanup, activate and approve picture and album, iUserDAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Code cleanup, activate and approve picture and album, iUserDAO" />
+    <MESSAGE value="Login system" />
+    <option name="LAST_COMMIT_MESSAGE" value="Login system" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1231,11 +1226,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Album.java</url>
-          <line>35</line>
-          <option name="timeStamp" value="277" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_Album.java</url>
           <line>67</line>
           <option name="timeStamp" value="278" />
         </line-breakpoint>
@@ -1245,29 +1235,29 @@
           <option name="timeStamp" value="283" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Picture_DAO.java</url>
-          <line>145</line>
-          <option name="timeStamp" value="286" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Picture.java</url>
-          <line>159</line>
+          <line>156</line>
           <option name="timeStamp" value="296" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Picture.java</url>
-          <line>123</line>
+          <line>120</line>
           <option name="timeStamp" value="297" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Add_Picture.java</url>
-          <line>140</line>
+          <line>137</line>
           <option name="timeStamp" value="299" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/All_Picture.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="304" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/data/Picture_DAO.java</url>
+          <line>101</line>
+          <option name="timeStamp" value="321" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/beck/javaiii_kirkwood/crrg/controllers/Edit_User.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="331" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

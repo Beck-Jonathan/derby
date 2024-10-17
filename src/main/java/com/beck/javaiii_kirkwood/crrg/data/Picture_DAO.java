@@ -51,83 +51,9 @@ public class Picture_DAO implements iPicture_DAO{
    * @return List of Picture
    * @author Jonathan Beck
    */
-  @Override
-  public  List<Picture_VM> getPicturebyAlbum(Integer Album_ID, int pagesize, int offset) {
-    List<Picture_VM> result = new ArrayList<>();
-    try (Connection connection = getConnection()) {
-      if (connection != null) {
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Picture_byAlbum(?,?,?)}")) {
-          statement.setInt(1,Album_ID)
-          ;statement.setInt(2,pagesize)
-          ;statement.setInt(3,offset);
-          try(ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {Integer Picture_ID = resultSet.getInt("Picture_Picture_ID");
-              Integer _Album_ID = resultSet.getInt("Picture_Album_ID");
-              Integer Contributor_ID = resultSet.getInt("Picture_Contributor_ID");
-              String Web_Address = resultSet.getString("Picture_Web_Address");
-              String description = resultSet.getString("Picture_description");
-              boolean Is_Active = resultSet.getBoolean("Picture_Is_Active");
-              boolean is_Approved = resultSet.getBoolean("Picture_is_Approved");
-              Integer Album_Album_ID = resultSet.getInt("Album_Album_ID");
-              String Album_Album_Name = resultSet.getString("Album_Album_Name");
-              boolean Album_Is_Active = resultSet.getBoolean("Album_Is_Active");
-              Integer Contributor_Contributor_ID = resultSet.getInt("Contributor_Contributor_ID");
-              String Contributor_First_Name = resultSet.getString("Contributor_First_Name");
-              String Contributor_Last_Name = resultSet.getString("Contributor_Last_Name");
-              String Contributor_email = resultSet.getString("Contributor_email");
-              Picture _picture = new Picture( Picture_ID, Album_ID, Contributor_ID, Web_Address, description, Is_Active, is_Approved);
-              Album _album = new Album(Album_Album_ID,Album_Album_Name);
-              Contributor _contributor = new Contributor(Contributor_ID,Contributor_First_Name,Contributor_Last_Name,Contributor_email);
-              Picture_VM Picture = new Picture_VM(_picture,_album,_contributor);
-              result.add(Picture);
-            }
-          }
-        }
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException("Could not retrieve Pictures. Try again later");
-    }
-    return result;
-  }
 
-  @Override
-  public List<Picture_VM> getPicturebyContributor(Integer Contributor_ID,int pagesize,int offset) {
-    List<Picture_VM> result = new ArrayList<>();
-    try (Connection connection = getConnection()) {
-      if (connection != null) {
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_Picture_byContributor(?,?,?)}")) {
-          statement.setInt(1,Contributor_ID)
-          ;statement.setInt(2,pagesize)
-          ;statement.setInt(3,offset);
-          try(ResultSet resultSet = statement.executeQuery()) {
-            while (resultSet.next()) {Integer Picture_ID = resultSet.getInt("Picture_Picture_ID");
-              Integer Album_ID = resultSet.getInt("Picture_Album_ID");
-              Integer _Contributor_ID = resultSet.getInt("Picture_Contributor_ID");
-              String Web_Address = resultSet.getString("Picture_Web_Address");
-              String description = resultSet.getString("Picture_description");
-              boolean Is_Active = resultSet.getBoolean("Picture_Is_Active");
-              boolean is_Approved = resultSet.getBoolean("Picture_is_Approved");
-              Integer Album_Album_ID = resultSet.getInt("Album_Album_ID");
-              String Album_Album_Name = resultSet.getString("Album_Album_Name");
-              boolean Album_Is_Active = resultSet.getBoolean("Album_Is_Active");
-              Integer Contributor_Contributor_ID = resultSet.getInt("Contributor_Contributor_ID");
-              String Contributor_First_Name = resultSet.getString("Contributor_First_Name");
-              String Contributor_Last_Name = resultSet.getString("Contributor_Last_Name");
-              String Contributor_email = resultSet.getString("Contributor_email");
-              Picture _picture = new Picture( Picture_ID, Album_ID, Contributor_ID, Web_Address, description, Is_Active, is_Approved);
-              Album _album = new Album(Album_Album_ID,Album_Album_Name);
-              Contributor _contributor = new Contributor(Contributor_ID,Contributor_First_Name,Contributor_Last_Name,Contributor_email);
-              Picture_VM Picture = new Picture_VM(_picture,_album,_contributor);
-              result.add(Picture);
-            }
-          }
-        }
-      }
-    } catch (SQLException e) {
-      throw new RuntimeException("Could not retrieve Pictures. Try again later");
-    }
-    return result;
-  }
+
+
 
   /**
    * DAO Method to update Picture objects

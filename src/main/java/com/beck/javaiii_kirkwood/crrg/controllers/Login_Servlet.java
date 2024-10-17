@@ -11,13 +11,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.joda.time.DateTime;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet("/crrgLogin")
 public class Login_Servlet extends HttpServlet {
@@ -76,9 +74,15 @@ public class Login_Servlet extends HttpServlet {
         String _password = userDAO.getPassword(_User_ID);
         if (BCrypt.checkpw(_Password,_password)){
 
+
          user= userDAO.getUserByUserID(user);
+          result=1;
+         DateTime now = DateTime.now();
+          user.setLast_Logged_In(now);
+          userDAO.updateLastLoggedIn(user);
          session.setAttribute("User",user);
-         result=1;
+
+
         }
       }catch(Exception ex){
         results.put("dbStatus","Database Error");

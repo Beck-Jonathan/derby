@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.controllers;
 import com.beck.javaiii_kirkwood.crrg.data.Contributor_DAO;
 import com.beck.javaiii_kirkwood.crrg.models.Contributor;
+import com.beck.javaiii_kirkwood.crrg.models.Contributor_VM;
 import com.beck.javaiii_kirkwood.crrg.models.User;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iContributor_DAO;
 import jakarta.servlet.ServletException;
@@ -38,7 +39,7 @@ public class All_Contributor extends HttpServlet {
     }
 
     session.setAttribute("currentPage",req.getRequestURL());
-    List<Contributor> contributors = null;
+    List<Contributor_VM> contributors = null;
 
     try {
       contributors =contributorDAO.getAllContributor(20,0);

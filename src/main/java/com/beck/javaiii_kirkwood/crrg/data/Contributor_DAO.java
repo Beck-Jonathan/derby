@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.data;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iContributor_DAO;
 import com.beck.javaiii_kirkwood.crrg.models.Contributor;
+import com.beck.javaiii_kirkwood.crrg.models.Contributor_VM;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -11,7 +12,7 @@ import java.util.List;
 
 import static com.beck.javaiii_kirkwood.crrg.data.Database.getConnection;
 
-public class Contributor_DAO implements  iContributor_DAO{
+public class Contributor_DAO implements iContributor_DAO{
   /**
    * DAO Method to add Contributor objects
    * @param _contributor the Contributor to be added
@@ -44,8 +45,8 @@ public class Contributor_DAO implements  iContributor_DAO{
    * @author Jonathan Beck
    */
   @Override
-    public  List<Contributor> getAllContributor(int limit, int offset) {
-    List<Contributor> result = new ArrayList<>();
+    public  List<Contributor_VM> getAllContributor(int limit, int offset) {
+    List<Contributor_VM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Contributor(?,?)}")) {
@@ -56,8 +57,10 @@ public class Contributor_DAO implements  iContributor_DAO{
               String First_Name = resultSet.getString("Contributor_First_Name");
               String Last_Name = resultSet.getString("Contributor_Last_Name");
               String email = resultSet.getString("Contributor_email");
+              int size=resultSet.getInt("Count");;
               Contributor _contributor = new Contributor( Contributor_ID, First_Name, Last_Name, email);
-              result.add(_contributor);
+              Contributor_VM _contributor_VM = new Contributor_VM(_contributor,size);
+              result.add(_contributor_VM);
             }
           }
         }
@@ -72,6 +75,7 @@ public class Contributor_DAO implements  iContributor_DAO{
    * @return List of Contributor
    * @author Jonathan Beck
    */
+  @Override
   public  List<Contributor> getDistinctContributorForDropdown() {
     List<Contributor> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
@@ -90,5 +94,64 @@ public class Contributor_DAO implements  iContributor_DAO{
     } catch (SQLException e) {
       throw new RuntimeException("Could not retrieve Contributors. Try again later");
     }
-    return result;}
+    return result;
+  }
+  /**
+   * DAO Method to retreive by ID Contributor objects
+   * @param _contributor the Contributor to be retreived
+   * @return List of Contributor
+   * @author Jonathan Beck
+   */
+  @Override
+  public Contributor_VM getContributorByPrimaryKey(Contributor _contributor) throws SQLException{
+    Contributor_VM result_vm = null;
+    try(Connection connection = getConnection()) {
+      try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Contributor(?)}")) {
+        statement.setString(1, _contributor.getContributor_ID().toString());
+
+        try (ResultSet resultSet = statement.executeQuery()){
+          if(resultSet.next()){Integer Contributor_ID = resultSet.getInt("Contributor_Contributor_ID");
+            String First_Name = resultSet.getString("Contributor_First_Name");
+            String Last_Name = resultSet.getString("Contributor_Last_Name");
+            String email = resultSet.getString("Contributor_email");
+            int size=resultSet.getInt("Count");;
+            Contributor result = new Contributor( Contributor_ID, First_Name, Last_Name, email);
+            result_vm = new Contributor_VM(result,size);
+          }
+        }
+      }
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+    return result_vm;
+  }
+  /**
+   * DAO Method to update Contributor objects
+   * @param oldContributor the Contributor to be updated
+   * @param newContributor the updated version of the Contributor
+   * @return number of records updated
+   * @author Jonathan Beck
+   */
+  @Override
+  public int update(Contributor oldContributor, Contributor newContributor) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_Contributor(? ,?,?,?,?,?,?)}"))
+        {
+          statement.setInt(1,oldContributor.getContributor_ID());
+          statement.setString(2,oldContributor.getFirst_Name());
+          statement.setString(3,newContributor.getFirst_Name());
+          statement.setString(4,oldContributor.getLast_Name());
+          statement.setString(5,newContributor.getLast_Name());
+          statement.setString(6,oldContributor.getemail());
+          statement.setString(7,newContributor.getemail());
+          result=statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update Contributor . Try again later");
+        }
+      }
+    }
+    return result;
+  }
 }

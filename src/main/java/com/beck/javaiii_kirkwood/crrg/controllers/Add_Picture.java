@@ -4,10 +4,7 @@ package com.beck.javaiii_kirkwood.crrg.controllers;
 import com.beck.javaiii_kirkwood.crrg.data.Picture_DAO;
 import com.beck.javaiii_kirkwood.crrg.data.Contributor_DAO;
 import com.beck.javaiii_kirkwood.crrg.data.Album_DAO;
-import com.beck.javaiii_kirkwood.crrg.models.Contributor;
-import com.beck.javaiii_kirkwood.crrg.models.Picture;
-import com.beck.javaiii_kirkwood.crrg.models.User;
-import com.beck.javaiii_kirkwood.crrg.models.Album;
+import com.beck.javaiii_kirkwood.crrg.models.*;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iPicture_DAO;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iContributor_DAO;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iAlbum_DAO;
@@ -38,8 +35,8 @@ import java.util.Map;
 )
 public class Add_Picture extends HttpServlet{
   private static final String UPLOAD_DIR = "images\\crrg\\";
-  static List<Album> allAlbums ;
-  static List<Contributor> allContributors ;
+  static List<Album_VM> allAlbums ;
+  static List<Contributor_VM> allContributors ;
   private iPicture_DAO pictureDAO;
   private iContributor_DAO contributorDAO;
   private iAlbum_DAO albumDAO;

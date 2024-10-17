@@ -26,7 +26,7 @@
     <tr><td>View all Tag</td><td><a href="all-Tags"> View </a> </td></tr>
     <tr><td>View all User</td><td><a href="allCrrgUser"> View </a> </td></tr>
     <tr><td>View all Role</td><td><a href="all-Roles"> View </a> </td></tr>
-    <tr><td>View all User_Role_Line</td><td><a href="all-User_Role_Lines"> View </a> </td></tr>
+
     </tbody>
 </table>
 </div>

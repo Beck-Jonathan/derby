@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.crrg.data;
 
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iAlbum_DAO;
 import com.beck.javaiii_kirkwood.crrg.models.Album;
+import com.beck.javaiii_kirkwood.crrg.models.Album_VM;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -68,8 +69,8 @@ public class Album_DAO implements iAlbum_DAO{
    * @author Jonathan Beck
    */
   @Override
-   public  List<Album> getAllAlbum(int limit, int offset) {
-    List<Album> result = new ArrayList<>();
+   public  List<Album_VM> getAllAlbum(int limit, int offset) {
+    List<Album_VM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
         try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Album(?,?)}")) {
@@ -80,8 +81,10 @@ public class Album_DAO implements iAlbum_DAO{
               Integer Album_ID = resultSet.getInt("Album_Album_ID");
               String Album_Name = resultSet.getString("Album_Album_Name");
               boolean Is_Active = resultSet.getBoolean("Album_Is_Active");
+              int size=resultSet.getInt("Count");;
               Album _album = new Album( Album_ID, Album_Name, Is_Active);
-              result.add(_album);
+              Album_VM _albumVM = new Album_VM(_album,size);
+              result.add(_albumVM);
             }
           }
         }
@@ -91,8 +94,8 @@ public class Album_DAO implements iAlbum_DAO{
     }
     return result;
   }
-  public Album getAlbumByPrimaryKey(Album _album) throws SQLException{
-    Album result = null;
+  public Album_VM getAlbumByPrimaryKey(Album _album) throws SQLException{
+    Album_VM _albumVM = null;
     try(Connection connection = getConnection()) {
       try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_pk_Album(?)}")) {
         statement.setString(1, _album.getAlbum_ID().toString());
@@ -101,13 +104,16 @@ public class Album_DAO implements iAlbum_DAO{
           if(resultSet.next()){Integer Album_ID = resultSet.getInt("Album_Album_ID");
             String Album_Name = resultSet.getString("Album_Album_Name");
             boolean Is_Active = resultSet.getBoolean("Album_Is_Active");
-            result = new Album( Album_ID, Album_Name, Is_Active);}
+            int size=resultSet.getInt("Count");;
+            Album result = new Album( Album_ID, Album_Name, Is_Active);
+             _albumVM = new Album_VM(result,size);
+          }
         }
       }
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-    return result;
+    return _albumVM;
   }
   /**
   * DAO Method to retreive all Album objects

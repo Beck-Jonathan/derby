@@ -33,23 +33,22 @@ public class All_Picture extends HttpServlet {private iPicture_DAO pictureDAO;
 //add roles here
     HttpSession session = req.getSession();
     User user = (User)session.getAttribute("User");
-    String mode = req.getParameter("mode");
-    Integer parameter=0;
-    try {
-       parameter = Integer.parseInt(req.getParameter("filterBy"));
-      }
-    catch (Exception ex){
-      parameter=0;
-    }
-    if (mode!=null) {
-      if (mode.equals("album")) {
-        String album = req.getParameter("album");
 
-      }
-      if (mode.equals("contributor")) {
-        String contributor = req.getParameter("contributor");
-      }
+
+    String album = req.getParameter("album");
+
+
+
+    String contributor = req.getParameter("contributor");
+    Integer contributorID=0;
+    if (contributor!=null){
+      contributorID = Integer.valueOf(contributor);
     }
+    Integer AlbumID=0;
+    if (album!=null){
+      AlbumID = Integer.valueOf(album);
+    }
+
     if (user==null||!user.isInRole(ROLES_NEEDED)){
       resp.sendError(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -60,14 +59,9 @@ public class All_Picture extends HttpServlet {private iPicture_DAO pictureDAO;
 
     try {
 
-      if  (mode!=null&& mode.equals("album")) {
-        pictures = pictureDAO.getPicturebyAlbum(parameter,20,0);
-      } else if (mode!=null && mode.equals("contributor")) {
-        pictures = pictureDAO.getPicturebyContributor(parameter,20,0);
-      }
-      else{
-        pictures =pictureDAO.getAllPicture(20,0,0,0);
-      }
+
+        pictures =pictureDAO.getAllPicture(20,0,AlbumID,contributorID);
+
 
     } catch (SQLException e) {
       throw new RuntimeException(e);

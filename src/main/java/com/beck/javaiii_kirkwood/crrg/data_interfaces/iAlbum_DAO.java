@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.data_interfaces;
 
 import com.beck.javaiii_kirkwood.crrg.models.Album;
+import com.beck.javaiii_kirkwood.crrg.models.Album_VM;
 import org.hibernate.annotations.processing.SQL;
 
 import java.sql.SQLException;
@@ -34,9 +35,9 @@ public interface iAlbum_DAO{
    * @return List of Album
    * @author Jonathan Beck
    */
-  List<Album> getAllAlbum(int limit, int offset) throws SQLException;
+  List<Album_VM> getAllAlbum(int limit, int offset) throws SQLException;
 
-  Album getAlbumByPrimaryKey(Album _album) throws SQLException;
+  Album_VM getAlbumByPrimaryKey(Album _album) throws SQLException;
 
   /**
    * DAO Method to select distinct Album for dropdowns

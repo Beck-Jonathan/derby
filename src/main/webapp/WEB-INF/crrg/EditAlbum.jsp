@@ -10,6 +10,14 @@ Create the JSP For Viuw/Edit from the Album table
             <h2>Album_ID  :
                 ${fn:escapeXml(album.album_ID)}</h2>
         </div>
+        <div class="row">
+            <div class="col-2">
+                Associated Pictures (${album.album_size})
+            </div>
+            <div class="col-10">
+                <a href="all-Pictures?mode=contributor&album=${album.album_ID}">View</a>
+            </div>
+        </div>
         <!-- Album_Name -->
         <div class ="row" id = "row1">
             <label for="inputalbumAlbum_Name" class="form-label">Album_Name</label>

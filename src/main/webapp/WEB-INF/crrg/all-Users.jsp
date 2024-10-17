@@ -8,7 +8,7 @@ Create the JSP  For Viewing All of The  User table
         <div class="col-12">
 
 
-
+                <c:if test="${not empty newUser}">
                     <div id="myModal" class="modal">
 
                         <div><h4>New User Created</h4></div>
@@ -17,7 +17,8 @@ Create the JSP  For Viewing All of The  User table
                         <div ><button id="modalButton">Close</button></div>
 
                     </div>
-
+                    <c:remove var="newUser" scope="session"></c:remove>
+                </c:if>
 
             <%-- <c:remove var="results" scope="session"></c:remove>--%>
             <h1>All Roller Users</h1>
@@ -41,7 +42,7 @@ Create the JSP  For Viewing All of The  User table
                     <tbody>
                     <c:forEach items="${Users}" var="user">
                         <tr>
-                            <td><a href = "edituser?userid=${user.user_ID}&mode=view">${fn:escapeXml(user.user_ID)}</a></td>
+                            <td><a href = "editCrrgUser?userid=${user.user_ID}&mode=view">${fn:escapeXml(user.user_ID)}</a></td>
                             <td>
                                 <c:if test="${user.role_ID eq 'Jonathan'}"><p>Jonathan</p></c:if>
                                 <c:if test="${user.role_ID ne 'Jonathan'}">
@@ -58,9 +59,9 @@ Create the JSP  For Viewing All of The  User table
                             <td>${fn:escapeXml(user.first_Name)}</td>
                             <td>${fn:escapeXml(user.last_Name)}</td>
                             <td>${fn:escapeXml(user.email)}</td>
-                            <td>${fn:escapeXml(user.last_Logged_In)}</td>
+                            <td> <fmt:formatDate type="both" value="${user.last_Logged_In.toDate()}" /> </td>
 
-                            <td><a href = "edituser?userid=${user.user_ID}&mode=edit" > Edit </a></td>
+                            <td><a href = "editCrrgUser?userid=${user.user_ID}&mode=edit" > Edit </a></td>
 
                         </tr>
                     </c:forEach>

@@ -20,7 +20,7 @@ Create the JSP  For adding to The  User table
         <div class ="row" id = "row6">
             <label for="inputuserPassword" class="form-label">Password</label>
             <div class="input-group input-group-lg">
-                <input type="text" class="<c:if test="${not empty results.userPassworderror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Password" id="inputuserPassword" name="inputuserPassword" value="${fn:escapeXml(results.Password)}">
+                <input type="password" class="<c:if test="${not empty results.userPassworderror}">is-invalid</c:if> form-control border-0 bg-light rounded-end ps-1" placeholder="Password" id="inputuserPassword" name="inputuserPassword" value="${fn:escapeXml(results.Password)}">
                 <c:if test="${not empty results.userPassworderror}">
                     <div class="invalid-feedback">${results.userPassworderror}</div>
                 </c:if>

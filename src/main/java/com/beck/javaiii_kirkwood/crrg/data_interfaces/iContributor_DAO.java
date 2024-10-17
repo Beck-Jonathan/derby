@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.data_interfaces;
 
 import com.beck.javaiii_kirkwood.crrg.models.Contributor;
+import com.beck.javaiii_kirkwood.crrg.models.Contributor_VM;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -18,7 +19,7 @@ public interface iContributor_DAO {
    * @return List of Contributor
    * @author Jonathan Beck
    */
-  List<Contributor> getAllContributor(int limit, int offset) throws SQLException;
+  List<Contributor_VM> getAllContributor(int limit, int offset) throws SQLException;
 
 
   /**
@@ -27,5 +28,20 @@ public interface iContributor_DAO {
    * @author Jonathan Beck
    */
   List<Contributor> getDistinctContributorForDropdown() throws SQLException;
+
+  /**
+   * DAO Method to retreive by Foreign Key Contributor objects
+   * @return List of Contributor
+   * @author Jonathan Beck
+   */
+  Contributor_VM getContributorByPrimaryKey(Contributor _contributor) throws SQLException;
+  /**
+   * DAO Method to update Contributor objects
+   * @param oldContributor the Contributor to be updated
+   * @param newContributor the updated version of the Contributor
+   * @return number of records updated
+   * @author Jonathan Beck
+   */
+  int update(Contributor oldContributor, Contributor newContributor) throws SQLException;
 
 }

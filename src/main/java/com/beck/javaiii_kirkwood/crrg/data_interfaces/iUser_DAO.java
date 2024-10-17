@@ -49,6 +49,25 @@ public interface iUser_DAO {
 
   int changeRole(String userID, String Role) throws SQLException;
 
+  /**
+   * * DAO Method to update User objects
+   * * @param user the User to be updated
+   * * @return number of records updated
+   * * @author Jonathan Beck
+   *  */
+  int updateLastLoggedIn(User user) throws SQLException;
+
+  /**
+   * DAO Method to update User objects
+   * @param oldUser the User to be updated
+   * @param newUser the updated version of the User
+   * @return number of records updated
+   * @author Jonathan Beck
+   */
+
+   int update(User oldUser, User newUser)throws SQLException;
+
+
 
 
 }

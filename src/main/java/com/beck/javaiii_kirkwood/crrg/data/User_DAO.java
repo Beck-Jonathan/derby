@@ -2,12 +2,11 @@ package com.beck.javaiii_kirkwood.crrg.data;
 
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iUser_DAO;
 import com.beck.javaiii_kirkwood.crrg.models.User;
+import org.hibernate.annotations.processing.SQL;
+import org.joda.time.DateTime;
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,9 +63,11 @@ public class User_DAO implements iUser_DAO {
               String First_Name = resultSet.getString("User_First_Name");
               String Last_Name = resultSet.getString("User_Last_Name");
               String Email = resultSet.getString("User_Email");
-              Date Last_Logged_In = resultSet.getDate("User_Last_Logged_In");
-              if(resultSet.wasNull()){
-                Last_Logged_In=null;}
+              Timestamp Last = resultSet.getTimestamp("User_Last_Logged_In");
+              DateTime Last_Logged_In = null;
+              if (Last!=null) {
+                Last_Logged_In = new DateTime(resultSet.getTimestamp("User_Last_Logged_In"));
+              }
               char[] Password = null;
 
               User _user = new User( User_ID, _Role_ID, First_Name, Last_Name, Email, Last_Logged_In, Password);
@@ -145,8 +146,11 @@ public User getUserByUserID(User _user) throws SQLException{
            String First_Name = resultSet.getString("User_First_Name");
            String Last_Name = resultSet.getString("User_Last_Name");
            String Email = resultSet.getString("User_Email");
-           Date Last_Logged_In = resultSet.getDate("User_Last_Logged_In");
-
+           Timestamp Last = resultSet.getTimestamp("User_Last_Logged_In");
+           DateTime Last_Logged_In = null;
+           if (Last!=null) {
+             Last_Logged_In = new DateTime(resultSet.getTimestamp("User_Last_Logged_In"));
+           }
 
            result = new User( User_ID, Role_ID, First_Name, Last_Name, Email, Last_Logged_In, null);}
        }
@@ -269,6 +273,65 @@ public boolean usernameFree(String username) throws SQLException {
     }
     return numRowsAffected;
   }
+
+  /**
+   * * DAO Method to update User objects
+   * * @param user the User to be updated
+   * * @return number of records updated
+   * * @author Jonathan Beck
+   *  */
+  public int updateLastLoggedIn(User user) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_User_last_log_in(? ,?)}"))
+        {
+          statement.setString(1,user.getUser_ID());
+          statement.setTimestamp(2,new java.sql.Timestamp(user.getLast_Logged_In().toDate().getTime()));
+          result = statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update User . Try again later");
+        }
+      }
+    }
+    return result;
+
+  }
+
+  /**
+   * DAO Method to update User objects
+   * @param oldUser the User to be updated
+   * @param newUser the updated version of the User
+   * @return number of records updated
+   * @author Jonathan Beck
+   */
+
+  public int update(User oldUser, User newUser) throws SQLException{
+    int result = 0;
+    try (Connection connection = getConnection()) {
+      if (connection !=null){
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_update_User(?,?,?,?,?,?,?,?,?)}"))
+        {
+          statement.setString(1,oldUser.getUser_ID());
+          statement.setString(2,oldUser.getRole_ID());
+          statement.setString(3,newUser.getRole_ID());
+          statement.setString(4,oldUser.getFirst_Name());
+          statement.setString(5,newUser.getFirst_Name());
+          statement.setString(6,oldUser.getLast_Name());
+          statement.setString(7,newUser.getLast_Name());
+          statement.setString(8,oldUser.getEmail());
+          statement.setString(9,newUser.getEmail());
+
+
+          result=statement.executeUpdate();
+        } catch (SQLException e) {
+          throw new RuntimeException("Could not update User . Try again later");
+        }
+      }
+    }
+    return result;
+  }
+
 //
 //  @Override
 //  public boolean deleteUser(int userID) throws SQLException {

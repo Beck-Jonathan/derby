@@ -1,6 +1,7 @@
 package com.beck.javaiii_kirkwood.crrg.models;
 
 import com.beck.javaiii_kirkwood.shared.MyValidators;
+import org.joda.time.DateTime;
 
 import java.util.Date;
 import java.util.List;
@@ -18,12 +19,12 @@ public class User {
   private String First_Name;
   private String Last_Name;
   private String Email;
-  private Date Last_Logged_In;
+  private DateTime Last_Logged_In;
   private char[] Password;
 
   public User(){}
 
-  public User(String User_ID, String Role_ID, String First_Name, String Last_Name, String Email, Date Last_Logged_In, char[] Password) {
+  public User(String User_ID, String Role_ID, String First_Name, String Last_Name, String Email, DateTime Last_Logged_In, char[] Password) {
 
     this.User_ID = User_ID;
     this.Role_ID = Role_ID;
@@ -107,10 +108,10 @@ public class User {
     }
     this.Email = Email;
   }
-  public Date getLast_Logged_In() {
+  public DateTime getLast_Logged_In() {
     return Last_Logged_In;
   }
-  public void setLast_Logged_In(Date Last_Logged_In) {
+  public void setLast_Logged_In(DateTime Last_Logged_In) {
     this.Last_Logged_In = Last_Logged_In;
   }
   public char[] getPassword() {

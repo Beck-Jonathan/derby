@@ -2,6 +2,7 @@ package com.beck.javaiii_kirkwood.crrg.controllers;
 
 import com.beck.javaiii_kirkwood.crrg.data.Album_DAO;
 import com.beck.javaiii_kirkwood.crrg.models.Album;
+import com.beck.javaiii_kirkwood.crrg.models.Album_VM;
 import com.beck.javaiii_kirkwood.crrg.models.User;
 import com.beck.javaiii_kirkwood.crrg.data_interfaces.iAlbum_DAO;
 import jakarta.servlet.ServletException;
@@ -38,7 +39,7 @@ public class All_Album extends HttpServlet {private iAlbum_DAO albumDAO;
     }
 
     session.setAttribute("currentPage",req.getRequestURL());
-    List<Album> albums = null;
+    List<Album_VM> albums = null;
 
     try {
       albums =albumDAO.getAllAlbum(20,0);
