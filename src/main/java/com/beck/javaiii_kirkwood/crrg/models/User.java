@@ -1,6 +1,10 @@
 package com.beck.javaiii_kirkwood.crrg.models;
 
+import com.beck.javaiii_kirkwood.shared.MyValidators;
+
+import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
 
 /**
  * @ author Jonathan Beck
@@ -10,24 +14,30 @@ import java.util.List;
 
 public class User {
   private String User_ID;
-  private String first_name;
-  private String last_name;
-  private String email;
-  private String phone;
-  private String password;
-  private List<String> roles;
+  private String Role_ID;
+  private String First_Name;
+  private String Last_Name;
+  private String Email;
+  private Date Last_Logged_In;
+  private char[] Password;
 
   public User(){}
 
-  public User(String User_ID, String first_name, String last_name, String email, String phone, String password,List<String> roles) {
+  public User(String User_ID, String Role_ID, String First_Name, String Last_Name, String Email, Date Last_Logged_In, char[] Password) {
 
     this.User_ID = User_ID;
-    this.first_name = first_name;
-    this.last_name = last_name;
-    this.email = email;
-    this.phone = phone;
-    this.password = password;
-    this.roles = roles;
+    this.Role_ID = Role_ID;
+    this.First_Name = First_Name;
+    this.Last_Name = Last_Name;
+    this.Email = Email;
+    this.Last_Logged_In = Last_Logged_In;
+    this.Password = Password;
+  }
+
+  public User(String User_ID, String Email) {
+
+    this.User_ID = User_ID;
+    this.Email = Email;
   }
   public String getUser_ID() {
     return User_ID;
@@ -42,87 +52,92 @@ public class User {
     }
     this.User_ID = User_ID;
   }
-  public String getfirst_name() {
-    return first_name;
+  public String getRole_ID() {
+    return Role_ID;
   }
-  public void setfirst_name(String first_name) {
-    first_name = first_name.replaceAll("[^A-Za-z0-9 - ]","");
-    if(first_name.length()<4){
-      throw new IllegalArgumentException("first_name is too short.");
+  public void setRole_ID(String Role_ID) {
+    Role_ID = Role_ID.replaceAll("[^A-Za-z0-9 - ]","");
+    if(Role_ID.length()<3){
+      throw new IllegalArgumentException("Role_ID is too short.");
     }
-    if(first_name.length()>100){
-      throw new IllegalArgumentException("first_name is too long.");
+    if(Role_ID.length()>100){
+      throw new IllegalArgumentException("Role_ID is too long.");
     }
-    this.first_name = first_name;
+    this.Role_ID = Role_ID;
   }
-  public String getlast_name() {
-    return last_name;
+  public String getFirst_Name() {
+    return First_Name;
   }
-  public void setlast_name(String last_name) {
-    last_name = last_name.replaceAll("[^A-Za-z0-9 - ]","");
-    if(last_name.length()<4){
-      throw new IllegalArgumentException("last_name is too short.");
+  public void setFirst_Name(String First_Name) {
+    First_Name = First_Name.replaceAll("[^A-Za-z0-9 - ]","");
+    if(First_Name.length()<3){
+      throw new IllegalArgumentException("First_Name is too short.");
     }
-    if(last_name.length()>100){
-      throw new IllegalArgumentException("last_name is too long.");
+    if(First_Name.length()>100){
+      throw new IllegalArgumentException("First_Name is too long.");
     }
-    this.last_name = last_name;
+    this.First_Name = First_Name;
   }
-  public String getemail() {
-    return email;
+  public String getLast_Name() {
+    return Last_Name;
   }
-  public void setemail(String email) {
-    email = email.replaceAll("[^A-Za-z0-9 - ]","");
-    if(email.length()<4){
-      throw new IllegalArgumentException("email is too short.");
+  public void setLast_Name(String Last_Name) {
+    Last_Name = Last_Name.replaceAll("[^A-Za-z0-9 - ]","");
+    if(Last_Name.length()<3){
+      throw new IllegalArgumentException("Last_Name is too short.");
     }
-    if(email.length()>100){
-      throw new IllegalArgumentException("email is too long.");
+    if(Last_Name.length()>100){
+      throw new IllegalArgumentException("Last_Name is too long.");
     }
-    this.email = email;
+    this.Last_Name = Last_Name;
   }
-  public String getphone() {
-    return phone;
+  public String getEmail() {
+    return Email;
   }
-  public void setphone(String phone) {
-    phone = phone.replaceAll("[^A-Za-z0-9 - ]","");
-    if(phone.length()<4){
-      throw new IllegalArgumentException("phone is too short.");
+  public void setEmail(String Email) {
+    Matcher matcher = MyValidators.emailPattern.matcher(Email);
+    if (!matcher.matches()){
+      throw new IllegalArgumentException("Invalid Email");
     }
-    if(phone.length()>13){
-      throw new IllegalArgumentException("phone is too long.");
+    if(Email.length()<4){
+      throw new IllegalArgumentException("Email is too short.");
     }
-    this.phone = phone;
+    if(Email.length()>100){
+      throw new IllegalArgumentException("Email is too long, it must be under 101 characters");
+    }
+    this.Email = Email;
   }
-  public String getpassword() {
-    return password;
+  public Date getLast_Logged_In() {
+    return Last_Logged_In;
   }
-  public void setpassword(String password) {
-    password = password.replaceAll("[^A-Za-z0-9 - ]","");
-    if(password.length()<4){
-      throw new IllegalArgumentException("password is too short.");
-    }
-    if(password.length()>255){
-      throw new IllegalArgumentException("password is too long.");
-    }
-    this.password = password;
+  public void setLast_Logged_In(Date Last_Logged_In) {
+    this.Last_Logged_In = Last_Logged_In;
   }
+  public char[] getPassword() {
+    return Password;
+  }
+  public void setPassword(char[] User_PW) {
+    if (Password!=null) {
 
-  public List<String> getRoles() {
-    return roles;
-  }
-
-  public void setRoles(List<String> roles) {
-    this.roles = roles;
-  }
-
-  public boolean isInRole(List<String> roles){
-    for (String role : roles){
-      if (this.roles.contains(role)){
-        return true;
+      String passwordStr = String.valueOf(User_PW);
+      Matcher matcher = MyValidators.passwordPattern.matcher(passwordStr);
+      if (!matcher.matches()) {
+        throw new IllegalArgumentException("Password must be 8 characters, with 3 of 4 (lowercase, uppercase, number, symbol)");
       }
     }
-    return false;
+    Password = User_PW;
   }
+  public boolean isInRole(List<String> rolesNeeded){
+    boolean result=false;
+    for (String r : rolesNeeded){
+      if (r.equals(Role_ID)){
+        result=true;
+        break;
+      }
+    }
+    return result;
+  }
+
 }
+
 

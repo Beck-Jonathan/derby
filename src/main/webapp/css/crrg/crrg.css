@@ -77,6 +77,10 @@ body {
     opacity: 0.5;
 }
 
+#sliders{
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+}
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */

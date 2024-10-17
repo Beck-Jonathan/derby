@@ -105,7 +105,7 @@ public class Add_Contributor extends HttpServlet {
       }
     }
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Create a Contributor ");
+    req.setAttribute("pageTitle", "Add Contributor");
     req.getRequestDispatcher("WEB-INF/crrg/AddContributor.jsp").forward(req, resp);
 
   }

@@ -66,7 +66,7 @@ public class Edit_Picture extends HttpServlet{
     session.setAttribute("picture",picture);
     req.setAttribute("mode",mode);
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Add Picture");
+    req.setAttribute("pageTitle", "Edit a Picture");
     List<Album> allAlbums;
     List<Contributor> allContributors;
     try {
@@ -180,7 +180,7 @@ public class Edit_Picture extends HttpServlet{
     }
 //standard
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Edit a Picture ");
+    req.setAttribute("pageTitle", "Edit a Picture");
     req.getRequestDispatcher("WEB-INF/crrg/EditPicture.jsp").forward(req, resp);
   }
 }

@@ -91,7 +91,7 @@ public class Add_Album extends HttpServlet{
       }
     }
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Create a Album ");
+    req.setAttribute("pageTitle", "Add Album");
     req.getRequestDispatcher("WEB-INF/crrg/AddAlbum.jsp").forward(req, resp);
 
   }

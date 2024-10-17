@@ -134,7 +134,7 @@ public class Add_Picture extends HttpServlet{
     } catch (Exception ex){
       results.put("dbStatus",ex.getMessage());
       req.setAttribute("results", results);
-      req.setAttribute("pageTitle", "Add a picture");
+      req.setAttribute("pageTitle", "Add Picture");
       req.getRequestDispatcher("WEB-INF/crrg/AddPicture.jsp").forward(req, resp);
       return;
     }
@@ -185,7 +185,7 @@ public class Add_Picture extends HttpServlet{
       }
     }
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Create a Picture ");
+    req.setAttribute("pageTitle", "Add Picture");
     req.getRequestDispatcher("WEB-INF/crrg/AddPicture.jsp").forward(req, resp);
 
   }

@@ -15,18 +15,28 @@ import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnec
 
 public interface iUser_DAO {
 
-     int add(User _user);
+     int add(User _user) throws SQLException;
 
-     int getUserID(String email) throws SQLException;
+  List<String> getDistinctRoleForDropdown();
 
-     User getUserByPrimaryKey(User _user) throws SQLException;
-    List<User> getAllUser() ;
+  /**
+   * DAO Method to retreive all User objects
+   * @return List of User
+   * @author Jonathan Beck
+   */
+  List<User> getAllUser(int limit, int offset,String Role_ID) throws SQLException;
 
-      int activate(int _userID) ;
 
-      String get_pw(String username);
+     //int getUserID(String email) throws SQLException;
 
-     int getUserIDByUserName(String username);
+     User getUserByUserID(User _user) throws SQLException;
+     //List<User> getAllUser() throws SQLException ;
+
+      //int activate(int _userID) throws SQLException;
+
+  String getPassword(String username) throws SQLException;
+
+     //int getUserIDByUserName(String username) throws SQLException;
 
 
      boolean usernameFree(String username) throws SQLException;
@@ -34,8 +44,10 @@ public interface iUser_DAO {
 
 
 
-     boolean deleteUser(int userID) throws SQLException;
-     boolean resetPW(User user) throws SQLException;
+     //boolean deleteUser(int userID) throws SQLException;
+     boolean updatePassword(User user) throws SQLException;
+
+  int changeRole(String userID, String Role) throws SQLException;
 
 
 

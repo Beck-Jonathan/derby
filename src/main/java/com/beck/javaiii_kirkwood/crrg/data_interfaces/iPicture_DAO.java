@@ -45,7 +45,7 @@ public interface iPicture_DAO {
    * @return List of Picture
    * @author Jonathan Beck
    */
-  List<Picture_VM> getAllPicture(int limit, int offset) throws SQLException;
+  List<Picture_VM> getAllPicture(int limit, int offset, int Album_ID, int  Contributor_ID) throws SQLException;
 
   /**
    * DAO Method to retreive by Foreign Key Picture objects

@@ -66,7 +66,7 @@ public class All_Picture extends HttpServlet {private iPicture_DAO pictureDAO;
         pictures = pictureDAO.getPicturebyContributor(parameter,20,0);
       }
       else{
-        pictures =pictureDAO.getAllPicture(20,0);
+        pictures =pictureDAO.getAllPicture(20,0,0,0);
       }
 
     } catch (SQLException e) {

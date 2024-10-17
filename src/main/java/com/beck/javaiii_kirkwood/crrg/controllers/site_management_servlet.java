@@ -17,11 +17,11 @@ public class site_management_servlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     HttpSession session = req.getSession();
-    User Jonathan  = new User();
-    List<String> roles = new ArrayList<>();
-    roles.add("Jonathan");
-    Jonathan.setRoles(roles);
-    session.setAttribute("User",Jonathan);
+    User user =(User) session.getAttribute("User");
+
+    if (user==null){
+      resp.sendRedirect("crrgLogin");
+    }
 
     session.setAttribute("currentPage",req.getRequestURL());
     req.setAttribute("pageTitle", "Admin Panel");

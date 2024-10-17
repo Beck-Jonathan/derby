@@ -57,7 +57,7 @@ public class Edit_Album extends HttpServlet{
     session.setAttribute("album",album);
     req.setAttribute("mode",mode);
     session.setAttribute("currentPage",req.getRequestURL());
-    req.setAttribute("pageTitle", "Add Album");
+    req.setAttribute("pageTitle", "Edit a Album");
     req.getRequestDispatcher("WEB-INF/crrg/EditAlbum.jsp").forward(req, resp);
   }
   @Override
@@ -112,7 +112,7 @@ public class Edit_Album extends HttpServlet{
     }
 //standard
     req.setAttribute("results", results);
-    req.setAttribute("pageTitle", "Edit a Album ");
+    req.setAttribute("pageTitle", "Edit a Album");
     req.getRequestDispatcher("WEB-INF/crrg/EditAlbum.jsp").forward(req, resp);
   }
 }

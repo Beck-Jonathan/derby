@@ -170,17 +170,19 @@ public class Picture_DAO implements iPicture_DAO{
    * @author Jonathan Beck
    */
   @Override
-  public List<Picture_VM> getAllPicture(int limit, int offset) {
+  public List<Picture_VM> getAllPicture(int limit, int offset, int Album_ID, int  Contributor_ID) {
     List<Picture_VM> result = new ArrayList<>();
     try (Connection connection = getConnection()) {
       if (connection != null) {
-        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Picture(?,?)}")) {
-          statement.setInt(1,limit)
-          ;statement.setInt(2,offset);
+        try(CallableStatement statement = connection.prepareCall("{CALL sp_retreive_by_all_Picture(?,?,?,?)}")) {
+          statement.setInt(1,limit);
+          statement.setInt(2,offset);
+          statement.setInt(3,Album_ID);
+          statement.setInt(4,Contributor_ID);
           try(ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {Integer Picture_ID = resultSet.getInt("Picture_Picture_ID");
-              Integer Album_ID = resultSet.getInt("Picture_Album_ID");
-              Integer Contributor_ID = resultSet.getInt("Picture_Contributor_ID");
+              Integer _Album_ID = resultSet.getInt("Picture_Album_ID");
+              Integer _Contributor_ID = resultSet.getInt("Picture_Contributor_ID");
               String Web_Address = resultSet.getString("Picture_Web_Address");
               String description = resultSet.getString("Picture_description");
               boolean Is_Active = resultSet.getBoolean("Picture_Is_Active");

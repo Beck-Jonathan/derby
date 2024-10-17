@@ -9,6 +9,7 @@ $(document).ready(function() {
     var sliders = document.getElementsByClassName('slider');
     var grayscaleSlider = document.getElementById("grayscale");
     var hueRotateSlider = document.getElementById("hueRotate");
+    var slidersDiv = document.getElementById("sliders");
 
     var grayscale="grayscale(0%)";
     var blurry="blur(0px)";
@@ -51,6 +52,9 @@ $(document).ready(function() {
 
 
         if (modal.style.display === "block") {
+            if (e.key === "q"){
+                $('#sliders').slideToggle();
+            }
             if (e.key === "a") {
 
                 grayscale="grayscale(100%)";
