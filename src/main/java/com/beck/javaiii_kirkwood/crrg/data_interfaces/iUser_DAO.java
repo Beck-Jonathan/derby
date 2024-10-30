@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.beck.javaiii_kirkwood.personal_project.data.Database.getConnection;
+
 
 public interface iUser_DAO {
 

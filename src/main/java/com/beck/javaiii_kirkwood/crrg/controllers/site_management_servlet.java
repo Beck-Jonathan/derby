@@ -21,6 +21,7 @@ public class site_management_servlet extends HttpServlet {
 
     if (user==null){
       resp.sendRedirect("crrgLogin");
+      return;
     }
 
     session.setAttribute("currentPage",req.getRequestURL());
